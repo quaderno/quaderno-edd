@@ -30,16 +30,16 @@ Following are the steps to install the EDD Quaderno
 4. Activate this plugin.
 5. Configure the options from Downloads > Settings > Quaderno.
 
-OR you can just install it with WordPress by going to Plugins >> Add New >> and type this plugin's name
+OR you can just install it with WordPress by going to Plugins > Add New > and type this plugin's name
 
 That's it! You can now customize your EDD receipts and be EU VAT compliant.
 
-== FAQ ==
+== Frequently Asked Questions ==
 
-**Do I need to modify any code?**
+= Do I need to modify any code? =
 Nope - we take care of everything you. Just install the plugin, add your API token and you’ll be good to go!
 
-**Does Quaderno work with any themes?**
+= Does Quaderno work with any themes? =
 Yes, Quaderno works with any theme - whether free, commercial or custom. You just need EDD activated for Quaderno to work.
 
 If you have any questions please get in touch with us at hello@quaderno.io.
