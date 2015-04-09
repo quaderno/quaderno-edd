@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: EDD Quaderno\n"
-"POT-Creation-Date: 2015-03-01 20:05-0000\n"
-"PO-Revision-Date: 2015-03-01 20:12-0000\n"
+"POT-Creation-Date: 2015-04-09 21:15-0000\n"
+"PO-Revision-Date: 2015-04-09 21:16-0000\n"
 "Last-Translator:  <hello@quaderno.io>\n"
 "Language-Team: Quaderno <hello@quaderno.io>\n"
 "Language: es\n"
@@ -32,12 +32,12 @@ msgid "Tax ID / EU-VAT ID"
 msgstr "NIF / Número IVA intracomunitario"
 
 #: ../includes/settings.php:43 ../includes/settings.php:49
-msgid "API Token"
-msgstr "API Token"
+msgid "Private key"
+msgstr "Clave privada"
 
 #: ../includes/settings.php:50
-msgid "Get this token from your Quaderno account"
-msgstr "Consigue este token en tu cuenta de Quaderno"
+msgid "Get this key from your Quaderno account"
+msgstr "Consigue esta clave en tu cuenta de Quaderno"
 
 #: ../includes/settings.php:57 ../includes/settings.php:63
 msgid "API URL"
@@ -59,18 +59,27 @@ msgstr ""
 "Selecciona esta opción para enviar automáticamente una factura cuando un "
 "pedido es marcado como completado"
 
-#: ../includes/settings.php:110
-msgid "Settings"
-msgstr "Ajustes"
+#: ../includes/settings.php:85 ../includes/settings.php:91
+msgid "E-book Taxes"
+msgstr "Impuestos E-book\t"
 
-#: ../includes/settings.php:119
-msgid "Create a Quaderno account"
-msgstr "Crear una cuenta en Quaderno\t"
+#: ../includes/settings.php:92
+msgid "Check this if you only sell e-books."
+msgstr "Selecciona esta opción si solo vendes e-books."
 
-#: ../includes/settings.php:138
+#: ../includes/settings.php:152
 msgid ""
 "Don't you have a Quaderno account? Create a new one <a href=\"https://"
 "quadernoapp.com/signup\" target=\"_blank\">on this page</a>."
 msgstr ""
 "¿No tienes una cuenta en Quaderno? Crea una ahora <a href=\"https://"
 "quadernoapp.com/signup\" target=\"_blank\">en esta página</a>."
+
+#~ msgid "API Token"
+#~ msgstr "API Token"
+
+#~ msgid "Settings"
+#~ msgstr "Ajustes"
+
+#~ msgid "Create a Quaderno account"
+#~ msgstr "Crear una cuenta en Quaderno\t"

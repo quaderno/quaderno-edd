@@ -40,14 +40,14 @@ function edd_quaderno_register_settings()
 
 	add_settings_field(
 		'edd_settings[token]',
-		__('API Token', 'edd_quaderno'),
+		__('Private key', 'edd_quaderno'),
 		'edd_text_callback',
 		'edd_settings_quaderno',
 		'edd_settings_quaderno',
 		array(
 			'id'      => 'edd_quaderno_token',
-			'name' => __('API Token', 'edd_quaderno'),
-			'desc' => __('Get this token from your Quaderno account', 'edd_quaderno'),
+			'name' => __('Private key', 'edd_quaderno'),
+			'desc' => __('Get this key from your Quaderno account', 'edd_quaderno'),
 			'section' => 'quaderno'
 		)
 	);
@@ -67,15 +67,29 @@ function edd_quaderno_register_settings()
 	);
 	
 	add_settings_field(
-		'edd_settings[autosend]',
+		'edd_settings[autosend_receipts]',
 		__('Autosend receipts', 'edd_quaderno'),
 		'edd_checkbox_callback',
 		'edd_settings_quaderno',
 		'edd_settings_quaderno',
 		array(
-			'id' => 'edd_quaderno_autosend',
+			'id' => 'autosend_receipts',
 			'name' => __('Autosend receipts', 'edd_quaderno'),
 			'desc' => __('Check this to automatically send your receipts when an order is marked as complete.', 'edd_quaderno'),
+			'section' => 'quaderno'
+		)
+	);
+
+	add_settings_field(
+		'edd_settings[ebook_rates]',
+		__('E-book Taxes', 'edd_quaderno'),
+		'edd_checkbox_callback',
+		'edd_settings_taxes',
+		'edd_settings_taxes',
+		array(
+			'id' => 'ebook_rates',
+			'name' => __('E-book Taxes', 'edd_quaderno'),
+			'desc' => __('Check this if you only sell e-books.', 'edd_quaderno'),
 			'section' => 'quaderno'
 		)
 	);

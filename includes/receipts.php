@@ -89,7 +89,7 @@ function edd_quaderno_create_receipt($payment_id)
 				'unit_price' => $item['item_price'],
 				'discount' => $item['discount'],
 				'tax_1_name' => $tax->name,
-				'tax_1_rate' => $tax->rate
+				'tax_1_rate' => $edd_options['ebook_rates'] ? $tax->ebook_rate : $tax->rate
 			));
 			$invoice->addItem($new_item);
 		}
@@ -114,7 +114,7 @@ function edd_quaderno_create_receipt($payment_id)
 			));
 			$evidence->save();
 			
-			if ($edd_options['edd_quaderno_autosend']) $invoice->deliver();
+			if ($edd_options['autosend_receipts']) $invoice->deliver();
 		}
 	}
 }

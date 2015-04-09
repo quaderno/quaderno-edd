@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: EDD Quaderno\n"
-"POT-Creation-Date: 2015-03-01 20:05-0000\n"
-"PO-Revision-Date: 2015-03-01 20:05-0000\n"
-"Last-Translator: \n"
+"POT-Creation-Date: 2015-04-09 21:15-0000\n"
+"PO-Revision-Date: 2015-04-09 21:15-0000\n"
+"Last-Translator:  <hello@quaderno.io>\n"
 "Language-Team: Quaderno <hello@quaderno.io>\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -32,11 +32,11 @@ msgid "Tax ID / EU-VAT ID"
 msgstr ""
 
 #: ../includes/settings.php:43 ../includes/settings.php:49
-msgid "API Token"
+msgid "Private key"
 msgstr ""
 
 #: ../includes/settings.php:50
-msgid "Get this token from your Quaderno account"
+msgid "Get this key from your Quaderno account"
 msgstr ""
 
 #: ../includes/settings.php:57 ../includes/settings.php:63
@@ -57,15 +57,23 @@ msgid ""
 "complete."
 msgstr ""
 
-#: ../includes/settings.php:110
+#: ../includes/settings.php:85 ../includes/settings.php:91
+msgid "E-book Taxes"
+msgstr ""
+
+#: ../includes/settings.php:92
+msgid "Check this if you only sell e-books."
+msgstr ""
+
+#: ../includes/settings.php:124
 msgid "Settings"
 msgstr ""
 
-#: ../includes/settings.php:119
+#: ../includes/settings.php:133
 msgid "Create a Quaderno account"
 msgstr ""
 
-#: ../includes/settings.php:138
+#: ../includes/settings.php:152
 msgid ""
 "Don't you have a Quaderno account? Create a new one <a href=\"https://"
 "quadernoapp.com/signup\" target=\"_blank\">on this page</a>."
