@@ -79,20 +79,6 @@ function edd_quaderno_register_settings()
 			'section' => 'quaderno'
 		)
 	);
-
-	add_settings_field(
-		'edd_settings[ebook_rates]',
-		__('E-book Taxes', 'edd_quaderno'),
-		'edd_checkbox_callback',
-		'edd_settings_taxes',
-		'edd_settings_taxes',
-		array(
-			'id' => 'ebook_rates',
-			'name' => __('E-book Taxes', 'edd_quaderno'),
-			'desc' => __('Check this if you only sell e-books.', 'edd_quaderno'),
-			'section' => 'quaderno'
-		)
-	);
 }
 add_action('admin_init', 'edd_quaderno_register_settings');
 

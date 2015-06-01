@@ -12,19 +12,19 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 class EDD_Quaderno_DB {
-	public static function find($type, $edd_id)
+	public static function find($edd_id)
 	{
 		global $wpdb;
 		$table_name = $wpdb->prefix . 'edd_quaderno';
-		return $wpdb->get_row("SELECT * FROM $table_name WHERE type = '$type' AND edd_id = '$edd_id'");
+		return $wpdb->get_row("SELECT * FROM $table_name WHERE edd_id = $edd_id");
 	}
 
-	public static function save($type, $edd_id, $quaderno_id)
+	public static function save($edd_id, $quaderno_id)
 	{
 		global $wpdb;
 		$table_name = $wpdb->prefix . 'edd_quaderno';
 		$wpdb->insert($table_name, array(
-			'type' => $type,
+			'type' => 'customer',
 			'edd_id' => $edd_id,
 			'quaderno_id' => $quaderno_id
 		));

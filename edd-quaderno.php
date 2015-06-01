@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name: EDD Quaderno
-Plugin URL: http://easydigitaldownloads.com/extension/quaderno
+Plugin URL: https://wordpress.org/plugins/edd-quaderno/
 Description: Send beautiful receipts to EDD customers and comply with the EU VAT rules for digital goods & services.
-Version: 1.0.0
+Version: 1.2
 Author: Quaderno
 Author URI: http://quaderno.io
 */
@@ -54,6 +54,7 @@ final class EDD_Quaderno {
 		require_once EDD_QUADERNO_PLUGIN_DIR . 'quaderno-php/quaderno_load.php';
 		require_once EDD_QUADERNO_PLUGIN_DIR . 'classes/edd-quaderno-db.php';
 
+		require_once EDD_QUADERNO_PLUGIN_DIR . 'includes/ebook_field.php';
 		require_once EDD_QUADERNO_PLUGIN_DIR . 'includes/checkout.php';
 		require_once EDD_QUADERNO_PLUGIN_DIR . 'includes/scripts.php';
 		require_once EDD_QUADERNO_PLUGIN_DIR . 'includes/taxes.php';
