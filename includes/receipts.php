@@ -88,11 +88,12 @@ function edd_quaderno_create_receipt($payment_id)
 	// Add the invoice items
 	$items = edd_get_payment_meta_cart_details( $payment_id );
 	foreach ( $items as $item ) {
+	  $discounted_amount = edd_get_cart_item_discount_amount( $item );
 		$new_item = new QuadernoItem(array(
 			'description' => $item['name'],
 			'quantity' => $item['quantity'],
 			'unit_price' => $item['item_price'],
-			'discount' => $item['discount'],
+			'discount_rate' => $discounted_amount / $item['subtotal'] * 100.0,
 			'tax_1_name' => $tax->name,
 			'tax_1_rate' => $tax->rate
 		));
