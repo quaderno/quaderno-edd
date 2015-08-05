@@ -19,14 +19,21 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 */
 function edd_quaderno_transaction_type() 
 {
-	$type = 'ebook';
 	$cart_items = edd_get_cart_contents();
-	foreach ( $cart_items as $item ) {
-		if ( false === edd_quaderno_is_ebook( $item['id'] )) {
-			$type = 'eservice';
-			break;
-		}
+
+	if ( ! $cart_items ) {
+		$type = 'eservice';
 	}
+	else {
+		$type = 'ebook';
+		foreach ( $cart_items as $item ) {
+			if ( false === edd_quaderno_is_ebook( $item['id'] )) {
+  			$type = 'eservice';
+  			break;
+  		}
+  	}
+	}
+
 	return $type;
 }
 

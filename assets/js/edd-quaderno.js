@@ -5,7 +5,7 @@ jQuery(document).ready(function($) {
   if ($form.length > 0) recalculate_taxes();
 
   // Update taxes on checkout page
-  $form.on('change', '#tax-id, #company, .card-zip, #billing_country, #card_state', function(e) {
+  $form.on('change', '#tax-id, #company, .card-zip, #card_state', function(e) {
     e.preventDefault();
     recalculate_taxes();
     return false;
