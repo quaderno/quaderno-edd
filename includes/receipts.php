@@ -40,7 +40,7 @@ function edd_quaderno_create_receipt($payment_id)
 		'issue_date' => edd_get_payment_completed_date($payment_id),
 		'currency' => edd_get_payment_currency_code($payment_id),
 		'po_number' => $payment_id,
-		'tag_list' => 'edd',
+		'tag_list' => 'edd', 
 		'notes' => $tax->notes
 	));
 	
