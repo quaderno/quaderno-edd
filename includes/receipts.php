@@ -92,7 +92,7 @@ function edd_quaderno_create_receipt($payment_id)
 		$new_item = new QuadernoItem(array(
 			'description' => $item['name'],
 			'quantity' => $item['quantity'],
-			'unit_price' => $item['item_price'],
+			'unit_price' => $item['subtotal'],
 			'discount_rate' => $discounted_amount / $item['subtotal'] * 100.0,
 			'tax_1_name' => $tax->name,
 			'tax_1_rate' => $tax->rate

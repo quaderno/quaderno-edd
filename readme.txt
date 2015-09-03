@@ -53,6 +53,9 @@ If you have any questions please get in touch with us at hello@quaderno.io.
 
 == Changelog ==
 
+= 1.2.3 =
+* Fix: wrong unit price for tax included prices
+
 = 1.2.2 =
 * Fix: error at calculating taxes when cart is empty
 
