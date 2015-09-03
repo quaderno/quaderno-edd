@@ -4,7 +4,7 @@ Contributors: polimorfico
 Tags: edd, easydigitaldownloads, easy digital downloads, quaderno, edd quaderno, vat, eu vat, vatmoss, vat moss, european vat, eu tax, european tax, billing, invoicing, receipts
 Requires at least: 3.7
 Tested up to: 4.3
-Stable tag: 1.2.2
+Stable tag: 1.2.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,11 +53,11 @@ If you have any questions please get in touch with us at hello@quaderno.io.
 
 == Changelog ==
 
-= 1.3.0 =
-* Tag invoices from EDD
-
 = 1.2.3 =
-* Fix: wrong unit price for tax included prices
+* Tested on Wordpress 4.3
+* Fix: total amount is wrong when taxes are included
+* Tag invoices from EDD
+* Update translations
 
 = 1.2.2 =
 * Fix: error at calculating taxes when cart is empty
