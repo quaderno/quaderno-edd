@@ -53,7 +53,7 @@ If you have any questions please get in touch with us at hello@quaderno.io.
 
 == Changelog ==
 
-= 1.3 =
+= 1.3.0 =
 * Tag invoices from EDD
 
 = 1.2.3 =
