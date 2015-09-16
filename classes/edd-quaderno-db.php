@@ -29,4 +29,11 @@ class EDD_Quaderno_DB {
 			'quaderno_id' => $quaderno_id
 		));
 	}
+	
+	public static function delete($edd_id)
+	{
+		global $wpdb;
+		$table_name = $wpdb->prefix . 'edd_quaderno';
+		$wpdb->delete( $table_name, array( 'edd_id' => $edd_id ) );
+	}
 }

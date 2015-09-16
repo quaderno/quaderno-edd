@@ -35,19 +35,19 @@ function edd_quaderno_create_receipt($payment_id)
 	$customer_info = edd_get_payment_meta_user_info( $payment_id );
 	$tax = edd_quaderno_tax( $customer_info['address']['country'], $customer_info['address']['zip'], $_POST['tax_id'] );
 
-	// Let's create the invoice
-	$invoice = new QuadernoInvoice(array(
+	// Add the invoice params
+	$invoice_params = array(
 		'issue_date' => edd_get_payment_completed_date($payment_id),
 		'currency' => edd_get_payment_currency_code($payment_id),
 		'po_number' => $payment_id,
 		'tag_list' => 'edd', 
 		'notes' => $tax->notes
-	));
-	
+	);
+
 	// Add the contact
 	$customer = EDD_Quaderno_DB::find( edd_get_payment_customer_id($payment_id) );
 	if ( !empty( $customer ) ) {
-		$contact = QuadernoContact::find( $customer->quaderno_id );
+		$invoice_params['contact_id'] = $customer->quaderno_id;
 	}
 	else {
 		if ( !empty( $_POST['company'] ) )
@@ -65,7 +65,7 @@ function edd_quaderno_create_receipt($payment_id)
 			$contact_name = '';
 		}
 
-		$contact = new QuadernoContact(array(
+		$invoice_params['contact'] = array(
 			'kind' => $kind,
 			'first_name' => $first_name,
 			'last_name' => $last_name,
@@ -78,13 +78,11 @@ function edd_quaderno_create_receipt($payment_id)
 			'country' => $customer_info['address']['country'],
 			'email' => $customer_info['email'], 
 			'tax_id' => $_POST['tax_id']
-		));
-
-		if ( $contact->save() ) {
-			EDD_Quaderno_DB::save( edd_get_payment_customer_id($payment_id), $contact->id );
-		}
+		);
 	}
-	$invoice->addContact( $contact );
+
+	// Let's create the invoice
+  $invoice = new QuadernoInvoice($invoice_params);
 
 	// Add the invoice items
 	$items = edd_get_payment_meta_cart_details( $payment_id );
@@ -96,7 +94,8 @@ function edd_quaderno_create_receipt($payment_id)
 			'unit_price' => $item['subtotal'],
 			'discount_rate' => $discounted_amount / $item['subtotal'] * 100.0,
 			'tax_1_name' => $tax->name,
-			'tax_1_rate' => $tax->rate
+			'tax_1_rate' => $tax->rate,
+			'tax_1_country' => $customer_info['address']['country']
 		));
 		$invoice->addItem( $new_item );
 	}
@@ -109,18 +108,23 @@ function edd_quaderno_create_receipt($payment_id)
 		'payment_method' => 'credit_card'
 	));
 	$invoice->addPayment( $payment );
-	
+
 	// Save the invoice and the location evidences
 	if ( $invoice->save() ) {
 		add_post_meta( $payment_id, '_quaderno_invoice_id', $invoice->id );
-		
+
+    // Map de new contact
+		EDD_Quaderno_DB::save( edd_get_payment_customer_id($payment_id), $invoice->contact['id'] );
+
+    // Save the location evidence
 		$evidence = new QuadernoEvidence(array(
 			'document_id' => $invoice->id,
-			'billing_country' => $contact->country,
+			'billing_country' => $customer_info['address']['country'],
 			'ip_address' => edd_get_payment_user_ip($payment_id)
 		));
 		$evidence->save();
-		
+
+    // Send the invoice
 		if ( $edd_options['autosend_receipts'] ) $invoice->deliver();
 	}
 }
