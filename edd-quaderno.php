@@ -3,7 +3,7 @@
 Plugin Name: EDD Quaderno
 Plugin URL: https://wordpress.org/plugins/edd-quaderno/
 Description: Send beautiful receipts to EDD customers and comply with the EU VAT rules for digital goods & services.
-Version: 1.3.0
+Version: 1.3.1
 Author: Quaderno
 Author URI: http://quaderno.io
 */

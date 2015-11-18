@@ -40,8 +40,9 @@ function edd_quaderno_create_receipt($payment_id)
 		'issue_date' => edd_get_payment_completed_date($payment_id),
 		'currency' => edd_get_payment_currency_code($payment_id),
 		'po_number' => $payment_id,
-		'tag_list' => 'edd', 
-		'notes' => $tax->notes
+		'notes' => $tax->notes,
+		'processor' => 'edd',
+		'processor_id' => $payment_id
 	);
 
 	// Add the contact
@@ -91,7 +92,7 @@ function edd_quaderno_create_receipt($payment_id)
 		$new_item = new QuadernoItem(array(
 			'description' => $item['name'],
 			'quantity' => $item['quantity'],
-			'unit_price' => $item['subtotal'],
+			'unit_price' => $item['subtotal'] / $item['quantity'],
 			'discount_rate' => $discounted_amount / $item['subtotal'] * 100.0,
 			'tax_1_name' => $tax->name,
 			'tax_1_rate' => $tax->rate,
