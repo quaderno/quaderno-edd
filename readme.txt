@@ -3,22 +3,35 @@ Author URI: http://quaderno.io
 Contributors: polimorfico
 Tags: edd, easydigitaldownloads, easy digital downloads, quaderno, edd quaderno, vat, eu vat, vatmoss, vat moss, european vat, eu tax, european tax, billing, invoicing, receipts
 Requires at least: 3.7
-Tested up to: 4.3
-Stable tag: 1.3.1
+Tested up to: 4.4
+Stable tag: 1.4.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Send beautiful receipts to your customers and comply with the EU VAT rules for digital goods & services.
+Quaderno replaces and improves the default Easy Digital Downloads receipts. Setup in less than 5 minutes.
 
 == Description ==
 
-This plugin requires [Easy Digital Downloads](http://wordpress.org/extend/plugins/easy-digital-downloads/) and a [Quaderno](https://quaderno.io) account.
+Quaderno for EDD automatically sends beautiful invoices and receipts that comply with local rules in US, Canada, Australia, New Zealand, Singapore, and the European Union.
 
-Quaderno for Easy Digital Downloads allows a site owner to automatically calculate the EU VAT on the EDD checkout page.
+= What you would experience =
 
-After installation, whenever a payment is marked as complete, Quaderno sends a beautiful receipt to your customer and tracks the location evidences to comply the EU VAT rules for digital goods & services.
+* Automatically send **beautiful invoices and receipts** with every order in your store.
+* **Send credit notes** for Easy Digital Downloads refunds as well.
+* **Comply with local rules** in US, Canada, Australia, New Zealand, Singapore, and the European Union.
+* **Comply with EU VAT rules** for digital goods & services.
+* Send invoices in **multiple currencies and languages**. 
+* **Customize your invoices** with your logo and business details.
+* **Download and print** multiple invoices as PDF documents in bulk.
+* Manage your own invoices together with invoices from Easy Digital Downloads in one place.
 
 **Setup in less than 5 minutes**. Easy and quick!
+1. Download & Activate this plugin
+2. Sign up for a Quaderno account
+3. Paste your API key in your site
+4. Add your personal branding to your Quaderno invoices
+
+**Please Note:** this plugin requires an [Easy Digital Downloads](http://wordpress.org/extend/plugins/easy-digital-downloads/) and [Quaderno](https://quaderno.io) accounts.
 
 == Installation ==
 
@@ -52,6 +65,11 @@ If you have any questions please get in touch with us at hello@quaderno.io.
 4. Example of a receipt
 
 == Changelog ==
+
+= 1.4.0 =
+* Create credit notes for refunds
+* Refactoring code
+* Update descriptions
 
 = 1.3.1 =
 * Fix: error when purchases include more than one item

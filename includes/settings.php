@@ -29,8 +29,7 @@ add_filter( 'edd_settings_tabs', 'edd_quaderno_tab' );
 * @since  1.0
 * @return void
 */
-function edd_quaderno_register_settings()
-{
+function edd_quaderno_register_settings() {
 	add_settings_section(
 		'edd_settings_quaderno',
 		__return_null(),
@@ -88,8 +87,7 @@ add_action('admin_init', 'edd_quaderno_register_settings');
 * @since  1.0
 * @return string $path Absolute path to the EDD Quaderno upload directory
 */
-function edd_quaderno_get_upload_dir()
-{
+function edd_quaderno_get_upload_dir() {
 	$wp_upload_dir = wp_upload_dir();
 	wp_mkdir_p( $wp_upload_dir['basedir'].'/edd-quaderno' );
 	$path = $wp_upload_dir['basedir'].'/edd-quaderno';
@@ -130,8 +128,7 @@ add_filter( 'plugin_row_meta', 'edd_quaderno_meta_links', 10, 4 );
 * @since 1.0
 * @return void
 */
-function edd_quaderno_admin_messages()
-{
+function edd_quaderno_admin_messages() {
 	if (!get_option('edd_quaderno_notice_shown') && is_plugin_active('edd-quaderno/edd-quaderno.php'))
 	{
 		$html = '<div class="updated"><p>';

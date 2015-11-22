@@ -52,13 +52,13 @@ function edd_quaderno_tax($country, $postal_code, $tax_id)
 
 	$params = array(
 		'country' => $country,
-		'postal_code' => $_POST['card_zip'],
+		'postal_code' => $postal_code,
 		'vat_number' => $tax_id,
 		'transaction_type' => edd_quaderno_transaction_type()
 	);
-	
+
 	$slug = 'tax_' . md5( implode( $params ) );
-	
+
 	if ( false === ( $tax = get_transient( $slug ) ) ) {
 		QuadernoBase::init($edd_options['edd_quaderno_token'], $edd_options['edd_quaderno_url']);
 		$tax = QuadernoTax::calculate($params);
@@ -80,11 +80,13 @@ function edd_quaderno_tax($country, $postal_code, $tax_id)
 function edd_quaderno_tax_rate($rate, $customer_country, $customer_state)
 {
 	global $edd_options;
-	
-	$tax = edd_quaderno_tax($customer_country, $_POST['card_zip'], $_POST['tax_id']);
+
+	$postal_code = isset($_POST['card_zip']) ? $_POST['card_zip'] : '';
+	$tax_id = isset($_POST['edd_tax_id']) ? $_POST['edd_tax_id'] : '';
+
+	$tax = edd_quaderno_tax($customer_country, $postal_code, $tax_id);
 	return $tax->rate / 100;
 }
 add_filter('edd_tax_rate', 'edd_quaderno_tax_rate', 100, 3);
-
 
 ?>

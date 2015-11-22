@@ -17,15 +17,13 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 * @since  1.0
 * @return void
 */
-function edd_quaderno_load_scripts()
-{
+function edd_quaderno_load_scripts() {
 	$js_dir = EDD_QUADERNO_PLUGIN_URL . 'assets/js/';
 
 	/* Use minified libraries if SCRIPT_DEBUG is turned off */
 	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 
-	if ( edd_is_checkout() )
-	{
+	if ( edd_is_checkout() ) {
 		wp_enqueue_script( 'edd-vat_calculator-tax-id', $js_dir . 'edd-quaderno' . $suffix . '.js', array( 'jquery' ), EDD_VERSION );
 	}
 }
