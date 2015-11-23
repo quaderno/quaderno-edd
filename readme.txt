@@ -4,7 +4,7 @@ Contributors: polimorfico
 Tags: edd, easydigitaldownloads, easy digital downloads, quaderno, edd quaderno, vat, eu vat, vatmoss, vat moss, european vat, eu tax, european tax, billing, invoicing, receipts
 Requires at least: 3.7
 Tested up to: 4.4
-Stable tag: 1.4.0
+Stable tag: 1.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,6 +26,7 @@ Quaderno for EDD automatically sends beautiful invoices and receipts that comply
 * Manage your own invoices together with invoices from Easy Digital Downloads in one place.
 
 **Setup in less than 5 minutes**. Easy and quick!
+
 1. Download & Activate this plugin
 2. Sign up for a Quaderno account
 3. Paste your API key in your site
@@ -65,6 +66,9 @@ If you have any questions please get in touch with us at hello@quaderno.io.
 4. Example of a receipt
 
 == Changelog ==
+
+= 1.4.1 =
+* Minor fixes
 
 = 1.4.0 =
 * Create credit notes for refunds
