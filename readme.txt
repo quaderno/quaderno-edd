@@ -67,6 +67,9 @@ If you have any questions please get in touch with us at hello@quaderno.io.
 
 == Changelog ==
 
+= 1.5.0 =
+* Process recurring payments
+
 = 1.4.1 =
 * Minor fixes
 

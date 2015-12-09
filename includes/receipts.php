@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 */
 function edd_quaderno_create_receipt($payment_id) {
 	global $edd_options;
-	
+
 	// Return if an invoice has already been issued for this order
 	$invoice_id = get_post_meta( $payment_id, '_quaderno_invoice_id', true );
 	if ( !empty( $invoice_id ) ) {
@@ -35,9 +35,10 @@ function edd_quaderno_create_receipt($payment_id) {
 	$tax = edd_quaderno_tax( $customer_info['address']['country'], $customer_info['address']['zip'], $customer_info['tax_id'] );
 
 	// Add the invoice params
+	$date = edd_get_payment_completed_date($payment_id);
 	$invoice_params = array(
-		'issue_date' => edd_get_payment_completed_date($payment_id),
-		'currency' => edd_get_payment_currency_code($payment_id),
+		'issue_date' => $date,
+		'currency' => strtoupper(edd_get_payment_currency_code($payment_id)),
 		'po_number' => $payment_id,
 		'notes' => $tax->notes,
 		'processor' => 'edd',
@@ -102,7 +103,7 @@ function edd_quaderno_create_receipt($payment_id) {
 	// Add the payment
 	$payment_method = edd_get_payment_gateway( $payment_id );
 	$payment = new QuadernoPayment(array(
-		'date' => edd_get_payment_completed_date( $payment_id ),
+		'date' => $date,
 		'amount' => edd_get_payment_amount( $payment_id ),
 		'payment_method' => 'credit_card'
 	));
@@ -125,8 +126,10 @@ function edd_quaderno_create_receipt($payment_id) {
 		if ( isset( $edd_options['autosend_receipts'] ) ) {
 			$invoice->deliver();
 		}
-	}
+	} 
+
 }
 add_action( 'edd_complete_purchase', 'edd_quaderno_create_receipt', 999 );
+add_action( 'edd_recurring_record_payment', 'edd_quaderno_create_receipt', 999 );
 
 ?>
