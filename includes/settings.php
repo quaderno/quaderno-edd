@@ -29,57 +29,33 @@ add_filter( 'edd_settings_tabs', 'edd_quaderno_tab' );
 * @since  1.0
 * @return void
 */
-function edd_quaderno_register_settings() {
-	add_settings_section(
-		'edd_settings_quaderno',
-		__return_null(),
-		'__return_false',
-		'edd_settings_quaderno'
-	);
-
-	add_settings_field(
-		'edd_settings[token]',
-		__('Private key', 'edd_quaderno'),
-		'edd_text_callback',
-		'edd_settings_quaderno',
-		'edd_settings_quaderno',
-		array(
-			'id'      => 'edd_quaderno_token',
-			'name' => __('Private key', 'edd_quaderno'),
-			'desc' => __('Get this key from your Quaderno account', 'edd_quaderno'),
-			'section' => 'quaderno'
+function edd_quaderno_settings( $settings ) {
+	$quaderno_settings = array(
+		'quaderno' => array(
+			'edd_quaderno_token' => array(
+				'id'   => 'edd_quaderno_token',
+				'name' => __( 'Private key', 'edd_quaderno' ),
+				'desc' => __( 'Get this key from your Quaderno account', 'edd_quaderno' ),
+				'type' => 'text'
+			),
+			'edd_quaderno_url' => array(
+				'id'   => 'edd_quaderno_url',
+				'name' => __( 'API URL', 'edd_quaderno' ),
+				'desc' => __( 'Get this URL from your Quaderno account', 'edd_quaderno' ),
+				'type' => 'text'
+			),
+			'autosend_receipts' => array(
+				'id'   => 'autosend_receipts',
+				'name' => __( 'Autosend receipts', 'edd_quaderno' ),
+				'desc' => __( 'Check this to automatically send your receipts when an order is marked as complete.', 'edd_quaderno' ),
+				'type' => 'checkbox'
+			)
 		)
 	);
 
-	add_settings_field(
-		'edd_settings[url]',
-		__('API URL', 'edd_quaderno'),
-		'edd_text_callback',
-		'edd_settings_quaderno',
-		'edd_settings_quaderno',
-		array(
-			'id' => 'edd_quaderno_url',
-			'name' => __('API URL', 'edd_quaderno'),
-			'desc' => __('Get this URL from your Quaderno account', 'edd_quaderno'),
-			'section' => 'quaderno'
-		)
-	);
-	
-	add_settings_field(
-		'edd_settings[autosend_receipts]',
-		__('Autosend receipts', 'edd_quaderno'),
-		'edd_checkbox_callback',
-		'edd_settings_quaderno',
-		'edd_settings_quaderno',
-		array(
-			'id' => 'autosend_receipts',
-			'name' => __('Autosend receipts', 'edd_quaderno'),
-			'desc' => __('Check this to automatically send your receipts when an order is marked as complete.', 'edd_quaderno'),
-			'section' => 'quaderno'
-		)
-	);
+	return array_merge($settings, $quaderno_settings);
 }
-add_action('admin_init', 'edd_quaderno_register_settings');
+add_filter('edd_registered_settings', 'edd_quaderno_settings');
 
 /**
 * Retrieve the absolute path to the file upload directory without the trailing slash
