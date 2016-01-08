@@ -35,9 +35,8 @@ function edd_quaderno_create_receipt($payment_id) {
 	$tax = edd_quaderno_tax( $customer_info['address']['country'], $customer_info['address']['zip'], $customer_info['tax_id'] );
 
 	// Add the invoice params
-	$date = edd_get_payment_completed_date($payment_id);
 	$invoice_params = array(
-		'issue_date' => $date,
+		'issue_date' => date('Y-m-d'),
 		'currency' => strtoupper(edd_get_payment_currency_code($payment_id)),
 		'po_number' => $payment_id,
 		'notes' => $tax->notes,
@@ -103,7 +102,7 @@ function edd_quaderno_create_receipt($payment_id) {
 	// Add the payment
 	$payment_method = edd_get_payment_gateway( $payment_id );
 	$payment = new QuadernoPayment(array(
-		'date' => $date,
+		'date' => date('Y-m-d'),
 		'amount' => edd_get_payment_amount( $payment_id ),
 		'payment_method' => 'credit_card'
 	));
