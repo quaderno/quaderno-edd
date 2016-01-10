@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 * @param  int $payment_id
 * @return mixed|void
 */
-function edd_quaderno_create_receipt($payment_id) {
+function edd_quaderno_create_receipt($payment_id, $parent_id = 0) {
 	global $edd_options;
 
 	// Return if an invoice has already been issued for this order
@@ -39,6 +39,7 @@ function edd_quaderno_create_receipt($payment_id) {
 		'issue_date' => date('Y-m-d'),
 		'currency' => strtoupper(edd_get_payment_currency_code($payment_id)),
 		'po_number' => $payment_id,
+		'interval_count' => $parent_id == 0 ? '0' : '1',
 		'notes' => $tax->notes,
 		'processor' => 'edd',
 		'processor_id' => $payment_id
@@ -129,6 +130,6 @@ function edd_quaderno_create_receipt($payment_id) {
 
 }
 add_action( 'edd_complete_purchase', 'edd_quaderno_create_receipt', 999 );
-add_action( 'edd_recurring_record_payment', 'edd_quaderno_create_receipt', 999 );
+add_action( 'edd_recurring_record_payment', 'edd_quaderno_create_receipt', 999, 2 );
 
 ?>
