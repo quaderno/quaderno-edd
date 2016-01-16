@@ -1,14 +1,28 @@
 jQuery(document).ready(function($) {
   var $form = $('#edd_purchase_form');
-  
+  var eu_countries = ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'GB'];
+
+  // Show VAT Number and Tax ID fields
+  $form.on('change', '#billing_country', function(e) {
+	  if ( $(this).val() == $('#edd_shop_country').val() || $.inArray($(this).val(), eu_countries) == -1 ) {
+	    $('#edd_vat_number').parent().hide();
+	    $('#edd_vat_number').val('');
+	  } else {
+	    $('#edd_vat_number').parent().show();
+	  }
+	  
+    $('#edd_tax_id').parent().toggle($(this).val() == 'ES');
+    return true;
+  });
+  $('#billing_country').trigger('change');
+
   // Recalculate taxes on checkout page load
   if ($form.length > 0) recalculate_taxes();
 
   // Update taxes on checkout page
-  $form.on('change', '#tax-id, #company, .card-zip, #card_state', function(e) {
-    e.preventDefault();
+  $form.on('change', '#edd_vat_number, #billing_country, .card-zip, #card_state', function(e) {
     recalculate_taxes();
-    return false;
+    return true;
   });
 
   function recalculate_taxes() {
@@ -16,8 +30,7 @@ jQuery(document).ready(function($) {
 
     var postData = {
       action: 'edd_recalculate_taxes',
-      company: $form.find('#company').val(),
-      tax_id: $form.find('#tax-id').val(),
+      edd_vat_number: $form.find('#edd_vat_number').val(),
       card_zip: $form.find('.card-zip').val(),
       billing_country: $form.find('#billing_country').val()
     };

@@ -8,6 +8,10 @@
 * @license   http://opensource.org/licenses/gpl-2.0.php GNU Public License
 */
 
+if ( ! defined( 'ABSPATH' ) ) { 
+    exit; // Exit if accessed directly
+}
+
 class QuadernoContact extends QuadernoModel {
 	static protected $model = 'contacts';
 }

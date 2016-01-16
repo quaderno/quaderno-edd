@@ -8,13 +8,16 @@
 * @license   http://opensource.org/licenses/gpl-2.0.php GNU Public License
 */
 
+if ( ! defined( 'ABSPATH' ) ) { 
+    exit; // Exit if accessed directly
+}
+
 /* Interface that implements every document: invoices, expenses, and estimates */
 abstract class QuadernoDocument extends QuadernoModel
 {
 	protected $payments_array = array();
 
-	public function __construct($newdata)
-	{
+	public function __construct($newdata) {
 		parent::__construct($newdata);
 		if (isset($this->data['payments']))
 		{
@@ -23,34 +26,29 @@ abstract class QuadernoDocument extends QuadernoModel
 		}
 	}
 
-	public function addContact($contact)
-	{
+	public function addContact($contact) {
 		$this->data['contact_id'] = $contact->id;
 		$this->data['contact_name'] = $contact->full_name;
 		return isset($this->data['contact_id']) && isset($this->data['contact_name']);
 	}
 
-	public function addItem($item)
-	{
+	public function addItem($item) {
 		$length = isset($this->data['items_attributes']) ? count($this->data['items_attributes']) : 0;
 		$this->data['items_attributes'][$length] = $item->getArray();
 		return count($this->data['items_attributes']) == $length + 1;
 	}
 
 	/* Interface - only subclasses which implement original ones (i.e. without exec-) can call these methods */
-	protected function execAddPayment($payment)
-	{
+	protected function execAddPayment($payment) {
 		$length = count($this->payments_array);
 		return array_push($this->payments_array, $payment) == $length + 1;
 	}
 
-	protected function execGetPayments()
-	{
+	protected function execGetPayments() {
 		return $this->payments_array;
 	}
 
-	protected function execRemovePayment($payment)
-	{
+	protected function execRemovePayment($payment) {
 		$i = array_search($payment, $this->payments_array, true);
 		if ($i >= 0) $this->payments_array[$i]->markToDelete = true;
 		return ($i >= 0);
@@ -61,15 +59,13 @@ abstract class QuadernoDocument extends QuadernoModel
 	* Deliver object to the contact email
 	* Returns true or false whether the request is accepted or not
 	*/
-	protected function execDeliver()
-	{
-		$return = false;
-		$response = QuadernoBase::deliver(static::$model, $this->id);
+	protected function execDeliver() {
+		$request = new QuadernoRequest();
+		$return = $request->deliver(static::$model, $this->id);
 
-		if (QuadernoBase::responseIsValid($response))
-			$return = true;
-		elseif (isset($response['data']['errors']))
-			$this->errors = $response['data']['errors'];
+		if ( !$return && isset($request->response['body']['errors']) ) {
+			$this->errors = $request->response['body']['errors'];
+		}
 
 		return $return;
 	}

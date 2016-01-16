@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: EDD Quaderno\n"
-"POT-Creation-Date: 2015-09-03 20:53-0000\n"
-"PO-Revision-Date: 2015-09-03 20:54-0000\n"
+"POT-Creation-Date: 2016-01-16 20:40-0000\n"
+"PO-Revision-Date: 2016-01-16 20:43-0000\n"
 "Last-Translator:  <hello@quaderno.io>\n"
 "Language-Team: Quaderno <hello@quaderno.io>\n"
 "Language: es\n"
@@ -15,39 +15,27 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../includes/checkout.php:25
-msgid "Billing Company Name (optional)"
-msgstr "Nombre de la empresa (opcional)"
-
-#: ../includes/checkout.php:29
-msgid "Billing Tax ID"
-msgstr "NIF"
-
-#: ../includes/checkout.php:30
-msgid "Tax ID / EU-VAT ID"
-msgstr "NIF / Número IVA intracomunitario"
-
-#: ../includes/settings.php:43 ../includes/settings.php:49
+#: ../includes/settings.php:37
 msgid "Private key"
 msgstr "Clave privada"
 
-#: ../includes/settings.php:50
+#: ../includes/settings.php:38
 msgid "Get this key from your Quaderno account"
 msgstr "Consigue esta clave en tu cuenta de Quaderno"
 
-#: ../includes/settings.php:57 ../includes/settings.php:63
+#: ../includes/settings.php:43
 msgid "API URL"
 msgstr "API URL"
 
-#: ../includes/settings.php:64
+#: ../includes/settings.php:44
 msgid "Get this URL from your Quaderno account"
 msgstr "Consigue esta URL en tu cuenta de Quaderno"
 
-#: ../includes/settings.php:71 ../includes/settings.php:77
+#: ../includes/settings.php:49
 msgid "Autosend receipts"
 msgstr "Enviar facturas automáticamente"
 
-#: ../includes/settings.php:78
+#: ../includes/settings.php:50
 msgid ""
 "Check this to automatically send your receipts when an order is marked as "
 "complete."
@@ -55,13 +43,43 @@ msgstr ""
 "Selecciona esta opción para enviar automáticamente una factura cuando un "
 "pedido es marcado como completado"
 
-#: ../includes/settings.php:138
+#: ../includes/settings.php:111
 msgid ""
 "Don't you have a Quaderno account? Create a new one <a href=\"https://"
 "quadernoapp.com/signup\" target=\"_blank\">on this page</a>."
 msgstr ""
 "¿No tienes una cuenta en Quaderno? Crea una ahora <a href=\"https://"
 "quadernoapp.com/signup\" target=\"_blank\">en esta página</a>."
+
+#: ../includes/tax_id_field.php:29 ../includes/tax_id_field.php:32
+msgid "Tax ID"
+msgstr "NIF"
+
+#: ../includes/tax_id_field.php:47
+msgid "Please enter your Tax ID"
+msgstr "Por favor introduce tu NIF\t"
+
+#: ../includes/vat_number_field.php:24 ../includes/vat_number_field.php:25
+msgid "VAT Number"
+msgstr "Número IVA intracomunitario"
+
+#: ../includes/vat_number_field.php:54
+msgid "VAT Number is not valid"
+msgstr "El número de IVA intracomunitario no es válido\t"
+
+#: ../includes/vat_number_field.php:81
+msgid "VAT Number:"
+msgstr "Número de IVA intracomunitario:"
+
+#: ../quaderno/quaderno_request.php:77
+msgid "There was a problem connecting to the API."
+msgstr "Hubo un problema en la conexión con la API.\t"
+
+#~ msgid "Billing Company Name (optional)"
+#~ msgstr "Nombre de la empresa (opcional)"
+
+#~ msgid "Tax ID / EU-VAT ID"
+#~ msgstr "NIF / Número IVA intracomunitario"
 
 #~ msgid "Company Name"
 #~ msgstr "Nombre de la empresa"

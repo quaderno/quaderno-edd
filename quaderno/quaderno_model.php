@@ -10,6 +10,10 @@
 * @license   http://opensource.org/licenses/gpl-2.0.php GNU Public License
 */
 
+if ( ! defined( 'ABSPATH' ) ) { 
+    exit; // Exit if accessed directly
+}
+
 abstract class QuadernoModel extends QuadernoClass {
 	/**
 	*  Find for QuadernoModel objects
@@ -17,27 +21,23 @@ abstract class QuadernoModel extends QuadernoClass {
 	* If $params is null or an array, it returns an array of objects
 	* When request fails, it returns false 
 	*/
-	public static function find($params = array('page' => 1))
-	{
+	public static function find( $params = array('page' => 1) ) {
 		$return = false;
 		$class = get_called_class();
+		$request = new QuadernoRequest();
 
-		if (!is_array($params))
-		{
+		if ( !is_array($params) ) {
 			// Searching for an ID
-			$response = QuadernoBase::findByID(static::$model, $params);
-			if (QuadernoBase::responseIsValid($response)) $return = new $class($response['data']);
-		}
-		else
-		{
-			$response = QuadernoBase::find(static::$model, $params);
-
-			if (QuadernoBase::responseIsValid($response))
-			{
+			if ( $request->findByID(static::$model, $params) ) {
+				$return = $request->get_response_body();
+			}
+		} else {
+			if ( $request->find(static::$model, $params) ) {
 				$return = array();
-				$length = count($response['data']);
+				$response = $request->get_response_body();
+				$length = count($response);
 				for ($i = 0; $i < $length; $i++)
-					$return[$i] = new $class($response['data'][$i]);
+					$return[$i] = $response[$i];
 			}
 		}
 
@@ -49,83 +49,60 @@ abstract class QuadernoModel extends QuadernoClass {
 	* Export object data to the model
 	* Returns true or false whether the request is accepted or not
 	*/
-	public function save()
-	{
-		$response = null;
+	public function save() {
 		$new_object = false;
+		$new_data = false;
 		$return = false;
+		$request = new QuadernoRequest();
 
 		/**
 		* 1st step - New object to be created 
 		* Check if the current object has not been created yet
 		*/
-		if (is_null($this->id))
-		{
+		if ( is_null($this->id) ) {
 			// Not yet created, let's do it
-			$response = QuadernoBase::save(static::$model, $this->data, $this->id);
 			$new_object = true;
 
 			/* Update data with the response */
-			if (QuadernoBase::responseIsValid($response))
-			{
-				$this->data = $response['data'];
+			if ( $request->save( static::$model, $this->id, $this->data ) ) {
+				$this->data = get_object_vars( $request->get_response_body() );
 				$return = true;
 			}
-			elseif (isset($response['data']['errors']))
-				$this->errors = $response['data']['errors'];
+			elseif (isset($request->error_message)) {
+				$this->errors = $request->error_message;
+			}
 		}
-
-		$response = null;
-		$new_data = false;
 
 		/**
 		* 2nd step - Payments to be created
 		* Check if there are any payments stored and not yet created
 		*/
-		if (isset($this->payments_array) && count($this->payments_array))
-		{
-			foreach ($this->payments_array as $index => $p)
-				if (is_null($p->id))
-				{
+		if (isset($this->payments_array) && count($this->payments_array)) {
+			foreach ( $this->payments_array as $index => $p )
+				if ( is_null( $p->id ) ) {
 					// The payment does not have ID -> Not yet created
-					$response = QuadernoBase::saveNested(static::$model, $this->id, 'payments', $p->data);
-					if (QuadernoBase::responseIsValid($response))
-					{
-						$p->data = $response['data'];
-						$new_data = self::find($this->id);
+					if ( $request->saveNested( static::$model, $this->id, 'payments', $p->data ) ) {
+						$p->data = get_object_vars( $request->get_response_body() );
+						$this->data = get_object_vars(self::find( $this->id ));
 					}
-					elseif (isset($response['data']['errors']))
-						$this->errors = $response['data']['errors'];
+					elseif ( isset( $request->error_message ) ) {
+						$this->errors = $request->error_message;
+					}
 				}
-				if ($p->mark_to_delete)
-				{
-					// The payment is marked to delete -> Let's do it.
-					$delete_response = QuadernoBase::deleteNested(static::$model, $this->id, 'payments', $p->id);
-					if (QuadernoBase::responseIsValid($delete_response))
-						array_splice($this->payments_array, $index, 1);
-					elseif (isset($response['data']['errors']))
-						$this->errors = $response['data']['errors'];
-				}
-
-			/* If this object has received new data, let's update data field. */
-			if ($new_data) $this->data = $new_data->data;
 		}
 
 		/**
 		* 3rd step - Update object
 		* Update object - This is only necessary when it's not a new object, or new payments have been created.
 		*/
-		if (!$new_object || $new_data)
-		{
-			$response = QuadernoBase::save(static::$model, $this->data, $this->id);
-
-			if (QuadernoBase::responseIsValid($response))
-			{
+		if ( !$new_object || $new_data ) {
+			if ( $request->save(static::$model, $this->id, $this->data) ) {
 				$return = true;
-				$this->data = $response['data'];
+				$this->data = get_object_vars( $request->get_response_body() );
 			}
-			elseif (isset($response['data']['errors']))
-				$this->errors = $response['data']['errors'];
+			elseif ( isset( $request->error_message ) ) {
+				$this->errors = $request->error_message;
+			}
 		}
 
 		return $return;
@@ -136,18 +113,17 @@ abstract class QuadernoModel extends QuadernoClass {
 	* Delete object from the model
 	* Returns true or false whether the request is accepted or not
 	*/
-	public function delete()
-	{
+	public function delete() {
 		$return = false;
-		$response = QuadernoBase::delete(static::$model, $this->id);
+		$request = new QuadernoRequest();
 
-		if (QuadernoBase::responseIsValid($response))
-		{
+		if ( $request->delete(static::$model, $this->id) ) {
 			$return = true;
 			$this->data = array();
 		}
-		elseif (isset($response['data']['errors']))
-			$this->errors = $response['data']['errors'];
+		elseif ( isset( $request->error_message ) ) {
+			$this->errors = $request->error_message;
+		}
 
 		return $return;
 	}

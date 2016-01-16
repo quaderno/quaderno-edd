@@ -4,7 +4,7 @@ Contributors: polimorfico
 Tags: edd, easydigitaldownloads, easy digital downloads, quaderno, edd quaderno, vat, eu vat, vatmoss, vat moss, european vat, eu tax, european tax, billing, invoicing, receipts
 Requires at least: 3.7
 Tested up to: 4.4
-Stable tag: 1.5.3
+Stable tag: 1.6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -66,6 +66,13 @@ If you have any questions please get in touch with us at hello@quaderno.io.
 4. Example of a receipt
 
 == Changelog ==
+
+= 1.6.0 =
+* Compatibility with EDD 2.5
+* Validate EU VAT Numbers
+* Request Tax ID to Spanish customers
+* Hide VAT Number field when customer is based in the store country
+* Track different payment methods on Quaderno
 
 = 1.5.3 =
 * Mark recurring payments

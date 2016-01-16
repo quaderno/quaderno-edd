@@ -8,27 +8,26 @@
 * @license   http://opensource.org/licenses/gpl-2.0.php GNU Public License
 */
 
-class QuadernoInvoice extends QuadernoDocument
-{
+if ( ! defined( 'ABSPATH' ) ) { 
+    exit; // Exit if accessed directly
+}
+
+class QuadernoInvoice extends QuadernoDocument {
 	static protected $model = 'invoices';
 
-	public function deliver()
-	{
+	public function deliver() {
 		return $this->execDeliver();
 	}
 
-	public function addPayment($payment)
-	{
+	public function addPayment($payment) {
 		return $this->execAddPayment($payment);
 	}
 
-	public function getPayments()
-	{
+	public function getPayments() {
 		return $this->execGetPayments();
 	}
 
-	public function removePayment($payment)
-	{
+	public function removePayment($payment) {
 		return $this->execRemovePayment($payment);
 	}
 }

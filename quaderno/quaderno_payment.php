@@ -8,8 +8,11 @@
 * @license   http://opensource.org/licenses/gpl-2.0.php GNU Public License
 */
 
-class QuadernoPayment extends QuadernoClass
-{
+if ( ! defined( 'ABSPATH' ) ) { 
+    exit; // Exit if accessed directly
+}
+
+class QuadernoPayment extends QuadernoClass {
 	static protected $model = 'payments';
 }
 ?>

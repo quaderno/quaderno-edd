@@ -8,17 +8,26 @@
 * @license   http://opensource.org/licenses/gpl-2.0.php GNU Public License
 */
 
-class QuadernoTax extends QuadernoModel
-{
-	public static function calculate($params)
-	{
-		$response = QuadernoBase::calculate($params);
+if ( ! defined( 'ABSPATH' ) ) { 
+    exit; // Exit if accessed directly
+}
+
+class QuadernoTax extends QuadernoModel {
+
+	public static function calculate($params) {
 		$return = false;
-
-		if (QuadernoBase::responseIsValid($response))
-			$return = new self($response['data']);
-
-		return $return;
+		$request = new QuadernoRequest();
+		$request->calculate('taxes', $params);
+		return $request->get_response_body();
 	}
+
+	public static function validate($params) {
+		$return = false;
+		$request = new QuadernoRequest();
+		$request->validate('taxes', $params);
+		$response = $request->get_response_body();
+		return $response->valid;
+	}
+
 }
 ?>
