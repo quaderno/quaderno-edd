@@ -39,7 +39,8 @@ function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
 	}
 
 	// Get the taxes
-	$tax = edd_quaderno_tax( $payment->address['country'], $payment->address['zip'], $payment->get_meta()['vat_number'] );
+	$metadata = $payment->get_meta();
+	$tax = edd_quaderno_tax( $payment->address['country'], $payment->address['zip'], $metadata['vat_number'] );
 
 	// Add the credit params
 	$credit_params = array(
