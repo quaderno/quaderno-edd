@@ -31,7 +31,8 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 	}
 
 	// Get the taxes
-	$tax = edd_quaderno_tax( $payment->address['country'], $payment->address['zip'], $payment->get_meta()['vat_number'] );
+	$metadata = $payment->get_meta();
+	$tax = edd_quaderno_tax( $payment->address['country'], $payment->address['zip'], $metadata['vat_number'] );
 
 	// Add the invoice params
 	$invoice_params = array(
