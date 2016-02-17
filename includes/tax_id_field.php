@@ -22,7 +22,7 @@ function edd_quaderno_add_tax_id() {
 		return;
 	}
 
-	ob_start(); 
+	ob_start();
 	?>
 	<p id="edd-tax-id-wrap">
 		<label for="edd_tax_id" class="edd-label">
@@ -43,6 +43,10 @@ add_action('edd_cc_billing_bottom', 'edd_quaderno_add_tax_id', 200);
 * @return mixed|void
 */
 function edd_quaderno_validate_tax_id( $data ) {
+	if ( edd_get_shop_country() != 'ES' ) {
+		return;
+	}
+
 	if ( $_POST['billing_country'] == 'ES' && ( !isset( $_POST['edd_tax_id'] ) || empty( $_POST['edd_tax_id'] ) ) ) {
 		edd_set_error( 'invalid_tax_id', __('Please enter your Tax ID', 'edd_quaderno') );
 	}

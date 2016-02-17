@@ -4,21 +4,21 @@
  * Plugin Name: EDD Quaderno
  * Plugin URI: https://wordpress.org/plugins/edd-quaderno/
  * Description: Automatically send customizable invoices and receipts with every order in your Easy Digital Downloads store.
- * Version: 1.6.1
+ * Version: 1.6.2
  * Author: Quaderno
  * Author URI: https://quaderno.io/
  * License: GPL v3
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
@@ -30,7 +30,7 @@ if ( ! class_exists( 'EDD_Quaderno' ) ) :
 
 final class EDD_Quaderno {
 	private static $instance;
-	
+
 	public static function instance() {
 		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof EDD_Quaderno ) ) {
 			self::$instance = new EDD_Quaderno;
@@ -40,7 +40,7 @@ final class EDD_Quaderno {
 		}
 		return self::$instance;
 	}
-	
+
 	private function setup_constants() {
 		// Plugin Folder
 		if ( ! defined( 'EDD_QUADERNO_PLUGIN_DIR' ) ) {
@@ -51,7 +51,7 @@ final class EDD_Quaderno {
 		if ( ! defined( 'EDD_QUADERNO_PLUGIN_URL' ) ) {
 			define('EDD_QUADERNO_PLUGIN_URL', plugin_dir_url( __FILE__ ));
 		}
-		
+
 		// Plugin Root File
 		if ( ! defined( 'EDD_QUADERNO_PLUGIN_FILE' ) ) {
 			define( 'EDD_QUADERNO_PLUGIN_FILE', __FILE__ );
@@ -91,9 +91,9 @@ final class EDD_Quaderno {
 			load_plugin_textdomain( 'edd_quaderno', false, $edd_lang_dir );
 		}
 	}
-	
+
 }
-endif; 
+endif;
 
 function EDDQ() {
 	return EDD_Quaderno::instance();
