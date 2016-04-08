@@ -49,8 +49,8 @@ function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
 		'po_number' => $payment->number,
 		'interval_count' => $payment->parent_payment == 0 ? '0' : '1',
 		'notes' => $tax->notes,
-		'processor' => 'edd',
-		'processor_id' => $payment_id
+		'processor' => ($payment->gateway == 'manual') ? 'edd' : $payment->gateway,
+		'processor_id' => $payment->transaction_id
 	);
 
 	// Add the contact
@@ -71,15 +71,15 @@ function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
 
 		$credit_params['contact'] = array(
 			'kind' => $kind,
-			'first_name' => $first_name,
+			'first_name' => $first_name ?: 'EDD Customer',
 			'last_name' => $last_name,
-			'street_line_1' => $payment->address['line1'],
+			'street_line_1' => $payment->address['line1'] ?: '',
 			'street_line_2' => $payment->address['line2'] ?: '',
 			'city' => $payment->address['city'],
 			'postal_code' => $payment->address['zip'],
 			'region' => $payment->address['state'],
 			'country' => $payment->address['country'],
-			'email' => $payment->email, 
+			'email' => $payment->email,
 			'vat_number' => $payment->get_meta()['vat_number'],
 			'tax_id' => $payment->get_meta()['tax_id'],
 			'processor' => 'edd',
