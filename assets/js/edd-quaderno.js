@@ -10,8 +10,6 @@ jQuery(document).ready(function($) {
 	  } else {
 	    $('#edd_vat_number').parent().show();
 	  }
-	  
-    $('#edd_tax_id').parent().toggle($(this).val() == 'ES');
     return true;
   });
   $('#billing_country').trigger('change');

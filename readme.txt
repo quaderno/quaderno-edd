@@ -1,10 +1,10 @@
 === EDD Quaderno ===
 Author URI: http://quaderno.io
 Contributors: polimorfico
-Tags: edd, easydigitaldownloads, easy digital downloads, quaderno, edd quaderno, vat, eu vat, vatmoss, vat moss, european vat, eu tax, european tax, billing, invoicing, receipts
+Tags: edd, easydigitaldownloads, easy digital downloads, quaderno, vat, gst, sales tax, vatmoss, vat moss, tax, billing, invoices, receipts, credit notes
 Requires at least: 3.7
-Tested up to: 4.4
-Stable tag: 1.7.0
+Tested up to: 4.5
+Stable tag: 1.8.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -66,6 +66,9 @@ If you have any questions please get in touch with us at hello@quaderno.io.
 4. Example of a receipt
 
 == Changelog ==
+
+= 1.8.0 =
+* Send receipts (simplified invoices)
 
 = 1.7.0 =
 * Send gateway info to Quaderno

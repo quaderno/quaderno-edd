@@ -44,10 +44,16 @@ function edd_quaderno_settings( $settings ) {
 				'desc' => __( 'Get this URL from your Quaderno account', 'edd_quaderno' ),
 				'type' => 'text'
 			),
+			'edd_quaderno_threshold' => array(
+				'id'   => 'edd_quaderno_threshold',
+				'name' => __( 'Receipts threshold', 'edd_quaderno' ),
+				'desc' => __( 'All purchases under this threshold will generate a sales receipt, instead of an invoice', 'edd_quaderno' ),
+				'type' => 'text'
+			),
 			'autosend_receipts' => array(
 				'id'   => 'autosend_receipts',
-				'name' => __( 'Autosend receipts', 'edd_quaderno' ),
-				'desc' => __( 'Check this to automatically send your receipts when an order is marked as complete.', 'edd_quaderno' ),
+				'name' => __( 'Autosend documents', 'edd_quaderno' ),
+				'desc' => __( 'Check this to automatically send your sales receipts and invoices', 'edd_quaderno' ),
 				'type' => 'checkbox'
 			)
 		)

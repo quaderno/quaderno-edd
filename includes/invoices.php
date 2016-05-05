@@ -42,7 +42,8 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 		'interval_count' => $payment->parent_payment == 0 ? '0' : '1',
 		'notes' => $tax->notes,
 		'processor' => ($payment->gateway == 'manual') ? 'edd' : $payment->gateway,
-		'processor_id' => $payment->transaction_id
+		'processor_id' => $payment->transaction_id, 
+		'payment_method' => get_quaderno_payment_method( $payment->gateway )
 	);
 
 	// Add the contact
@@ -72,14 +73,17 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 			'country' => $payment->address['country'],
 			'email' => $payment->email,
 			'vat_number' => $payment->get_meta()['vat_number'],
-			'tax_id' => $payment->get_meta()['tax_id'],
 			'processor' => 'edd',
 			'processor_id' => $payment->customer_id
 		);
 	}
 
-	// Let's create the invoice
-  $invoice = new QuadernoInvoice($invoice_params);
+	// Let's create the receipt or the invoice
+	if ( $payment->total < intval( $edd_options['edd_quaderno_threshold'] )) {
+	  $invoice = new QuadernoReceipt($invoice_params);
+	} else {
+	  $invoice = new QuadernoInvoice($invoice_params);
+	}
 
 	// Add the invoice items
 	foreach ( $payment->cart_details as $item ) {
@@ -94,14 +98,6 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 		));
 		$invoice->addItem( $new_item );
 	}
-
-	// Add the payment
-	$payment = new QuadernoPayment(array(
-		'date' => date('Y-m-d'),
-		'amount' => $payment->total,
-		'payment_method' => get_quaderno_payment_method( $payment->gateway )
-	));
-	$invoice->addPayment( $payment );
 
 	// Save the invoice and the location evidences
 	if ( $invoice->save() ) {

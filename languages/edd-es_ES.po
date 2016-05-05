@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: EDD Quaderno\n"
-"POT-Creation-Date: 2016-01-16 20:40-0000\n"
-"PO-Revision-Date: 2016-01-16 20:43-0000\n"
+"POT-Creation-Date: 2016-05-05 14:24-0000\n"
+"PO-Revision-Date: 2016-05-05 14:27-0000\n"
 "Last-Translator:  <hello@quaderno.io>\n"
 "Language-Team: Quaderno <hello@quaderno.io>\n"
 "Language: es\n"
@@ -32,32 +32,32 @@ msgid "Get this URL from your Quaderno account"
 msgstr "Consigue esta URL en tu cuenta de Quaderno"
 
 #: ../includes/settings.php:49
-msgid "Autosend receipts"
-msgstr "Enviar facturas automáticamente"
+msgid "Receipts threshold"
+msgstr "Límite facturas simplificadas"
 
 #: ../includes/settings.php:50
 msgid ""
-"Check this to automatically send your receipts when an order is marked as "
-"complete."
+"All purchases under this threshold will generate a sales receipt, instead of "
+"an invoice"
 msgstr ""
-"Selecciona esta opción para enviar automáticamente una factura cuando un "
-"pedido es marcado como completado"
+"Todas la ventas por debajo de este límite generarán una factura simplificada "
+"(recibo)"
 
-#: ../includes/settings.php:111
+#: ../includes/settings.php:55
+msgid "Autosend documents"
+msgstr "Enviar facturas"
+
+#: ../includes/settings.php:56
+msgid "Check this to automatically send your sales receipts and invoices"
+msgstr "Selecciona esta opción para enviar automáticamente tus facturas"
+
+#: ../includes/settings.php:117
 msgid ""
 "Don't you have a Quaderno account? Create a new one <a href=\"https://"
 "quadernoapp.com/signup\" target=\"_blank\">on this page</a>."
 msgstr ""
 "¿No tienes una cuenta en Quaderno? Crea una ahora <a href=\"https://"
 "quadernoapp.com/signup\" target=\"_blank\">en esta página</a>."
-
-#: ../includes/tax_id_field.php:29 ../includes/tax_id_field.php:32
-msgid "Tax ID"
-msgstr "NIF"
-
-#: ../includes/tax_id_field.php:47
-msgid "Please enter your Tax ID"
-msgstr "Por favor introduce tu NIF\t"
 
 #: ../includes/vat_number_field.php:24 ../includes/vat_number_field.php:25
 msgid "VAT Number"
@@ -74,6 +74,12 @@ msgstr "Número de IVA intracomunitario:"
 #: ../quaderno/quaderno_request.php:77
 msgid "There was a problem connecting to the API."
 msgstr "Hubo un problema en la conexión con la API.\t"
+
+#~ msgid "Tax ID"
+#~ msgstr "NIF"
+
+#~ msgid "Please enter your Tax ID"
+#~ msgstr "Por favor introduce tu NIF\t"
 
 #~ msgid "Billing Company Name (optional)"
 #~ msgstr "Nombre de la empresa (opcional)"
