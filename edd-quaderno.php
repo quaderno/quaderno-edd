@@ -3,8 +3,8 @@
 /**
  * Plugin Name: EDD Quaderno
  * Plugin URI: https://wordpress.org/plugins/edd-quaderno/
- * Description: Automatically send customizable invoices and sales receipts with every order in your Easy Digital Downloads store.
- * Version: 1.8.0
+ * Description: Automatically send customizable sales receipts and invoices with every order in your Easy Digital Downloads store.
+ * Version: 1.8.1
  * Author: Quaderno
  * Author URI: https://quaderno.io/
  * License: GPL v3

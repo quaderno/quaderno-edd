@@ -42,12 +42,12 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 		'interval_count' => $payment->parent_payment == 0 ? '0' : '1',
 		'notes' => $tax->notes,
 		'processor' => ($payment->gateway == 'manual') ? 'edd' : $payment->gateway,
-		'processor_id' => $payment->transaction_id, 
+		'processor_id' => $payment->transaction_id,
 		'payment_method' => get_quaderno_payment_method( $payment->gateway )
 	);
 
 	// Add the contact
-	$contact_id = get_user_meta( $payment->customer_id, '_quaderno_contact', true);
+	$contact_id = get_user_meta( $payment->user_id, '_quaderno_contact', true);
 	if ( !empty( $contact_id ) ) {
 		$invoice_params['contact_id'] = $contact_id;
 	} else {
@@ -74,7 +74,7 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 			'email' => $payment->email,
 			'vat_number' => $payment->get_meta()['vat_number'],
 			'processor' => 'edd',
-			'processor_id' => $payment->customer_id
+			'processor_id' => $payment->user_id
 		);
 	}
 
@@ -85,24 +85,21 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 	  $invoice = new QuadernoInvoice($invoice_params);
 	}
 
-	// Add the invoice items
-	foreach ( $payment->cart_details as $item ) {
-		$new_item = new QuadernoDocumentItem(array(
-			'description' => $item['name'],
-			'quantity' => $item['quantity'],
-			'total_amount' => $item['price'],
-			'discount_rate' => $item['discount'] / $item['subtotal'] * 100.0,
-			'tax_1_name' => $tax->name,
-			'tax_1_rate' => $tax->rate,
-			'tax_1_country' => $tax->country
-		));
-		$invoice->addItem( $new_item );
-	}
+	// Add the main invoice item
+	$item = new QuadernoDocumentItem(array(
+		'description' => $payment->cart_details[0]['name'],
+		'quantity' => 1,
+		'total_amount' => $payment->total,
+		'tax_1_name' => $tax->name,
+		'tax_1_rate' => $tax->rate,
+		'tax_1_country' => $tax->country
+	));
+	$invoice->addItem( $item );
 
 	// Save the invoice and the location evidences
 	if ( $invoice->save() ) {
 		add_post_meta( $payment_id, '_quaderno_invoice_id', $invoice->id );
-		add_user_meta( $payment->customer_id, '_quaderno_contact', $invoice->contact->id );
+		add_user_meta( $payment->user_id, '_quaderno_contact', $invoice->contact->id );
 
 		// Save the location evidence
 		$evidence = new QuadernoEvidence(array(
