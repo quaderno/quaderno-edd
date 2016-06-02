@@ -4,7 +4,7 @@ Contributors: polimorfico
 Tags: edd, easydigitaldownloads, easy digital downloads, quaderno, vat, gst, sales tax, vatmoss, vat moss, tax, billing, invoices, receipts, credit notes
 Requires at least: 3.7
 Tested up to: 4.5
-Stable tag: 1.8.1
+Stable tag: 1.8.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -66,6 +66,9 @@ If you have any questions please get in touch with us at hello@quaderno.io.
 4. Example of a receipt
 
 == Changelog ==
+
+= 1.8.2 =
+* Fix: negative payments always generate receipts
 
 = 1.8.1 =
 * Add just one item to the invoice
