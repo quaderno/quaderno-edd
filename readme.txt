@@ -67,6 +67,9 @@ If you have any questions please get in touch with us at hello@quaderno.io.
 
 == Changelog ==
 
+= 1.8.3 =
+* Fix: sometimes transaction id does not exist
+
 = 1.8.2 =
 * Fix: negative payments always generate receipts
 
