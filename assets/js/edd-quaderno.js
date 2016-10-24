@@ -14,6 +14,10 @@ jQuery(document).ready(function($) {
   });
   $('#billing_country').trigger('change');
 
+  $('body').on("edd_gateway_loaded", function(e){
+    $('#billing_country').trigger('change');
+  });
+
   // Recalculate taxes on checkout page load
   if ($form.length > 0) recalculate_taxes();
 
