@@ -87,7 +87,7 @@ function edd_quaderno_get_upload_dir() {
 * @return array $links
 */
 function edd_quaderno_plugin_action_links( $links, $file ) {
-	$settings_link = '<a href="'.admin_url( 'edit.php?post_type=download&page=edd-settings&tab=quaderno' ).'">'.esc_htmlesc_html__( 'Settings', 'edd_quaderno' ).'</a>';
+	$settings_link = '<a href="'.admin_url( 'edit.php?post_type=download&page=edd-settings&tab=quaderno' ).'">'.esc_html__( 'Settings', 'edd_quaderno' ).'</a>';
 	if ( $file == 'edd-quaderno/edd-quaderno.php' )
 		array_unshift( $links, $settings_link );
 
@@ -96,7 +96,7 @@ function edd_quaderno_plugin_action_links( $links, $file ) {
 add_filter( 'plugin_action_links', 'edd_quaderno_plugin_action_links', 10, 2 );
 
 function edd_quaderno_meta_links( $links, $file ) {
-	$settings_link = '<a href="https://quadernoapp.com/signup" target="_blank">'.esc_htmlesc_html__( 'Create a Quaderno account', 'edd_quaderno' ).'</a>';
+	$settings_link = '<a href="https://quadernoapp.com/signup" target="_blank">'.esc_html__( 'Create a Quaderno account', 'edd_quaderno' ).'</a>';
 	if ( $file == 'edd-quaderno/edd-quaderno.php' )
 		array_push( $links, $settings_link );
 
