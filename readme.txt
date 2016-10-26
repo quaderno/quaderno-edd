@@ -3,8 +3,8 @@ Author URI: http://quaderno.io
 Contributors: polimorfico
 Tags: edd, easydigitaldownloads, easy digital downloads, quaderno, vat, gst, sales tax, vatmoss, vat moss, tax, billing, invoices, receipts, credit notes
 Requires at least: 3.7
-Tested up to: 4.5
-Stable tag: 1.8.5
+Tested up to: 4.6
+Stable tag: 1.8.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -67,35 +67,26 @@ If you have any questions please get in touch with us at hello@quaderno.io.
 
 == Changelog ==
 
-= 1.8.3 =
-* Fix: sometimes transaction id does not exist
-
-= 1.8.2 =
-* Fix: negative payments always generate receipts
-
-= 1.8.1 =
+= 1.8 =
+* Send receipts (simplified invoices)
 * Add just one item to the invoice
 * Fix: error with customers on multisites
+* Fix: negative payments always generate receipts
+* Fix: sometimes transaction id does not exist
+* Fix: sanitize vat numbers and translations
 
-= 1.8.0 =
-* Send receipts (simplified invoices)
-
-= 1.7.0 =
+= 1.7 =
 * Send gateway info to Quaderno
 * Fix: error when customer has not name
 
-= 1.6.2 =
-* Fix: error with Tax ID when the store is not Spanish
-
-= 1.6.1 =
-* Fix: syntax bug for certain PHP versions
-
-= 1.6.0 =
+= 1.6 =
 * Compatibility with EDD 2.5
 * Validate EU VAT Numbers
 * Request Tax ID to Spanish customers
 * Hide VAT Number field when customer is based in the store country
 * Track different payment methods on Quaderno
+* Fix: syntax bug for certain PHP versions
+* Fix: error with Tax ID when the store is not Spanish
 
 = 1.5.3 =
 * Mark recurring payments

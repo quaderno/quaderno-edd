@@ -21,8 +21,8 @@ function edd_quaderno_add_vat_number() {
 	ob_start(); 
 	?>
 	<p id="edd-vat-number-wrap">
-		<label for="edd_vat_number" class="edd-label"><?php _e( 'VAT Number', 'edd_quaderno' ); ?></label>
-		<input type="text" name="edd_vat_number" id="edd_vat_number" class="vat-number edd-input" placeholder="<?php _e( 'VAT Number', 'edd_quaderno' ); ?>" />
+		<label for="edd_vat_number" class="edd-label"><?php esc_html_e( 'VAT Number', 'edd_quaderno' ); ?></label>
+		<input type="text" name="edd_vat_number" id="edd_vat_number" class="vat-number edd-input" placeholder="<?php esc_html_e( 'VAT Number', 'edd_quaderno' ); ?>" />
 		<input type="hidden" name="edd_shop_country" id="edd_shop_country" value="<?php echo edd_get_shop_country(); ?>" />
 	</p>
 	<?php
@@ -51,7 +51,7 @@ function edd_quaderno_validate_vat_number( $data ) {
 		}
 
 		if ( $valid_number != 1 ) {
-			edd_set_error( 'invalid_vat_number', __('VAT Number is not valid', 'edd_quaderno') );
+			edd_set_error( 'invalid_vat_number', esc_html__('VAT Number is not valid', 'edd_quaderno') );
 		}
 	}
 }
@@ -64,7 +64,7 @@ add_action('edd_checkout_error_checks', 'edd_quaderno_validate_vat_number', 100)
 * @return mixed|void
 */
 function edd_quaderno_store_vat_number( $payment_meta ) {
-	$payment_meta['vat_number'] = isset($_POST['edd_vat_number']) ? $_POST['edd_vat_number'] : '';
+	$payment_meta['vat_number'] = isset($_POST['edd_vat_number']) ? filter_var( $_POST['edd_vat_number'], FILTER_SANITIZE_STRING ) : '';
 	return $payment_meta;
 }
 add_filter('edd_payment_meta', 'edd_quaderno_store_vat_number', 100);
@@ -78,7 +78,7 @@ add_filter('edd_payment_meta', 'edd_quaderno_store_vat_number', 100);
 function edd_quaderno_show_vat_number($payment_meta, $user_info) {
 	$vat_number = $payment_meta['vat_number'] ?: 'none';
 	?>
-	<p><?php echo __('VAT Number:', 'edd_quaderno') . ' ' . $vat_number; ?></p>
+	<p><?php esc_html_e('VAT Number:', 'edd_quaderno') . ' ' . $vat_number; ?></p>
 	<?php
 }
 add_action('edd_payment_personal_details_list', 'edd_quaderno_show_vat_number', 10, 2);
