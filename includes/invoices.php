@@ -24,12 +24,17 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 	// Get the payment
 	$payment = new EDD_Payment($payment_id);
 
+	// Return if the invoice total is zero
+	if ( $payment->total == 0 ) {
+		return;
+	}
+
 	// Return if an invoice has already been issued for this order
 	$invoice_id = get_post_meta( $payment_id, '_quaderno_invoice_id', true );
 	if ( !empty( $invoice_id ) ) {
 		return;
 	}
-
+	
 	// Get the taxes
 	$metadata = $payment->get_meta();
 	$tax = edd_quaderno_tax( $payment->address['country'], $payment->address['zip'], $metadata['vat_number'] );

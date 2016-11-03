@@ -78,7 +78,7 @@ add_filter('edd_payment_meta', 'edd_quaderno_store_vat_number', 100);
 function edd_quaderno_show_vat_number($payment_meta, $user_info) {
 	$vat_number = $payment_meta['vat_number'] ?: 'none';
 	?>
-	<p><?php esc_html_e('VAT Number:', 'edd_quaderno') . ' ' . $vat_number; ?></p>
+	<p><?php echo esc_html__('VAT Number:', 'edd_quaderno') . ' ' . $vat_number; ?></p>
 	<?php
 }
 add_action('edd_payment_personal_details_list', 'edd_quaderno_show_vat_number', 10, 2);
