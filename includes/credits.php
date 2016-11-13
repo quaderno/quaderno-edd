@@ -1,6 +1,6 @@
 <?php
 /**
-* Receipts
+* Credit notes
 *
 * @package    EDD Quaderno
 * @copyright  Copyright (c) 2015, Carlos Hernandez
@@ -89,19 +89,16 @@ function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
 	// Let's create the credit
   $credit = new QuadernoCredit($credit_params);
 
-	// Add the credit items
-	foreach ( $payment->cart_details as $item ) {
-		$new_item = new QuadernoDocumentItem(array(
-			'description' => $item['name'],
-			'quantity' => $item['quantity'],
-			'total_amount' => $item['price'],
-			'discount_rate' => $item['discount'] / $item['subtotal'] * 100.0,
-			'tax_1_name' => $tax->name,
-			'tax_1_rate' => $tax->rate,
-			'tax_1_country' => $tax->country
-		));
-		$credit->addItem( $new_item );
-	}
+	// Add the invoice item
+	$item = new QuadernoDocumentItem(array(
+		'description' => array_reduce($payment->cart_details, 'get_cart_descriptions'),
+		'quantity' => 1,
+		'total_amount' => $payment->total,
+		'tax_1_name' => $tax->name,
+		'tax_1_rate' => $tax->rate,
+		'tax_1_country' => $tax->country
+	));
+	$credit->addItem( $item );
 
 	// Add the payment
 	$payment = new QuadernoPayment(array(
@@ -122,3 +119,5 @@ function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
 	}
 }
 add_action( 'edd_update_payment_status', 'edd_quaderno_create_credit', 999, 3 );
+
+?>

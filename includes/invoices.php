@@ -1,6 +1,6 @@
 <?php
 /**
-* Receipts
+* Invoices
 *
 * @package    EDD Quaderno
 * @copyright  Copyright (c) 2015, Carlos Hernandez
@@ -90,9 +90,9 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 	  $invoice = new QuadernoInvoice($invoice_params);
 	}
 
-	// Add the main invoice item
+	// Add the invoice item
 	$item = new QuadernoDocumentItem(array(
-		'description' => $payment->cart_details[0]['name'],
+		'description' => array_reduce($payment->cart_details, 'get_cart_descriptions'),
 		'quantity' => 1,
 		'total_amount' => $payment->total,
 		'tax_1_name' => $tax->name,
@@ -123,5 +123,16 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 }
 add_action( 'edd_complete_purchase', 'edd_quaderno_create_invoice', 999 );
 add_action( 'edd_recurring_record_payment', 'edd_quaderno_create_invoice', 999, 2 );
+
+// Merge cart items description
+function get_cart_descriptions( $carry, $item ) {
+	if ( is_null($carry) ) {
+		$carry = $item['name'];
+	}
+	else {
+		$carry = $carry . '<br>' . $item['name'];
+	}
+	return $carry;
+}
 
 ?>
