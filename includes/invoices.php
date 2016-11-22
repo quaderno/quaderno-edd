@@ -58,7 +58,7 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 	} else {
 		if ( !empty( $payment->get_meta()['vat_number'] ) ) {
 			$kind = 'company';
-			$first_name = $payment->first_name;
+			$first_name = implode( ' ', array($payment->first_name, $payment->last_name) );
 			$last_name = '';
 		} else {
 			$kind = 'person';

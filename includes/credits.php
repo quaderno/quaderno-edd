@@ -61,7 +61,7 @@ function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
 	} else {
 		if ( !empty( $payment->get_meta()['vat_number'] ) ) {
 			$kind = 'company';
-			$first_name = $payment->first_name;
+			$first_name = implode( ' ', array($payment->first_name, $payment->last_name) );
 			$last_name = '';
 		} else {
 			$kind = 'person';

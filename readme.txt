@@ -4,7 +4,7 @@ Contributors: polimorfico
 Tags: edd, easydigitaldownloads, easy digital downloads, quaderno, vat, gst, sales tax, vatmoss, vat moss, tax, billing, invoices, receipts, credit notes
 Requires at least: 3.7
 Tested up to: 4.6.1
-Stable tag: 1.9.0
+Stable tag: 1.9.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -69,6 +69,7 @@ If you have any questions please get in touch with us at hello@quaderno.io.
 
 = 1.9 =
 * Merge cart items in invoices and credit notes
+* Fix: use last name for people with a valid VAT number
 
 = 1.8 =
 * Send receipts (simplified invoices)
