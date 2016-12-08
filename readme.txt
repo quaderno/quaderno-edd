@@ -3,8 +3,8 @@ Author URI: http://quaderno.io
 Contributors: polimorfico
 Tags: edd, easydigitaldownloads, easy digital downloads, quaderno, vat, gst, sales tax, vatmoss, vat moss, tax, billing, invoices, receipts, credit notes
 Requires at least: 3.7
-Tested up to: 4.6.1
-Stable tag: 1.9.1
+Tested up to: 4.7
+Stable tag: 1.9.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -68,33 +68,34 @@ If you have any questions please get in touch with us at hello@quaderno.io.
 == Changelog ==
 
 = 1.9 =
-* Merge cart items in invoices and credit notes
+* New: Merge cart items in invoices and credit notes
+* New: WordPress 4.7 compatibility
 * Fix: use last name for people with a valid VAT number
 
 = 1.8 =
-* Send receipts (simplified invoices)
-* Add just one item to the invoice
+* New: Send receipts (simplified invoices)
+* New: Add just one item to the invoice
+* New: Don't invoice if total amount is zero
 * Fix: error with customers on multisites
 * Fix: negative payments always generate receipts
 * Fix: sometimes transaction id does not exist
 * Fix: sanitize vat numbers and translations
-* Don't invoice if total amount is zero
 
 = 1.7 =
-* Send gateway info to Quaderno
+* New: Send gateway info to Quaderno
 * Fix: error when customer has not name
 
 = 1.6 =
-* Compatibility with EDD 2.5
-* Validate EU VAT Numbers
-* Request Tax ID to Spanish customers
-* Hide VAT Number field when customer is based in the store country
-* Track different payment methods on Quaderno
+* New: Compatibility with EDD 2.5
+* New: Validate EU VAT Numbers
+* New: Request Tax ID to Spanish customers
+* New: Hide VAT Number field when customer is based in the store country
+* New: Track different payment methods on Quaderno
 * Fix: syntax bug for certain PHP versions
 * Fix: error with Tax ID when the store is not Spanish
 
 = 1.5.3 =
-* Mark recurring payments
+* New: Mark recurring payments
 
 = 1.5.2 =
 * Fix: error in payment date
@@ -103,30 +104,30 @@ If you have any questions please get in touch with us at hello@quaderno.io.
 * Fix: autosend option cannot be deactivated
 
 = 1.5.0 =
-* Process recurring payments
+* New: Process recurring payments
 
 = 1.4.1 =
 * Minor fixes
 
 = 1.4.0 =
-* Create credit notes for refunds
-* Refactoring code
-* Update descriptions
+* New: Create credit notes for refunds
+* New: Refactoring code
+* New: Update descriptions
 
 = 1.3.1 =
 * Fix: error when purchases include more than one item
 
 = 1.3.0 =
-* Remove contacts when a customer is deleted
-* Create invoices faster
+* New: Remove contacts when a customer is deleted
+* New: Create invoices faster
 
 = 1.2.4 =
-* Tag invoices from EDD
+* TNew: ag invoices from EDD
 
 = 1.2.3 =
-* Tested on Wordpress 4.3
+* New: Tested on Wordpress 4.3
 * Fix: total amount is wrong when taxes are included
-* Update translations
+* New: Update translations
 
 = 1.2.2 =
 * Fix: error at calculating taxes when cart is empty
@@ -135,12 +136,12 @@ If you have any questions please get in touch with us at hello@quaderno.io.
 * Fix: discount does not appear on final invoices
 
 = 1.2.0 =
-* Cache tax calculations
-* Mark e-books on download detail page
+* New: Cache tax calculations
+* New: Mark e-books on download detail page
 
 = 1.1.0 =
-* Calculate taxes for e-books
-* New icons
+* New: Calculate taxes for e-books
+* New: New icons
 
 = 1.0.0 =
 * First version
