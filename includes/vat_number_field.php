@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 function edd_quaderno_add_vat_number() {
 	ob_start(); 
 	?>
-	<p id="edd-vat-number-wrap">
+	<p id="edd_vat_number_wrap">
 		<label for="edd_vat_number" class="edd-label"><?php esc_html_e( 'VAT Number', 'edd_quaderno' ); ?></label>
 		<input type="text" name="edd_vat_number" id="edd_vat_number" class="vat-number edd-input" placeholder="<?php esc_html_e( 'VAT Number', 'edd_quaderno' ); ?>" />
 		<input type="hidden" name="edd_shop_country" id="edd_shop_country" value="<?php echo edd_get_shop_country(); ?>" />
@@ -78,7 +78,7 @@ add_filter('edd_payment_meta', 'edd_quaderno_store_vat_number', 100);
 function edd_quaderno_show_vat_number($payment_meta, $user_info) {
 	$vat_number = $payment_meta['vat_number'] ?: 'none';
 	?>
-	<p><?php echo esc_html__('VAT Number:', 'edd_quaderno') . ' ' . $vat_number; ?></p>
+	<p><?php echo esc_html__('VAT Number', 'edd_quaderno') . ': ' . $vat_number; ?></p>
 	<?php
 }
 add_action('edd_payment_personal_details_list', 'edd_quaderno_show_vat_number', 10, 2);

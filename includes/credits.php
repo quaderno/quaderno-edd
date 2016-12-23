@@ -59,20 +59,23 @@ function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
 	if ( !empty( $contact_id ) ) {
 		$credit_params['contact_id'] = $contact_id;
 	} else {
-		if ( !empty( $payment->get_meta()['vat_number'] ) ) {
+		if ( !empty( $payment->get_meta()['business_name'] ) ) {
 			$kind = 'company';
-			$first_name = implode( ' ', array($payment->first_name, $payment->last_name) );
+			$first_name = $payment->get_meta()['business_name'];
 			$last_name = '';
+			$contact_name = implode( ' ', array($payment->first_name, $payment->last_name) );
 		} else {
 			$kind = 'person';
 			$first_name = $payment->first_name;
 			$last_name = $payment->last_name;
+			$contact_name = '';
 		}
 
 		$credit_params['contact'] = array(
 			'kind' => $kind,
 			'first_name' => $first_name ?: 'EDD Customer',
 			'last_name' => $last_name,
+			'contact_name' => $contact_name,
 			'street_line_1' => $payment->address['line1'] ?: '',
 			'street_line_2' => $payment->address['line2'] ?: '',
 			'city' => $payment->address['city'],

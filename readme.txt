@@ -4,7 +4,7 @@ Contributors: polimorfico
 Tags: edd, easydigitaldownloads, easy digital downloads, quaderno, vat, gst, sales tax, vatmoss, vat moss, tax, billing, invoices, receipts, credit notes
 Requires at least: 3.7
 Tested up to: 4.7
-Stable tag: 1.9.2
+Stable tag: 1.10.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -67,10 +67,13 @@ If you have any questions please get in touch with us at hello@quaderno.io.
 
 == Changelog ==
 
+= 1.10 =
+* New: Users can enter their business name during checkout
+
 = 1.9 =
 * New: Merge cart items in invoices and credit notes
 * New: WordPress 4.7 compatibility
-* Fix: use last name for people with a valid VAT number
+* Fix: Use last name for people with a valid VAT number
 
 = 1.8 =
 * New: Send receipts (simplified invoices)

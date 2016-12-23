@@ -47,7 +47,7 @@ function edd_quaderno_settings( $settings ) {
 			'edd_quaderno_threshold' => array(
 				'id'   => 'edd_quaderno_threshold',
 				'name' => esc_html__( 'Receipts threshold', 'edd_quaderno' ),
-				'desc' => esc_html__( 'All purchases under this threshold will generate a sales receipt, instead of an invoice', 'edd_quaderno' ),
+				'desc' => esc_html__( 'All sales under this threshold will generate a sales receipt, instead of an invoice', 'edd_quaderno' ),
 				'type' => 'text'
 			),
 			'autosend_receipts' => array(

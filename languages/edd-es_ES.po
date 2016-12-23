@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: EDD Quaderno\n"
-"POT-Creation-Date: 2016-05-05 14:24-0000\n"
-"PO-Revision-Date: 2016-05-05 14:27-0000\n"
+"POT-Creation-Date: 2016-12-23 18:22-0000\n"
+"PO-Revision-Date: 2016-12-23 18:22-0000\n"
 "Last-Translator:  <hello@quaderno.io>\n"
 "Language-Team: Quaderno <hello@quaderno.io>\n"
 "Language: es\n"
@@ -12,8 +12,21 @@ msgstr ""
 "X-Generator: Poedit 1.6.9\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-KeywordsList: __;_e;esc_html__\n"
 "X-Poedit-SearchPath-0: ..\n"
+
+#: ../includes/business_name_field.php:24
+msgid "Business name (optional)"
+msgstr "Nombre de la empresa (opcional)"
+
+#: ../includes/business_name_field.php:25
+#: ../includes/business_name_field.php:66
+msgid "Business name"
+msgstr "Nombre de la empresa"
+
+#: ../includes/business_name_field.php:40
+msgid "Please enter your business name"
+msgstr "Por favor, introduce el nombre de tu empresa"
 
 #: ../includes/settings.php:37
 msgid "Private key"
@@ -21,7 +34,7 @@ msgstr "Clave privada"
 
 #: ../includes/settings.php:38
 msgid "Get this key from your Quaderno account"
-msgstr "Consigue esta clave en tu cuenta de Quaderno"
+msgstr "Consigue esta clave en tu cuenta Quaderno"
 
 #: ../includes/settings.php:43
 msgid "API URL"
@@ -29,78 +42,53 @@ msgstr "API URL"
 
 #: ../includes/settings.php:44
 msgid "Get this URL from your Quaderno account"
-msgstr "Consigue esta URL en tu cuenta de Quaderno"
+msgstr "Consigue esta URL en tu cuenta Quaderno"
 
 #: ../includes/settings.php:49
 msgid "Receipts threshold"
-msgstr "Límite facturas simplificadas"
+msgstr "Límite para recibos"
 
 #: ../includes/settings.php:50
 msgid ""
-"All purchases under this threshold will generate a sales receipt, instead of "
-"an invoice"
+"All sales under this threshold will generate a sales receipt, instead of an "
+"invoice"
 msgstr ""
-"Todas la ventas por debajo de este límite generarán una factura simplificada "
-"(recibo)"
+"Todas las ventas por debajo de este límite generarán un recibo, en lugar de "
+"una factura"
 
 #: ../includes/settings.php:55
 msgid "Autosend documents"
-msgstr "Enviar facturas"
+msgstr "Autoenviar documentos"
 
 #: ../includes/settings.php:56
 msgid "Check this to automatically send your sales receipts and invoices"
-msgstr "Selecciona esta opción para enviar automáticamente tus facturas"
+msgstr ""
+"Selecciona esta opción para enviar automáticamente tus recibos y facturas"
+
+#: ../includes/settings.php:90
+msgid "Settings"
+msgstr "Configuración"
+
+#: ../includes/settings.php:99
+msgid "Create a Quaderno account"
+msgstr "Crear una cuenta Quaderno"
 
 #: ../includes/settings.php:117
 msgid ""
 "Don't you have a Quaderno account? Create a new one <a href=\"https://"
 "quadernoapp.com/signup\" target=\"_blank\">on this page</a>."
 msgstr ""
-"¿No tienes una cuenta en Quaderno? Crea una ahora <a href=\"https://"
-"quadernoapp.com/signup\" target=\"_blank\">en esta página</a>."
-
-#: ../includes/vat_number_field.php:24 ../includes/vat_number_field.php:25
-msgid "VAT Number"
-msgstr "Número IVA intracomunitario"
+"¿Todavía no tienes una cuenta Quaderno? Crear una nueva cuenta en <a href="
+"\"https://quadernoapp.com/signup\" target=\"_blank\">esta página</a>."
 
 #: ../includes/vat_number_field.php:54
 msgid "VAT Number is not valid"
-msgstr "El número de IVA intracomunitario no es válido\t"
+msgstr "El número de operador intracomunitario no es válido"
 
 #: ../includes/vat_number_field.php:81
-msgid "VAT Number:"
-msgstr "Número de IVA intracomunitario:"
+msgid "VAT Number"
+msgstr "Número de operador intracomunitario"
 
 #: ../quaderno/quaderno_request.php:77
 msgid "There was a problem connecting to the API."
-msgstr "Hubo un problema en la conexión con la API.\t"
-
-#~ msgid "Tax ID"
-#~ msgstr "NIF"
-
-#~ msgid "Please enter your Tax ID"
-#~ msgstr "Por favor introduce tu NIF\t"
-
-#~ msgid "Billing Company Name (optional)"
-#~ msgstr "Nombre de la empresa (opcional)"
-
-#~ msgid "Tax ID / EU-VAT ID"
-#~ msgstr "NIF / Número IVA intracomunitario"
-
-#~ msgid "Company Name"
-#~ msgstr "Nombre de la empresa"
-
-#~ msgid "E-book Taxes"
-#~ msgstr "Impuestos E-book\t"
-
-#~ msgid "Check this if you only sell e-books."
-#~ msgstr "Selecciona esta opción si solo vendes e-books."
-
-#~ msgid "API Token"
-#~ msgstr "API Token"
-
-#~ msgid "Settings"
-#~ msgstr "Ajustes"
-
-#~ msgid "Create a Quaderno account"
-#~ msgstr "Crear una cuenta en Quaderno\t"
+msgstr "Hubo un problema en la conexión con la API."
