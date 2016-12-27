@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: EDD Quaderno\n"
-"POT-Creation-Date: 2016-12-23 18:22-0000\n"
-"PO-Revision-Date: 2016-12-23 18:22-0000\n"
+"POT-Creation-Date: 2016-12-27 11:50-0000\n"
+"PO-Revision-Date: 2016-12-27 11:50-0000\n"
 "Last-Translator:  <hello@quaderno.io>\n"
 "Language-Team: Quaderno <hello@quaderno.io>\n"
 "Language: en_US\n"
@@ -12,20 +12,23 @@ msgstr ""
 "X-Generator: Poedit 1.6.9\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Poedit-KeywordsList: __;_e;esc_html__\n"
+"X-Poedit-KeywordsList: __;_e;esc_html__;esc_html_e\n"
 "X-Poedit-SearchPath-0: ..\n"
 
 #: ../includes/business_name_field.php:24
-msgid "Business name (optional)"
+msgid "Company name (optional)"
 msgstr ""
 
 #: ../includes/business_name_field.php:25
-#: ../includes/business_name_field.php:66
-msgid "Business name"
+msgid "Enter a company name if this is a business purchase."
 msgstr ""
 
 #: ../includes/business_name_field.php:40
-msgid "Please enter your business name"
+msgid "Please enter your company name"
+msgstr ""
+
+#: ../includes/business_name_field.php:66
+msgid "Company name"
 msgstr ""
 
 #: ../includes/settings.php:37
@@ -76,12 +79,16 @@ msgid ""
 "quadernoapp.com/signup\" target=\"_blank\">on this page</a>."
 msgstr ""
 
-#: ../includes/vat_number_field.php:54
-msgid "VAT Number is not valid"
+#: ../includes/vat_number_field.php:24 ../includes/vat_number_field.php:81
+msgid "VAT Number"
 msgstr ""
 
-#: ../includes/vat_number_field.php:81
-msgid "VAT Number"
+#: ../includes/vat_number_field.php:25
+msgid "Enter your VAT number including country identifier e.g. GB123456788"
+msgstr ""
+
+#: ../includes/vat_number_field.php:54
+msgid "VAT Number is not valid"
 msgstr ""
 
 #: ../quaderno/quaderno_request.php:77
