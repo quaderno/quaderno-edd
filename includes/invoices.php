@@ -87,7 +87,7 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 	}
 
 	// Let's create the receipt or the invoice
-	if ( isset( $edd_options['edd_quaderno_threshold'] ) && abs( $payment->total ) < intval( $edd_options['edd_quaderno_threshold'] ) && !isset( $payment->get_meta()['vat_number'] )) {
+	if ( isset( $edd_options['edd_quaderno_threshold'] ) && abs( $payment->total ) < intval( $edd_options['edd_quaderno_threshold'] ) && empty( $payment->get_meta()['vat_number'] )) {
 	  $invoice = new QuadernoReceipt($invoice_params);
 	} else {
 	  $invoice = new QuadernoInvoice($invoice_params);

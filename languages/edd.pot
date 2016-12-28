@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: EDD Quaderno\n"
-"POT-Creation-Date: 2016-12-27 11:50-0000\n"
-"PO-Revision-Date: 2016-12-27 11:50-0000\n"
+"POT-Creation-Date: 2016-12-28 11:30-0000\n"
+"PO-Revision-Date: 2016-12-28 11:30-0000\n"
 "Last-Translator:  <hello@quaderno.io>\n"
 "Language-Team: Quaderno <hello@quaderno.io>\n"
 "Language: en_US\n"
@@ -20,7 +20,7 @@ msgid "Company name (optional)"
 msgstr ""
 
 #: ../includes/business_name_field.php:25
-msgid "Enter a company name if this is a business purchase."
+msgid "Enter a company name if this is a business purchase"
 msgstr ""
 
 #: ../includes/business_name_field.php:40
