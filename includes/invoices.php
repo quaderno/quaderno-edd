@@ -30,7 +30,7 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 	}
 
 	// Return if an invoice has already been issued for this order
-	$invoice_id = get_post_meta( $payment_id, '_quaderno_invoice_id', true );
+	$invoice_id = $payment->get_meta( '_quaderno_invoice_id' );
 	if ( !empty( $invoice_id ) ) {
 		return;
 	}
@@ -52,7 +52,8 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 	);
 
 	// Add the contact
-	$contact_id = get_user_meta( $payment->user_id, '_quaderno_contact', true);
+	$customer = new EDD_Customer( $payment->customer_id );
+	$contact_id = $customer->get_meta( '_quaderno_contact' );
 	if ( !empty( $contact_id ) ) {
 		$invoice_params['contact_id'] = $contact_id;
 	} else {
@@ -82,7 +83,7 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 			'email' => $payment->email,
 			'vat_number' => $payment->get_meta()['vat_number'],
 			'processor' => 'edd',
-			'processor_id' => $payment->user_id
+			'processor_id' => $payment->customer_id
 		);
 	}
 
@@ -106,8 +107,8 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 
 	// Save the invoice and the location evidences
 	if ( $invoice->save() ) {
-		add_post_meta( $payment_id, '_quaderno_invoice_id', $invoice->id );
-		add_user_meta( $payment->user_id, '_quaderno_contact', $invoice->contact->id );
+		$payment->update_meta( '_quaderno_invoice_id', $invoice->id );
+		$customer->add_meta( '_quaderno_contact', $invoice->contact->id );
 
 		// Save the location evidence
 		$evidence = new QuadernoEvidence(array(

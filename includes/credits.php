@@ -33,7 +33,7 @@ function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
 	$payment = new EDD_Payment($payment_id);
 
 	// Return if a credit has already been issued for this order
-	$credit_id = get_post_meta( $payment_id, '_quaderno_credit_id', true );
+	$credit_id = $payment->get_meta( '_quaderno_credit_id' );
 	if ( !empty( $credit_id ) ) {
 		return;
 	}
@@ -50,12 +50,13 @@ function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
 		'interval_count' => $payment->parent_payment == 0 ? '0' : '1',
 		'notes' => $tax->notes,
 		'processor' => ($payment->gateway == 'manual') ? 'edd' : $payment->gateway,
-		'processor_id' => $payment->transaction_id
+		'processor_id' => $payment->transaction_id,
+		'payment_method' => get_quaderno_payment_method( $payment->gateway )
 	);
 
 	// Add the contact
-	$customer_id = edd_get_payment_customer_id($payment_id);
-	$contact_id = get_user_meta( $customer_id, '_quaderno_contact', true);
+	$customer = new EDD_Customer( $payment->customer_id );
+	$contact_id = $customer->get_meta( '_quaderno_contact' );
 	if ( !empty( $contact_id ) ) {
 		$credit_params['contact_id'] = $contact_id;
 	} else {
@@ -103,17 +104,10 @@ function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
 	));
 	$credit->addItem( $item );
 
-	// Add the payment
-	$payment = new QuadernoPayment(array(
-		'date' => date('Y-m-d'),
-		'amount' => $payment->total,
-		'payment_method' => get_quaderno_payment_method( $payment->gateway )
-	));
-	$credit->addPayment( $payment );
-
 	// Save the credit
 	if ( $credit->save() ) {
-		add_post_meta( $payment_id, '_quaderno_credit_id', $credit->id );
+		$payment->update_meta( '_quaderno_credit_id', $credit->id );
+		$customer->add_meta( '_quaderno_contact', $invoice->contact->id );
 
 		// Send the credit
 		if ( isset( $edd_options['autosend_receipts'] ) ) {
