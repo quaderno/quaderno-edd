@@ -22,7 +22,7 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 	global $edd_options;
 
 	// Get the payment
-	$payment = new EDD_Payment($payment_id);
+	$payment = edd_get_payment($payment_id);
 
 	// Return if the invoice total is zero
 	if ( $payment->total == 0 ) {
@@ -57,9 +57,9 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 	if ( !empty( $contact_id ) ) {
 		$invoice_params['contact_id'] = $contact_id;
 	} else {
-		if ( !empty( $payment->get_meta()['business_name'] ) ) {
+		if ( !empty( $metadata['business_name'] ) ) {
 			$kind = 'company';
-			$first_name = $payment->get_meta()['business_name'];
+			$first_name = $metadata['business_name'];
 			$last_name = '';
 			$contact_name = implode( ' ', array($payment->first_name, $payment->last_name) );
 		} else {
@@ -81,14 +81,14 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 			'region' => $payment->address['state'],
 			'country' => $payment->address['country'],
 			'email' => $payment->email,
-			'vat_number' => $payment->get_meta()['vat_number'],
+			'vat_number' => $metadata['vat_number'],
 			'processor' => 'edd',
 			'processor_id' => $payment->customer_id
 		);
 	}
 
 	// Let's create the receipt or the invoice
-	if ( isset( $edd_options['edd_quaderno_threshold'] ) && abs( $payment->total ) < intval( $edd_options['edd_quaderno_threshold'] ) && empty( $payment->get_meta()['vat_number'] )) {
+	if ( isset( $edd_options['edd_quaderno_threshold'] ) && abs( $payment->total ) < intval( $edd_options['edd_quaderno_threshold'] ) && empty( $metadata['vat_number'] )) {
 	  $invoice = new QuadernoReceipt($invoice_params);
 	} else {
 	  $invoice = new QuadernoInvoice($invoice_params);

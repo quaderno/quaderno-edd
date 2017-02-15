@@ -30,7 +30,7 @@ function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
 	}
 
 	// Get the payment
-	$payment = new EDD_Payment($payment_id);
+	$payment = edd_get_payment($payment_id);
 
 	// Return if a credit has already been issued for this order
 	$credit_id = $payment->get_meta( '_quaderno_credit_id' );
@@ -60,9 +60,9 @@ function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
 	if ( !empty( $contact_id ) ) {
 		$credit_params['contact_id'] = $contact_id;
 	} else {
-		if ( !empty( $payment->get_meta()['business_name'] ) ) {
+		if ( !empty( $metadata['business_name'] ) ) {
 			$kind = 'company';
-			$first_name = $payment->get_meta()['business_name'];
+			$first_name = $metadata['business_name'];
 			$last_name = '';
 			$contact_name = implode( ' ', array($payment->first_name, $payment->last_name) );
 		} else {
@@ -84,7 +84,7 @@ function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
 			'region' => $payment->address['state'],
 			'country' => $payment->address['country'],
 			'email' => $payment->email,
-			'vat_number' => $payment->get_meta()['vat_number'],
+			'vat_number' => $metadata['vat_number'],
 			'processor' => 'edd',
 			'processor_id' => $payment->customer_id
 		);
