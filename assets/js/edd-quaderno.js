@@ -2,16 +2,13 @@ jQuery(document).ready(function($) {
   var $form = $('#edd_purchase_form');
   var eu_countries = ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'ES', 'FI', 'FR', 'DE', 'GB', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'SE'];
 
-  // Show VAT Number and Business Name fields
+  // Show VAT Number
   $form.on('change', '#billing_country', function(e) {
 	  if ( $(this).val() == $('#edd_shop_country').val() || $.inArray($(this).val(), eu_countries) == -1 ) {
 	    $('#edd_vat_number_wrap').hide();
-	    $('#edd_business_name_wrap').hide();
 	    $('#edd_vat_number').val('');
-	    $('#edd_business_name').val('');
 	  } else {
 	    $('#edd_vat_number_wrap').show();
-	    $('#edd_business_name_wrap').show();
 	  }
     return true;
   });

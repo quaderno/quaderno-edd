@@ -22,12 +22,12 @@ function edd_quaderno_add_business_name() {
 	?>
 	<p id="edd_business_name_wrap">
 		<label for="edd_business_name" class="edd-label"><?php esc_html_e( 'Company name (optional)', 'edd_quaderno' ); ?></label>
-		<input type="text" name="edd_business_name" id="edd_business_name" class="business-name edd-input" placeholder="<?php esc_html_e( 'Enter a company name if this is a business purchase', 'edd_quaderno' ); ?>" />
+		<input type="text" name="edd_business_name" id="edd_business_name" class="business-name edd-input" placeholder="<?php esc_html_e( 'Only if this is a business purchase', 'edd_quaderno' ); ?>" />
 	</p>
 	<?php
 	echo ob_get_clean();
 }
-add_action('edd_cc_billing_bottom', 'edd_quaderno_add_business_name', 110);
+add_action('edd_cc_billing_top', 'edd_quaderno_add_business_name', 110);
 
 /**
 * Validate Business Names
