@@ -44,7 +44,7 @@ function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
 
 	// Add the credit params
 	$credit_params = array(
-		'issue_date' => date('Y-m-d'),
+		'issue_date' => current_time('Y-m-d'),
 		'currency' => $payment->currency,
 		'po_number' => $payment->number,
 		'interval_count' => $payment->parent_payment == 0 ? '0' : '1',

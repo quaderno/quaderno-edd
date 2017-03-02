@@ -41,7 +41,7 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 
 	// Add the invoice params
 	$invoice_params = array(
-		'issue_date' => date('Y-m-d'),
+		'issue_date' => $payment->date,
 		'currency' => $payment->currency,
 		'po_number' => $payment->number,
 		'interval_count' => $payment->parent_payment == 0 ? '0' : '1',

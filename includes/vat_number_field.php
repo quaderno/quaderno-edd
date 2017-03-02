@@ -22,7 +22,8 @@ function edd_quaderno_add_vat_number() {
 	?>
 	<p id="edd_vat_number_wrap">
 		<label for="edd_vat_number" class="edd-label"><?php esc_html_e( 'VAT Number', 'edd_quaderno' ); ?></label>
-		<input type="text" name="edd_vat_number" id="edd_vat_number" class="vat-number edd-input" placeholder="<?php esc_html_e( 'Enter your VAT number including country identifier e.g. GB123456788', 'edd_quaderno' ); ?>" />
+		<span class="edd-description"><?php esc_html_e( 'Enter your VAT number including country identifier e.g. GB123456788', 'edd_quaderno' ); ?></span>
+		<input type="text" name="edd_vat_number" id="edd_vat_number" class="vat-number edd-input" />
 		<input type="hidden" name="edd_shop_country" id="edd_shop_country" value="<?php echo edd_get_shop_country(); ?>" />
 	</p>
 	<?php
