@@ -4,7 +4,7 @@ Contributors: polimorfico
 Tags: edd, easydigitaldownloads, easy digital downloads, quaderno, vat, gst, sales tax, vatmoss, vat moss, tax, billing, invoices, receipts, credit notes
 Requires at least: 3.7
 Tested up to: 4.7
-Stable tag: 1.12.1
+Stable tag: 1.12.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -71,6 +71,7 @@ If you have any questions please get in touch with us at hello@quaderno.io.
 * Always show business name field
 * Move placeholders to descriptions
 * Fix: use payment date on invoices
+* Fix: problem with edd_get_payment
 
 = 1.11 =
 * New: Compatibility with EDD 2.7

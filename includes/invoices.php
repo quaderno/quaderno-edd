@@ -22,7 +22,7 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 	global $edd_options;
 
 	// Get the payment
-	$payment = edd_get_payment($payment_id);
+	$payment = new EDD_Payment($payment_id);
 
 	// Return if the invoice total is zero
 	if ( $payment->total == 0 ) {
