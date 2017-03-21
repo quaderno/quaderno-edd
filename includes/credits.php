@@ -93,7 +93,7 @@ function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
 	// Let's create the credit
   $credit = new QuadernoCredit($credit_params);
 
-	// Add the invoice item
+	// Add the credit item
 	$item = new QuadernoDocumentItem(array(
 		'description' => array_reduce($payment->cart_details, 'get_cart_descriptions'),
 		'quantity' => 1,
@@ -107,7 +107,7 @@ function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
 	// Save the credit
 	if ( $credit->save() ) {
 		$payment->update_meta( '_quaderno_credit_id', $credit->id );
-		$customer->add_meta( '_quaderno_contact', $invoice->contact->id );
+		$customer->add_meta( '_quaderno_contact', $credit->contact->id );
 
 		// Send the credit
 		if ( isset( $edd_options['autosend_receipts'] ) ) {
