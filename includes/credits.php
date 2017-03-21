@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
 	global $edd_options;
 
-	if( 'publish' != $old_status && 'revoked' != $old_status ) {
+	if( 'publish' != $old_status && 'revoked' != $old_status && 'inherit' != $old_status ) {
 		return;
 	}
 

@@ -76,12 +76,30 @@ add_filter('edd_payment_meta', 'edd_quaderno_store_vat_number', 100);
 * @since  1.6
 * @return mixed|void
 */
-function edd_quaderno_show_vat_number($payment_meta, $user_info) {
-	$vat_number = $payment_meta['vat_number'] ?: 'none';
+function edd_quaderno_show_vat_number($payment_id) {
+	$payment = new EDD_Payment($payment_id);
+	$vat_number = $payment->get_meta('vat_number') ?: '';
 	?>
-	<p><?php echo esc_html__('VAT Number', 'edd_quaderno') . ': ' . $vat_number; ?></p>
+	<div class="edd-order-payment edd-admin-box-inside">
+		<p>
+			<span class="label"><?php _e( 'VAT Number', 'edd_quaderno' ); ?>:</span>&nbsp;
+			<input name="vat_number" type="text" class="med-text" value="<?php echo $vat_number ?>"/>
+		</p>
+	</div>
 	<?php
 }
-add_action('edd_payment_personal_details_list', 'edd_quaderno_show_vat_number', 10, 2);
+add_action('edd_view_order_details_totals_after', 'edd_quaderno_show_vat_number', 10, 2);
+
+/**
+* Update the VAT Number in the "View Order Details" popup
+*
+* @since  1.12
+* @return mixed|void
+*/
+function edd_quaderno_update_vat_number( $payment_id ) {
+	$payment = new EDD_Payment( $payment_id );
+	$payment->update_meta('vat_number', isset($_POST['vat_number']) ? filter_var( $_POST['vat_number'], FILTER_SANITIZE_STRING ) : '');
+}
+add_action('edd_update_edited_purchase', 'edd_quaderno_update_vat_number', 100);
 
 ?>
