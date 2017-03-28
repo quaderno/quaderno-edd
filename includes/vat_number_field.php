@@ -65,7 +65,9 @@ add_action('edd_checkout_error_checks', 'edd_quaderno_validate_vat_number', 100)
 * @return mixed|void
 */
 function edd_quaderno_store_vat_number( $payment_meta ) {
-	$payment_meta['vat_number'] = isset($_POST['edd_vat_number']) ? filter_var( $_POST['edd_vat_number'], FILTER_SANITIZE_STRING ) : '';
+  if ( !isset($payment_meta['vat_number']) ) {
+    $payment_meta['vat_number'] = isset($_POST['edd_vat_number']) ? filter_var( $_POST['edd_vat_number'], FILTER_SANITIZE_STRING ) : '';
+  }
 	return $payment_meta;
 }
 add_filter('edd_payment_meta', 'edd_quaderno_store_vat_number', 100);
@@ -78,12 +80,11 @@ add_filter('edd_payment_meta', 'edd_quaderno_store_vat_number', 100);
 */
 function edd_quaderno_show_vat_number($payment_id) {
 	$payment = new EDD_Payment($payment_id);
-	$vat_number = $payment->get_meta('vat_number') ?: '';
 	?>
 	<div class="edd-order-payment edd-admin-box-inside">
 		<p>
 			<span class="label"><?php _e( 'VAT Number', 'edd_quaderno' ); ?>:</span>&nbsp;
-			<input name="vat_number" type="text" class="med-text" value="<?php echo $vat_number ?>"/>
+			<input name="vat_number" type="text" class="med-text" value="<?php echo $payment->meta['vat_number'] ?>"/>
 		</p>
 	</div>
 	<?php
