@@ -49,8 +49,8 @@ function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
 		'po_number' => $payment->number,
 		'interval_count' => $payment->parent_payment == 0 ? '0' : '1',
 		'notes' => $tax->notes,
-		'processor' => ($payment->gateway == 'manual') ? 'edd' : $payment->gateway,
-		'processor_id' => $payment->transaction_id,
+		'processor' => 'edd',
+		'processor_id' => $payment_id,
 		'payment_method' => get_quaderno_payment_method( $payment->gateway )
 	);
 
