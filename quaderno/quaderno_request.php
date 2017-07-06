@@ -65,7 +65,7 @@ class QuadernoRequest {
   	);
 
   	// Add the request body if we've got one
-  	if ( !is_null( $this->request_body ) && is_array( $this->request_body ) && count( $this->request_body ) > 0 ) {
+  	if ( 'GET' != $this->http_method && !is_null( $this->request_body ) && is_array( $this->request_body ) && count( $this->request_body ) > 0 ) {
   		$args['body'] = json_encode( $this->request_body );
   	}
 
