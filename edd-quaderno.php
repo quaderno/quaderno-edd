@@ -4,7 +4,7 @@
  * Plugin Name: EDD Quaderno
  * Plugin URI: https://wordpress.org/plugins/edd-quaderno/
  * Description: Automatically send customizable sales receipts and invoices with every order in your Easy Digital Downloads store.
- * Version: 1.12.8
+ * Version: 1.13.0
  * Author: Quaderno
  * Author URI: https://quaderno.io/
  * License: GPL v3
@@ -62,7 +62,9 @@ final class EDD_Quaderno {
 		require_once EDD_QUADERNO_PLUGIN_DIR . 'quaderno/quaderno_load.php';
 		require_once EDD_QUADERNO_PLUGIN_DIR . 'includes/ebook_field.php';
 		require_once EDD_QUADERNO_PLUGIN_DIR . 'includes/vat_number_field.php';
-		require_once EDD_QUADERNO_PLUGIN_DIR . 'includes/business_name_field.php';
+		require_once EDD_QUADERNO_PLUGIN_DIR . 'includes/tax_id_field.php';
+		require_once EDD_QUADERNO_PLUGIN_DIR . 'includes/required_fields.php';
+		require_once EDD_QUADERNO_PLUGIN_DIR . 'includes/settings.php';
 		require_once EDD_QUADERNO_PLUGIN_DIR . 'includes/scripts.php';
 		require_once EDD_QUADERNO_PLUGIN_DIR . 'includes/taxes.php';
 		require_once EDD_QUADERNO_PLUGIN_DIR . 'includes/invoices.php';

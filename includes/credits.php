@@ -85,6 +85,7 @@ function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
 			'country' => $payment->address['country'],
 			'email' => $payment->email,
 			'vat_number' => $metadata['vat_number'],
+			'tax_id' => $metadata['tax_id'],
 			'processor' => 'edd',
 			'processor_id' => $payment->customer_id
 		);
