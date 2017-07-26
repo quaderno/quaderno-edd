@@ -68,5 +68,5 @@ jQuery(document).ready(function($) {
       }
     });
   }
-  
+
 });
