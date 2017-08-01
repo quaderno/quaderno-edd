@@ -70,6 +70,7 @@ If you have any questions please get in touch with us at hello@quaderno.io.
 = 1.13 =
 * New: Tax ID field 
 * New: Billing address is required
+* New: Compatibility with EDD 2.8
 
 = 1.12 =
 * Always show business name field
