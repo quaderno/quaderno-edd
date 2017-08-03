@@ -20,7 +20,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 function edd_quaderno_purchase_form_required_fields( $required_fields ) {
   global $edd_options;
 
-  if ( !isset( $edd_options['edd_quaderno_threshold'] ) || edd_get_cart_total() >= intval( $edd_options['edd_quaderno_threshold'] ) ) {
+  $cart_total = edd_get_cart_total();
+
+  if ( !isset( $edd_options['edd_quaderno_threshold'] ) || $cart_total != 0 || $cart_total >= intval( $edd_options['edd_quaderno_threshold'] ) ) {
     $required_fields['card_address'] = array(   
       'error_id' => 'invalid_card_address',
       'error_message' => __( 'Please enter your billing address.', 'edd_quaderno' )
@@ -43,7 +45,14 @@ add_filter( 'edd_purchase_form_required_fields', 'edd_quaderno_purchase_form_req
 function edd_quaderno_validate_required_fields( $data ) {
   global $edd_options;
 
-	if (  $_POST['billing_country'] != edd_get_shop_country() || !isset( $edd_options['edd_quaderno_threshold'] ) || edd_get_cart_total() >= intval( $edd_options['edd_quaderno_threshold'] ) ) {
+  $cart_total = edd_get_cart_total();
+
+  // free downloads
+  if ( $cart_total == 0 ) {
+    return;
+  }
+
+	if (  $_POST['billing_country'] != edd_get_shop_country() || !isset( $edd_options['edd_quaderno_threshold'] ) || $cart_total >= intval( $edd_options['edd_quaderno_threshold'] ) ) {
 
     if ( empty( $_POST['card_address'] ) )
       edd_set_error( 'invalid_card_address', esc_html__( 'Please enter your billing address', 'edd_quaderno' ));

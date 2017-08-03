@@ -37,7 +37,14 @@ add_action('edd_cc_billing_bottom', 'edd_quaderno_add_tax_id', 100);
 */
 function edd_quaderno_validate_tax_id( $data ) {
   $countries = array('BE', 'DE', 'ES', 'IT');
-	if (  in_array( $_POST['billing_country'], $countries ) && isset( $edd_options['edd_quaderno_threshold'] ) && edd_get_cart_total() >= intval( $edd_options['edd_quaderno_threshold'] ) && empty( $_POST['edd_tax_id'] ) ) {
+  $cart_total = edd_get_cart_total();
+
+  // free downloads
+  if ( $cart_total == 0 ) {
+    return;
+  }
+
+	if (  in_array( $_POST['billing_country'], $countries ) && isset( $edd_options['edd_quaderno_threshold'] ) && $cart_total >= intval( $edd_options['edd_quaderno_threshold'] ) && empty( $_POST['edd_tax_id'] ) ) {
 		edd_set_error( 'invalid_tax_id', esc_html__('Please enter your Tax ID', 'edd_quaderno') );
 	}
 }
