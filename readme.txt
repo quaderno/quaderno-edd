@@ -4,7 +4,7 @@ Contributors: polimorfico
 Tags: edd, easydigitaldownloads, easy digital downloads, quaderno, vat, gst, sales tax, vatmoss, vat moss, tax, billing, invoices, receipts, credit notes
 Requires at least: 3.7
 Tested up to: 4.8
-Stable tag: 1.13.3
+Stable tag: 1.13.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -72,6 +72,7 @@ If you have any questions please get in touch with us at hello@quaderno.io.
 * New: Billing address is required
 * New: Compatibility with EDD 2.8
 * New: Update Quaderno API version
+* Fix: Error at delivering receipts
 
 = 1.12 =
 * Always show business name field

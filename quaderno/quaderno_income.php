@@ -16,14 +16,14 @@ class QuadernoIncome extends QuadernoDocument {
 	static protected $model = 'income';
 
 	public function deliver() {
-	  $invoice = unserialize(sprintf(
-              'O:%d:"%s"%s',
-              strlen('QuadernoInvoice'),
-              'QuadernoInvoice',
-              strstr(strstr(serialize($this), '"'), ':')
-              ));
+	  $document = unserialize(sprintf(
+      'O:%d:"%s"%s',
+      strlen('Quaderno'. $this->type),
+      'Quaderno' . $this->type,
+      strstr(strstr(serialize($this), '"'), ':')
+      ));
 
-		return $invoice->execDeliver();
+		return $document->execDeliver();
 	}
 
 }
