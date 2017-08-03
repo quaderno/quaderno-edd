@@ -20,6 +20,7 @@ class QuadernoRequest {
 	private $password = 'foo';
 	private $content_type = 'application/json';
 	private $api_url = 'https://quadernoapp.com/api/v1/';
+	private $api_version = '20170628';
 	private $request_methods = null;
 	private $request_endpoint = null;
 	private $request_body = null;
@@ -58,7 +59,8 @@ class QuadernoRequest {
   	  'method' => $this->http_method,
   	  'headers' => array(
   	    'Authorization' => 'Basic ' . base64_encode( $this->username . ':' . $this->password ),
-  	    'Content-Type' => $this->content_type
+  	    'Content-Type' => $this->content_type,
+  	    'Accept' => 'application/json; api_version=' . $this->api_version
   	  ),
   	  'timeout' => 70,
       'sslverify' => false

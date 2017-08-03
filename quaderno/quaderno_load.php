@@ -23,6 +23,7 @@ require_once $quaderno_script_path.'quaderno_class.php';
 require_once $quaderno_script_path.'quaderno_model.php';
 require_once $quaderno_script_path.'quaderno_contact.php';
 require_once $quaderno_script_path.'quaderno_document.php';
+require_once $quaderno_script_path.'quaderno_income.php';
 require_once $quaderno_script_path.'quaderno_receipt.php';
 require_once $quaderno_script_path.'quaderno_invoice.php';
 require_once $quaderno_script_path.'quaderno_credit.php';
