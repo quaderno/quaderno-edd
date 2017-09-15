@@ -55,7 +55,11 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 	$customer = new EDD_Customer( $payment->customer_id );
 	$contact_id = $customer->get_meta( '_quaderno_contact' );
 	if ( !empty( $contact_id ) ) {
-		$invoice_params['contact_id'] = $contact_id;
+		$invoice_params['contact'] = array(
+			'id' => $contact_id,
+			'vat_number' => $metadata['vat_number']
+		);
+
 	} else {
 		if ( !empty( $metadata['business_name'] ) ) {
 			$kind = 'company';
@@ -92,15 +96,17 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 	$invoice = new QuadernoIncome($invoice_params);
 
 	// Add the invoice item
-	$item = new QuadernoDocumentItem(array(
-		'description' => array_reduce($payment->cart_details, 'get_cart_descriptions'),
-		'quantity' => 1,
-		'total_amount' => $payment->total,
-		'tax_1_name' => $tax->name,
-		'tax_1_rate' => $tax->rate,
-		'tax_1_country' => $tax->country
-	));
-	$invoice->addItem( $item );
+	foreach ( $payment->cart_details as $cart_item ) {
+		$item = new QuadernoDocumentItem(array(
+			'description' => $cart_item['name'],
+			'quantity' => $cart_item['quantity'],
+			'total_amount' => $cart_item['price'],
+			'tax_1_name' => $tax->name,
+			'tax_1_rate' => $tax->rate,
+			'tax_1_country' => $tax->country
+		));
+		$invoice->addItem( $item );
+	}
 
 	// Save the invoice and the location evidences
 	if ( $invoice->save() ) {
