@@ -108,6 +108,19 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 		$invoice->addItem( $item );
 	}
 
+	// Add gateway fees
+	foreach ( $payment->fees as $fee ) {
+		$item = new QuadernoDocumentItem(array(
+			'description' => $fee['label'],
+			'quantity' => 1,
+			'unit_price' => $fee['amount'],
+			'tax_1_name' => $tax->name,
+			'tax_1_rate' => $tax->rate,
+			'tax_1_country' => $tax->country
+		));
+		$invoice->addItem( $item );
+	}	
+
 	// Save the invoice and the location evidences
 	if ( $invoice->save() ) {
 		$payment->update_meta( '_quaderno_invoice_id', $invoice->id );
