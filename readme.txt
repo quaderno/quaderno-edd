@@ -4,7 +4,7 @@ Contributors: polimorfico
 Tags: edd, easydigitaldownloads, easy digital downloads, quaderno, vat, gst, sales tax, vatmoss, vat moss, tax, billing, invoices, receipts, credit notes
 Requires at least: 3.7
 Tested up to: 4.8
-Stable tag: 1.15.0
+Stable tag: 1.15.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -69,6 +69,7 @@ If you have any questions please get in touch with us at hello@quaderno.io.
 
 = 1.15 =
 * New: Support for gateway fees
+* Fix: Error when you apply a 100% off discount
 
 = 1.14 =
 * New: Add an item per cart detail

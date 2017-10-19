@@ -22,7 +22,7 @@ function edd_quaderno_purchase_form_required_fields( $required_fields ) {
 
   $cart_total = edd_get_cart_total();
 
-  if ( !isset( $edd_options['edd_quaderno_threshold'] ) || $cart_total != 0 || $cart_total >= intval( $edd_options['edd_quaderno_threshold'] ) ) {
+  if ( $cart_total != 0 || $cart_total > intval( $edd_options['edd_quaderno_threshold'] ) ) {
     $required_fields['card_address'] = array(   
       'error_id' => 'invalid_card_address',
       'error_message' => __( 'Please enter your billing address.', 'edd_quaderno' )
@@ -52,7 +52,7 @@ function edd_quaderno_validate_required_fields( $data ) {
     return;
   }
 
-	if (  $_POST['billing_country'] != edd_get_shop_country() || !isset( $edd_options['edd_quaderno_threshold'] ) || $cart_total >= intval( $edd_options['edd_quaderno_threshold'] ) ) {
+	if (  $_POST['billing_country'] != edd_get_shop_country() || $cart_total > intval( $edd_options['edd_quaderno_threshold'] ) ) {
 
     if ( empty( $_POST['card_address'] ) )
       edd_set_error( 'invalid_card_address', esc_html__( 'Please enter your billing address', 'edd_quaderno' ));
