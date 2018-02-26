@@ -25,7 +25,7 @@ function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
 		return;
 	}
 
-	if( 'refunded' != $new_status ) {
+	if( 'refunded' != $new_status && 'edd_subscription' != $new_status ) {
 		return;
 	}
 

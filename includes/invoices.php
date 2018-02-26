@@ -57,6 +57,11 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 	if ( !empty( $contact_id ) ) {
 		$invoice_params['contact'] = array(
 			'id' => $contact_id,
+			'street_line_1' => $payment->address['line1'] ?: '',
+			'street_line_2' => $payment->address['line2'] ?: '',
+			'city' => $payment->address['city'],
+			'postal_code' => $payment->address['zip'],
+			'region' => $payment->address['state'],
 			'vat_number' => $metadata['vat_number']
 		);
 
@@ -97,8 +102,14 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 
 	// Add the invoice item
 	foreach ( $payment->cart_details as $cart_item ) {
+		$product_name = $cart_item['name'];
+		$price_id = edd_get_cart_item_price_id( $cart_item );
+		if ( edd_has_variable_prices( $cart_item['id'] ) && ! is_null( $price_id ) ) {
+			$product_name .= ' - ' . edd_get_price_option_name( $cart_item['id'], $price_id, $payment->transaction_id );
+		}
+
 		$item = new QuadernoDocumentItem(array(
-			'description' => $cart_item['name'],
+			'description' => $product_name,
 			'quantity' => $cart_item['quantity'],
 			'total_amount' => $cart_item['price'],
 			'tax_1_name' => $tax->name,
