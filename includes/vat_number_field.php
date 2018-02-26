@@ -21,8 +21,8 @@ function edd_quaderno_add_vat_number() {
 	ob_start(); 
 	?>
 	<p id="edd_vat_number_wrap">
-		<label for="edd_vat_number" class="edd-label"><?php esc_html_e( 'VAT Number', 'edd_quaderno' ); ?></label>
-		<span class="edd-description"><?php esc_html_e( 'Enter your VAT number including country identifier e.g. GB123456788', 'edd_quaderno' ); ?></span>
+		<label for="edd_vat_number" class="edd-label"><?php esc_html_e( 'VAT Number', 'edd-quaderno' ); ?></label>
+		<span class="edd-description"><?php esc_html_e( 'Enter your VAT number including country identifier e.g. GB123456788', 'edd-quaderno' ); ?></span>
 		<input type="text" name="edd_vat_number" id="edd_vat_number" class="vat-number edd-input" />
 		<input type="hidden" name="edd_shop_country" id="edd_shop_country" value="<?php echo edd_get_shop_country(); ?>" />
 	</p>
@@ -52,7 +52,7 @@ function edd_quaderno_validate_vat_number( $data ) {
 		}
 
 		if ( $valid_number != 1 ) {
-			edd_set_error( 'invalid_vat_number', esc_html__('VAT Number is not valid', 'edd_quaderno') );
+			edd_set_error( 'invalid_vat_number', esc_html__('VAT Number is not valid', 'edd-quaderno') );
 		}
 	}
 }
@@ -83,7 +83,7 @@ function edd_quaderno_show_vat_number($payment_id) {
 	?>
 	<div class="edd-order-payment edd-admin-box-inside">
 		<p>
-			<span class="label"><?php _e( 'VAT Number', 'edd_quaderno' ); ?>:</span>&nbsp;
+			<span class="label"><?php _e( 'VAT Number', 'edd-quaderno' ); ?>:</span>&nbsp;
 			<input name="vat_number" type="text" class="med-text" value="<?php echo $payment->meta['vat_number'] ?>"/>
 		</p>
 	</div>

@@ -21,7 +21,7 @@ function edd_quaderno_add_tax_id() {
 	ob_start(); 
 	?>
 	<p id="edd_tax_id_wrap">
-		<label for="edd_tax_id" class="edd-label"><?php esc_html_e( 'Tax ID', 'edd_quaderno' ); ?></label>
+		<label for="edd_tax_id" class="edd-label"><?php esc_html_e( 'Tax ID', 'edd-quaderno' ); ?></label>
 		<input type="text" name="edd_tax_id" id="edd_tax_id" class="vat-number edd-input" />
 	</p>
 	<?php
@@ -45,7 +45,7 @@ function edd_quaderno_validate_tax_id( $data ) {
   }
 
 	if (  in_array( $_POST['billing_country'], $countries ) && isset( $edd_options['edd_quaderno_threshold'] ) && $cart_total >= intval( $edd_options['edd_quaderno_threshold'] ) && empty( $_POST['edd_tax_id'] ) ) {
-		edd_set_error( 'invalid_tax_id', esc_html__('Please enter your Tax ID', 'edd_quaderno') );
+		edd_set_error( 'invalid_tax_id', esc_html__('Please enter your Tax ID', 'edd-quaderno') );
 	}
 }
 add_action('edd_checkout_error_checks', 'edd_quaderno_validate_tax_id', 100);
@@ -75,7 +75,7 @@ function edd_quaderno_show_tax_id($payment_id) {
 	?>
 	<div class="edd-order-payment edd-admin-box-inside">
 		<p>
-			<span class="label"><?php _e( 'Tax ID', 'edd_quaderno' ); ?>:</span>&nbsp;
+			<span class="label"><?php _e( 'Tax ID', 'edd-quaderno' ); ?>:</span>&nbsp;
 			<input name="tax_id" type="text" class="med-text" value="<?php echo $payment->meta['tax_id'] ?>"/>
 		</p>
 	</div>

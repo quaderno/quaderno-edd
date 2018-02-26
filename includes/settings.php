@@ -34,26 +34,26 @@ function edd_quaderno_settings( $settings ) {
 		'quaderno' => array(
 			'edd_quaderno_token' => array(
 				'id'   => 'edd_quaderno_token',
-				'name' => esc_html__( 'Private key', 'edd_quaderno' ),
-				'desc' => esc_html__( 'Get this key from your Quaderno account', 'edd_quaderno' ),
+				'name' => esc_html__( 'Private key', 'edd-quaderno' ),
+				'desc' => esc_html__( 'Get this key from your Quaderno account', 'edd-quaderno' ),
 				'type' => 'text'
 			),
 			'edd_quaderno_url' => array(
 				'id'   => 'edd_quaderno_url',
-				'name' => esc_html__( 'API URL', 'edd_quaderno' ),
-				'desc' => esc_html__( 'Get this URL from your Quaderno account', 'edd_quaderno' ),
+				'name' => esc_html__( 'API URL', 'edd-quaderno' ),
+				'desc' => esc_html__( 'Get this URL from your Quaderno account', 'edd-quaderno' ),
 				'type' => 'text'
 			),
 			'edd_quaderno_threshold' => array(
 				'id'   => 'edd_quaderno_threshold',
-				'name' => esc_html__( 'Receipts threshold', 'edd_quaderno' ),
-				'desc' => esc_html__( 'All sales under this threshold will generate a sales receipt, instead of an invoice', 'edd_quaderno' ),
+				'name' => esc_html__( 'Receipts threshold', 'edd-quaderno' ),
+				'desc' => esc_html__( 'All sales under this threshold will generate a sales receipt, instead of an invoice', 'edd-quaderno' ),
 				'type' => 'text'
 			),
 			'autosend_receipts' => array(
 				'id'   => 'autosend_receipts',
-				'name' => esc_html__( 'Autosend documents', 'edd_quaderno' ),
-				'desc' => esc_html__( 'Check this to automatically send your sales receipts and invoices', 'edd_quaderno' ),
+				'name' => esc_html__( 'Autosend documents', 'edd-quaderno' ),
+				'desc' => esc_html__( 'Check this to automatically send your sales receipts and invoices', 'edd-quaderno' ),
 				'type' => 'checkbox'
 			)
 		)
@@ -87,7 +87,7 @@ function edd_quaderno_get_upload_dir() {
 * @return array $links
 */
 function edd_quaderno_plugin_action_links( $links, $file ) {
-	$settings_link = '<a href="'.admin_url( 'edit.php?post_type=download&page=edd-settings&tab=quaderno' ).'">'.esc_html__( 'Settings', 'edd_quaderno' ).'</a>';
+	$settings_link = '<a href="'.admin_url( 'edit.php?post_type=download&page=edd-settings&tab=quaderno' ).'">'.esc_html__( 'Settings', 'edd-quaderno' ).'</a>';
 	if ( $file == 'edd-quaderno/edd-quaderno.php' )
 		array_unshift( $links, $settings_link );
 
@@ -96,7 +96,7 @@ function edd_quaderno_plugin_action_links( $links, $file ) {
 add_filter( 'plugin_action_links', 'edd_quaderno_plugin_action_links', 10, 2 );
 
 function edd_quaderno_meta_links( $links, $file ) {
-	$settings_link = '<a href="https://quadernoapp.com/signup" target="_blank">'.esc_html__( 'Create a Quaderno account', 'edd_quaderno' ).'</a>';
+	$settings_link = '<a href="https://quadernoapp.com/signup" target="_blank">'.esc_html__( 'Create a Quaderno account', 'edd-quaderno' ).'</a>';
 	if ( $file == 'edd-quaderno/edd-quaderno.php' )
 		array_push( $links, $settings_link );
 
@@ -114,7 +114,7 @@ function edd_quaderno_admin_messages() {
 	if (!get_option('edd_quaderno_notice_shown') && is_plugin_active('edd-quaderno/edd-quaderno.php'))
 	{
 		$html = '<div class="updated"><p>';
-		$html .= esc_html__( 'Don\'t you have a Quaderno account? Create a new one <a href="https://quadernoapp.com/signup" target="_blank">on this page</a>.', 'edd_quaderno' );
+		$html .= esc_html__( 'Don\'t you have a Quaderno account? Create a new one <a href="https://quadernoapp.com/signup" target="_blank">on this page</a>.', 'edd-quaderno' );
 		$html .= '</p></div>';
 	  echo $html;
 		

@@ -76,7 +76,7 @@ class QuadernoRequest {
 
 		// Process errors
 		if ( is_wp_error($this->response) ) {
-			$this->error_message = __( 'There was a problem connecting to the API.', 'edd_quaderno' );
+			$this->error_message = __( 'There was a problem connecting to the API.', 'edd-quaderno' );
 			$this->response = null;
 			return false;
 		}
