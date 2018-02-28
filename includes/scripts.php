@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 * @return void
 */
 function edd_quaderno_load_scripts() {
-	$js_version = '1.10';
+	$js_version = '1.11';
 	$js_dir = EDD_QUADERNO_PLUGIN_URL . 'assets/js/';
 
 	/* Use minified libraries if SCRIPT_DEBUG is turned off */

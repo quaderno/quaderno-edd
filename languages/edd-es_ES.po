@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: EDD Quaderno\n"
-"POT-Creation-Date: 2017-02-24 14:07-0000\n"
-"PO-Revision-Date: 2017-03-02 16:19-0000\n"
+"POT-Creation-Date: 2018-02-28 20:07-0000\n"
+"PO-Revision-Date: 2018-02-28 20:07-0000\n"
 "Last-Translator:  <hello@quaderno.io>\n"
 "Language-Team: Quaderno <hello@quaderno.io>\n"
 "Language: es\n"
@@ -15,21 +15,21 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e;esc_html__\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../includes/business_name_field.php:24
-msgid "Company name (optional)"
-msgstr "Nombre de la empresa (opcional)"
-
-#: ../includes/business_name_field.php:25
-msgid "Only if this is a business purchase"
-msgstr "Solo si quieres factura a nombre de empresa"
-
-#: ../includes/business_name_field.php:40
+#: ../includes/business_name_field.php:41
 msgid "Please enter your company name"
 msgstr "Por favor, introduce el nombre de tu empresa"
 
-#: ../includes/business_name_field.php:66
+#: ../includes/business_name_field.php:67
 msgid "Company name"
 msgstr "Nombre de la empresa"
+
+#: ../includes/required_fields.php:28 ../includes/required_fields.php:58
+msgid "Please enter your billing address"
+msgstr "Por favor, introduce tu dirección de facturación"
+
+#: ../includes/required_fields.php:61
+msgid "Please enter your billing city"
+msgstr "Por favor, introduce tu ciudad"
 
 #: ../includes/settings.php:37
 msgid "Private key"
@@ -48,25 +48,24 @@ msgid "Get this URL from your Quaderno account"
 msgstr "Consigue esta URL en tu cuenta Quaderno"
 
 #: ../includes/settings.php:49
-msgid "Receipts threshold"
-msgstr "Límite para recibos"
+msgid "Show Tax ID"
+msgstr "Mostrar NIF"
 
 #: ../includes/settings.php:50
 msgid ""
-"All sales under this threshold will generate a sales receipt, instead of an "
-"invoice"
+"Additional tax number that is mandatory in some countries. This is not the "
+"EU VAT number"
 msgstr ""
-"Todas las ventas por debajo de este límite generarán un recibo, en lugar de "
-"una factura"
+"Número de identificación fiscal que es obligatorio en algunos países. No se "
+"trata del número de operador intracomunitario. "
 
 #: ../includes/settings.php:55
 msgid "Autosend documents"
 msgstr "Autoenviar documentos"
 
 #: ../includes/settings.php:56
-msgid "Check this to automatically send your sales receipts and invoices"
-msgstr ""
-"Selecciona esta opción para enviar automáticamente tus recibos y facturas"
+msgid "Send automatically your sales receipts to your customers"
+msgstr "Enviar automáticamente tus facturas a tus clientes"
 
 #: ../includes/settings.php:90
 msgid "Settings"
@@ -84,21 +83,47 @@ msgstr ""
 "¿Todavía no tienes una cuenta Quaderno? Crear una nueva cuenta en <a href="
 "\"https://quadernoapp.com/signup\" target=\"_blank\">esta página</a>."
 
-#: ../includes/vat_number_field.php:24 ../includes/vat_number_field.php:81
-msgid "VAT Number"
-msgstr "Número de operador intracomunitario"
+#: ../includes/tax_id_field.php:58
+msgid "Please enter your Tax ID"
+msgstr "Por favor, introduce tu NIF"
 
-#: ../includes/vat_number_field.php:25
-msgid "Enter your VAT number including country identifier e.g. GB123456788"
-msgstr "Incluye el prefijo de tu país p.e. ES12345678"
+#: ../includes/tax_id_field.php:88
+msgid "Tax ID"
+msgstr "NIF"
 
-#: ../includes/vat_number_field.php:54
+#: ../includes/vat_number_field.php:55
 msgid "VAT Number is not valid"
 msgstr "El número de operador intracomunitario no es válido"
 
-#: ../quaderno/quaderno_request.php:77
+#: ../includes/vat_number_field.php:86
+msgid "VAT Number"
+msgstr "Número de operador intracomunitario"
+
+#: ../quaderno/quaderno_request.php:79
 msgid "There was a problem connecting to the API."
 msgstr "Hubo un problema en la conexión con la API."
+
+#~ msgid "Please enter your billing address."
+#~ msgstr "Por favor, introduce tu dirección de facturación"
+
+#~ msgid "Company name (optional)"
+#~ msgstr "Nombre de la empresa (opcional)"
+
+#~ msgid "Only if this is a business purchase"
+#~ msgstr "Solo si quieres factura a nombre de empresa"
+
+#~ msgid "Receipts threshold"
+#~ msgstr "Límite para recibos"
+
+#~ msgid ""
+#~ "All sales under this threshold will generate a sales receipt, instead of "
+#~ "an invoice"
+#~ msgstr ""
+#~ "Todas las ventas por debajo de este límite generarán un recibo, en lugar "
+#~ "de una factura"
+
+#~ msgid "Enter your VAT number including country identifier e.g. GB123456788"
+#~ msgstr "Incluye el prefijo de tu país p.e. ES12345678"
 
 #~ msgid "Business name"
 #~ msgstr "Nombre de la empresa"

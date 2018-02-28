@@ -1,7 +1,6 @@
 jQuery(document).ready(function($) {
   var $form = $('#edd_purchase_form');
   var eu_countries = ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'ES', 'FI', 'FR', 'DE', 'GB', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'SE'];
-  var tax_id_countries = ['BE', 'DE', 'ES', 'IT'];
 
   // Show VAT Number & Tax ID
   $form.on('change', '#billing_country', function(e) {
@@ -12,7 +11,7 @@ jQuery(document).ready(function($) {
 	    $('#edd_vat_number_wrap').show();
 	  }
 
-	  if ( $(this).val() == $('#edd_shop_country').val() && $.inArray($(this).val(), tax_id_countries) != -1 ) {
+	  if ( $('#edd_tax_id').length > 0 && $(this).val() == $('#edd_shop_country').val() ) {
 	    $('#edd_tax_id_wrap').show();
 	  } else {
 	    $('#edd_tax_id_wrap').hide();

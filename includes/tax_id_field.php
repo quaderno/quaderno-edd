@@ -18,11 +18,20 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 * @return mixed|void
 */
 function edd_quaderno_add_tax_id() {
+  global $edd_options;
+
+	if ( !isset( $edd_options['show_tax_id'] ) ) {
+		return;
+	}
+
 	ob_start(); 
 	?>
 	<p id="edd_tax_id_wrap">
-		<label for="edd_tax_id" class="edd-label"><?php esc_html_e( 'Tax ID', 'edd-quaderno' ); ?></label>
-		<input type="text" name="edd_tax_id" id="edd_tax_id" class="vat-number edd-input" />
+		<label for="edd_tax_id" class="edd-label">
+			<?php esc_html_e( 'Tax ID', 'edd-quaderno' ); ?>
+			<span class="edd-required-indicator">*</span>
+		</label>
+		<input type="text" name="edd_tax_id" id="edd_tax_id" class="vat-number edd-input required" />
 	</p>
 	<?php
 	echo ob_get_clean();
@@ -36,7 +45,8 @@ add_action('edd_cc_billing_bottom', 'edd_quaderno_add_tax_id', 100);
 * @return mixed|void
 */
 function edd_quaderno_validate_tax_id( $data ) {
-  $countries = array('BE', 'DE', 'ES', 'IT');
+  global $edd_options;
+
   $cart_total = edd_get_cart_total();
 
   // free downloads
@@ -44,7 +54,7 @@ function edd_quaderno_validate_tax_id( $data ) {
     return;
   }
 
-	if (  in_array( $_POST['billing_country'], $countries ) && isset( $edd_options['edd_quaderno_threshold'] ) && $cart_total >= intval( $edd_options['edd_quaderno_threshold'] ) && empty( $_POST['edd_tax_id'] ) ) {
+	if ( isset( $edd_options['show_tax_id'] ) && empty( $_POST['edd_tax_id'] ) ) {
 		edd_set_error( 'invalid_tax_id', esc_html__('Please enter your Tax ID', 'edd-quaderno') );
 	}
 }

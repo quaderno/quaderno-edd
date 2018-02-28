@@ -21,11 +21,11 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
 	global $edd_options;
 
-	if( 'publish' != $old_status && 'revoked' != $old_status && 'inherit' != $old_status ) {
+	if( 'publish' != $old_status && 'revoked' != $old_status && 'inherit' != $old_status && 'edd_subscription' != $old_status ) {
 		return;
 	}
 
-	if( 'refunded' != $new_status && 'edd_subscription' != $new_status ) {
+	if( 'refunded' != $new_status ) {
 		return;
 	}
 
@@ -58,7 +58,10 @@ function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
 	$customer = new EDD_Customer( $payment->customer_id );
 	$contact_id = $customer->get_meta( '_quaderno_contact' );
 	if ( !empty( $contact_id ) ) {
-		$credit_params['contact_id'] = $contact_id;
+		$credit_params['contact'] = array(
+			'id' => $contact_id
+		);
+
 	} else {
 		if ( !empty( $metadata['business_name'] ) ) {
 			$kind = 'company';
@@ -95,15 +98,33 @@ function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
   $credit = new QuadernoCredit($credit_params);
 
 	// Add the credit item
-	$item = new QuadernoDocumentItem(array(
-		'description' => array_reduce($payment->cart_details, 'get_cart_descriptions'),
-		'quantity' => 1,
-		'total_amount' => $payment->total,
-		'tax_1_name' => $tax->name,
-		'tax_1_rate' => $tax->rate,
-		'tax_1_country' => $tax->country
-	));
-	$credit->addItem( $item );
+	foreach ( $payment->cart_details as $cart_item ) {
+		$product_name = $cart_item['name'];
+
+		// Check if the item is a product variant
+		$price_id = edd_get_cart_item_price_id( $cart_item );
+		if ( edd_has_variable_prices( $cart_item['id'] ) && ! is_null( $price_id ) ) {
+			$product_name .= ' - ' . edd_get_price_option_name( $cart_item['id'], $price_id, $payment->transaction_id );
+		}
+
+		// Calculate discount rate (if it exists)
+    $discount_rate = 0;
+		if ( $cart_item['discount'] > 0 ) {
+			$discount_rate = $cart_item['discount'] / $cart_item['subtotal'] * 100;
+		}
+
+		$item = new QuadernoDocumentItem(array(
+			'description' => $product_name,
+			'quantity' => $cart_item['quantity'],
+      'discount_rate' => $discount_rate,
+			'total_amount' => $cart_item['price'],
+			'tax_1_name' => $tax->name,
+			'tax_1_rate' => $tax->rate,
+			'tax_1_country' => $tax->country
+		));
+
+		$credit->addItem( $item );
+	}
 
 	// Save the credit
 	if ( $credit->save() ) {

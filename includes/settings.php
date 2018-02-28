@@ -44,16 +44,16 @@ function edd_quaderno_settings( $settings ) {
 				'desc' => esc_html__( 'Get this URL from your Quaderno account', 'edd-quaderno' ),
 				'type' => 'text'
 			),
-			'edd_quaderno_threshold' => array(
-				'id'   => 'edd_quaderno_threshold',
-				'name' => esc_html__( 'Receipts threshold', 'edd-quaderno' ),
-				'desc' => esc_html__( 'All sales under this threshold will generate a sales receipt, instead of an invoice', 'edd-quaderno' ),
-				'type' => 'text'
+			'show_tax_id' => array(
+				'id'   => 'show_tax_id',
+				'name' => esc_html__( 'Show Tax ID', 'edd-quaderno' ),
+				'desc' => esc_html__( 'Additional tax number that is mandatory in some countries. This is not the EU VAT number', 'edd-quaderno' ),
+				'type' => 'checkbox'
 			),
 			'autosend_receipts' => array(
 				'id'   => 'autosend_receipts',
 				'name' => esc_html__( 'Autosend documents', 'edd-quaderno' ),
-				'desc' => esc_html__( 'Check this to automatically send your sales receipts and invoices', 'edd-quaderno' ),
+				'desc' => esc_html__( 'Send automatically your sales receipts to your customers', 'edd-quaderno' ),
 				'type' => 'checkbox'
 			)
 		)

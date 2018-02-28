@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: EDD Quaderno\n"
-"POT-Creation-Date: 2017-02-24 14:07-0000\n"
-"PO-Revision-Date: 2017-02-24 14:08-0000\n"
+"POT-Creation-Date: 2018-02-28 20:07-0000\n"
+"PO-Revision-Date: 2018-02-28 20:07-0000\n"
 "Last-Translator:  <hello@quaderno.io>\n"
 "Language-Team: Quaderno <hello@quaderno.io>\n"
 "Language: en_US\n"
@@ -23,12 +23,20 @@ msgstr ""
 msgid "Only if this is a business purchase"
 msgstr ""
 
-#: ../includes/business_name_field.php:40
+#: ../includes/business_name_field.php:41
 msgid "Please enter your company name"
 msgstr ""
 
-#: ../includes/business_name_field.php:66
+#: ../includes/business_name_field.php:67
 msgid "Company name"
+msgstr ""
+
+#: ../includes/required_fields.php:28 ../includes/required_fields.php:58
+msgid "Please enter your billing address"
+msgstr ""
+
+#: ../includes/required_fields.php:61
+msgid "Please enter your billing city"
 msgstr ""
 
 #: ../includes/settings.php:37
@@ -48,13 +56,13 @@ msgid "Get this URL from your Quaderno account"
 msgstr ""
 
 #: ../includes/settings.php:49
-msgid "Receipts threshold"
+msgid "Show Tax ID"
 msgstr ""
 
 #: ../includes/settings.php:50
 msgid ""
-"All sales under this threshold will generate a sales receipt, instead of an "
-"invoice"
+"Additional tax number that is mandatory in some countries. This is not the "
+"EU VAT number"
 msgstr ""
 
 #: ../includes/settings.php:55
@@ -62,7 +70,7 @@ msgid "Autosend documents"
 msgstr ""
 
 #: ../includes/settings.php:56
-msgid "Check this to automatically send your sales receipts and invoices"
+msgid "Send automatically your sales receipts to your customers"
 msgstr ""
 
 #: ../includes/settings.php:90
@@ -79,7 +87,15 @@ msgid ""
 "quadernoapp.com/signup\" target=\"_blank\">on this page</a>."
 msgstr ""
 
-#: ../includes/vat_number_field.php:24 ../includes/vat_number_field.php:81
+#: ../includes/tax_id_field.php:31 ../includes/tax_id_field.php:88
+msgid "Tax ID"
+msgstr ""
+
+#: ../includes/tax_id_field.php:58
+msgid "Please enter your Tax ID"
+msgstr ""
+
+#: ../includes/vat_number_field.php:24 ../includes/vat_number_field.php:86
 msgid "VAT Number"
 msgstr ""
 
@@ -87,10 +103,10 @@ msgstr ""
 msgid "Enter your VAT number including country identifier e.g. GB123456788"
 msgstr ""
 
-#: ../includes/vat_number_field.php:54
+#: ../includes/vat_number_field.php:55
 msgid "VAT Number is not valid"
 msgstr ""
 
-#: ../quaderno/quaderno_request.php:77
+#: ../quaderno/quaderno_request.php:79
 msgid "There was a problem connecting to the API."
 msgstr ""

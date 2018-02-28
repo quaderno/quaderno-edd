@@ -103,14 +103,23 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 	// Add the invoice item
 	foreach ( $payment->cart_details as $cart_item ) {
 		$product_name = $cart_item['name'];
+
+		// Check if the item is a product variant
 		$price_id = edd_get_cart_item_price_id( $cart_item );
 		if ( edd_has_variable_prices( $cart_item['id'] ) && ! is_null( $price_id ) ) {
 			$product_name .= ' - ' . edd_get_price_option_name( $cart_item['id'], $price_id, $payment->transaction_id );
 		}
 
+		// Calculate discount rate (if it exists)
+    $discount_rate = 0;
+		if ( $cart_item['discount'] > 0 ) {
+			$discount_rate = $cart_item['discount'] / $cart_item['subtotal'] * 100;
+		}
+
 		$item = new QuadernoDocumentItem(array(
 			'description' => $product_name,
 			'quantity' => $cart_item['quantity'],
+      'discount_rate' => $discount_rate,
 			'total_amount' => $cart_item['price'],
 			'tax_1_name' => $tax->name,
 			'tax_1_rate' => $tax->rate,

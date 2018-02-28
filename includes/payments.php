@@ -17,18 +17,27 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * @param $order_id
  */
 function get_quaderno_payment_method( $gateway ) {
-	$method = '';
-	switch( $gateway ) {
-		case 'manual':
-			$method = 'cash';
-			break;
-		case 'paypal':
-			$method = 'paypal';
-			break;
-		default:
-			$method = 'credit_card';
-	}
-	return $method;
+  $method = '';
+  switch( $gateway ) {
+    case 'manual':
+      $method = 'cash';
+      break;
+    case 'stripe':
+      $method = 'credit_card';
+      break;
+    case 'braintree':
+      $method = 'credit_card';
+      break;
+    case 'paypal':
+      $method = 'paypal';
+      break;
+    default:
+      $method = 'other';
+  }
+ 
+  $method = apply_filters( 'quaderno_payment_method', $method, $gateway );
+ 
+  return $method;
 }
 
 ?>
