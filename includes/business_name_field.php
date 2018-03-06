@@ -50,7 +50,9 @@ add_action('edd_checkout_error_checks', 'edd_quaderno_validate_business_name', 1
 * @return mixed|void
 */
 function edd_quaderno_store_business_name( $payment_meta ) {
-	$payment_meta['business_name'] = isset($_POST['edd_business_name']) ? filter_var( $_POST['edd_business_name'], FILTER_SANITIZE_STRING ) : '';
+	if ( empty($payment_meta['business_name']) ) {
+		$payment_meta['business_name'] = isset($_POST['edd_business_name']) ? filter_var( $_POST['edd_business_name'], FILTER_SANITIZE_STRING ) : '';
+	}
 	return $payment_meta;
 }
 add_filter('edd_payment_meta', 'edd_quaderno_store_business_name', 100);

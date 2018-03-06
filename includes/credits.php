@@ -129,6 +129,7 @@ function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
 	// Save the credit
 	if ( $credit->save() ) {
 		$payment->update_meta( '_quaderno_credit_id', $credit->id );
+		$payment->add_note( 'Quaderno Credit: <br>' . $credit->permalink );
 		$customer->add_meta( '_quaderno_contact', $credit->contact->id );
 
 		// Send the credit

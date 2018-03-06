@@ -144,6 +144,7 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 	// Save the invoice and the location evidences
 	if ( $invoice->save() ) {
 		$payment->update_meta( '_quaderno_invoice_id', $invoice->id );
+		$payment->add_note( 'Quaderno Receipt: <br>' . $invoice->permalink );
 		$customer->add_meta( '_quaderno_contact', $invoice->contact->id );
 
 		// Save the location evidence
