@@ -14,6 +14,8 @@ Quaderno replaces and improves the default Easy Digital Downloads receipts. Setu
 
 Quaderno for EDD automatically sends beautiful invoices, sales receipts, and credit notes that comply with local rules in US, Canada, Australia, New Zealand, Singapore, and the European Union.
 
+https://www.youtube.com/watch?v=6PV7Ue3PoPc
+
 = What you would experience =
 
 * Automatically send **beautiful invoices and sales receipts** with every order in your store.
