@@ -48,7 +48,8 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 		'notes' => $tax->notes,
 		'processor' => 'edd',
 		'processor_id' => $payment_id,
-		'payment_method' => get_quaderno_payment_method( $payment->gateway )
+		'payment_method' => get_quaderno_payment_method( $payment->gateway ),
+		'evidence_attributes' => array( 'billing_country' => $payment->address['country'], 'ip_address' => $payment->ip )
 	);
 
 	// Add the contact
@@ -147,14 +148,6 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 		$payment->update_meta( '_quaderno_url', $invoice->permalink );
 		$customer->add_meta( '_quaderno_contact', $invoice->contact->id );
 		$payment->add_note( 'Receipt created on Quaderno' );
-
-		// Save the location evidence
-		$evidence = new QuadernoEvidence(array(
-			'document_id' => $invoice->id,
-			'billing_country' => $payment->address['country'],
-			'ip_address' => $payment->ip
-		));
-		$evidence->save();
 
 		// Send the invoice
 		if ( isset( $edd_options['autosend_receipts'] ) ) {
