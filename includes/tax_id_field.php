@@ -81,12 +81,11 @@ add_filter('edd_payment_meta', 'edd_quaderno_store_tax_id', 100);
 * @return mixed|void
 */
 function edd_quaderno_show_tax_id($payment_id) {
-	$payment = new EDD_Payment($payment_id);
 	?>
 	<div class="edd-order-payment edd-admin-box-inside">
 		<p>
 			<span class="label"><?php _e( 'Tax ID', 'edd-quaderno' ); ?>:</span>&nbsp;
-			<input name="tax_id" type="text" class="med-text" value="<?php echo $payment->meta['tax_id'] ?>"/>
+			<input name="tax_id" type="text" class="med-text" value="<?php echo edd_get_payment_meta($payment_id, 'tax_id') ?>"/>
 		</p>
 	</div>
 	<?php
