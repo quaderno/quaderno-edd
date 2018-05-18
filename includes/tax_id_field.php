@@ -81,11 +81,12 @@ add_filter('edd_payment_meta', 'edd_quaderno_store_tax_id', 100);
 * @return mixed|void
 */
 function edd_quaderno_show_tax_id($payment_id) {
+  $payment = new EDD_Payment( $payment_id );
 	?>
 	<div class="edd-order-payment edd-admin-box-inside">
 		<p>
 			<span class="label"><?php _e( 'Tax ID', 'edd-quaderno' ); ?>:</span>&nbsp;
-			<input name="tax_id" type="text" class="med-text" value="<?php echo edd_get_payment_meta($payment_id, 'tax_id') ?>"/>
+			<input name="tax_id" type="text" class="med-text" value="<?php echo $payment->get_meta( 'tax_id', true ) ?>"/>
 		</p>
 	</div>
 	<?php
@@ -99,8 +100,8 @@ add_action('edd_view_order_details_totals_after', 'edd_quaderno_show_tax_id', 10
 * @return mixed|void
 */
 function edd_quaderno_update_tax_id( $payment_id ) {
-	$payment = new EDD_Payment( $payment_id );
-	$payment->update_meta('tax_id', isset($_POST['tax_id']) ? filter_var( $_POST['tax_id'], FILTER_SANITIZE_STRING ) : '');
+  $payment = new EDD_Payment( $payment_id );
+  $payment->update_meta( 'tax_id', isset($_POST['tax_id']) ? filter_var( $_POST['tax_id'], FILTER_SANITIZE_STRING ) : '' );
 }
 add_action('edd_update_edited_purchase', 'edd_quaderno_update_tax_id', 100);
 

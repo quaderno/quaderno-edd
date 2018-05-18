@@ -34,14 +34,32 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 	if ( !empty( $invoice_id ) ) {
 		return;
 	}
+
+	if ( $parent_id != 0 ) {
+		// if this is a recurring payment, we use metadata from the original payment
+		$parent = new EDD_Payment( $parent_id );
+		
+		$parent_metadata = $payment->get_meta();
+		$payment->update_meta( 'vat_number', $parent_metadata['vat_number'] );
+		$payment->update_meta( 'tax_id', $parent_metadata['tax_id'] );
+		$payment->update_meta( 'business_name', $parent_metadata['business_name'] );
+
+		$ip_address = $parent->ip;
+	} else {
+		$ip_address = $payment->ip;		
+	}
+
+	// Get metadata
+	$metadata = $payment->get_meta();
+	$vat_number = $metadata['vat_number'];
+	$tax_id = $metadata['tax_id'];
+	$business_name = $metadata['business_name'];
 	
 	// Get the taxes
-	$metadata = $payment->get_meta();
-	$tax = edd_quaderno_tax( $payment->address['country'], $payment->address['zip'], $metadata['vat_number'] );
+	$tax = edd_quaderno_tax( $payment->address['country'], $payment->address['zip'], $vat_number );
 
 	// Add the invoice params
 	$invoice_params = array(
-		'issue_date' => $payment->date,
 		'currency' => $payment->currency,
 		'po_number' => $payment->number,
 		'interval_count' => $payment->parent_payment == 0 ? '0' : '1',
@@ -49,7 +67,7 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 		'processor' => 'edd',
 		'processor_id' => $payment_id,
 		'payment_method' => get_quaderno_payment_method( $payment->gateway ),
-		'evidence_attributes' => array( 'billing_country' => $payment->address['country'], 'ip_address' => $payment->ip )
+		'evidence_attributes' => array( 'billing_country' => $payment->address['country'], 'ip_address' => $ip_address )
 	);
 
 	// Add the contact
@@ -63,13 +81,13 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 			'city' => $payment->address['city'],
 			'postal_code' => $payment->address['zip'],
 			'region' => $payment->address['state'],
-			'vat_number' => $metadata['vat_number']
+			'vat_number' => $vat_number
 		);
 
 	} else {
-		if ( !empty( $metadata['business_name'] ) ) {
+		if ( !empty( $business_name ) ) {
 			$kind = 'company';
-			$first_name = $metadata['business_name'];
+			$first_name = $business_name;
 			$last_name = '';
 			$contact_name = implode( ' ', array($payment->first_name, $payment->last_name) );
 		} else {
@@ -91,8 +109,8 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 			'region' => $payment->address['state'],
 			'country' => $payment->address['country'],
 			'email' => $payment->email,
-			'vat_number' => $metadata['vat_number'],
-			'tax_id' => $metadata['tax_id'],
+			'vat_number' => $vat_number,
+			'tax_id' => $tax_id,
 			'processor' => 'edd',
 			'processor_id' => $payment->customer_id
 		);
