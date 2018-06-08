@@ -87,7 +87,7 @@ function edd_quaderno_show_tax_id($payment_id) {
 	<div class="edd-order-payment edd-admin-box-inside">
 		<p>
 			<span class="label"><?php _e( 'Tax ID', 'edd-quaderno' ); ?>:</span>&nbsp;
-			<input name="edd_tax_id" type="text" class="med-text" value="<?php echo $payment_meta['tax_id'] ?? '' ?>"/>
+			<input name="edd_tax_id" type="text" class="med-text" value="<?php echo $payment_meta['tax_id'] ?: '' ?>"/>
 		</p>
 	</div>
 	<?php
