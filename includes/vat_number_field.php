@@ -85,7 +85,7 @@ function edd_quaderno_show_vat_number($payment_id) {
 	<div class="edd-order-payment edd-admin-box-inside">
 		<p>
 			<span class="label"><?php _e( 'VAT Number', 'edd-quaderno' ); ?>:</span>&nbsp;
-			<input name="edd_vat_number" type="text" class="med-text" value="<?php echo $payment_meta['vat_number'] ?: '' ?>"/>
+			<input name="edd_vat_number" type="text" class="med-text" value="<?php echo isset( $payment_meta['vat_number'] )  ? $payment_meta['vat_number'] : '' ?>"/>
 		</p>
 	</div>
 	<?php

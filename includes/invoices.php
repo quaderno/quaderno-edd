@@ -39,10 +39,13 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 		// if this is a recurring payment, we use metadata from the original payment
 		$parent = new EDD_Payment( $parent_id );
 		
-		$parent_metadata = $payment->get_meta();
-		$payment->update_meta( 'vat_number', $parent_metadata['vat_number'] );
-		$payment->update_meta( 'tax_id', $parent_metadata['tax_id'] );
-		$payment->update_meta( 'business_name', $parent_metadata['business_name'] );
+		$parent_metadata = $parent->get_meta();
+		$payment->update_meta( '_edd_payment_meta', array( 
+			'vat_number' => $parent_metadata['vat_number'], 
+			'tax_id' => $parent_metadata['tax_id'], 
+			'business_name' => $parent_metadata['business_name']) 
+		);
+		$payment->save();
 
 		$ip_address = $parent->ip;
 	} else {
