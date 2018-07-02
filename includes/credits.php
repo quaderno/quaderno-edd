@@ -50,7 +50,7 @@ function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
 		'interval_count' => $payment->parent_payment == 0 ? '0' : '1',
 		'notes' => $tax->notes,
 		'processor' => 'edd',
-		'processor_id' => $payment_id,
+		'processor_id' => time() . '_' . $payment_id,
 		'payment_method' => get_quaderno_payment_method( $payment->gateway )
 	);
 

@@ -54,9 +54,9 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 
 	// Get metadata
 	$metadata = $payment->get_meta();
-	$vat_number = $metadata['vat_number'];
-	$tax_id = $metadata['tax_id'];
-	$business_name = $metadata['business_name'];
+	$vat_number = isset( $metadata['vat_number'] ) ? $metadata['vat_number'] : '';
+	$tax_id = isset( $metadata['tax_id'] ) ? $metadata['tax_id'] : '';
+	$business_name = isset( $metadata['business_name'] ) ? $metadata['business_name'] : '';
 	
 	// Get the taxes
 	$tax = edd_quaderno_tax( $payment->address['country'], $payment->address['zip'], $vat_number );
@@ -68,7 +68,7 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 		'interval_count' => $payment->parent_payment == 0 ? '0' : '1',
 		'notes' => $tax->notes,
 		'processor' => 'edd',
-		'processor_id' => $payment_id,
+		'processor_id' => time() . '_' . $payment_id,
 		'payment_method' => get_quaderno_payment_method( $payment->gateway ),
 		'evidence_attributes' => array( 'billing_country' => $payment->address['country'], 'ip_address' => $ip_address )
 	);
