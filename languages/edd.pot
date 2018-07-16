@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: EDD Quaderno\n"
-"POT-Creation-Date: 2018-07-16 17:11+0300\n"
+"POT-Creation-Date: 2018-07-16 18:03+0300\n"
 "PO-Revision-Date: 2018-02-28 20:07-0000\n"
 "Last-Translator: hello@quaderno.io\n"
 "Language-Team: Quaderno <hello@quaderno.io>\n"
@@ -32,12 +32,20 @@ msgstr ""
 msgid "Company name"
 msgstr ""
 
-#: ../includes/order_details.php:26
-msgid "Quaderno URL:"
+#: ../includes/order_details.php:27
+msgid "Quaderno Invoice"
 msgstr ""
 
-#: ../includes/order_details.php:29
+#: ../includes/order_details.php:30
 msgid "View"
+msgstr ""
+
+#: ../includes/purchase_history.php:23
+msgid "Invoices"
+msgstr ""
+
+#: ../includes/purchase_history.php:42
+msgid "View Invoice"
 msgstr ""
 
 #: ../includes/required_fields.php:28 ../includes/required_fields.php:58

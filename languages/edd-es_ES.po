@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: EDD Quaderno\n"
-"POT-Creation-Date: 2018-07-16 17:11+0300\n"
-"PO-Revision-Date: 2018-07-16 17:16+0300\n"
+"POT-Creation-Date: 2018-07-16 18:04+0300\n"
+"PO-Revision-Date: 2018-07-16 18:04+0300\n"
 "Last-Translator: hello@quaderno.io\n"
 "Language-Team: Quaderno <hello@quaderno.io>\n"
 "Language: es\n"
@@ -22,6 +22,14 @@ msgstr "Por favor, introduce el nombre de tu empresa"
 #: ../includes/business_name_field.php:69
 msgid "Company name"
 msgstr "Nombre de la empresa"
+
+#: ../includes/purchase_history.php:23
+msgid "Invoices"
+msgstr "Facturas"
+
+#: ../includes/purchase_history.php:42
+msgid "View Invoice"
+msgstr "Ver factura"
 
 #: ../includes/required_fields.php:28 ../includes/required_fields.php:58
 msgid "Please enter your billing address"
