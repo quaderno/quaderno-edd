@@ -4,7 +4,7 @@ Contributors: polimorfico
 Tags: edd, easydigitaldownloads, easy digital downloads, quaderno, vat, gst, sales tax, vatmoss, vat moss, tax, billing, invoices, receipts, credit notes
 Requires at least: 4.6
 Tested up to: 4.9
-Stable tag: 1.16.11
+Stable tag: 1.16.12
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -63,6 +63,12 @@ If you have any questions please get in touch with us at hello@quaderno.io.
 4. Example of a receipt
 
 == Changelog ==
+
+= 1.16.12 - July 16, 2018 =
+* New: Ask for plugin review
+* Enhacement: Use EDD tax fallback when Quaderno does not return any tax rate
+* Enhacement: Reduce transient time for VAT numbers
+* Enhacement: Use .json extension in all API calls
 
 = 1.16.11 - July 2, 2018 =
 * Fix: Use timestamps as processor ID

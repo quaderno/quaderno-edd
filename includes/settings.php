@@ -123,4 +123,35 @@ function edd_quaderno_admin_messages() {
 }
 add_action( 'admin_notices', 'edd_quaderno_admin_messages' );
 
+function edd_quaderno_review_notice() {
+	global $wpdb;
+
+	$post_count = $wpdb->get_var( "SELECT count(*) FROM " . $wpdb->prefix . "postmeta WHERE meta_key = '_quaderno_invoice_id'" );
+	$user_id = get_current_user_id();
+
+	if ( get_user_meta( $user_id, 'quaderno_review_dismissed' ) || $post_count < 5 ) {
+		return;
+	}
+	?>
+	<div class="notice notice-info">
+  	<p><?php _e( "Awesome, you've been using <strong>EDD Quaderno</strong> for a while.<br>Could you please do me a BIG favor and give a <strong>5-star rating</strong> on WordPress? Just to help us spread the word and boost our motivation.<br><br>Your help is much appreciated. Thank you very much,<br> ~Carlos Hernandez, Founder", 'edd-quaderno' ); ?>
+    </p>
+    <ul>
+        <li><a href="https://wordpress.org/support/plugin/edd-quaderno/reviews/?filter=5#new-post" target="_blank"><?php _e( 'Ok, you deserve it', 'edd-quaderno' ); ?></a></li>
+        <li><a href="?review-dismissed"><?php _e( 'Nope, maybe later', 'edd-quaderno' ); ?></a></li>
+        <li><a href="?review-dismissed"><?php _e( 'I already did it', 'edd-quaderno' ); ?></a></li>
+    </ul>
+  </div>
+<?php
+}
+add_action( 'admin_notices', 'edd_quaderno_review_notice');
+
+function edd_quaderno_review_dismised() {
+	$user_id = get_current_user_id();
+  if ( isset( $_GET['review-dismissed'] ) ) {
+    add_user_meta( $user_id, 'quaderno_review_dismissed', 'true', true );
+  }
+}
+add_action( 'admin_init', 'edd_quaderno_review_dismised' );
+
 ?>
