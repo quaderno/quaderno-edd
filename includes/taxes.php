@@ -58,7 +58,6 @@ function edd_quaderno_tax($country, $postal_code, $vat_number)
 	);
 
 	$slug = 'tax_' . md5( implode( $params ) );
-
 	if ( false === ( $tax = get_transient( $slug ) ) ) {
 		$tax = QuadernoTax::calculate( $params );
 		set_transient( $slug, $tax, WEEK_IN_SECONDS );
@@ -84,7 +83,12 @@ function edd_quaderno_tax_rate($rate, $customer_country, $customer_state)
 	$vat_number = isset($_POST['edd_vat_number']) ? $_POST['edd_vat_number'] : '';
 
 	$tax = edd_quaderno_tax($customer_country, $postal_code, $vat_number);
-	return $tax->rate / 100;
+
+	if ( empty( $tax->name ) ) {
+		return $rate;
+	} else {
+		return $tax->rate / 100;
+	}
 }
 add_filter('edd_tax_rate', 'edd_quaderno_tax_rate', 100, 3);
 
