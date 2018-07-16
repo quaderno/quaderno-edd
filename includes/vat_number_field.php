@@ -48,7 +48,7 @@ function edd_quaderno_validate_vat_number( $data ) {
 
 		if ( false === ( $valid_number = get_transient( $slug ) ) ) {
 			$valid_number = (int) QuadernoTax::validate( $params );
-			set_transient( $slug, $valid_number, 4 * WEEK_IN_SECONDS );
+			set_transient( $slug, $valid_number, DAY_IN_SECONDS );
 		}
 
 		if ( $valid_number != 1 ) {
