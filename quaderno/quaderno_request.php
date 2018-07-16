@@ -43,7 +43,7 @@ class QuadernoRequest {
 
 		// Add the request_endpoint
 		if ( ! is_null( $this->request_endpoint ) && '' != $this->request_endpoint ) {
-			$url .= $this->request_endpoint;
+			$url .= $this->request_endpoint . '.json';
 		}
 
 		// Add the request body if this is a GET request
