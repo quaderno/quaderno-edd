@@ -4,7 +4,7 @@ Contributors: polimorfico
 Tags: edd, easydigitaldownloads, easy digital downloads, quaderno, vat, gst, sales tax, vatmoss, vat moss, tax, billing, invoices, receipts, credit notes
 Requires at least: 4.6
 Tested up to: 4.9
-Stable tag: 1.17.0
+Stable tag: 1.17.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -64,9 +64,14 @@ If you have any questions please get in touch with us at hello@quaderno.io.
 
 == Changelog ==
 
-= 1.16.12 - July 16, 2018 =
+= 1.17.1 - July 25, 2018 =
+* Fix: Error when parent metadata are copied in recurring payments
+
+= 1.17.0 - July 16, 2018 =
 * New: Show a link to invoice in purchase history
 * New: Ask for plugin review
+
+= 1.16.12 - July 16, 2018 =
 * Enhacement: Use EDD tax fallback when Quaderno does not return any tax rate
 * Enhacement: Reduce transient time for VAT numbers
 * Enhacement: Use .json extension in all API calls
