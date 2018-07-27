@@ -40,6 +40,7 @@ jQuery(document).ready(function($) {
 
     var postData = {
       action: 'edd_recalculate_taxes',
+      nonce: jQuery('#edd-checkout-address-fields-nonce').val(),
       edd_vat_number: $form.find('#edd_vat_number').val(),
       card_zip: $form.find('.card-zip').val(),
       billing_country: $form.find('#billing_country').val()
