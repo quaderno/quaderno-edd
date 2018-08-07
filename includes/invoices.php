@@ -71,57 +71,43 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 		'interval_count' => $payment->parent_payment == 0 ? '0' : '1',
 		'notes' => $tax->notes,
 		'processor' => 'edd',
-		'processor_id' => time() . '_' . $payment_id,
+		'processor_id' => strtotime($payment->completed_date) . '_' . $payment_id,
 		'payment_method' => get_quaderno_payment_method( $payment->gateway ),
 		'evidence_attributes' => array( 'billing_country' => $payment->address['country'], 'ip_address' => $ip_address )
 	);
 
 	// Add the contact
 	$customer = new EDD_Customer( $payment->customer_id );
-	$contact_id = $customer->get_meta( '_quaderno_contact' );
-	if ( !empty( $contact_id ) ) {
-		$invoice_params['contact'] = array(
-			'id' => $contact_id,
-			'street_line_1' => $payment->address['line1'] ?: '',
-			'street_line_2' => $payment->address['line2'] ?: '',
-			'city' => $payment->address['city'],
-			'postal_code' => $payment->address['zip'],
-			'region' => $payment->address['state'],
-			'vat_number' => $vat_number
-		);
-
+	if ( !empty( $business_name ) ) {
+		$kind = 'company';
+		$first_name = $business_name;
+		$last_name = '';
+		$contact_name = implode( ' ', array($payment->first_name, $payment->last_name) );
 	} else {
-		if ( !empty( $business_name ) ) {
-			$kind = 'company';
-			$first_name = $business_name;
-			$last_name = '';
-			$contact_name = implode( ' ', array($payment->first_name, $payment->last_name) );
-		} else {
-			$kind = 'person';
-			$first_name = $payment->first_name;
-			$last_name = $payment->last_name;
-			$contact_name = '';
-		}
-
-		$invoice_params['contact'] = array(
-			'kind' => $kind,
-			'first_name' => $first_name ?: 'EDD Customer',
-			'last_name' => $last_name,
-			'contact_name' => $contact_name,
-			'street_line_1' => $payment->address['line1'] ?: '',
-			'street_line_2' => $payment->address['line2'] ?: '',
-			'city' => $payment->address['city'],
-			'postal_code' => $payment->address['zip'],
-			'region' => $payment->address['state'],
-			'country' => $payment->address['country'],
-			'email' => $payment->email,
-			'vat_number' => $vat_number,
-			'tax_id' => $tax_id,
-			'processor' => 'edd',
-			'processor_id' => $payment->customer_id
-		);
+		$kind = 'person';
+		$first_name = $payment->first_name;
+		$last_name = $payment->last_name;
+		$contact_name = '';
 	}
 
+	$invoice_params['contact'] = array(
+		'kind' => $kind,
+		'first_name' => $first_name ?: 'EDD Customer',
+		'last_name' => $last_name,
+		'contact_name' => $contact_name,
+		'street_line_1' => $payment->address['line1'] ?: '',
+		'street_line_2' => $payment->address['line2'] ?: '',
+		'city' => $payment->address['city'],
+		'postal_code' => $payment->address['zip'],
+		'region' => $payment->address['state'],
+		'country' => $payment->address['country'],
+		'email' => $payment->email,
+		'vat_number' => $vat_number,
+		'tax_id' => $tax_id,
+		'processor' => 'edd',
+		'processor_id' => strtotime($customer->date_created) . '_' . $payment->customer_id
+	);
+	
 	// Let's create the invoice
 	$invoice = new QuadernoIncome($invoice_params);
 
@@ -170,7 +156,6 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 	if ( $invoice->save() ) {
 		$payment->update_meta( '_quaderno_invoice_id', $invoice->id );
 		$payment->update_meta( '_quaderno_url', $invoice->permalink );
-		$customer->add_meta( '_quaderno_contact', $invoice->contact->id );
 		$payment->add_note( 'Receipt created on Quaderno' );
 
 		// Send the invoice

@@ -36,12 +36,15 @@ add_action('edd_purchase_history_header_after', 'edd_quaderno_history_header_aft
 function edd_quaderno_history_row_end($payment_id, $payment_meta)
 {
 	$payment = new EDD_Payment($payment_id);
-	ob_start(); 
+	$permalink = $payment->get_meta( '_quaderno_url' );
+	if ( !empty($permalink) ) {
+		ob_start(); 
 ?>
 	<td class="edd_purchase_details">
-		<a href="<?php echo esc_url( $payment->get_meta( '_quaderno_url' ) ); ?>" target="_blank"><?php _e( 'View Invoice', 'edd-quaderno' ); ?></a>
+		<a href="<?php echo esc_url( $permalink ); ?>" target="_blank"><?php _e( 'View Invoice', 'edd-quaderno' ); ?></a>
 	</td>
 <?php
-	echo ob_get_clean();
+		echo ob_get_clean();
+	}
 }
 add_action('edd_purchase_history_row_end', 'edd_quaderno_history_row_end', 10, 2);
