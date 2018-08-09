@@ -14,8 +14,6 @@ Quaderno replaces and improves the default Easy Digital Downloads receipts. Setu
 
 Quaderno for EDD takes taxes off your plate by automatically calculating tax on every sale and following up with beautiful invoices or receipts, no matter where your customer is located. Transactions and invoices processed through Quaderno always comply with ever-changing local tax rules, including in the US, Canada, Australia, New Zealand, Singapore, and the European Union.
 
-https://www.youtube.com/watch?v=bKx-4UMOZEY
-
 = What you get =
 
 * **Automatic invoices, receipts, and credit notes** with every order in your store, in **multiple languages and currencies**.
