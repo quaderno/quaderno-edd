@@ -84,7 +84,7 @@ function edd_quaderno_tax_rate($rate, $customer_country, $customer_state)
 
 	$tax = edd_quaderno_tax($customer_country, $postal_code, $vat_number);
 
-	if ( empty( $tax->name ) ) {
+	if ( empty( $tax->name ) && empty( $tax->notes ) ) {
 		return $rate;
 	} else {
 		return $tax->rate / 100;

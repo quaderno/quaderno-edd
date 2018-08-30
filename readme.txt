@@ -4,7 +4,7 @@ Contributors: polimorfico
 Tags: edd, easydigitaldownloads, easy digital downloads, quaderno, vat, gst, sales tax, vatmoss, vat moss, tax, billing, invoices, receipts, credit notes
 Requires at least: 4.6
 Tested up to: 4.9
-Stable tag: 1.17.6
+Stable tag: 1.17.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -65,6 +65,9 @@ If you have any questions please get in touch with us at hello@quaderno.io.
 4. Example of a receipt
 
 == Changelog ==
+
+= 1.17.7 - August 30, 2018 =
+* Fix: tax rates are not override for valid VAT numbers
 
 = 1.17.6 - August 23, 2018 =
 * Fix: Non admin users can see the review request
