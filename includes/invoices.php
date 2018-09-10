@@ -134,7 +134,8 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 			'total_amount' => $cart_item['price'],
 			'tax_1_name' => $tax->name,
 			'tax_1_rate' => $tax->rate,
-			'tax_1_country' => $tax->country
+			'tax_1_country' => $tax->country,
+			'tax_1_transaction_type' => 'eservice'
 		));
 		$invoice->addItem( $item );
 	}
@@ -147,7 +148,8 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 			'unit_price' => $fee['amount'],
 			'tax_1_name' => $tax->name,
 			'tax_1_rate' => $tax->rate,
-			'tax_1_country' => $tax->country
+			'tax_1_country' => $tax->country,
+			'tax_1_transaction_type' => 'eservice'
 		));
 		$invoice->addItem( $item );
 	}	
