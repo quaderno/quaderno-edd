@@ -120,7 +120,8 @@ function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
 			'total_amount' => $cart_item['price'],
 			'tax_1_name' => $tax->name,
 			'tax_1_rate' => $tax->rate,
-			'tax_1_country' => $tax->country
+			'tax_1_country' => $tax->country,
+			'tax_1_transaction_type' => 'eservice'
 		));
 
 		$credit->addItem( $item );
