@@ -26,9 +26,6 @@ jQuery(document).ready(function($) {
     $('#billing_country').trigger('change');
   });
 
-  // Recalculate taxes on checkout page load
-  if ($form.length > 0) recalculate_taxes();
-
   // Update taxes on checkout page
   $form.on('change', '#edd_vat_number, #billing_country, .card-zip, #card_state', function(e) {
     recalculate_taxes();
