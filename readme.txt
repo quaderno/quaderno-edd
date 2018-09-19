@@ -5,6 +5,8 @@ Tags: edd, easydigitaldownloads, easy digital downloads, quaderno, vat, gst, sal
 Requires at least: 4.6
 Tested up to: 4.9
 Stable tag: 1.18.0
+Stable tag: 1.17.7
+>>>>>>> Fix: tax rates are not override for valid VAT numbers
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
