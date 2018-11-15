@@ -57,7 +57,7 @@ function edd_quaderno_tax($country, $postal_code, $vat_number)
 		'transaction_type' => edd_quaderno_transaction_type()
 	);
 
-	$slug = 'tax_' . md5( implode( $params ) );
+	$slug = 'quaderno_tax_' . md5( implode( $params ) );
 	if ( false === ( $tax = get_transient( $slug ) ) ) {
 		$tax = QuadernoTax::calculate( $params );
 		set_transient( $slug, $tax, WEEK_IN_SECONDS );
