@@ -69,7 +69,7 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 		'currency' => $payment->currency,
 		'po_number' => $payment->number,
 		'interval_count' => $payment->parent_payment == 0 ? '0' : '1',
-		'notes' => $tax->notes,
+		'notes' => apply_filters( 'quaderno_invoice_notes', $tax->notes, $payment, $tax ),
 		'processor' => 'edd',
 		'processor_id' => strtotime($payment->completed_date) . '_' . $payment_id,
 		'payment_method' => get_quaderno_payment_method( $payment->gateway ),
@@ -159,6 +159,8 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 		$payment->update_meta( '_quaderno_invoice_id', $invoice->id );
 		$payment->update_meta( '_quaderno_url', $invoice->permalink );
 		$payment->add_note( 'Receipt created on Quaderno' );
+
+		do_action( 'quaderno_invoice_created', $invoice, $payment );
 
 		// Send the invoice
 		if ( isset( $edd_options['autosend_receipts'] ) ) {
