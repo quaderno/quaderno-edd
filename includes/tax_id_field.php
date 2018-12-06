@@ -54,7 +54,8 @@ function edd_quaderno_validate_tax_id( $data ) {
     return;
   }
 
-	if ( isset( $edd_options['show_tax_id'] ) && empty( $_POST['edd_tax_id'] ) ) {
+  $selected_country = $data['cc_info']['card_country'];
+	if ( isset( $edd_options['show_tax_id'] ) && empty( $_POST['edd_tax_id'] ) && $selected_country == edd_get_shop_country() ) {
 		edd_set_error( 'invalid_tax_id', esc_html__('Please enter your Tax ID', 'edd-quaderno') );
 	}
 }
