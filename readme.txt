@@ -3,8 +3,8 @@ Author URI: http://quaderno.io
 Contributors: polimorfico
 Tags: edd, easydigitaldownloads, easy digital downloads, quaderno, vat, gst, sales tax, vatmoss, vat moss, tax, billing, invoices, receipts, credit notes
 Requires at least: 4.6
-Tested up to: 4.9
-Stable tag: 1.19.0
+Tested up to: 5.0
+Stable tag: 1.19.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -65,6 +65,10 @@ If you have any questions please get in touch with us at hello@quaderno.io.
 4. Example of a receipt
 
 == Changelog ==
+
+= 1.19.1 - December 6, 2018 =
+* Fix: Tax ID should not be required for foreign customers
+* New: support for WordPress 5.0
 
 = 1.19.0 - December 3, 2018 =
 * New: notes filter and invoice/credit action
