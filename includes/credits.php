@@ -48,7 +48,7 @@ function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
 		'currency' => $payment->currency,
 		'po_number' => $payment->number,
 		'interval_count' => $payment->parent_payment == 0 ? '0' : '1',
-		'notes' => $tax->notes,
+		'notes' => apply_filters( 'quaderno_credit_notes', $tax->notes, $payment, $tax ),
 		'processor' => 'edd',
 		'processor_id' => time() . '_' . $payment_id,
 		'payment_method' => get_quaderno_payment_method( $payment->gateway )
@@ -133,6 +133,8 @@ function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
 		$payment->update_meta( '_quaderno_url', $credit->permalink );
 		$customer->add_meta( '_quaderno_contact', $credit->contact->id );
 		$payment->add_note( 'Credit note created on Quaderno' );
+
+		do_action( 'quaderno_credit_created', $credit, $payment );
 
 		// Send the credit
 		if ( isset( $edd_options['autosend_receipts'] ) ) {
