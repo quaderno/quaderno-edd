@@ -35,13 +35,13 @@ function edd_quaderno_settings( $settings ) {
 			'edd_quaderno_token' => array(
 				'id'   => 'edd_quaderno_token',
 				'name' => esc_html__( 'Private key', 'edd-quaderno' ),
-				'desc' => esc_html__( 'Get this key from your Quaderno account', 'edd-quaderno' ),
+				'desc' => '<a href="https://quadernoapp.com/settings/api/" target="_blank">' . esc_html__( 'Get your Quaderno private key', 'edd-quaderno' ) . '</a>',
 				'type' => 'text'
 			),
 			'edd_quaderno_url' => array(
 				'id'   => 'edd_quaderno_url',
 				'name' => esc_html__( 'API URL', 'edd-quaderno' ),
-				'desc' => esc_html__( 'Get this URL from your Quaderno account', 'edd-quaderno' ),
+				'desc' => '<a href="https://quadernoapp.com/settings/api/" target="_blank">' . esc_html__( 'Get your Quaderno API URL', 'edd-quaderno' ) . '</a>',
 				'type' => 'text'
 			),
 			'show_tax_id' => array(
