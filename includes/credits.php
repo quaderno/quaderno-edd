@@ -127,6 +127,8 @@ function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
 		$credit->addItem( $item );
 	}
 
+	do_action( 'quaderno_credit_pre_create', $credit, $payment );
+
 	// Save the credit
 	if ( $credit->save() ) {
 		$payment->update_meta( '_quaderno_credit_id', $credit->id );
