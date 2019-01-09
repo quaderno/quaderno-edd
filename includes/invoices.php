@@ -25,7 +25,8 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 	$payment = new EDD_Payment($payment_id);
 
 	// Return if the invoice total is zero
-	if ( $payment->total == 0 ) {
+	$skip = false; 
+	if ( $payment->total == 0 || apply_filters('quaderno_invoice_skip', $skip, $payment) ) {
 		return;
 	}
 
@@ -153,6 +154,8 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 		));
 		$invoice->addItem( $item );
 	}	
+
+	do_action( 'quaderno_invoice_pre_create', $invoice, $payment );
 
 	// Save the invoice and the location evidences
 	if ( $invoice->save() ) {
