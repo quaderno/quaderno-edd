@@ -51,7 +51,8 @@ function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
 		'notes' => apply_filters( 'quaderno_credit_notes', $tax->notes, $payment, $tax ),
 		'processor' => 'edd',
 		'processor_id' => time() . '_' . $payment_id,
-		'payment_method' => get_quaderno_payment_method( $payment->gateway )
+		'payment_method' => get_quaderno_payment_method( $payment->gateway ),
+		'document_id' => $payment->get_meta( '_quaderno_invoice_id' )
 	);
 
 	// Add the contact

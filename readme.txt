@@ -1,37 +1,37 @@
 === EDD Quaderno ===
-Author URI: http://quaderno.io
+Author URI: https://quaderno.io?utm_source=wordpress&utm_campaign=edd
 Contributors: polimorfico
 Tags: edd, easydigitaldownloads, easy digital downloads, quaderno, vat, gst, sales tax, vatmoss, vat moss, tax, billing, invoices, receipts, credit notes
 Requires at least: 4.6
 Tested up to: 5.0
-Stable tag: 1.20.0
+Stable tag: 1.20.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Quaderno replaces and improves the default Easy Digital Downloads receipts. Setup in less than 5 minutes.
+Automatically calculate tax rates & create instant tax reports for your Easy Digital Downloads store. Setup in less than 5 minutes.
 
 == Description ==
 
-Quaderno for EDD takes taxes off your plate by automatically calculating tax on every sale and following up with beautiful invoices or receipts, no matter where your customer is located. Transactions and invoices processed through Quaderno always comply with ever-changing local tax rules, including in the US, Canada, Australia, New Zealand, Singapore, and the European Union.
+Quaderno for EDD takes taxes off your plate by automatically calculating tax on every sale and following up with beautiful receipts, no matter where your customer is located. Transactions and receipts processed through Quaderno always comply with ever-changing local tax rules, including in the US, Canada, Australia, New Zealand, India, and the European Union.
 
 https://www.youtube.com/watch?v=mGs6SVOr7fU
 
 = What you get =
 
-* **Automatic invoices, receipts, and credit notes** with every order in your store, in **multiple languages and currencies**.
 * **Comply with local tax laws** in countries around the world, including the EU VAT rules for digital goods & services.
-* **100% customizable invoices** to reflect your brand or add a personal touch.
-* **Manage all your invoices and revenue sources** in one easy-to-use dashboard.
-* **Real-time reports of your revenue**. Track profits, losses, and patterns in the data to identify where your business is going strong and where it may need some TLC.
+* **Get notified any time you surpass a tax threshold**, or when a tax rate changes anywhere you sell your products or services. 
+* **Get all the information you need for your tax returns**, at a glance, in mere seconds.
+* **Automatic receipts, invoices, and credit notes** with every order in your store, in **multiple languages and currencies**.
+* **Manage all your revenue sources** in one easy-to-use dashboard.
 
 **Setup in less than 5 minutes**. Fast and easy!
 
 1. Download & activate this plugin
-2. [Sign up](https://quaderno.io/integrations/easy-digital-downloads/) for a Quaderno account
+2. [Sign up](https://quaderno.io/integrations/easy-digital-downloads/?utm_source=wordpress&utm_campaign=edd) for a Quaderno account
 3. Paste your API key in your EDD site
-4. Brand your Quaderno invoices with custom design
+4. That's all!
 
-**Please Note:** this plugin requires both an [Easy Digital Downloads](http://wordpress.org/extend/plugins/easy-digital-downloads/) and [Quaderno](https://quaderno.io/integrations/easy-digital-downloads/) account.
+**Please Note:** this plugin requires a [Quaderno](https://quaderno.io/integrations/easy-digital-downloads/?utm_source=wordpress&utm_campaign=edd) account.
 
 == Installation ==
 
@@ -65,6 +65,9 @@ If you have any questions please get in touch with us at hello@quaderno.io.
 4. Example of a receipt
 
 == Changelog ==
+
+= 1.20.1 - January 14, 2019 =
+* New: Link credit notes to original invoices in Quaderno
 
 = 1.20.0 - January 9, 2019 =
 * New: new hooks
