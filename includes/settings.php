@@ -35,13 +35,13 @@ function edd_quaderno_settings( $settings ) {
 			'edd_quaderno_token' => array(
 				'id'   => 'edd_quaderno_token',
 				'name' => esc_html__( 'Private key', 'edd-quaderno' ),
-				'desc' => '<a href="https://quadernoapp.com/settings/api/" target="_blank">' . esc_html__( 'Get your Quaderno private key', 'edd-quaderno' ) . '</a>',
+				'desc' => '<a href="https://quadernoapp.com/settings/api/?utm_source=wordpress&utm_campaign=edd" target="_blank">' . esc_html__( 'Get your Quaderno private key', 'edd-quaderno' ) . '</a>',
 				'type' => 'text'
 			),
 			'edd_quaderno_url' => array(
 				'id'   => 'edd_quaderno_url',
 				'name' => esc_html__( 'API URL', 'edd-quaderno' ),
-				'desc' => '<a href="https://quadernoapp.com/settings/api/" target="_blank">' . esc_html__( 'Get your Quaderno API URL', 'edd-quaderno' ) . '</a>',
+				'desc' => '<a href="https://quadernoapp.com/settings/api/?utm_source=wordpress&utm_campaign=edd" target="_blank">' . esc_html__( 'Get your Quaderno API URL', 'edd-quaderno' ) . '</a>',
 				'type' => 'text'
 			),
 			'show_tax_id' => array(
@@ -96,7 +96,7 @@ function edd_quaderno_plugin_action_links( $links, $file ) {
 add_filter( 'plugin_action_links', 'edd_quaderno_plugin_action_links', 10, 2 );
 
 function edd_quaderno_meta_links( $links, $file ) {
-	$settings_link = '<a href="https://quadernoapp.com/signup" target="_blank">'.esc_html__( 'Create a Quaderno account', 'edd-quaderno' ).'</a>';
+	$settings_link = '<a href="https://quadernoapp.com/signup?utm_source=wordpress&utm_campaign=edd" target="_blank">'.esc_html__( 'Create a Quaderno account', 'edd-quaderno' ).'</a>';
 	if ( $file == 'edd-quaderno/edd-quaderno.php' )
 		array_push( $links, $settings_link );
 
@@ -114,7 +114,7 @@ function edd_quaderno_admin_messages() {
 	if (!get_option('edd_quaderno_notice_shown') && is_plugin_active('edd-quaderno/edd-quaderno.php'))
 	{
 		$html = '<div class="updated"><p>';
-		$html .= esc_html__( 'Don\'t you have a Quaderno account? Create a new one <a href="https://quadernoapp.com/signup" target="_blank">on this page</a>.', 'edd-quaderno' );
+		$html .= esc_html__( 'Don\'t you have a Quaderno account? Create a new one <a href="https://quadernoapp.com/signup?utm_source=wordpress&utm_campaign=edd" target="_blank">on this page</a>.', 'edd-quaderno' );
 		$html .= '</p></div>';
 	  echo $html;
 		
