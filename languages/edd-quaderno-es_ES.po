@@ -101,10 +101,10 @@ msgstr "Crear una cuenta Quaderno"
 #: ../includes/settings.php:117
 msgid ""
 "Don't you have a Quaderno account? Create a new one <a href=\"https://"
-"quadernoapp.com/signup\" target=\"_blank\">on this page</a>."
+"quadernoapp.com/signup/?utm_source=wordpress&utm_campaign=edd\" target=\"_blank\">on this page</a>."
 msgstr ""
-"¿No tienes una cuenta Quaderno? Crea una nueva cuenta <a href=\"https://"
-"quadernoapp.com/signup\" target=\"_blank\">en esta página</a>."
+"¿Todavía no tienes una cuenta Quaderno? Crear una nueva cuenta en <a href="
+"\"https://quadernoapp.com/signup/?utm_source=wordpress&utm_campaign=edd\" target=\"_blank\">esta página</a>."
 
 #: ../includes/settings.php:137
 msgid ""
