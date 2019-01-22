@@ -1,7 +1,7 @@
 === EDD Quaderno ===
 Author URI: https://quaderno.io?utm_source=wordpress&utm_campaign=edd
 Contributors: polimorfico
-Tags: edd, easydigitaldownloads, easy digital downloads, quaderno, vat, gst, sales tax, vatmoss, vat moss, tax, billing, invoices, receipts, credit notes
+Tags: tax, taxes, sales tax, vat, gst, vatmoss, vat moss, billing, invoices, receipts, credit notes, edd, easydigitaldownloads, easy digital downloads, quaderno
 Requires at least: 4.6
 Tested up to: 5.0
 Stable tag: 1.20.1
