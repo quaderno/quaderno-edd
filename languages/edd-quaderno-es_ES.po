@@ -1,108 +1,110 @@
-#, fuzzy
+# Translation of Plugins - EDD Quaderno - Stable (latest release) in Spanish (Spain)
+# This file is distributed under the same license as the Plugins - EDD Quaderno - Stable (latest release) package.
 msgid ""
 msgstr ""
-"Project-Id-Version: EDD Quaderno\n"
-"POT-Creation-Date: 2019-01-08 23:45+0000\n"
-"PO-Revision-Date: 2018-02-28 20:07-0000\n"
+"Project-Id-Version: Plugins - EDD Quaderno - Stable (latest release)\n"
+"POT-Creation-Date: 2019-01-22 12:41-0000\n"
+"PO-Revision-Date: 2019-01-22 13:02+0000\n"
 "Last-Translator: hello@quaderno.io\n"
-"Language-Team: Quaderno <hello@quaderno.io>\n"
-"Language: en_US\n"
+"Language-Team: \n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2\n"
-"X-Poedit-Basepath: .\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Poedit-KeywordsList: __;_e;esc_html__;esc_html_e\n"
-"X-Poedit-SearchPath-0: ..\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #: ../includes/business_name_field.php:24
 msgid "Company name (optional)"
-msgstr ""
+msgstr "Nombre de la empresa (opcional)"
 
 #: ../includes/business_name_field.php:25
 msgid "Only if this is a business purchase"
-msgstr ""
+msgstr "Solo si es una compra para tu negocio"
 
 #: ../includes/business_name_field.php:41
 msgid "Please enter your company name"
-msgstr ""
+msgstr "Por favor, introduce el nombre de tu empresa"
 
 #: ../includes/business_name_field.php:69
 msgid "Company name"
-msgstr ""
+msgstr "Nombre de la empresa"
 
 #: ../includes/order_details.php:27
 msgid "Quaderno Invoice"
-msgstr ""
+msgstr "Factura Quaderno"
 
 #: ../includes/order_details.php:30
 msgid "View"
-msgstr ""
+msgstr "Ver"
 
 #: ../includes/purchase_history.php:23
 msgid "Invoices"
-msgstr ""
+msgstr "Facturas"
 
 #: ../includes/purchase_history.php:43
 msgid "View Invoice"
-msgstr ""
+msgstr "Ver factura"
 
 #: ../includes/required_fields.php:28 ../includes/required_fields.php:58
 msgid "Please enter your billing address"
-msgstr ""
+msgstr "Por favor, introduce tu dirección"
 
 #: ../includes/required_fields.php:61
 msgid "Please enter your billing city"
-msgstr ""
+msgstr "Por favor, introduce tu ciudad"
 
 #: ../includes/settings.php:37
 msgid "Private key"
-msgstr ""
+msgstr "Clave privada"
 
 #: ../includes/settings.php:38
 msgid "Get your Quaderno private key"
-msgstr ""
+msgstr "Consigue tu clave privada de Quaderno"
 
 #: ../includes/settings.php:43
 msgid "API URL"
-msgstr ""
+msgstr "API URL"
 
 #: ../includes/settings.php:44
 msgid "Get your Quaderno API URL"
-msgstr ""
+msgstr "Consigue tu API URL de Quaderno"
 
 #: ../includes/settings.php:49
 msgid "Show Tax ID"
-msgstr ""
+msgstr "Mostrar NIF"
 
 #: ../includes/settings.php:50
 msgid ""
 "Additional tax number that is mandatory in some countries. This is not the "
 "EU VAT number"
 msgstr ""
+"Número fiscal que es obligatorio en algunos países. No es el VAT Number la "
+"de UE."
 
 #: ../includes/settings.php:55
 msgid "Autosend documents"
-msgstr ""
+msgstr "Enviar documentos automáticamente"
 
 #: ../includes/settings.php:56
 msgid "Send automatically your sales receipts to your customers"
-msgstr ""
+msgstr "Enviar automáticamente tus facturas a tus clientes"
 
 #: ../includes/settings.php:90
 msgid "Settings"
-msgstr ""
+msgstr "Ajustes"
 
 #: ../includes/settings.php:99
 msgid "Create a Quaderno account"
-msgstr ""
+msgstr "Crear una cuenta Quaderno"
 
 #: ../includes/settings.php:117
 msgid ""
 "Don't you have a Quaderno account? Create a new one <a href=\"https://"
 "quadernoapp.com/signup\" target=\"_blank\">on this page</a>."
 msgstr ""
+"¿No tienes una cuenta Quaderno? Crea una nueva cuenta <a href=\"https://"
+"quadernoapp.com/signup\" target=\"_blank\">en esta página</a>."
 
 #: ../includes/settings.php:137
 msgid ""
@@ -112,39 +114,66 @@ msgid ""
 "motivation.<br><br>Your help is much appreciated. Thank you very much,<br> "
 "~Carlos Hernandez, Founder"
 msgstr ""
+"Ya llevas un tiempo usando <strong>EDD Quaderno</strong> y me gustaría "
+"pedirte un pequeño favor.<br>¿Podrías puntuar nuestro plugin en WordPress? "
+"Nos ayudarías a dar de conocer Quaderno y aumentar nuestra motivación."
+"<br><br>Te agradezco mucho tu ayuda. Mucha gracias,<br>Carlos Hernández, "
+"Fundador"
 
 #: ../includes/settings.php:140
 msgid "Ok, you deserve it"
-msgstr ""
+msgstr "¡Por supuesto! Os lo merecéis"
 
 #: ../includes/settings.php:141
 msgid "Nope, maybe later"
-msgstr ""
+msgstr "No, quizás más tarde"
 
 #: ../includes/settings.php:142
 msgid "I already did it"
-msgstr ""
+msgstr "Ya lo hice"
 
 #: ../includes/tax_id_field.php:31 ../includes/tax_id_field.php:90
 msgid "Tax ID"
-msgstr ""
+msgstr "NIF"
 
 #: ../includes/tax_id_field.php:59
 msgid "Please enter your Tax ID"
-msgstr ""
+msgstr "Introduce tu NIF"
 
 #: ../includes/vat_number_field.php:24 ../includes/vat_number_field.php:87
 msgid "VAT Number"
-msgstr ""
+msgstr "Número de operador intracomunitario"
 
 #: ../includes/vat_number_field.php:25
 msgid "Enter your VAT number including country identifier e.g. GB123456788"
-msgstr ""
+msgstr "Introduce tu número de operador intracomunitario (p.e. ES12345678)"
 
 #: ../includes/vat_number_field.php:55
 msgid "VAT Number is not valid"
-msgstr ""
+msgstr "El número de operador intracomunitario no es válido"
 
 #: ../quaderno/quaderno_request.php:79
 msgid "There was a problem connecting to the API."
-msgstr ""
+msgstr "Hubo un problema en la conexión con la API."
+
+#~ msgid "https://quaderno.io/"
+#~ msgstr "https://quaderno.io/"
+
+#~ msgid ""
+#~ "Automatically send customizable sales receipts and invoices with every "
+#~ "order in your Easy Digital Downloads store."
+#~ msgstr ""
+#~ "Envía automáticamente facturas y recibos personalizados para cada pedido "
+#~ "en tu tienda con Easy Digital Downloads."
+
+#~ msgid "https://wordpress.org/plugins/edd-quaderno/"
+#~ msgstr "https://wordpress.org/plugins/edd-quaderno/"
+
+#~ msgid "EDD Quaderno"
+#~ msgstr "EDD Quaderno"
+
+#~ msgid "Get this URL from your Quaderno account"
+#~ msgstr "Consigue esta URL en tu cuenta Quaderno"
+
+#~ msgid "Get this key from your Quaderno account"
+#~ msgstr "Consigue esta clave en tu cuenta Quaderno"

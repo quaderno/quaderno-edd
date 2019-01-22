@@ -4,7 +4,7 @@
  * Plugin Name: EDD Quaderno
  * Plugin URI: https://wordpress.org/plugins/edd-quaderno/
  * Description: Automatically send customizable sales receipts and invoices with every order in your Easy Digital Downloads store.
- * Version: 1.20.1
+ * Version: 1.20.2
  * Author: Quaderno
  * Author URI: https://quaderno.io/
  * License: GPL v3
@@ -35,7 +35,8 @@ final class EDD_Quaderno {
 		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof EDD_Quaderno ) ) {
 			self::$instance = new EDD_Quaderno;
 			self::$instance->setup_constants();
-			self::$instance->includes();
+      self::$instance->includes();
+      self::$instance->load_textdomain();
 		}
 		return self::$instance;
 	}
@@ -74,6 +75,27 @@ final class EDD_Quaderno {
 		require_once EDD_QUADERNO_PLUGIN_DIR . 'includes/purchase_history.php';
 		require_once EDD_QUADERNO_PLUGIN_DIR . 'includes/settings.php';
 	}
+
+  private function load_textdomain() {
+    $lang_dir = plugin_dir_path( __FILE__ ) . '/languages/';
+    $locale = apply_filters( 'plugin_locale', get_locale(), 'edd-quaderno-quaderno' );
+    $mofile = sprintf( '%1$s-%2$s.mo', 'edd-quaderno', $locale );
+
+    /* Setup paths to current locale file */
+    $mofile_global = WP_LANG_DIR . '/edd-quaderno/' . $mofile;
+    $mofile_local = $lang_dir . $mofile;
+
+    if ( file_exists( $mofile_global ) ) {
+      /* Look in global /wp-content/languages/edd-quaderno/ folder */
+      load_textdomain( 'edd-quaderno', $mofile_global );
+    } elseif ( file_exists( $mofile_local ) ) {
+      /* Look in local /wp-content/plugins/edd-quaderno/languages/ folder */
+      load_textdomain( 'edd-quaderno', $mofile_local );
+    } else {
+      /* Load the default language files */
+      load_plugin_textdomain( 'edd-quaderno', false, $lang_dir );
+    }
+  }
 
 }
 endif;
