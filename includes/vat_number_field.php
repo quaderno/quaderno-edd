@@ -47,11 +47,13 @@ function edd_quaderno_validate_vat_number( $data ) {
 		$slug = 'vat_number_' . md5( implode( $params ) );
 
 		if ( false === ( $valid_number = get_transient( $slug ) ) ) {
-			$valid_number = (int) QuadernoTax::validate( $params );
+			$valid_number = QuadernoTax::validate( $params );
 			set_transient( $slug, $valid_number, DAY_IN_SECONDS );
 		}
 
-		if ( $valid_number != 1 ) {
+		if ( $valid_number === null ) {
+			edd_set_error( 'invalid_vat_number', esc_html__('VIES service is down and we cannot validate your VAT Number. Please contact us.', 'edd-quaderno') );
+		} elseif ( $valid_number === false ) {
 			edd_set_error( 'invalid_vat_number', esc_html__('VAT Number is not valid', 'edd-quaderno') );
 		}
 	}
