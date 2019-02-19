@@ -112,6 +112,9 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 	// Let's create the invoice
 	$invoice = new QuadernoIncome($invoice_params);
 
+	// Let's create the tag list
+	$tags = array();
+
 	// Add the invoice item
 	foreach ( $payment->cart_details as $cart_item ) {
 		$product_name = $cart_item['name'];
@@ -139,6 +142,13 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 			'tax_1_transaction_type' => 'eservice'
 		));
 		$invoice->addItem( $item );
+
+		$tags = array_merge( $tags, wp_get_object_terms( $cart_item['id'], 'download_tag', array( 'fields' => 'slugs' ) ) );
+	}
+
+	// Add download tags to credit note
+	if ( count( $tags ) > 0 ) {
+		$invoice->tag_list = implode( ',', $tags );
 	}
 
 	// Add gateway fees
@@ -175,15 +185,3 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 add_action( 'edd_complete_purchase', 'edd_quaderno_create_invoice', 999 );
 add_action( 'edd_recurring_record_payment', 'edd_quaderno_create_invoice', 999, 2 );
 
-// Merge cart items description
-function get_cart_descriptions( $carry, $item ) {
-	if ( is_null($carry) ) {
-		$carry = $item['name'];
-	}
-	else {
-		$carry = $carry . '<br>' . $item['name'];
-	}
-	return $carry;
-}
-
-?>

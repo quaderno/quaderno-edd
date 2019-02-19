@@ -98,6 +98,9 @@ function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
 	// Let's create the credit
   $credit = new QuadernoCredit($credit_params);
 
+	// Let's create the tag list
+	$tags = array();
+
 	// Add the credit item
 	foreach ( $payment->cart_details as $cart_item ) {
 		$product_name = $cart_item['name'];
@@ -126,6 +129,13 @@ function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
 		));
 
 		$credit->addItem( $item );
+
+		$tags = array_merge( $tags, wp_get_object_terms( $cart_item['id'], 'download_tag', array( 'fields' => 'slugs' ) ) );
+	}
+
+	// Add download tags to credit note
+	if ( count( $tags ) > 0 ) {
+		$credit->tag_list = implode( ',', $tags );
 	}
 
 	do_action( 'quaderno_credit_pre_create', $credit, $payment );
