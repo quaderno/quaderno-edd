@@ -4,15 +4,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Plugins - EDD Quaderno - Stable (latest release)\n"
 "POT-Creation-Date: 2019-01-22 12:41-0000\n"
-"PO-Revision-Date: 2019-01-22 12:44-0000\n"
-"Last-Translator:  <hello@quaderno.io>\n"
+"PO-Revision-Date: 2019-01-23 16:36+0000\n"
+"Last-Translator: hello@quaderno.io\n"
 "Language-Team: \n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 1.6.9\n"
+"X-Generator: Poedit 2.2.1\n"
 
 #: ../includes/business_name_field.php:24
 msgid "Company name (optional)"
@@ -24,7 +24,7 @@ msgstr "Nur wenn es sich um einen Geschäftskauf handelt"
 
 #: ../includes/business_name_field.php:41
 msgid "Please enter your company name"
-msgstr "Name der Firma eingeben"
+msgstr "Bitte Firmennamen eingeben"
 
 #: ../includes/business_name_field.php:69
 msgid "Company name"
@@ -32,7 +32,7 @@ msgstr "Firma"
 
 #: ../includes/order_details.php:27
 msgid "Quaderno Invoice"
-msgstr "Quaderno Rechnung"
+msgstr "Quaderno-Rechnung"
 
 #: ../includes/order_details.php:30
 msgid "View"
@@ -48,11 +48,11 @@ msgstr "Rechnung anzeigen"
 
 #: ../includes/required_fields.php:28 ../includes/required_fields.php:58
 msgid "Please enter your billing address"
-msgstr "Adresse eingeben"
+msgstr "Bitte Rechnungsadresse eingeben"
 
 #: ../includes/required_fields.php:61
 msgid "Please enter your billing city"
-msgstr "Ort eingeben"
+msgstr "Bitte Rechnungsort eingeben"
 
 #: ../includes/settings.php:37
 msgid "Private key"
@@ -60,15 +60,15 @@ msgstr "Privater Zugriffsschlüssel"
 
 #: ../includes/settings.php:38
 msgid "Get your Quaderno private key"
-msgstr "Holen Sie sich Ihren privaten Quaderno-Schlüssel"
+msgstr "Hole dir deinen privaten Quaderno-Schlüssel"
 
 #: ../includes/settings.php:43
 msgid "API URL"
-msgstr "API URL"
+msgstr "API-URL"
 
 #: ../includes/settings.php:44
 msgid "Get your Quaderno API URL"
-msgstr "Holen Sie sich Ihre Quaderno-API-URL"
+msgstr "Hole dir deine Quaderno-API-URL"
 
 #: ../includes/settings.php:49
 msgid "Show Tax ID"
@@ -79,7 +79,7 @@ msgid ""
 "Additional tax number that is mandatory in some countries. This is not the "
 "EU VAT number"
 msgstr ""
-"Zusätzliche Steuernummer die in manchen Ländern vorgeschrieben ist. Bitte "
+"Zusätzliche Steuernummer, die in manchen Ländern vorgeschrieben ist. Bitte "
 "beachten: Dies ist nicht die USt-ID"
 
 #: ../includes/settings.php:55
@@ -88,7 +88,7 @@ msgstr "Dokumente automatisch versenden"
 
 #: ../includes/settings.php:56
 msgid "Send automatically your sales receipts to your customers"
-msgstr "Verkaufsbelege automatisch dem Kunden zusenden"
+msgstr "Verkaufsbelege automatisch den Kunden zusenden"
 
 #: ../includes/settings.php:90
 msgid "Settings"
@@ -96,15 +96,15 @@ msgstr "Einstellungen"
 
 #: ../includes/settings.php:99
 msgid "Create a Quaderno account"
-msgstr "Quaderno Konto erstellen"
+msgstr "Quaderno-Konto erstellen"
 
 #: ../includes/settings.php:117
 msgid ""
 "Don't you have a Quaderno account? Create a new one <a href=\"https://"
 "quadernoapp.com/signup\" target=\"_blank\">on this page</a>."
 msgstr ""
-"Du hast noch kein Quaderno Konto? <a href=\"https://quadernoapp.com/signup\" "
-"target=\"_blank\">Erstelle jetzt ein neues Konto</a>."
+"Du hast noch kein Quaderno-Konto? Erstelle jetzt ein Konto <a href=\"https://"
+"quadernoapp.com/signup\" target=\"_blank\">hier</a>."
 
 #: ../includes/settings.php:137
 msgid ""
@@ -114,18 +114,23 @@ msgid ""
 "motivation.<br><br>Your help is much appreciated. Thank you very much,<br> "
 "~Carlos Hernandez, Founder"
 msgstr ""
+"Toll, du benutzt <strong>EDD Quaderno</strong> nun schon seit einiger Zeit."
+"<br>Könntest du mir den Gefallen tun und mich mit <strong>5 Sternen</strong> "
+"bei WordPress bewerten? Das hilft uns, zu mehr Leuten zu gelangen und boomt "
+"unsere Motivation.<br><br>Wir würden uns sehr über deine Hilfe freuen. "
+"Vielen Dank!<br> ~Carlos Hernandez, Flunder"
 
 #: ../includes/settings.php:140
 msgid "Ok, you deserve it"
-msgstr ""
+msgstr "Ok, du verdienst es"
 
 #: ../includes/settings.php:141
 msgid "Nope, maybe later"
-msgstr ""
+msgstr "Nö, vielleicht später"
 
 #: ../includes/settings.php:142
 msgid "I already did it"
-msgstr ""
+msgstr "Ich hab’s schon gemacht"
 
 #: ../includes/tax_id_field.php:31 ../includes/tax_id_field.php:90
 msgid "Tax ID"
@@ -133,19 +138,19 @@ msgstr "Steuernummer"
 
 #: ../includes/tax_id_field.php:59
 msgid "Please enter your Tax ID"
-msgstr "Eingabe der Steuernummer"
+msgstr "Bitte Steuernummer eingeben"
 
 #: ../includes/vat_number_field.php:24 ../includes/vat_number_field.php:87
 msgid "VAT Number"
-msgstr "USt-ID"
+msgstr "USt-IdNr"
 
 #: ../includes/vat_number_field.php:25
 msgid "Enter your VAT number including country identifier e.g. GB123456788"
-msgstr "Eingabe der USt-ID inkl. Länderkennung: z.B. DE123456789"
+msgstr "Bitte die USt-IdNr. inkl. Länderkürzel (z. B. DE123456789) eingeben"
 
 #: ../includes/vat_number_field.php:55
 msgid "VAT Number is not valid"
-msgstr "Die eingegebene USt-ID ist nicht gültig."
+msgstr "Die eingegebene USt-IdNr. ist nicht gültig"
 
 #: ../quaderno/quaderno_request.php:79
 msgid "There was a problem connecting to the API."
