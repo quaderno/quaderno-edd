@@ -74,7 +74,8 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 		'processor' => 'edd',
 		'processor_id' => strtotime($payment->completed_date) . '_' . $payment_id,
 		'payment_method' => get_quaderno_payment_method( $payment->gateway ),
-		'evidence_attributes' => array( 'billing_country' => $payment->address['country'], 'ip_address' => $ip_address )
+		'evidence_attributes' => array( 'billing_country' => $payment->address['country'], 'ip_address' => $ip_address ),
+		'custom_metadata' => array( 'processor_url' => add_query_arg( 'id', $payment_id, admin_url( 'edit.php?post_type=download&page=edd-payment-history&view=view-order-details' ) ) )
 	);
 
 	// Add the contact

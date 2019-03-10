@@ -52,7 +52,8 @@ function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
 		'processor' => 'edd',
 		'processor_id' => time() . '_' . $payment_id,
 		'payment_method' => get_quaderno_payment_method( $payment->gateway ),
-		'document_id' => $payment->get_meta( '_quaderno_invoice_id' )
+		'document_id' => $payment->get_meta( '_quaderno_invoice_id' ),
+		'custom_metadata' => array( 'processor_url' => add_query_arg( 'id', $payment_id, admin_url( 'edit.php?post_type=download&page=edd-payment-history&view=view-order-details' ) ) )
 	);
 
 	// Add the contact
