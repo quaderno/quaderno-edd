@@ -103,7 +103,8 @@ function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
 
 	// Add the credit item
 	foreach ( $payment->cart_details as $cart_item ) {
-		$product_name = $cart_item['name'];
+		$download = new EDD_Download( $cart_item['id'] );
+		$product_name = $download->post_title;
 
 		// Check if the item is a product variant
 		$price_id = edd_get_cart_item_price_id( $cart_item );
@@ -118,6 +119,7 @@ function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
 		}
 
 		$item = new QuadernoDocumentItem(array(
+			'product_code' => $download->post_name,
 			'description' => $product_name,
 			'quantity' => $cart_item['quantity'],
       'discount_rate' => $discount_rate,
