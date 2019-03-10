@@ -117,7 +117,8 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 
 	// Add the invoice item
 	foreach ( $payment->cart_details as $cart_item ) {
-		$product_name = $cart_item['name'];
+		$download = new EDD_Download( $cart_item['id'] );
+		$product_name = $download->post_title;
 
 		// Check if the item is a product variant
 		$price_id = edd_get_cart_item_price_id( $cart_item );
@@ -132,6 +133,7 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 		}
 
 		$item = new QuadernoDocumentItem(array(
+			'product_code' => $download->post_name,
 			'description' => $product_name,
 			'quantity' => $cart_item['quantity'],
       'discount_rate' => $discount_rate,
@@ -141,12 +143,13 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 			'tax_1_country' => $tax->country,
 			'tax_1_transaction_type' => 'eservice'
 		));
+
 		$invoice->addItem( $item );
 
 		$tags = array_merge( $tags, wp_get_object_terms( $cart_item['id'], 'download_tag', array( 'fields' => 'slugs' ) ) );
 	}
 
-	// Add download tags to credit note
+	// Add download tags to invoice
 	if ( count( $tags ) > 0 ) {
 		$invoice->tag_list = implode( ',', $tags );
 	}
