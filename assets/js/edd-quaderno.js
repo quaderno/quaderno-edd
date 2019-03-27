@@ -27,6 +27,7 @@ jQuery(document).ready(function($) {
   });
 
   // Update taxes on checkout page
+  $(document.body).off('change', '#edd_cc_address input[name=card_zip]');
   $form.on('change', '#edd_vat_number, #billing_country, .card-zip, #card_state', function(e) {
     recalculate_taxes();
     return true;
