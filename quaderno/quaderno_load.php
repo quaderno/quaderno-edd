@@ -31,3 +31,4 @@ require_once $quaderno_script_path.'quaderno_document_item.php';
 require_once $quaderno_script_path.'quaderno_payment.php';
 require_once $quaderno_script_path.'quaderno_tax.php';
 require_once $quaderno_script_path.'quaderno_evidence.php';
+require_once $quaderno_script_path.'quaderno_item.php';

@@ -148,6 +148,24 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 		$invoice->addItem( $item );
 
 		$tags = array_merge( $tags, wp_get_object_terms( $cart_item['id'], 'download_tag', array( 'fields' => 'slugs' ) ) );
+
+		// Create product on Quaderno
+		if ( !get_post_meta( $download->get_ID(), '_quaderno_product_id', true ) ) {
+
+			$product = new QuadernoItem(array(
+				'code' => $download->post_name,
+				'name' => $download->post_title,
+				'product_type' => 'good',
+				'unit_cost' => $download->get_price(),
+				'currency' => $payment->currency,
+				'tax_class' => 'eservice',
+				'kind' => !get_post_meta( $download->get_ID(), 'edd_recurring', true ) ? 'one_off' : 'subscription'
+			));
+
+			if ( $product->save() ) {
+				update_post_meta( $download->get_ID(), '_quaderno_product_id', $product->id );
+			}
+		}
 	}
 
 	// Add download tags to invoice
