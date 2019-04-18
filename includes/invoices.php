@@ -207,3 +207,25 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 add_action( 'edd_complete_purchase', 'edd_quaderno_create_invoice', 999 );
 add_action( 'edd_recurring_record_payment', 'edd_quaderno_create_invoice', 999, 2 );
 
+/**
+* Resend invoice
+*
+* @since  1.23
+* @param  array $data Payment Data
+* @return void
+*/
+function edd_quaderno_resend_invoice( $data ) {
+	$payment_id = absint( $data['payment_id'] );
+
+	if( empty( $payment_id ) ) {
+		return;
+	}
+
+	$payment = new EDD_Payment($payment_id);
+	edd_quaderno_create_invoice( $payment_id, $payment->parent_payment );
+
+	wp_redirect( add_query_arg( array( 'edd-message' => 'email_sent', 'edd-action' => false, 'purchase_id' => false ) ) );
+	exit;
+}
+add_action( 'edd_resend_invoice', 'edd_quaderno_resend_invoice');
+

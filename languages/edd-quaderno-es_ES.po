@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plugins - EDD Quaderno - Stable (latest release)\n"
-"POT-Creation-Date: 2019-01-22 12:41-0000\n"
-"PO-Revision-Date: 2019-02-26 14:48+0000\n"
+"POT-Creation-Date: 2019-04-18 22:59+0100\n"
+"PO-Revision-Date: 2019-04-18 23:01+0100\n"
 "Last-Translator: hello@quaderno.io\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.2\n"
 
 #: ../includes/business_name_field.php:24
 msgid "Company name (optional)"
@@ -34,9 +34,13 @@ msgstr "Nombre de la empresa"
 msgid "Quaderno Invoice"
 msgstr "Factura Quaderno"
 
-#: ../includes/order_details.php:30
+#: ../includes/order_details.php:31
 msgid "View"
 msgstr "Ver"
+
+#: ../includes/order_details.php:35
+msgid "Create"
+msgstr "Crear"
 
 #: ../includes/purchase_history.php:23
 msgid "Invoices"
@@ -79,8 +83,8 @@ msgid ""
 "Additional tax number that is mandatory in some countries. This is not the "
 "EU VAT number"
 msgstr ""
-"Número fiscal que es obligatorio en algunos países. No es el VAT Number la "
-"de UE."
+"Número fiscal que es obligatorio en algunos países. No es el número de "
+"operador intracomunitario."
 
 #: ../includes/settings.php:55
 msgid "Autosend documents"
@@ -104,7 +108,8 @@ msgid ""
 "quadernoapp.com/signup/?utm_source=wordpress&utm_campaign=edd\" target=\"_blank\">on this page</a>."
 msgstr ""
 "¿No tienes una cuenta Quaderno? Crea una nueva cuenta <a href=\"https://"
-"quadernoapp.com/signup\" target=\"_blank\">en esta página</a>."
+"quadernoapp.com/signup?utm_source=wordpress&utm_campaign=edd” target="
+"\"_blank\">en esta página</a>."
 
 #: ../includes/settings.php:137
 msgid ""
@@ -140,7 +145,7 @@ msgstr "NIF"
 msgid "Please enter your Tax ID"
 msgstr "Introduce tu NIF"
 
-#: ../includes/vat_number_field.php:24 ../includes/vat_number_field.php:87
+#: ../includes/vat_number_field.php:24 ../includes/vat_number_field.php:89
 msgid "VAT Number"
 msgstr "Número de operador intracomunitario"
 
@@ -149,6 +154,14 @@ msgid "Enter your VAT number including country identifier e.g. GB123456788"
 msgstr "Introduce tu número de operador intracomunitario (p.e. ES12345678)"
 
 #: ../includes/vat_number_field.php:55
+msgid ""
+"VIES service is down and we cannot validate your VAT Number. Please contact "
+"us."
+msgstr ""
+"El servicio VIES está caído y no podemos validar tu número de operador "
+"intracomunitario. Por favor, contacta con nosotros."
+
+#: ../includes/vat_number_field.php:57
 msgid "VAT Number is not valid"
 msgstr "El número de operador intracomunitario no es válido"
 

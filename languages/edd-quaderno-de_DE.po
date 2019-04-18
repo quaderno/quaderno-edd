@@ -33,9 +33,13 @@ msgstr "Firma"
 msgid "Quaderno Invoice"
 msgstr "Quaderno-Rechnung"
 
-#: ../includes/order_details.php:30
+#: ../includes/order_details.php:31
 msgid "View"
 msgstr "Anzeigen"
+
+#: ../includes/order_details.php:35
+msgid "Create"
+msgstr "Erstellen"
 
 #: ../includes/purchase_history.php:23
 msgid "Invoices"
@@ -100,10 +104,12 @@ msgstr "Quaderno-Konto erstellen"
 #: ../includes/settings.php:117
 msgid ""
 "Don't you have a Quaderno account? Create a new one <a href=\"https://"
-"quadernoapp.com/signup\" target=\"_blank\">on this page</a>."
+"quadernoapp.com/signup?utm_source=wordpress&utm_campaign=edd\" target="
+"\"_blank\">on this page</a>."
 msgstr ""
 "Du hast noch kein Quaderno-Konto? Erstelle jetzt ein Konto <a href=\"https://"
-"quadernoapp.com/signup\" target=\"_blank\">hier</a>."
+"quadernoapp.com/signup?utm_source=wordpress&utm_campaign=edd” target=\"_blank"
+"\">hier</a>."
 
 #: ../includes/settings.php:137
 msgid ""
@@ -125,11 +131,11 @@ msgstr "Ok, du verdienst es"
 
 #: ../includes/settings.php:141
 msgid "Nope, maybe later"
-msgstr "Nö, vielleicht später"
+msgstr "Nein, vielleicht später"
 
 #: ../includes/settings.php:142
 msgid "I already did it"
-msgstr "Ich hab’s schon gemacht"
+msgstr "Ich habâs schon gemacht"
 
 #: ../includes/tax_id_field.php:31 ../includes/tax_id_field.php:90
 msgid "Tax ID"
@@ -139,7 +145,7 @@ msgstr "Steuernummer"
 msgid "Please enter your Tax ID"
 msgstr "Bitte Steuernummer eingeben"
 
-#: ../includes/vat_number_field.php:24 ../includes/vat_number_field.php:87
+#: ../includes/vat_number_field.php:24 ../includes/vat_number_field.php:89
 msgid "VAT Number"
 msgstr "USt-IdNr"
 
@@ -148,6 +154,14 @@ msgid "Enter your VAT number including country identifier e.g. GB123456788"
 msgstr "Bitte die USt-IdNr. inkl. Länderkürzel (z. B. DE123456789) eingeben"
 
 #: ../includes/vat_number_field.php:55
+msgid ""
+"VIES service is down and we cannot validate your VAT Number. Please contact "
+"us."
+msgstr ""
+"Der VIES ist inaktiv und wir können Ihre USt-IdNr nicht bestätigen. Bitte "
+"kontaktieren Sie uns."
+
+#: ../includes/vat_number_field.php:57
 msgid "VAT Number is not valid"
 msgstr "Die eingegebene USt-IdNr. ist nicht gültig"
 
@@ -175,4 +189,4 @@ msgstr "Bei der Verbindung mit der API ist ein Problem aufgetreten."
 #~ msgstr "Diese URL findest du in deinem Quaderno Konto"
 
 #~ msgid "Get this key from your Quaderno account"
-#~ msgstr "Diesen Schlüssel findest du in deinem Quaderno Konto"
+#~ msgstr "Diesen SchlÃ¼ssel findest du in deinem Quaderno Konto"
