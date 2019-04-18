@@ -25,9 +25,9 @@ function edd_quaderno_load_scripts() {
 	$suffix = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
 
 	if ( edd_is_checkout() ) {
-		wp_enqueue_script( 'edd-vat_calculator-tax-id', $js_dir . 'edd-quaderno' . $suffix . '.js', array( 'jquery' ), $js_version );
+		wp_enqueue_script( 'edd-vat_calculator-tax-id', $js_dir . 'edd-quaderno' . $suffix . '.js', array( 'jquery' ), $js_version, true);
 	}
 }
-add_action( 'wp_enqueue_scripts', 'edd_quaderno_load_scripts' );
+add_action( 'wp_enqueue_scripts', 'edd_quaderno_load_scripts', 999);
 
 ?>
