@@ -1,16 +1,21 @@
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: EDD Quaderno\n"
+<<<<<<< HEAD:languages/edd-quaderno.pot
 "POT-Creation-Date: 2019-04-18 22:59+0100\n"
 "PO-Revision-Date: 2019-01-22 12:59-0000\n"
 "Last-Translator: hello@quaderno.io\n"
+=======
+"POT-Creation-Date: 2019-01-22 12:59-0000\n"
+"PO-Revision-Date: 2019-01-22 12:59-0000\n"
+"Last-Translator:  <hello@quaderno.io>\n"
+>>>>>>> Translation in German:languages/edd-quaderno.pot
 "Language-Team: Quaderno <hello@quaderno.io>\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2\n"
+"X-Generator: Poedit 1.6.9\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-KeywordsList: __;_e;esc_html__;esc_html_e\n"
