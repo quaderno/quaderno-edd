@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plugins - EDD Quaderno - Stable (latest release)\n"
-"POT-Creation-Date: 2019-04-18 22:59+0100\n"
-"PO-Revision-Date: 2019-04-18 23:01+0100\n"
+"POT-Creation-Date: 2019-07-25 11:51+0200\n"
+"PO-Revision-Date: 2019-07-25 11:53+0200\n"
 "Last-Translator: hello@quaderno.io\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -12,11 +12,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 2.2\n"
+"X-Generator: Poedit 2.2.3\n"
 
 #: ../includes/business_name_field.php:24
-msgid "Company name (optional)"
-msgstr "Nombre de la empresa (opcional)"
+#: ../includes/business_name_field.php:69
+msgid "Company Name"
+msgstr "Nombre empresa"
 
 #: ../includes/business_name_field.php:25
 msgid "Only if this is a business purchase"
@@ -25,10 +26,6 @@ msgstr "Solo si es una compra para tu negocio"
 #: ../includes/business_name_field.php:41
 msgid "Please enter your company name"
 msgstr "Por favor, introduce el nombre de tu empresa"
-
-#: ../includes/business_name_field.php:69
-msgid "Company name"
-msgstr "Nombre de la empresa"
 
 #: ../includes/order_details.php:27
 msgid "Quaderno Invoice"
@@ -75,43 +72,32 @@ msgid "Get your Quaderno API URL"
 msgstr "Consigue tu API URL de Quaderno"
 
 #: ../includes/settings.php:49
-msgid "Show Tax ID"
-msgstr "Mostrar NIF"
-
-#: ../includes/settings.php:50
-msgid ""
-"Additional tax number that is mandatory in some countries. This is not the "
-"EU VAT number"
-msgstr ""
-"Número fiscal que es obligatorio en algunos países. No es el número de "
-"operador intracomunitario."
-
-#: ../includes/settings.php:55
 msgid "Autosend documents"
 msgstr "Enviar documentos automáticamente"
 
-#: ../includes/settings.php:56
+#: ../includes/settings.php:50
 msgid "Send automatically your sales receipts to your customers"
 msgstr "Enviar automáticamente tus facturas a tus clientes"
 
-#: ../includes/settings.php:90
+#: ../includes/settings.php:84
 msgid "Settings"
 msgstr "Ajustes"
 
-#: ../includes/settings.php:99
+#: ../includes/settings.php:93
 msgid "Create a Quaderno account"
 msgstr "Crear una cuenta Quaderno"
 
-#: ../includes/settings.php:117
+#: ../includes/settings.php:111
 msgid ""
 "Don't you have a Quaderno account? Create a new one <a href=\"https://"
-"quadernoapp.com/signup/?utm_source=wordpress&utm_campaign=edd\" target=\"_blank\">on this page</a>."
+"quadernoapp.com/signup?utm_source=wordpress&utm_campaign=edd\" target="
+"\"_blank\">on this page</a>."
 msgstr ""
 "¿No tienes una cuenta Quaderno? Crea una nueva cuenta <a href=\"https://"
-"quadernoapp.com/signup?utm_source=wordpress&utm_campaign=edd” target="
-"\"_blank\">en esta página</a>."
+"quadernoapp.com/signup?utm_source=wordpress&utm_campaign=edd” target=\"_blank"
+"\">en esta página</a>."
 
-#: ../includes/settings.php:137
+#: ../includes/settings.php:131
 msgid ""
 "Awesome, you've been using <strong>EDD Quaderno</strong> for a while."
 "<br>Could you please do me a BIG favor and give a <strong>5-star rating</"
@@ -125,19 +111,19 @@ msgstr ""
 "<br><br>Te agradezco mucho tu ayuda. Mucha gracias,<br>Carlos Hernández, "
 "Fundador"
 
-#: ../includes/settings.php:140
+#: ../includes/settings.php:134
 msgid "Ok, you deserve it"
 msgstr "¡Por supuesto! Os lo merecéis"
 
-#: ../includes/settings.php:141
+#: ../includes/settings.php:135
 msgid "Nope, maybe later"
 msgstr "No, quizás más tarde"
 
-#: ../includes/settings.php:142
+#: ../includes/settings.php:136
 msgid "I already did it"
 msgstr "Ya lo hice"
 
-#: ../includes/tax_id_field.php:31 ../includes/tax_id_field.php:90
+#: ../includes/tax_id_field.php:29 ../includes/tax_id_field.php:90
 msgid "Tax ID"
 msgstr "NIF"
 
@@ -168,6 +154,19 @@ msgstr "El número de operador intracomunitario no es válido"
 #: ../quaderno/quaderno_request.php:79
 msgid "There was a problem connecting to the API."
 msgstr "Hubo un problema en la conexión con la API."
+
+#~ msgid "Company name (optional)"
+#~ msgstr "Nombre de la empresa (opcional)"
+
+#~ msgid "Show Tax ID"
+#~ msgstr "Mostrar NIF"
+
+#~ msgid ""
+#~ "Additional tax number that is mandatory in some countries. This is not "
+#~ "the EU VAT number"
+#~ msgstr ""
+#~ "Número fiscal que es obligatorio en algunos países. No es el número de "
+#~ "operador intracomunitario."
 
 #~ msgid "https://quaderno.io/"
 #~ msgstr "https://quaderno.io/"

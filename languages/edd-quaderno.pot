@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: EDD Quaderno\n"
-"POT-Creation-Date: 2019-04-18 22:59+0100\n"
+"POT-Creation-Date: 2019-07-25 11:51+0200\n"
 "PO-Revision-Date: 2019-01-22 12:59-0000\n"
 "Last-Translator: hello@quaderno.io\n"
 "Language-Team: Quaderno <hello@quaderno.io>\n"
@@ -10,14 +10,15 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2\n"
+"X-Generator: Poedit 2.2.3\n"
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-KeywordsList: __;_e;esc_html__;esc_html_e\n"
 "X-Poedit-SearchPath-0: ..\n"
 
 #: ../includes/business_name_field.php:24
-msgid "Company name (optional)"
+#: ../includes/business_name_field.php:69
+msgid "Company Name"
 msgstr ""
 
 #: ../includes/business_name_field.php:25
@@ -26,10 +27,6 @@ msgstr ""
 
 #: ../includes/business_name_field.php:41
 msgid "Please enter your company name"
-msgstr ""
-
-#: ../includes/business_name_field.php:69
-msgid "Company name"
 msgstr ""
 
 #: ../includes/order_details.php:27
@@ -77,39 +74,29 @@ msgid "Get your Quaderno API URL"
 msgstr ""
 
 #: ../includes/settings.php:49
-msgid "Show Tax ID"
-msgstr ""
-
-#: ../includes/settings.php:50
-msgid ""
-"Additional tax number that is mandatory in some countries. This is not the "
-"EU VAT number"
-msgstr ""
-
-#: ../includes/settings.php:55
 msgid "Autosend documents"
 msgstr ""
 
-#: ../includes/settings.php:56
+#: ../includes/settings.php:50
 msgid "Send automatically your sales receipts to your customers"
 msgstr ""
 
-#: ../includes/settings.php:90
+#: ../includes/settings.php:84
 msgid "Settings"
 msgstr ""
 
-#: ../includes/settings.php:99
+#: ../includes/settings.php:93
 msgid "Create a Quaderno account"
 msgstr ""
 
-#: ../includes/settings.php:117
+#: ../includes/settings.php:111
 msgid ""
 "Don't you have a Quaderno account? Create a new one <a href=\"https://"
 "quadernoapp.com/signup?utm_source=wordpress&utm_campaign=edd\" target="
 "\"_blank\">on this page</a>."
 msgstr ""
 
-#: ../includes/settings.php:137
+#: ../includes/settings.php:131
 msgid ""
 "Awesome, you've been using <strong>EDD Quaderno</strong> for a while."
 "<br>Could you please do me a BIG favor and give a <strong>5-star rating</"
@@ -118,19 +105,19 @@ msgid ""
 "~Carlos Hernandez, Founder"
 msgstr ""
 
-#: ../includes/settings.php:140
+#: ../includes/settings.php:134
 msgid "Ok, you deserve it"
 msgstr ""
 
-#: ../includes/settings.php:141
+#: ../includes/settings.php:135
 msgid "Nope, maybe later"
 msgstr ""
 
-#: ../includes/settings.php:142
+#: ../includes/settings.php:136
 msgid "I already did it"
 msgstr ""
 
-#: ../includes/tax_id_field.php:31 ../includes/tax_id_field.php:90
+#: ../includes/tax_id_field.php:29 ../includes/tax_id_field.php:90
 msgid "Tax ID"
 msgstr ""
 

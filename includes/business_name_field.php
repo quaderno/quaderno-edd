@@ -21,7 +21,7 @@ function edd_quaderno_add_business_name() {
 	ob_start(); 
 	?>
 	<p id="edd_business_name_wrap">
-		<label for="edd_business_name" class="edd-label"><?php esc_html_e( 'Company name (optional)', 'edd-quaderno' ); ?></label>
+		<label for="edd_business_name" class="edd-label"><?php esc_html_e( 'Company Name', 'edd-quaderno' ); ?></label>
 		<span class="edd-description"><?php esc_html_e( 'Only if this is a business purchase', 'edd-quaderno' ); ?></span>
 		<input type="text" name="edd_business_name" id="edd_business_name" class="business-name edd-input" />
 	</p>
@@ -66,7 +66,7 @@ add_filter('edd_payment_meta', 'edd_quaderno_store_business_name', 100);
 function edd_quaderno_show_business_name($payment_meta, $user_info) {
 	$business_name = $payment_meta['business_name'] ?: 'none';
 	?>
-	<p><?php echo esc_html__('Company name', 'edd-quaderno') . ': ' . $business_name; ?></p>
+	<p><?php echo esc_html__('Company Name', 'edd-quaderno') . ': ' . $business_name; ?></p>
 	<?php
 }
 add_action('edd_payment_personal_details_list', 'edd_quaderno_show_business_name', 10, 2);

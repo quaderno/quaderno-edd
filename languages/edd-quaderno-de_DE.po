@@ -3,19 +3,21 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plugins - EDD Quaderno - Stable (latest release)\n"
-"POT-Creation-Date: 2019-01-22 12:41-0000\n"
-"PO-Revision-Date: 2019-02-26 14:45+0000\n"
+"POT-Creation-Date: 2019-07-25 11:51+0200\n"
+"PO-Revision-Date: 2019-07-25 11:54+0200\n"
+"Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 2.2.1\n"
+"X-Generator: Poedit 2.2.3\n"
 
 #: ../includes/business_name_field.php:24
-msgid "Company name (optional)"
-msgstr "Firma (optional)"
+#: ../includes/business_name_field.php:69
+msgid "Company Name"
+msgstr "Firmenname"
 
 #: ../includes/business_name_field.php:25
 msgid "Only if this is a business purchase"
@@ -24,10 +26,6 @@ msgstr "Nur wenn es sich um einen Geschäftskauf handelt"
 #: ../includes/business_name_field.php:41
 msgid "Please enter your company name"
 msgstr "Bitte Firmennamen eingeben"
-
-#: ../includes/business_name_field.php:69
-msgid "Company name"
-msgstr "Firma"
 
 #: ../includes/order_details.php:27
 msgid "Quaderno Invoice"
@@ -74,34 +72,22 @@ msgid "Get your Quaderno API URL"
 msgstr "Hole dir deine Quaderno-API-URL"
 
 #: ../includes/settings.php:49
-msgid "Show Tax ID"
-msgstr "Steuernummer anzeigen"
-
-#: ../includes/settings.php:50
-msgid ""
-"Additional tax number that is mandatory in some countries. This is not the "
-"EU VAT number"
-msgstr ""
-"Zusätzliche Steuernummer, die in manchen Ländern vorgeschrieben ist. Bitte "
-"beachten: Dies ist nicht die USt-ID"
-
-#: ../includes/settings.php:55
 msgid "Autosend documents"
 msgstr "Dokumente automatisch versenden"
 
-#: ../includes/settings.php:56
+#: ../includes/settings.php:50
 msgid "Send automatically your sales receipts to your customers"
 msgstr "Verkaufsbelege automatisch den Kunden zusenden"
 
-#: ../includes/settings.php:90
+#: ../includes/settings.php:84
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: ../includes/settings.php:99
+#: ../includes/settings.php:93
 msgid "Create a Quaderno account"
 msgstr "Quaderno-Konto erstellen"
 
-#: ../includes/settings.php:117
+#: ../includes/settings.php:111
 msgid ""
 "Don't you have a Quaderno account? Create a new one <a href=\"https://"
 "quadernoapp.com/signup?utm_source=wordpress&utm_campaign=edd\" target="
@@ -111,7 +97,7 @@ msgstr ""
 "quadernoapp.com/signup?utm_source=wordpress&utm_campaign=edd” target=\"_blank"
 "\">hier</a>."
 
-#: ../includes/settings.php:137
+#: ../includes/settings.php:131
 msgid ""
 "Awesome, you've been using <strong>EDD Quaderno</strong> for a while."
 "<br>Could you please do me a BIG favor and give a <strong>5-star rating</"
@@ -125,19 +111,19 @@ msgstr ""
 "unsere Motivation.<br><br>Wir würden uns sehr über deine Hilfe freuen. "
 "Vielen Dank!<br> ~Carlos Hernandez, Flunder"
 
-#: ../includes/settings.php:140
+#: ../includes/settings.php:134
 msgid "Ok, you deserve it"
 msgstr "Ok, du verdienst es"
 
-#: ../includes/settings.php:141
+#: ../includes/settings.php:135
 msgid "Nope, maybe later"
 msgstr "Nein, vielleicht später"
 
-#: ../includes/settings.php:142
+#: ../includes/settings.php:136
 msgid "I already did it"
 msgstr "Ich habâs schon gemacht"
 
-#: ../includes/tax_id_field.php:31 ../includes/tax_id_field.php:90
+#: ../includes/tax_id_field.php:29 ../includes/tax_id_field.php:90
 msgid "Tax ID"
 msgstr "Steuernummer"
 
@@ -168,6 +154,19 @@ msgstr "Die eingegebene USt-IdNr. ist nicht gültig"
 #: ../quaderno/quaderno_request.php:79
 msgid "There was a problem connecting to the API."
 msgstr "Bei der Verbindung mit der API ist ein Problem aufgetreten."
+
+#~ msgid "Company name (optional)"
+#~ msgstr "Firma (optional)"
+
+#~ msgid "Show Tax ID"
+#~ msgstr "Steuernummer anzeigen"
+
+#~ msgid ""
+#~ "Additional tax number that is mandatory in some countries. This is not "
+#~ "the EU VAT number"
+#~ msgstr ""
+#~ "Zusätzliche Steuernummer, die in manchen Ländern vorgeschrieben ist. "
+#~ "Bitte beachten: Dies ist nicht die USt-ID"
 
 #~ msgid "https://quaderno.io/"
 #~ msgstr "https://quaderno.io/"
