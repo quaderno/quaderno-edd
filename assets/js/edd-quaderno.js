@@ -6,18 +6,16 @@ jQuery(document).ready(function($) {
   function toggle_tax_id_fields() {
     var $country_select = $('#billing_country');
 
-    if ( $country_select.val() == $('#edd_shop_country').val() || $.inArray($country_select.val(), eu_countries) == -1 ) {
-      $('#edd_vat_number_wrap').hide();
-      $('#edd_vat_number').val('');
-    } else {
-      $('#edd_vat_number_wrap').show();
-    }
-
-    if ( $('#edd_tax_id').length > 0 && $country_select.val() == $('#edd_shop_country').val() ) {
-      $('#edd_tax_id_wrap').show();
-    } else {
-      $('#edd_tax_id_wrap').hide();
-      $('#edd_tax_id').val('');
+    if ( $.inArray($country_select.val(), eu_countries) >= 0 ) {
+      if ( $country_select.val() != $('#edd_shop_country').val() ) {
+        $('#edd_vat_number_wrap').show();
+        $('#edd_tax_id_wrap').hide();
+        $('#edd_tax_id').val('');
+      } else {
+        $('#edd_tax_id_wrap').show();
+        $('#edd_vat_number_wrap').hide();
+        $('#edd_vat_number').val('');
+      }
     }
 
     return true;

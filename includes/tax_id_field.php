@@ -11,6 +11,9 @@
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+// Countries wbere tax ID is required in local purchases
+define( TAX_ID_COUNTRIES, ['BG', 'CY', 'ES', 'HR', 'IT', 'PT'] );
+
 /**
 * Add VAT field to checkout form
 *
@@ -19,19 +22,16 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 */
 function edd_quaderno_add_tax_id() {
   global $edd_options;
-
-	if ( !isset( $edd_options['show_tax_id'] ) ) {
-		return;
-	}
-
 	ob_start(); 
 	?>
 	<p id="edd_tax_id_wrap">
 		<label for="edd_tax_id" class="edd-label">
 			<?php esc_html_e( 'Tax ID', 'edd-quaderno' ); ?>
-			<span class="edd-required-indicator">*</span>
+			<? if ( in_array(edd_get_shop_country(), TAX_ID_COUNTRIES) ) { ?>
+        <span class="edd-required-indicator">*</span>
+      <?php } ?>
 		</label>
-		<input type="text" name="edd_tax_id" id="edd_tax_id" class="vat-number edd-input required" />
+		<input type="text" name="edd_tax_id" id="edd_tax_id" class="vat-number edd-input" />
 	</p>
 	<?php
 	echo ob_get_clean();
@@ -55,7 +55,7 @@ function edd_quaderno_validate_tax_id( $data ) {
   }
 
   $selected_country = $data['cc_info']['card_country'];
-	if ( isset( $edd_options['show_tax_id'] ) && empty( $_POST['edd_tax_id'] ) && $selected_country == edd_get_shop_country() ) {
+	if ( in_array(edd_get_shop_country(), TAX_ID_COUNTRIES) && $selected_country == edd_get_shop_country() && empty( $_POST['edd_tax_id'] ) ) {
 		edd_set_error( 'invalid_tax_id', esc_html__('Please enter your Tax ID', 'edd-quaderno') );
 	}
 }

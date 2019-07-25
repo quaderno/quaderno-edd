@@ -44,12 +44,6 @@ function edd_quaderno_settings( $settings ) {
 				'desc' => '<a href="https://quadernoapp.com/settings/api/?utm_source=wordpress&utm_campaign=edd" target="_blank">' . esc_html__( 'Get your Quaderno API URL', 'edd-quaderno' ) . '</a>',
 				'type' => 'text'
 			),
-			'show_tax_id' => array(
-				'id'   => 'show_tax_id',
-				'name' => esc_html__( 'Show Tax ID', 'edd-quaderno' ),
-				'desc' => esc_html__( 'Additional tax number that is mandatory in some countries. This is not the EU VAT number', 'edd-quaderno' ),
-				'type' => 'checkbox'
-			),
 			'autosend_receipts' => array(
 				'id'   => 'autosend_receipts',
 				'name' => esc_html__( 'Autosend documents', 'edd-quaderno' ),
