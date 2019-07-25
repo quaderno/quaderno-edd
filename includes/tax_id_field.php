@@ -12,7 +12,9 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 // Countries wbere tax ID is required in local purchases
-define( TAX_ID_COUNTRIES, ['BG', 'CY', 'ES', 'HR', 'IT', 'PT'] );
+if ( ! defined( 'TAX_ID_COUNTRIES' ) ) {
+  define( 'TAX_ID_COUNTRIES', ['BG', 'CY', 'ES', 'HR', 'IT', 'PT'] );
+} 
 
 /**
 * Add VAT field to checkout form
