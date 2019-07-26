@@ -66,6 +66,9 @@ If you have any questions please get in touch with us at hello@quaderno.io.
 
 == Changelog ==
 
+= 1.24.1 - July 25, 2019 =
+* Fix: syntax error in PHP 7.2+
+
 = 1.24.0 - July 25, 2019 =
 * New: send US tax codes to Quaderno
 * New: use cities to calculate US sales tax
