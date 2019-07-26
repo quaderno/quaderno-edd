@@ -29,7 +29,7 @@ function edd_quaderno_add_tax_id() {
 	<p id="edd_tax_id_wrap">
 		<label for="edd_tax_id" class="edd-label">
 			<?php esc_html_e( 'Tax ID', 'edd-quaderno' ); ?>
-			<? if ( in_array(edd_get_shop_country(), TAX_ID_COUNTRIES) ) { ?>
+			<?php if ( in_array(edd_get_shop_country(), TAX_ID_COUNTRIES) ) { ?>
         <span class="edd-required-indicator">*</span>
       <?php } ?>
 		</label>
