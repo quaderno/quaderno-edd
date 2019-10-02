@@ -89,8 +89,7 @@ function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
 			'region' => $payment->address['state'],
 			'country' => $payment->address['country'],
 			'email' => $payment->email,
-			'vat_number' => $metadata['vat_number'],
-			'tax_id' => $metadata['tax_id'],
+			'tax_id' => empty( $metadata['vat_number'] ) ? $metadata['tax_id'] : $metadata['vat_number'],
 			'processor' => 'edd',
 			'processor_id' => strtotime($customer->date_created) . '_' . $payment->customer_id
 		);

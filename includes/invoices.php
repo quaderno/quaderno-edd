@@ -104,8 +104,7 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 		'region' => $payment->address['state'],
 		'country' => $payment->address['country'],
 		'email' => $payment->email,
-		'vat_number' => $vat_number,
-		'tax_id' => $tax_id,
+		'tax_id' => empty( $vat_number ) ? $tax_id : $vat_number,
 		'processor' => 'edd',
 		'processor_id' => strtotime($customer->date_created) . '_' . $payment->customer_id
 	);
