@@ -1,21 +1,28 @@
 jQuery(document).ready(function($) {
   var $form = $('#edd_purchase_form');
   var eu_countries = ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'ES', 'FI', 'FR', 'DE', 'GB', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'SE'];
+  var tax_id_countries = ['BG', 'CY', 'ES', 'HR', 'IT', 'PT'];
 
   // Show VAT Number & Tax ID
   function toggle_tax_id_fields() {
-    var $country_select = $('#billing_country');
+    var country = $('#billing_country').val();
 
-    if ( $.inArray($country_select.val(), eu_countries) >= 0 ) {
-      if ( $country_select.val() != $('#edd_shop_country').val() ) {
+    if ( $.inArray(country, eu_countries) >= 0 ) {
+      if ( country != $('#edd_shop_country').val() ) {
         $('#edd_vat_number_wrap').show();
         $('#edd_tax_id_wrap').hide();
         $('#edd_tax_id').val('');
-      } else {
+      } else if ( $.inArray(country, tax_id_countries) >= 0 ) {
         $('#edd_tax_id_wrap').show();
         $('#edd_vat_number_wrap').hide();
         $('#edd_vat_number').val('');
-      }
+      } 
+    }
+    else {
+      $('#edd_tax_id_wrap').hide();
+      $('#edd_tax_id').val('');
+      $('#edd_vat_number_wrap').hide();
+      $('#edd_vat_number').val('');        
     }
 
     return true;
