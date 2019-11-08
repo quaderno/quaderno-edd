@@ -4,7 +4,7 @@ Contributors: polimorfico
 Tags: tax, taxes, sales tax, vat, gst, vatmoss, vat moss, billing, invoices, receipts, credit notes, edd, easydigitaldownloads, easy digital downloads, quaderno
 Requires at least: 4.6
 Tested up to: 5.2
-Stable tag: 1.24.3
+Stable tag: 1.24.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -65,6 +65,9 @@ If you have any questions please get in touch with us at hello@quaderno.io.
 4. Example of a receipt
 
 == Changelog ==
+
+= 1.24.4 - November 8, 2019 =
+* Improvement: create new contact in Quaderno is customers udpate their names
 
 = 1.24.3 - October 2, 2019 =
 * Improvement: show tax IDs in some countries
