@@ -105,9 +105,48 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 		'country' => $payment->address['country'],
 		'email' => $payment->email,
 		'tax_id' => empty( $vat_number ) ? $tax_id : $vat_number,
-		'processor' => 'edd',
-		'processor_id' => strtotime($customer->date_created) . '_' . $payment->customer_id
+		'processor' => 'edd'
 	);
+
+  $contact_id = $customer->get_meta( '_quaderno_contact', true );
+
+  // The following code is quite hacky in order to skip Quaderno API's contact default initialization 
+  // 2 reasons for contact_id to be empty:
+  // - This is the first purchase ever for the user and the contact does not exist in Quaderno
+  // - This is not the first purchase of the user but she does not have a contact_id saved yet in EDD metadata (until v1.24.3)
+
+  $payments = $customer->get_payments();
+  end($payments);
+  $last_payment = prev($payments);  
+
+  if(!empty($last_payment)){
+    $last_payment_metadata = $last_payment->get_meta();
+    $last_payment_business_name = isset( $last_payment_metadata['business_name'] ) ? $last_payment_metadata['business_name'] : '';
+  }
+  
+  //If it's the first purchase or the billing info has changed a new contact must be created
+  if (empty( $last_payment ) ||
+      $last_payment_business_name != $business_name ||
+      $last_payment->first_name != $payment->first_name ||
+      $last_payment->last_name != $payment->last_name){
+
+    //force the creation of a new contact
+    $hashed_billing_name = md5(implode( '-', array($payment->first_name, $payment->last_name, $business_name) ));
+    //do not want that Quaderno initializes the contact by processor_id
+    $invoice_params['contact']['processor_id'] = $hashed_billing_name . '_' . $payment->customer_id;
+  }
+
+  if(!isset($invoice_params['contact']['processor_id'])){
+    if ( empty( $contact_id ) ){
+      //use the processor_id the already exists in Quaderno in order to identify the contact until we have contact_id stored in EDD
+      $invoice_params['contact']['processor_id'] = strtotime($customer->date_created) . '_' . $payment->customer_id;
+    }else{
+      //use the contact_id to identify the contact
+      $invoice_params['contact']['id'] = $contact_id;
+      unset($invoice_params['contact']['first_name']);
+      unset($invoice_params['contact']['last_name']);
+    }
+  }
 	
 	// Let's create the invoice
 	$invoice = new QuadernoIncome($invoice_params);
@@ -201,6 +240,8 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 		$payment->update_meta( '_quaderno_invoice_id', $invoice->id );
 		$payment->update_meta( '_quaderno_url', $invoice->permalink );
 		$payment->add_note( 'Receipt created on Quaderno' );
+
+    $customer->update_meta( '_quaderno_contact', $invoice->contact->id );
 
 		do_action( 'quaderno_invoice_created', $invoice, $payment );
 
