@@ -28,7 +28,7 @@ function edd_quaderno_add_business_name() {
 	<?php
 	echo ob_get_clean();
 }
-add_action('edd_purchase_form_user_info', 'edd_quaderno_add_business_name', 100);
+add_action('edd_cc_billing_top', 'edd_quaderno_add_business_name', 100);
 
 /**
 * Validate Business Names
