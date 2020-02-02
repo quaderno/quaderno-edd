@@ -4,7 +4,7 @@ Contributors: polimorfico
 Tags: tax, taxes, sales tax, vat, gst, vatmoss, vat moss, billing, invoices, receipts, credit notes, edd, easydigitaldownloads, easy digital downloads, quaderno
 Requires at least: 4.6
 Tested up to: 5.3
-Stable tag: 1.24.5
+Stable tag: 1.25.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -65,6 +65,10 @@ If you have any questions please get in touch with us at hello@quaderno.io.
 4. Example of a receipt
 
 == Changelog ==
+
+= 1.25.0 - February 2, 2020 =
+* Improvement: merge tax id and vat number fields
+* Improvement: use region full names on invoices & credits
 
 = 1.24.5 - December 10, 2019 =
 * Improvement: move company name field to billing addres details area

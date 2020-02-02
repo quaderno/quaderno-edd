@@ -100,12 +100,7 @@ add_filter('edd_payment_meta', 'edd_quaderno_store_tax_id', 100);
 function edd_quaderno_show_tax_id($payment_id) {
   $payment = new EDD_Payment( $payment_id );
   $payment_meta = $payment->get_meta();
-  
-  if ( !empty( $payment_meta['vat_number'] ) ){
-    $tax_id = $payment_meta['vat_number'];
-  } elseif ( !empty( $payment_meta['tax_id'] ) ) {
-    $tax_id = $payment_meta['tax_id'];
-  }
+  $tax_id = empty( $payment_meta['vat_number'] ) ? $payment_meta['tax_id'] : $payment_meta['vat_number'];
 
 	?>
   <div class="order-data-address">
