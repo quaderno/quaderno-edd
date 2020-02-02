@@ -11,11 +11,6 @@
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-// Countries wbere tax ID is required in local purchases
-if ( ! defined( 'TAX_ID_COUNTRIES' ) ) {
-  define( 'TAX_ID_COUNTRIES', ['BG', 'CY', 'ES', 'HR', 'IT', 'PT'] );
-} 
-
 /**
 * Add VAT field to checkout form
 *
@@ -27,13 +22,9 @@ function edd_quaderno_add_tax_id() {
 	ob_start(); 
 	?>
 	<p id="edd_tax_id_wrap">
-		<label for="edd_tax_id" class="edd-label">
-			<?php esc_html_e( 'Tax ID', 'edd-quaderno' ); ?>
-			<?php if ( in_array(edd_get_shop_country(), TAX_ID_COUNTRIES) ) { ?>
-        <span class="edd-required-indicator">*</span>
-      <?php } ?>
-		</label>
-		<input type="text" name="edd_tax_id" id="edd_tax_id" class="vat-number edd-input" />
+		<label for="edd_tax_id" class="edd-label"><?php esc_html_e( 'Tax ID', 'edd-quaderno' ); ?></label>
+    <span class="edd-description"><?php esc_html_e( 'Enter your VAT number including country identifier e.g. GB123456788', 'edd-quaderno' ); ?></span>
+		<input type="text" name="edd_tax_id" id="edd_tax_id" class="tax-id edd-input" />
 	</p>
 	<?php
 	echo ob_get_clean();
@@ -49,17 +40,40 @@ add_action('edd_cc_billing_bottom', 'edd_quaderno_add_tax_id', 100);
 function edd_quaderno_validate_tax_id( $data ) {
   global $edd_options;
 
-  $cart_total = edd_get_cart_total();
-
   // free downloads
+  $cart_total = edd_get_cart_total();
   if ( $cart_total == 0 ) {
     return;
   }
 
   $selected_country = $data['cc_info']['card_country'];
-	if ( in_array(edd_get_shop_country(), TAX_ID_COUNTRIES) && $selected_country == edd_get_shop_country() && empty( $_POST['edd_tax_id'] ) ) {
+
+  // local tax ID is required
+	if ( isset( $edd_options['require_tax_id'] ) && empty( $_POST['edd_tax_id'] ) && $selected_country == edd_get_shop_country() ) {
 		edd_set_error( 'invalid_tax_id', esc_html__('Please enter your Tax ID', 'edd-quaderno') );
-	}
+	} 
+
+  // validate EU VAT numbers
+  if ( ! empty( $_POST['edd_tax_id'] ) && $selected_country != edd_get_shop_country() ) {
+    $params = array(
+      'vat_number' => $_POST['edd_tax_id'],
+      'country' => $data['cc_info']['card_country']
+    );
+
+    $slug = 'edd_tax_id_' . md5( implode( $params ) );
+
+    if ( false === ( $valid_number = get_transient( $slug ) ) ) {
+      $valid_number = QuadernoTax::validate( $params );
+      set_transient( $slug, $valid_number, DAY_IN_SECONDS );
+    }
+
+    if ( $valid_number === null ) {
+      edd_set_error( 'invalid_vat_number', esc_html__('VIES service is down and we cannot validate your VAT Number. Please contact us.', 'edd-quaderno') );
+    } elseif ( $valid_number === false ) {
+      edd_set_error( 'invalid_vat_number', esc_html__('VAT Number is not valid', 'edd-quaderno') );
+    }
+  }
+
 }
 add_action('edd_checkout_error_checks', 'edd_quaderno_validate_tax_id', 100);
 
@@ -86,15 +100,32 @@ add_filter('edd_payment_meta', 'edd_quaderno_store_tax_id', 100);
 function edd_quaderno_show_tax_id($payment_id) {
   $payment = new EDD_Payment( $payment_id );
   $payment_meta = $payment->get_meta();
+  
+  if ( !empty( $payment_meta['vat_number'] ) ){
+    $tax_id = $payment_meta['vat_number'];
+  } elseif ( !empty( $payment_meta['tax_id'] ) ) {
+    $tax_id = $payment_meta['tax_id'];
+  }
+
 	?>
-	<div class="edd-order-payment edd-admin-box-inside">
-		<p>
-			<span class="label"><?php _e( 'Tax ID', 'edd-quaderno' ); ?>:</span>&nbsp;
-			<input name="edd_tax_id" type="text" class="med-text" value="<?php echo isset( $payment_meta['tax_id'] ) ? $payment_meta['tax_id'] : '' ?>"/>
-		</p>
-	</div>
+  <div class="order-data-address">
+    <div class="data column-container">
+      <div class="column">
+        <p>
+          <strong class="order-data-address-line"><?php _e( 'Company Name', 'edd-quaderno' ); ?></strong><br/>
+          <input name="edd_business_name" type="text" class="large-text" value="<?php echo $payment_meta['business_name'] ?>"/>
+        </p>
+      </div>
+      <div class="column">
+        <p>
+          <strong class="order-data-address-line"><?php _e( 'Tax ID', 'edd-quaderno' ); ?></strong><br/>
+          <input name="edd_tax_id" type="text" class="med-text" value="<?php echo $tax_id ?>"/>
+        </p>
+      </div>
+    </div>
+  </div>
 	<?php
 }
-add_action('edd_view_order_details_totals_after', 'edd_quaderno_show_tax_id', 10, 2);
+add_action('edd_payment_billing_details', 'edd_quaderno_show_tax_id', 10);
 
 ?>

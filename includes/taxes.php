@@ -43,10 +43,10 @@ function edd_quaderno_transaction_type()
 * @since  1.0
 * @param  string $country
 * @param  string $postal_code
-* @param  string $vat_number
+* @param  string $tax_id
 * @return float
 */
-function edd_quaderno_tax($country, $postal_code, $city, $vat_number)
+function edd_quaderno_tax($country, $postal_code, $city, $tax_id)
 {
 	global $edd_options;
 
@@ -54,7 +54,7 @@ function edd_quaderno_tax($country, $postal_code, $city, $vat_number)
 		'country' => $country,
 		'postal_code' => $postal_code,
 		'city' => $city,
-		'vat_number' => $vat_number,
+		'vat_number' => $tax_id,
 		'transaction_type' => edd_quaderno_transaction_type()
 	);
 
@@ -82,9 +82,9 @@ function edd_quaderno_tax_rate($rate, $customer_country, $customer_state)
 
 	$postal_code = isset($_POST['card_zip']) ? $_POST['card_zip'] : '';
 	$city = isset($_POST['card_city']) ? $_POST['card_city'] : '';
-	$vat_number = isset($_POST['edd_vat_number']) ? $_POST['edd_vat_number'] : '';
+	$tax_id = isset($_POST['edd_tax_id']) ? $_POST['edd_tax_id'] : '';
 
-	$tax = edd_quaderno_tax($customer_country, $postal_code, $city, $vat_number);
+	$tax = edd_quaderno_tax($customer_country, $postal_code, $city, $tax_id);
 
 	if ( empty( $tax->name ) && empty( $tax->notes ) ) {
 		return $rate;

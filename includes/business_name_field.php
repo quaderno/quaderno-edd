@@ -37,7 +37,9 @@ add_action('edd_cc_billing_top', 'edd_quaderno_add_business_name', 100);
 * @return mixed|void
 */
 function edd_quaderno_validate_business_name( $data ) {
-	if ( ! empty( $_POST['edd_vat_number'] ) && empty( $_POST['edd_business_name'] )) {
+	$selected_country = $data['cc_info']['card_country'];
+
+	if ( ! empty( $_POST['edd_tax_id'] ) && empty( $_POST['edd_business_name'] ) && $selected_country != edd_get_shop_country() ) {
 		edd_set_error( 'invalid_business_name', esc_html__('Please enter your company name', 'edd-quaderno') );
 	}
 }
@@ -50,25 +52,11 @@ add_action('edd_checkout_error_checks', 'edd_quaderno_validate_business_name', 1
 * @return mixed|void
 */
 function edd_quaderno_store_business_name( $payment_meta ) {
-	if ( empty($payment_meta['business_name']) ) {
-		$payment_meta['business_name'] = isset($_POST['edd_business_name']) ? filter_var( $_POST['edd_business_name'], FILTER_SANITIZE_STRING ) : '';
-	}
+  if ( isset($_POST['edd_business_name']) ) {
+    $payment_meta['business_name'] = filter_var( $_POST['edd_business_name'], FILTER_SANITIZE_STRING );
+  }
 	return $payment_meta;
 }
 add_filter('edd_payment_meta', 'edd_quaderno_store_business_name', 100);
-
-/**
-* Show the Business Name in the "View Order Details" popup
-*
-* @since  1.10
-* @return mixed|void
-*/
-function edd_quaderno_show_business_name($payment_meta, $user_info) {
-	$business_name = $payment_meta['business_name'] ?: 'none';
-	?>
-	<p><?php echo esc_html__('Company Name', 'edd-quaderno') . ': ' . $business_name; ?></p>
-	<?php
-}
-add_action('edd_payment_personal_details_list', 'edd_quaderno_show_business_name', 10, 2);
 
 ?>

@@ -35,19 +35,25 @@ function edd_quaderno_settings( $settings ) {
 			'edd_quaderno_token' => array(
 				'id'   => 'edd_quaderno_token',
 				'name' => esc_html__( 'Private key', 'edd-quaderno' ),
-				'desc' => '<a href="https://quadernoapp.com/settings/api/?utm_source=wordpress&utm_campaign=edd" target="_blank">' . esc_html__( 'Get your Quaderno private key', 'edd-quaderno' ) . '</a>',
+				'desc' => '<a href="https://quadernoapp.com/users/api-keys/?utm_source=wordpress&utm_campaign=edd" target="_blank">' . esc_html__( 'Get your Quaderno private key', 'edd-quaderno' ) . '</a>',
 				'type' => 'text'
 			),
 			'edd_quaderno_url' => array(
 				'id'   => 'edd_quaderno_url',
 				'name' => esc_html__( 'API URL', 'edd-quaderno' ),
-				'desc' => '<a href="https://quadernoapp.com/settings/api/?utm_source=wordpress&utm_campaign=edd" target="_blank">' . esc_html__( 'Get your Quaderno API URL', 'edd-quaderno' ) . '</a>',
+				'desc' => '<a href="https://quadernoapp.com/users/api-keys/?utm_source=wordpress&utm_campaign=edd" target="_blank">' . esc_html__( 'Get your Quaderno API URL', 'edd-quaderno' ) . '</a>',
 				'type' => 'text'
+			),
+			'require_tax_id' => array(
+				'id'   => 'require_tax_id',
+				'name' => esc_html__( 'Require tax ID', 'edd-quaderno' ),
+				'desc' => sprintf(esc_html__( 'Check this if tax ID must be required for all sales in %s.', 'edd-quaderno' ), edd_get_country_name(edd_get_shop_country())),
+				'type' => 'checkbox'
 			),
 			'autosend_receipts' => array(
 				'id'   => 'autosend_receipts',
 				'name' => esc_html__( 'Autosend documents', 'edd-quaderno' ),
-				'desc' => esc_html__( 'Send automatically your sales receipts to your customers', 'edd-quaderno' ),
+				'desc' => esc_html__( 'Check this if you want Quaderno to automatically email your receipts.', 'edd-quaderno' ),
 				'type' => 'checkbox'
 			)
 		)

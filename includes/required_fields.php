@@ -52,7 +52,7 @@ function edd_quaderno_validate_required_fields( $data ) {
     return;
   }
 
-	if (  $_POST['billing_country'] != edd_get_shop_country() || !empty( $_POST['edd_vat_number'] ) || !empty( $_POST['edd_tax_id'] ) ) {
+	if (  $_POST['billing_country'] != edd_get_shop_country() || !empty( $_POST['edd_tax_id'] ) ) {
 
     if ( empty( $_POST['card_address'] ) )
       edd_set_error( 'invalid_card_address', esc_html__( 'Please enter your billing address', 'edd-quaderno' ));

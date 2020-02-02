@@ -1,28 +1,17 @@
 jQuery(document).ready(function($) {
   var $form = $('#edd_purchase_form');
-  var eu_countries = ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'ES', 'FI', 'FR', 'DE', 'GB', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'SE'];
-  var tax_id_countries = ['BG', 'CY', 'ES', 'HR', 'IT', 'PT'];
+  var countries = ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'ES', 'FI', 'FR', 'DE', 'GB', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'SE'];
 
-  // Show VAT Number & Tax ID
+  // Show Tax ID
   function toggle_tax_id_fields() {
     var country = $('#billing_country').val();
 
-    if ( $.inArray(country, eu_countries) >= 0 ) {
-      if ( country != $('#edd_shop_country').val() ) {
-        $('#edd_vat_number_wrap').show();
-        $('#edd_tax_id_wrap').hide();
-        $('#edd_tax_id').val('');
-      } else if ( $.inArray(country, tax_id_countries) >= 0 ) {
-        $('#edd_tax_id_wrap').show();
-        $('#edd_vat_number_wrap').hide();
-        $('#edd_vat_number').val('');
-      } 
+    if ( $.inArray(country, countries) >= 0 ) {
+      $('#edd_tax_id_wrap').show();
     }
     else {
       $('#edd_tax_id_wrap').hide();
       $('#edd_tax_id').val('');
-      $('#edd_vat_number_wrap').hide();
-      $('#edd_vat_number').val('');        
     }
 
     return true;
@@ -39,7 +28,7 @@ jQuery(document).ready(function($) {
 
   // Update taxes on checkout page
   $(document.body).off('change', '#edd_cc_address input[name=card_zip]');
-  $form.on('change', '#edd_vat_number, #billing_country, #card_state, #card_zip, #card_city', function(e) {
+  $form.on('change', '#edd_tax_id, #billing_country, #card_state, #card_zip, #card_city', function(e) {
     recalculate_taxes();
     return true;
   });
@@ -50,7 +39,7 @@ jQuery(document).ready(function($) {
     var postData = {
       action: 'edd_recalculate_taxes',
       nonce: jQuery('#edd-checkout-address-fields-nonce').val(),
-      edd_vat_number: $form.find('#edd_vat_number').val(),
+      edd_tax_id: $form.find('#edd_tax_id').val(),
       card_city: $form.find('#card_city').val(),
       card_zip: $form.find('#card_zip').val(),
       billing_country: $form.find('#billing_country').val()
