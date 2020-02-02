@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plugins - EDD Quaderno - Stable (latest release)\n"
-"POT-Creation-Date: 2019-07-25 11:51+0200\n"
-"PO-Revision-Date: 2019-07-25 11:53+0200\n"
+"POT-Creation-Date: 2020-02-02 19:32+0000\n"
+"PO-Revision-Date: 2020-02-02 19:34+0000\n"
 "Last-Translator: hello@quaderno.io\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -12,10 +12,9 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.2.4\n"
 
-#: ../includes/business_name_field.php:24
-#: ../includes/business_name_field.php:69
+#: ../includes/business_name_field.php:24 ../includes/tax_id_field.php:110
 msgid "Company Name"
 msgstr "Nombre empresa"
 
@@ -23,7 +22,7 @@ msgstr "Nombre empresa"
 msgid "Only if this is a business purchase"
 msgstr "Solo si es una compra para tu negocio"
 
-#: ../includes/business_name_field.php:41
+#: ../includes/business_name_field.php:43
 msgid "Please enter your company name"
 msgstr "Por favor, introduce el nombre de tu empresa"
 
@@ -72,22 +71,35 @@ msgid "Get your Quaderno API URL"
 msgstr "Consigue tu API URL de Quaderno"
 
 #: ../includes/settings.php:49
+msgid "Require tax ID"
+msgstr "NIF obligatorio"
+
+#: ../includes/settings.php:50
+#, php-format
+msgid "Check this if tax ID must be required for all sales in %s."
+msgstr ""
+"Selecciona esta opción si el NIF debe ser obligatorio para todas las ventas "
+"en %s."
+
+#: ../includes/settings.php:55
 msgid "Autosend documents"
 msgstr "Enviar documentos automáticamente"
 
-#: ../includes/settings.php:50
-msgid "Send automatically your sales receipts to your customers"
-msgstr "Enviar automáticamente tus facturas a tus clientes"
+#: ../includes/settings.php:56
+msgid "Check this if you want Quaderno to automatically email your receipts."
+msgstr ""
+"Selecciona esta opción si quieres que Quaderno envíe automáticamente tus "
+"facturas por email."
 
-#: ../includes/settings.php:84
+#: ../includes/settings.php:90
 msgid "Settings"
 msgstr "Ajustes"
 
-#: ../includes/settings.php:93
+#: ../includes/settings.php:99
 msgid "Create a Quaderno account"
 msgstr "Crear una cuenta Quaderno"
 
-#: ../includes/settings.php:111
+#: ../includes/settings.php:117
 msgid ""
 "Don't you have a Quaderno account? Create a new one <a href=\"https://"
 "quadernoapp.com/signup?utm_source=wordpress&utm_campaign=edd\" target="
@@ -97,7 +109,7 @@ msgstr ""
 "quadernoapp.com/signup?utm_source=wordpress&utm_campaign=edd” target=\"_blank"
 "\">en esta página</a>."
 
-#: ../includes/settings.php:131
+#: ../includes/settings.php:137
 msgid ""
 "Awesome, you've been using <strong>EDD Quaderno</strong> for a while."
 "<br>Could you please do me a BIG favor and give a <strong>5-star rating</"
@@ -111,35 +123,31 @@ msgstr ""
 "<br><br>Te agradezco mucho tu ayuda. Mucha gracias,<br>Carlos Hernández, "
 "Fundador"
 
-#: ../includes/settings.php:134
+#: ../includes/settings.php:140
 msgid "Ok, you deserve it"
 msgstr "¡Por supuesto! Os lo merecéis"
 
-#: ../includes/settings.php:135
+#: ../includes/settings.php:141
 msgid "Nope, maybe later"
 msgstr "No, quizás más tarde"
 
-#: ../includes/settings.php:136
+#: ../includes/settings.php:142
 msgid "I already did it"
 msgstr "Ya lo hice"
 
-#: ../includes/tax_id_field.php:29 ../includes/tax_id_field.php:90
+#: ../includes/tax_id_field.php:25 ../includes/tax_id_field.php:116
 msgid "Tax ID"
-msgstr "NIF"
+msgstr "NIF o NIF-IVA"
 
-#: ../includes/tax_id_field.php:59
-msgid "Please enter your Tax ID"
-msgstr "Introduce tu NIF"
-
-#: ../includes/vat_number_field.php:24 ../includes/vat_number_field.php:89
-msgid "VAT Number"
-msgstr "Número de operador intracomunitario"
-
-#: ../includes/vat_number_field.php:25
+#: ../includes/tax_id_field.php:26
 msgid "Enter your VAT number including country identifier e.g. GB123456788"
 msgstr "Introduce tu número de operador intracomunitario (p.e. ES12345678)"
 
-#: ../includes/vat_number_field.php:55
+#: ../includes/tax_id_field.php:53
+msgid "Please enter your Tax ID"
+msgstr "Introduce tu NIF"
+
+#: ../includes/tax_id_field.php:71
 msgid ""
 "VIES service is down and we cannot validate your VAT Number. Please contact "
 "us."
@@ -147,13 +155,19 @@ msgstr ""
 "El servicio VIES está caído y no podemos validar tu número de operador "
 "intracomunitario. Por favor, contacta con nosotros."
 
-#: ../includes/vat_number_field.php:57
+#: ../includes/tax_id_field.php:73
 msgid "VAT Number is not valid"
 msgstr "El número de operador intracomunitario no es válido"
 
 #: ../quaderno/quaderno_request.php:79
 msgid "There was a problem connecting to the API."
 msgstr "Hubo un problema en la conexión con la API."
+
+#~ msgid "Send automatically your sales receipts to your customers"
+#~ msgstr "Enviar automáticamente tus facturas a tus clientes"
+
+#~ msgid "VAT Number"
+#~ msgstr "Número de operador intracomunitario"
 
 #~ msgid "Company name (optional)"
 #~ msgstr "Nombre de la empresa (opcional)"

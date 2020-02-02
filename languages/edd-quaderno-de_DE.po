@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plugins - EDD Quaderno - Stable (latest release)\n"
-"POT-Creation-Date: 2019-07-25 11:51+0200\n"
-"PO-Revision-Date: 2019-07-25 11:54+0200\n"
+"POT-Creation-Date: 2020-02-02 19:32+0000\n"
+"PO-Revision-Date: 2020-02-02 19:35+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -12,10 +12,9 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.2.4\n"
 
-#: ../includes/business_name_field.php:24
-#: ../includes/business_name_field.php:69
+#: ../includes/business_name_field.php:24 ../includes/tax_id_field.php:110
 msgid "Company Name"
 msgstr "Firmenname"
 
@@ -23,7 +22,7 @@ msgstr "Firmenname"
 msgid "Only if this is a business purchase"
 msgstr "Nur wenn es sich um einen Geschäftskauf handelt"
 
-#: ../includes/business_name_field.php:41
+#: ../includes/business_name_field.php:43
 msgid "Please enter your company name"
 msgstr "Bitte Firmennamen eingeben"
 
@@ -72,22 +71,33 @@ msgid "Get your Quaderno API URL"
 msgstr "Hole dir deine Quaderno-API-URL"
 
 #: ../includes/settings.php:49
+msgid "Require tax ID"
+msgstr "Steuernummer erforderlich"
+
+#: ../includes/settings.php:50
+#, php-format
+msgid "Check this if tax ID must be required for all sales in %s."
+msgstr ""
+"Bitte anklicken, wenn für alle Verkäufe in %s eine Steuernummer erforderlich "
+"ist."
+
+#: ../includes/settings.php:55
 msgid "Autosend documents"
 msgstr "Dokumente automatisch versenden"
 
-#: ../includes/settings.php:50
-msgid "Send automatically your sales receipts to your customers"
-msgstr "Verkaufsbelege automatisch den Kunden zusenden"
+#: ../includes/settings.php:56
+msgid "Check this if you want Quaderno to automatically email your receipts."
+msgstr "Bitte anklicken, um Rechnungen automatisch zu versenden."
 
-#: ../includes/settings.php:84
+#: ../includes/settings.php:90
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: ../includes/settings.php:93
+#: ../includes/settings.php:99
 msgid "Create a Quaderno account"
 msgstr "Quaderno-Konto erstellen"
 
-#: ../includes/settings.php:111
+#: ../includes/settings.php:117
 msgid ""
 "Don't you have a Quaderno account? Create a new one <a href=\"https://"
 "quadernoapp.com/signup?utm_source=wordpress&utm_campaign=edd\" target="
@@ -97,7 +107,7 @@ msgstr ""
 "quadernoapp.com/signup?utm_source=wordpress&utm_campaign=edd” target=\"_blank"
 "\">hier</a>."
 
-#: ../includes/settings.php:131
+#: ../includes/settings.php:137
 msgid ""
 "Awesome, you've been using <strong>EDD Quaderno</strong> for a while."
 "<br>Could you please do me a BIG favor and give a <strong>5-star rating</"
@@ -111,35 +121,31 @@ msgstr ""
 "unsere Motivation.<br><br>Wir würden uns sehr über deine Hilfe freuen. "
 "Vielen Dank!<br> ~Carlos Hernandez, Flunder"
 
-#: ../includes/settings.php:134
+#: ../includes/settings.php:140
 msgid "Ok, you deserve it"
 msgstr "Ok, du verdienst es"
 
-#: ../includes/settings.php:135
+#: ../includes/settings.php:141
 msgid "Nope, maybe later"
 msgstr "Nein, vielleicht später"
 
-#: ../includes/settings.php:136
+#: ../includes/settings.php:142
 msgid "I already did it"
 msgstr "Ich habâs schon gemacht"
 
-#: ../includes/tax_id_field.php:29 ../includes/tax_id_field.php:90
+#: ../includes/tax_id_field.php:25 ../includes/tax_id_field.php:116
 msgid "Tax ID"
 msgstr "Steuernummer"
 
-#: ../includes/tax_id_field.php:59
-msgid "Please enter your Tax ID"
-msgstr "Bitte Steuernummer eingeben"
-
-#: ../includes/vat_number_field.php:24 ../includes/vat_number_field.php:89
-msgid "VAT Number"
-msgstr "USt-IdNr"
-
-#: ../includes/vat_number_field.php:25
+#: ../includes/tax_id_field.php:26
 msgid "Enter your VAT number including country identifier e.g. GB123456788"
 msgstr "Bitte die USt-IdNr. inkl. Länderkürzel (z. B. DE123456789) eingeben"
 
-#: ../includes/vat_number_field.php:55
+#: ../includes/tax_id_field.php:53
+msgid "Please enter your Tax ID"
+msgstr "Bitte Steuernummer eingeben"
+
+#: ../includes/tax_id_field.php:71
 msgid ""
 "VIES service is down and we cannot validate your VAT Number. Please contact "
 "us."
@@ -147,13 +153,19 @@ msgstr ""
 "Der VIES ist inaktiv und wir können Ihre USt-IdNr nicht bestätigen. Bitte "
 "kontaktieren Sie uns."
 
-#: ../includes/vat_number_field.php:57
+#: ../includes/tax_id_field.php:73
 msgid "VAT Number is not valid"
 msgstr "Die eingegebene USt-IdNr. ist nicht gültig"
 
 #: ../quaderno/quaderno_request.php:79
 msgid "There was a problem connecting to the API."
 msgstr "Bei der Verbindung mit der API ist ein Problem aufgetreten."
+
+#~ msgid "Send automatically your sales receipts to your customers"
+#~ msgstr "Verkaufsbelege automatisch den Kunden zusenden"
+
+#~ msgid "VAT Number"
+#~ msgstr "USt-IdNr"
 
 #~ msgid "Company name (optional)"
 #~ msgstr "Firma (optional)"
