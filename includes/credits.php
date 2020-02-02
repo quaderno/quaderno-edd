@@ -86,7 +86,7 @@ function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
 			'street_line_2' => $payment->address['line2'] ?: '',
 			'city' => $payment->address['city'],
 			'postal_code' => $payment->address['zip'],
-			'region' => $payment->address['state'],
+			'region' => edd_get_state_name($payment->address['country'], $payment->address['state']),
 			'country' => $payment->address['country'],
 			'email' => $payment->email,
 			'tax_id' => empty( $metadata['vat_number'] ) ? $metadata['tax_id'] : $metadata['vat_number'],
