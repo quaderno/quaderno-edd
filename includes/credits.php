@@ -38,9 +38,12 @@ function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
 		return;
 	}
 
-	// Get the taxes
+	// Get metdata
 	$metadata = $payment->get_meta();
-	$tax = edd_quaderno_tax( $payment->address['country'], $payment->address['zip'], $payment->address['city'], $metadata['vat_number'] );
+	$tax_id = empty( $metadata['vat_number'] ) ? $metadata['tax_id'] : $metadata['vat_number'];
+
+	// Get the taxes
+	$tax = edd_quaderno_tax( $payment->address['country'], $payment->address['zip'], $payment->address['city'], $tax_id );
 
 	// Add the credit params
 	$credit_params = array(
@@ -89,7 +92,7 @@ function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
 			'region' => edd_get_state_name($payment->address['country'], $payment->address['state']),
 			'country' => $payment->address['country'],
 			'email' => $payment->email,
-			'tax_id' => empty( $metadata['vat_number'] ) ? $metadata['tax_id'] : $metadata['vat_number'],
+			'tax_id' => $tax_id,
 			'processor' => 'edd',
 			'processor_id' => strtotime($customer->date_created) . '_' . $payment->customer_id
 		);

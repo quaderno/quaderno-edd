@@ -42,10 +42,11 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 		$parent_meta = $parent->get_meta();
 		
 		$meta = $payment->get_meta();
+
 		$new_meta = array( 
-			'vat_number' => $parent_meta['vat_number'], 
-			'tax_id' => $parent_meta['tax_id'], 
-			'business_name' => $parent_meta['business_name']);
+			'tax_id' => empty( $parent_meta['vat_number'] ) ? $parent_meta['tax_id'] : $parent_meta['vat_number'], 
+			'business_name' => $parent_meta['business_name']
+		);
 
 		$merged_meta = array_merge( $meta, $new_meta );
 		$payment->update_meta( '_edd_payment_meta', $merged_meta );
@@ -58,12 +59,11 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 
 	// Get metadata
 	$metadata = $payment->get_meta();
-	$vat_number = isset( $metadata['vat_number'] ) ? $metadata['vat_number'] : '';
-	$tax_id = isset( $metadata['tax_id'] ) ? $metadata['tax_id'] : '';
+	$tax_id = empty( $metadata['vat_number'] ) ? $metadata['tax_id'] : $metadata['vat_number'];
 	$business_name = isset( $metadata['business_name'] ) ? $metadata['business_name'] : '';
 	
 	// Get the taxes
-	$tax = edd_quaderno_tax( $payment->address['country'], $payment->address['zip'], $payment->address['city'], $vat_number );
+	$tax = edd_quaderno_tax( $payment->address['country'], $payment->address['zip'], $payment->address['city'], $tax_id );
 
 	// Add the invoice params
 	$invoice_params = array(
@@ -104,7 +104,7 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 		'region' => edd_get_state_name($payment->address['country'], $payment->address['state']),
 		'country' => $payment->address['country'],
 		'email' => $payment->email,
-		'tax_id' => empty( $vat_number ) ? $tax_id : $vat_number,
+		'tax_id' => $tax_id,
 		'processor' => 'edd'
 	);
 
