@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plugins - EDD Quaderno - Stable (latest release)\n"
-"POT-Creation-Date: 2020-02-02 19:32+0000\n"
-"PO-Revision-Date: 2020-02-02 19:35+0000\n"
+"POT-Creation-Date: 2020-02-04 18:34+0000\n"
+"PO-Revision-Date: 2020-02-04 18:37+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -12,9 +12,9 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 2.2.4\n"
+"X-Generator: Poedit 2.3\n"
 
-#: ../includes/business_name_field.php:24 ../includes/tax_id_field.php:110
+#: ../includes/business_name_field.php:24 ../includes/tax_id_field.php:126
 msgid "Company Name"
 msgstr "Firmenname"
 
@@ -25,6 +25,10 @@ msgstr "Nur wenn es sich um einen Geschäftskauf handelt"
 #: ../includes/business_name_field.php:43
 msgid "Please enter your company name"
 msgstr "Bitte Firmennamen eingeben"
+
+#: ../includes/invoices.php:71
+msgid "Tax amount subject to reverse charge"
+msgstr "Steuerbetrag unterliegt der Reverse Charge"
 
 #: ../includes/order_details.php:27
 msgid "Quaderno Invoice"
@@ -133,7 +137,7 @@ msgstr "Nein, vielleicht später"
 msgid "I already did it"
 msgstr "Ich habâs schon gemacht"
 
-#: ../includes/tax_id_field.php:25 ../includes/tax_id_field.php:116
+#: ../includes/tax_id_field.php:25 ../includes/tax_id_field.php:132
 msgid "Tax ID"
 msgstr "Steuernummer"
 
@@ -145,7 +149,7 @@ msgstr "Bitte die USt-IdNr. inkl. Länderkürzel (z. B. DE123456789) eingeben"
 msgid "Please enter your Tax ID"
 msgstr "Bitte Steuernummer eingeben"
 
-#: ../includes/tax_id_field.php:71
+#: ../includes/tax_id_field.php:61
 msgid ""
 "VIES service is down and we cannot validate your VAT Number. Please contact "
 "us."
@@ -153,7 +157,7 @@ msgstr ""
 "Der VIES ist inaktiv und wir können Ihre USt-IdNr nicht bestätigen. Bitte "
 "kontaktieren Sie uns."
 
-#: ../includes/tax_id_field.php:73
+#: ../includes/tax_id_field.php:63
 msgid "VAT Number is not valid"
 msgstr "Die eingegebene USt-IdNr. ist nicht gültig"
 

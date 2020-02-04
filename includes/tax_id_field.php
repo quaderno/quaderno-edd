@@ -32,12 +32,12 @@ function edd_quaderno_add_tax_id() {
 add_action('edd_cc_billing_bottom', 'edd_quaderno_add_tax_id', 100);
 
 /**
-* Validate Business Names
+* Validate the Tax ID field
 *
 * @since  1.10
 * @return mixed|void
 */
-function edd_quaderno_validate_tax_id( $data ) {
+function edd_quaderno_validate_tax_id_field( $data ) {
   global $edd_options;
 
   // free downloads
@@ -55,17 +55,7 @@ function edd_quaderno_validate_tax_id( $data ) {
 
   // validate EU VAT numbers
   if ( ! empty( $_POST['edd_tax_id'] ) && $selected_country != edd_get_shop_country() ) {
-    $params = array(
-      'vat_number' => $_POST['edd_tax_id'],
-      'country' => $data['cc_info']['card_country']
-    );
-
-    $slug = 'edd_tax_id_' . md5( implode( $params ) );
-
-    if ( false === ( $valid_number = get_transient( $slug ) ) ) {
-      $valid_number = QuadernoTax::validate( $params );
-      set_transient( $slug, $valid_number, DAY_IN_SECONDS );
-    }
+    $valid_number = edd_quaderno_validate_tax_id( $_POST['edd_tax_id'], $data['cc_info']['card_country'] );
 
     if ( $valid_number === null ) {
       edd_set_error( 'invalid_vat_number', esc_html__('VIES service is down and we cannot validate your VAT Number. Please contact us.', 'edd-quaderno') );
@@ -75,7 +65,33 @@ function edd_quaderno_validate_tax_id( $data ) {
   }
 
 }
-add_action('edd_checkout_error_checks', 'edd_quaderno_validate_tax_id', 100);
+add_action('edd_checkout_error_checks', 'edd_quaderno_validate_tax_id_field', 100);
+
+/**
+ * Validate Tax ID
+ *
+ * @param string $tax_id
+ * @param string $country
+ *
+ * @return boolean
+ *
+ * @since 1.25
+ */
+function edd_quaderno_validate_tax_id( $tax_id, $country ) {
+  $params = array(
+    'vat_number' => $tax_id,
+    'country' => $country
+  );
+
+  $slug = 'edd_tax_id_' . md5( implode( $params ) );
+
+  if ( false === ( $valid_number = get_transient( $slug ) ) ) {
+    $valid_number = QuadernoTax::validate( $params );
+    set_transient( $slug, $valid_number, DAY_IN_SECONDS );
+  }
+
+  return $valid_number;
+}
 
 /**
 * Store the Tax ID in the payment meta
