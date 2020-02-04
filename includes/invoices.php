@@ -65,12 +65,18 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 	// Get the taxes
 	$tax = edd_quaderno_tax( $payment->address['country'], $payment->address['zip'], $payment->address['city'], $tax_id );
 
+  // Add the reverse charged note if needed
+  $notes = '';
+  if ( 1 ==  edd_quaderno_validate_tax_id( $tax_id, $payment->address['country'] ) ) {
+  	$notes = esc_html__('Tax amount subject to reverse charge', 'edd-quaderno' );
+  }
+
 	// Add the invoice params
 	$invoice_params = array(
 		'currency' => $payment->currency,
 		'po_number' => $payment->number,
 		'interval_count' => $payment->parent_payment == 0 ? '0' : '1',
-		'notes' => apply_filters( 'quaderno_invoice_notes', $tax->notes, $payment, $tax ),
+		'notes' => apply_filters( 'quaderno_invoice_notes', $notes, $payment, $tax ),
 		'processor' => 'edd',
 		'processor_id' => strtotime($payment->completed_date) . '_' . $payment_id,
 		'payment_method' => get_quaderno_payment_method( $payment->gateway ),
