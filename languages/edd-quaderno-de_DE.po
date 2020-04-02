@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plugins - EDD Quaderno - Stable (latest release)\n"
-"POT-Creation-Date: 2020-02-04 18:34+0000\n"
-"PO-Revision-Date: 2020-02-04 18:37+0000\n"
+"POT-Creation-Date: 2020-04-02 19:29+0100\n"
+"PO-Revision-Date: 2020-04-02 23:00+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -25,10 +25,6 @@ msgstr "Nur wenn es sich um einen Geschäftskauf handelt"
 #: ../includes/business_name_field.php:43
 msgid "Please enter your company name"
 msgstr "Bitte Firmennamen eingeben"
-
-#: ../includes/invoices.php:71
-msgid "Tax amount subject to reverse charge"
-msgstr "Steuerbetrag unterliegt der Reverse Charge"
 
 #: ../includes/order_details.php:27
 msgid "Quaderno Invoice"
@@ -111,31 +107,26 @@ msgstr ""
 "quadernoapp.com/signup?utm_source=wordpress&utm_campaign=edd” target=\"_blank"
 "\">hier</a>."
 
-#: ../includes/settings.php:137
-msgid ""
-"Awesome, you've been using <strong>EDD Quaderno</strong> for a while."
-"<br>Could you please do me a BIG favor and give a <strong>5-star rating</"
-"strong> on WordPress? Just to help us spread the word and boost our "
-"motivation.<br><br>Your help is much appreciated. Thank you very much,<br> "
-"~Carlos Hernandez, Founder"
-msgstr ""
-"Toll, du benutzt <strong>EDD Quaderno</strong> nun schon seit einiger Zeit."
-"<br>Könntest du mir den Gefallen tun und mich mit <strong>5 Sternen</strong> "
-"bei WordPress bewerten? Das hilft uns, zu mehr Leuten zu gelangen und boomt "
-"unsere Motivation.<br><br>Wir würden uns sehr über deine Hilfe freuen. "
-"Vielen Dank!<br> ~Carlos Hernandez, Flunder"
-
 #: ../includes/settings.php:140
-msgid "Ok, you deserve it"
-msgstr "Ok, du verdienst es"
-
-#: ../includes/settings.php:141
-msgid "Nope, maybe later"
-msgstr "Nein, vielleicht später"
+msgid ""
+"Hi there! You've been using Quaderno for a while and we hope it has been a "
+"big help for you."
+msgstr ""
+"Hallo! Du benutzt Quaderno nun schon eine Zeit lang und wir hoffen, es ist "
+"dir eine große Hilfe."
 
 #: ../includes/settings.php:142
-msgid "I already did it"
-msgstr "Ich habâs schon gemacht"
+msgid ""
+"If you could take a few moments to rate it on WordPress.org, we would really "
+"appreciate your help making the plugin better. Thanks!"
+msgstr ""
+"Wenn du einen Moment Zeit hättest, wären wir dir sehr dankbar, wenn du auf "
+"WordPress.org eine Bewertung über uns schreiben könntest. Das würde uns "
+"helfen, um das Plugin weiter zu verbessern. Danke schön!"
+
+#: ../includes/settings.php:144
+msgid "Post review"
+msgstr "Review schreiben"
 
 #: ../includes/tax_id_field.php:25 ../includes/tax_id_field.php:132
 msgid "Tax ID"
@@ -164,6 +155,31 @@ msgstr "Die eingegebene USt-IdNr. ist nicht gültig"
 #: ../quaderno/quaderno_request.php:79
 msgid "There was a problem connecting to the API."
 msgstr "Bei der Verbindung mit der API ist ein Problem aufgetreten."
+
+#~ msgid "Tax amount subject to reverse charge"
+#~ msgstr "Steuerbetrag unterliegt der Reverse Charge"
+
+#~ msgid ""
+#~ "Awesome, you've been using <strong>EDD Quaderno</strong> for a while."
+#~ "<br>Could you please do me a BIG favor and give a <strong>5-star rating</"
+#~ "strong> on WordPress? Just to help us spread the word and boost our "
+#~ "motivation.<br><br>Your help is much appreciated. Thank you very much,"
+#~ "<br> ~Carlos Hernandez, Founder"
+#~ msgstr ""
+#~ "Toll, du benutzt <strong>EDD Quaderno</strong> nun schon seit einiger "
+#~ "Zeit.<br>Könntest du mir den Gefallen tun und mich mit <strong>5 Sternen</"
+#~ "strong> bei WordPress bewerten? Das hilft uns, zu mehr Leuten zu gelangen "
+#~ "und boomt unsere Motivation.<br><br>Wir würden uns sehr über deine Hilfe "
+#~ "freuen. Vielen Dank!<br> ~Carlos Hernandez, Flunder"
+
+#~ msgid "Ok, you deserve it"
+#~ msgstr "Ok, du verdienst es"
+
+#~ msgid "Nope, maybe later"
+#~ msgstr "Nein, vielleicht später"
+
+#~ msgid "I already did it"
+#~ msgstr "Ich habâs schon gemacht"
 
 #~ msgid "Send automatically your sales receipts to your customers"
 #~ msgstr "Verkaufsbelege automatisch den Kunden zusenden"

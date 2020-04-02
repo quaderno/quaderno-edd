@@ -3,8 +3,8 @@ Author URI: https://quaderno.io?utm_source=wordpress&utm_campaign=edd
 Contributors: polimorfico
 Tags: tax, taxes, sales tax, vat, gst, vatmoss, vat moss, billing, invoices, receipts, credit notes, edd, easydigitaldownloads, easy digital downloads, quaderno
 Requires at least: 4.6
-Tested up to: 5.3
-Stable tag: 1.25.1
+Tested up to: 5.4
+Stable tag: 1.25.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -65,6 +65,9 @@ If you have any questions please get in touch with us at hello@quaderno.io.
 4. Example of a receipt
 
 == Changelog ==
+
+= 1.25.2 - April 2, 2020 =
+* New: WordPress 5.4
 
 = 1.25.1 - February 4, 2020 =
 * Improvement: show reverse charge note when needed

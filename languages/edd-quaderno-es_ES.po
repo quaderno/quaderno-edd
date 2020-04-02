@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plugins - EDD Quaderno - Stable (latest release)\n"
-"POT-Creation-Date: 2020-02-04 18:34+0000\n"
-"PO-Revision-Date: 2020-02-04 18:37+0000\n"
+"POT-Creation-Date: 2020-04-02 19:29+0100\n"
+"PO-Revision-Date: 2020-04-02 19:31+0100\n"
 "Last-Translator: hello@quaderno.io\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -25,10 +25,6 @@ msgstr "Solo si es una compra para tu negocio"
 #: ../includes/business_name_field.php:43
 msgid "Please enter your company name"
 msgstr "Por favor, introduce el nombre de tu empresa"
-
-#: ../includes/invoices.php:71
-msgid "Tax amount subject to reverse charge"
-msgstr "Inversión de sujeto pasivo"
 
 #: ../includes/order_details.php:27
 msgid "Quaderno Invoice"
@@ -113,31 +109,25 @@ msgstr ""
 "quadernoapp.com/signup?utm_source=wordpress&utm_campaign=edd” target=\"_blank"
 "\">en esta página</a>."
 
-#: ../includes/settings.php:137
-msgid ""
-"Awesome, you've been using <strong>EDD Quaderno</strong> for a while."
-"<br>Could you please do me a BIG favor and give a <strong>5-star rating</"
-"strong> on WordPress? Just to help us spread the word and boost our "
-"motivation.<br><br>Your help is much appreciated. Thank you very much,<br> "
-"~Carlos Hernandez, Founder"
-msgstr ""
-"Ya llevas un tiempo usando <strong>EDD Quaderno</strong> y me gustaría "
-"pedirte un pequeño favor.<br>¿Podrías puntuar nuestro plugin en WordPress? "
-"Nos ayudarías a dar de conocer Quaderno y aumentar nuestra motivación."
-"<br><br>Te agradezco mucho tu ayuda. Mucha gracias,<br>Carlos Hernández, "
-"Fundador"
-
 #: ../includes/settings.php:140
-msgid "Ok, you deserve it"
-msgstr "¡Por supuesto! Os lo merecéis"
-
-#: ../includes/settings.php:141
-msgid "Nope, maybe later"
-msgstr "No, quizás más tarde"
+msgid ""
+"Hi there! You've been using Quaderno for a while and we hope it has been a "
+"big help for you."
+msgstr ""
+"¡Hola! Ha estado usando Quaderno durante un tiempo y esperamos que te haya "
+"servido de gran ayuda."
 
 #: ../includes/settings.php:142
-msgid "I already did it"
-msgstr "Ya lo hice"
+msgid ""
+"If you could take a few moments to rate it on WordPress.org, we would really "
+"appreciate your help making the plugin better. Thanks!"
+msgstr ""
+"Si pudieras dedicar un par de minutos a dejar tu opinión en WordPress.org, "
+"te lo agradeceríamos enormemente. ¡Muchas gracias!"
+
+#: ../includes/settings.php:144
+msgid "Post review"
+msgstr "Publicar un comentario"
 
 #: ../includes/tax_id_field.php:25 ../includes/tax_id_field.php:132
 msgid "Tax ID"
@@ -166,6 +156,31 @@ msgstr "El número de operador intracomunitario no es válido"
 #: ../quaderno/quaderno_request.php:79
 msgid "There was a problem connecting to the API."
 msgstr "Hubo un problema en la conexión con la API."
+
+#~ msgid "Tax amount subject to reverse charge"
+#~ msgstr "Inversión de sujeto pasivo"
+
+#~ msgid ""
+#~ "Awesome, you've been using <strong>EDD Quaderno</strong> for a while."
+#~ "<br>Could you please do me a BIG favor and give a <strong>5-star rating</"
+#~ "strong> on WordPress? Just to help us spread the word and boost our "
+#~ "motivation.<br><br>Your help is much appreciated. Thank you very much,"
+#~ "<br> ~Carlos Hernandez, Founder"
+#~ msgstr ""
+#~ "Ya llevas un tiempo usando <strong>EDD Quaderno</strong> y me gustaría "
+#~ "pedirte un pequeño favor.<br>¿Podrías puntuar nuestro plugin en "
+#~ "WordPress? Nos ayudarías a dar de conocer Quaderno y aumentar nuestra "
+#~ "motivación.<br><br>Te agradezco mucho tu ayuda. Mucha gracias,<br>Carlos "
+#~ "Hernández, Fundador"
+
+#~ msgid "Ok, you deserve it"
+#~ msgstr "¡Por supuesto! Os lo merecéis"
+
+#~ msgid "Nope, maybe later"
+#~ msgstr "No, quizás más tarde"
+
+#~ msgid "I already did it"
+#~ msgstr "Ya lo hice"
 
 #~ msgid "Send automatically your sales receipts to your customers"
 #~ msgstr "Enviar automáticamente tus facturas a tus clientes"

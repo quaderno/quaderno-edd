@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: EDD Quaderno\n"
-"POT-Creation-Date: 2020-02-04 18:34+0000\n"
+"POT-Creation-Date: 2020-04-02 19:29+0100\n"
 "PO-Revision-Date: 2019-01-22 12:59-0000\n"
 "Last-Translator: hello@quaderno.io\n"
 "Language-Team: Quaderno <hello@quaderno.io>\n"
@@ -26,10 +26,6 @@ msgstr ""
 
 #: ../includes/business_name_field.php:43
 msgid "Please enter your company name"
-msgstr ""
-
-#: ../includes/invoices.php:71
-msgid "Tax amount subject to reverse charge"
 msgstr ""
 
 #: ../includes/order_details.php:27
@@ -108,25 +104,20 @@ msgid ""
 "\"_blank\">on this page</a>."
 msgstr ""
 
-#: ../includes/settings.php:137
-msgid ""
-"Awesome, you've been using <strong>EDD Quaderno</strong> for a while."
-"<br>Could you please do me a BIG favor and give a <strong>5-star rating</"
-"strong> on WordPress? Just to help us spread the word and boost our "
-"motivation.<br><br>Your help is much appreciated. Thank you very much,<br> "
-"~Carlos Hernandez, Founder"
-msgstr ""
-
 #: ../includes/settings.php:140
-msgid "Ok, you deserve it"
-msgstr ""
-
-#: ../includes/settings.php:141
-msgid "Nope, maybe later"
+msgid ""
+"Hi there! You've been using Quaderno for a while and we hope it has been a "
+"big help for you."
 msgstr ""
 
 #: ../includes/settings.php:142
-msgid "I already did it"
+msgid ""
+"If you could take a few moments to rate it on WordPress.org, we would "
+"really appreciate your help making the plugin better. Thanks!"
+msgstr ""
+
+#: ../includes/settings.php:144
+msgid "Post review"
 msgstr ""
 
 #: ../includes/tax_id_field.php:25 ../includes/tax_id_field.php:132
