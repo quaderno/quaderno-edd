@@ -12,7 +12,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
-* Add VAT field to checkout form
+* Add link to Quaderno invoice in payment details page
 *
 * @since  1.0
 * @param  integer $payment_id
@@ -31,7 +31,7 @@ function edd_quaderno_add_payment_meta($payment_id) {
 					<?php esc_html_e( 'View', 'edd-quaderno' ); ?>
 				</a>
 			<?php } else { ?>	
-				<a href="<?php echo esc_url( add_query_arg( array( 'edd-action' => 'resend_invoice', 'payment_id' => $payment_id ) ) ); ?>">
+				<a href="<?php echo esc_url( add_query_arg( array( 'edd-action' => 'resend_invoice', 'purchase_id' => $payment_id ) ) ); ?>">
 					<?php esc_html_e( 'Create', 'edd-quaderno' ); ?>
 				</a>
 			<?php } ?>	
@@ -42,5 +42,43 @@ function edd_quaderno_add_payment_meta($payment_id) {
 	echo ob_get_clean();
 }
 add_action('edd_view_order_details_payment_meta_before', 'edd_quaderno_add_payment_meta', 100);
+
+/**
+* Add link to Quaderno invoice in payment details page
+*
+* @since  1.26.0
+* @param  array $columns
+* @return array
+*/
+function edd_quaderno_payment_columns( $columns ) {
+	$columns['quaderno'] = __( 'Quaderno Invoice', 'edd-quaderno' );
+	return $columns;
+}
+add_filter('edd_payments_table_columns', 'edd_quaderno_payment_columns', 100);
+
+/**
+* Add link to Quaderno invoice in payment details page
+*
+* @since  1.26.0
+* @param  string $value
+* @param  mixed $payment
+* @param  string $column_name
+* @return string
+*/
+function edd_quaderno_payment_column( $value, $payment_id, $column_name ) {
+	$payment = new EDD_Payment($payment_id);
+
+	if ( $column_name == 'quaderno' ) {
+		if( $payment->get_meta( '_quaderno_invoice_id' ) ) {
+			$value = '<a href="' . $payment->get_meta( '_quaderno_url' ) . '" target="_blank">' . __( 'View', 'edd-quaderno' ) . '</a>';
+		}
+		else {
+			$value = '<a href="' . esc_url( add_query_arg( array( 'edd-action' => 'resend_invoice', 'purchase_id' => $payment_id ) ) ) . '">' . __( 'Create', 'edd-quaderno' ) . '</a>';
+		}
+	}
+
+	return $value;
+}
+add_filter('edd_payments_table_column', 'edd_quaderno_payment_column', 3, 100);
 
 ?>

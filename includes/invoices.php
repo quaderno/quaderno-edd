@@ -257,7 +257,7 @@ add_action( 'edd_recurring_record_payment', 'edd_quaderno_create_invoice', 999, 
 * @return void
 */
 function edd_quaderno_resend_invoice( $data ) {
-	$payment_id = absint( $data['payment_id'] );
+	$payment_id = absint( $data['purchase_id'] );
 
 	if( empty( $payment_id ) ) {
 		return;
@@ -269,5 +269,5 @@ function edd_quaderno_resend_invoice( $data ) {
 	wp_redirect( add_query_arg( array( 'edd-message' => 'email_sent', 'edd-action' => false, 'purchase_id' => false ) ) );
 	exit;
 }
-add_action( 'edd_resend_invoice', 'edd_quaderno_resend_invoice');
+add_action( 'edd_resend_invoice', 'edd_quaderno_resend_invoice', 999 );
 
