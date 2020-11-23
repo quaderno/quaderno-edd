@@ -61,6 +61,7 @@ final class EDD_Quaderno {
 
 	private function includes() {
 		require_once EDD_QUADERNO_PLUGIN_DIR . 'quaderno/quaderno_load.php';
+		require_once EDD_QUADERNO_PLUGIN_DIR . 'includes/customer.php';
 		require_once EDD_QUADERNO_PLUGIN_DIR . 'includes/ebook_field.php';
 		require_once EDD_QUADERNO_PLUGIN_DIR . 'includes/business_name_field.php';
 		require_once EDD_QUADERNO_PLUGIN_DIR . 'includes/tax_id_field.php';

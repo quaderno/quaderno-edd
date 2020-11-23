@@ -19,11 +19,17 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 */
 function edd_quaderno_add_business_name() {
 	ob_start(); 
+	    
+	$current_customer = edd_quaderno_current_customer();
+  if ( isset( $current_customer ) ) {
+    $business_name = $current_customer->get_meta( 'business_name');
+  }
+
 	?>
 	<p id="edd_business_name_wrap">
 		<label for="edd_business_name" class="edd-label"><?php esc_html_e( 'Company Name', 'edd-quaderno' ); ?></label>
 		<span class="edd-description"><?php esc_html_e( 'Only if this is a business purchase', 'edd-quaderno' ); ?></span>
-		<input type="text" name="edd_business_name" id="edd_business_name" class="business-name edd-input" />
+		<input type="text" name="edd_business_name" id="edd_business_name" class="business-name edd-input" value="<?php echo $business_name; ?>" />
 	</p>
 	<?php
 	echo ob_get_clean();
@@ -53,7 +59,13 @@ add_action('edd_checkout_error_checks', 'edd_quaderno_validate_business_name', 1
 */
 function edd_quaderno_store_business_name( $payment_meta ) {
   if ( isset($_POST['edd_business_name']) ) {
-    $payment_meta['business_name'] = filter_var( $_POST['edd_business_name'], FILTER_SANITIZE_STRING );
+  	$business_name = filter_var( $_POST['edd_business_name'], FILTER_SANITIZE_STRING );
+    $payment_meta['business_name'] = $business_name;
+
+		$current_customer = edd_quaderno_current_customer();
+	  if ( isset( $current_customer ) ) {
+	    $current_customer->add_meta( 'business_name', $business_name);
+	  }
   }
 	return $payment_meta;
 }

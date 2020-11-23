@@ -20,11 +20,17 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 function edd_quaderno_add_tax_id() {
   global $edd_options;
 	ob_start(); 
+
+  $current_customer = edd_quaderno_current_customer();
+  if ( isset( $current_customer ) ) {
+    $tax_id = $current_customer->get_meta( 'tax_id');
+  }
+
 	?>
 	<p id="edd_tax_id_wrap">
 		<label for="edd_tax_id" class="edd-label"><?php esc_html_e( 'Tax ID', 'edd-quaderno' ); ?></label>
     <span class="edd-description"><?php esc_html_e( 'Enter your VAT number including country identifier e.g. GB123456788', 'edd-quaderno' ); ?></span>
-		<input type="text" name="edd_tax_id" id="edd_tax_id" class="tax-id edd-input" />
+		<input type="text" name="edd_tax_id" id="edd_tax_id" class="tax-id edd-input" value="<?php echo $tax_id; ?>" />
 	</p>
 	<?php
 	echo ob_get_clean();
@@ -101,7 +107,13 @@ function edd_quaderno_validate_tax_id( $tax_id, $country ) {
 */
 function edd_quaderno_store_tax_id( $payment_meta ) {
   if ( isset($_POST['edd_tax_id']) ) {
-    $payment_meta['tax_id'] = filter_var( $_POST['edd_tax_id'], FILTER_SANITIZE_STRING );
+    $tax_id = filter_var( $_POST['edd_tax_id'], FILTER_SANITIZE_STRING );
+    $payment_meta['tax_id'] = $tax_id;
+
+    $current_customer = edd_quaderno_current_customer();
+    if ( isset( $current_customer ) ) {
+      $current_customer->add_meta( 'tax_id', $tax_id);
+    }
   }
 	return $payment_meta;
 }
