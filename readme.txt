@@ -3,8 +3,8 @@ Author URI: https://quaderno.io?utm_source=wordpress&utm_campaign=edd
 Contributors: polimorfico
 Tags: tax, taxes, sales tax, vat, gst, vatmoss, vat moss, billing, invoices, receipts, credit notes, edd, easydigitaldownloads, easy digital downloads, quaderno
 Requires at least: 4.6
-Tested up to: 5.5
-Stable tag: 1.26.0
+Tested up to: 5.6
+Stable tag: 1.26.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -66,6 +66,9 @@ If you have any questions please get in touch with us at hello@quaderno.io.
 
 == Changelog ==
 
+= 1.26.1 – December 9, 2020 =
+* New: Support for WordPress 5.6
+
 = 1.26.0 – November 23, 2020 =
 * New: show link to Quaderno invoices in payment history page
 * New: store customer's business name and tax ID as meta for future payments
@@ -75,10 +78,10 @@ If you have any questions please get in touch with us at hello@quaderno.io.
 * New: send tax region to Quaderno
 
 = 1.25.3 – August 11, 2020 =
-* New: WordPress 5.5
+* New: Support for WordPress 5.5
 
 = 1.25.2 - April 2, 2020 =
-* New: WordPress 5.4
+* New: Support for WordPress 5.4
 
 = 1.25.1 - February 4, 2020 =
 * Improvement: show reverse charge note when needed
