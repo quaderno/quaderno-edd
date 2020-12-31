@@ -54,7 +54,7 @@ function edd_quaderno_tax($country, $postal_code, $city, $tax_id)
 		'country' => $country,
 		'postal_code' => $postal_code,
 		'city' => $city,
-		'vat_number' => $tax_id,
+		'tax_id' => $tax_id,
 		'transaction_type' => edd_quaderno_transaction_type()
 	);
 

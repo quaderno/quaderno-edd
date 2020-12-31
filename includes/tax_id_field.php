@@ -22,6 +22,7 @@ function edd_quaderno_add_tax_id() {
 	ob_start(); 
 
   $current_customer = edd_quaderno_current_customer();
+  $tax_id = '';
   if ( isset( $current_customer ) ) {
     $tax_id = $current_customer->get_meta( 'tax_id');
   }

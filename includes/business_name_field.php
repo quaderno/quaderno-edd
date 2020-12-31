@@ -21,6 +21,7 @@ function edd_quaderno_add_business_name() {
 	ob_start(); 
 	    
 	$current_customer = edd_quaderno_current_customer();
+	$business_name = '';
   if ( isset( $current_customer ) ) {
     $business_name = $current_customer->get_meta( 'business_name');
   }
