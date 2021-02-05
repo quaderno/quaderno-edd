@@ -86,7 +86,7 @@ add_action('edd_checkout_error_checks', 'edd_quaderno_validate_tax_id_field', 10
  */
 function edd_quaderno_validate_tax_id( $tax_id, $country ) {
   $params = array(
-    'vat_number' => $tax_id,
+    'tax_id' => $tax_id,
     'country' => $country
   );
 
