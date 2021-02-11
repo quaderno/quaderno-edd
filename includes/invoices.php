@@ -64,6 +64,7 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 	
 	// Get the taxes
 	$tax = edd_quaderno_tax( $payment->address['country'], $payment->address['zip'], $payment->address['city'], $tax_id );
+	$tax = apply_filters( 'quaderno_invoice_tax', $tax, $payment );
 
 	// Add the invoice params
 	$invoice_params = array(

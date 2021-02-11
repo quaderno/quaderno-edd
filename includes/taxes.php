@@ -64,7 +64,7 @@ function edd_quaderno_tax($country, $postal_code, $city, $tax_id)
 		set_transient( $slug, $tax, WEEK_IN_SECONDS );
 	}
 
-	return $tax;
+	return apply_filters( 'quaderno_tax_calculation', $tax, $country, $postal_code, $city, $tax_id );
 }
 
 /**
