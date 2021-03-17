@@ -31,8 +31,8 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 	}
 
 	// Return if an invoice has already been issued for this order
-	$invoice_id = $payment->get_meta( '_quaderno_invoice_id' );
-	if ( !empty( $invoice_id ) ) {
+	$transaction_id = $payment->get_meta( '_quaderno_invoice_id' );
+	if ( !empty( $transaction_id ) ) {
 		return;
 	}
 
@@ -67,16 +67,24 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 	$tax = apply_filters( 'quaderno_invoice_tax', $tax, $payment );
 
 	// Add the invoice params
-	$invoice_params = array(
+	$transaction_params = array(
+		'type' => 'sale',
 		'currency' => $payment->currency,
 		'po_number' => $payment->number,
 		'interval_count' => $payment->parent_payment == 0 ? '0' : '1',
 		'notes' => apply_filters( 'quaderno_invoice_notes', $tax->notes, $payment, $tax ),
 		'processor' => 'edd',
 		'processor_id' => time() . '_' . $payment_id,
-		'payment_method' => get_quaderno_payment_method( $payment->gateway ),
-		'evidence_attributes' => array( 'billing_country' => $payment->address['country'], 'ip_address' => $ip_address ),
-		'custom_metadata' => array( 'processor_url' => add_query_arg( 'id', $payment_id, admin_url( 'edit.php?post_type=download&page=edd-payment-history&view=view-order-details' ) ) )
+		'payment' => array(
+			'method' => get_quaderno_payment_method( $payment->gateway )
+		),
+		'evidence' => array( 
+			'billing_country' => $payment->address['country'], 
+			'ip_address' => $ip_address 
+		),
+		'custom_metadata' => array( 
+			'processor_url' => add_query_arg( 'id', $payment_id, admin_url( 'edit.php?post_type=download&page=edd-payment-history&view=view-order-details' ) ) 
+		)
 	);
 
 	// Add the contact
@@ -93,11 +101,11 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 		$contact_name = '';
 	}
 
-	$invoice_params['contact'] = array(
+	$transaction_params['customer'] = array(
 		'kind' => $kind,
 		'first_name' => $first_name ?: 'EDD Customer',
 		'last_name' => $last_name,
-		'contact_name' => $contact_name,
+		'contact_person' => $contact_name,
 		'street_line_1' => $payment->address['line1'] ?: '',
 		'street_line_2' => $payment->address['line2'] ?: '',
 		'city' => $payment->address['city'],
@@ -111,7 +119,7 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 
   $contact_id = $customer->get_meta( '_quaderno_contact', true );
 
-  // The following code is quite hacky in order to skip Quaderno API's contact default initialization 
+  // The following code is quite hacky in order to skip Quaderno API's customer default initialization 
   // 2 reasons for contact_id to be empty:
   // - This is the first purchase ever for the user and the contact does not exist in Quaderno
   // - This is not the first purchase of the user but she does not have a contact_id saved yet in EDD metadata (until v1.24.3)
@@ -134,28 +142,27 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
     // Force the creation of a new contact
     $hashed_billing_name = md5(implode( '-', array($payment->first_name, $payment->last_name, $business_name)));
     // We don't want Quaderno to initialize the contact by processor_id
-    $invoice_params['contact']['processor_id'] = $hashed_billing_name . '_' . $payment->customer_id;
+    $transaction_params['customer']['processor_id'] = $hashed_billing_name . '_' . $payment->customer_id;
   }
 
-  if(!isset($invoice_params['contact']['processor_id'])){
+  if(!isset($transaction_params['customer']['processor_id'])){
     if ( empty( $contact_id ) ){
       // Use the processor_id the already exists in Quaderno in order to identify the contact until we have contact_id stored in EDD
-      $invoice_params['contact']['processor_id'] = strtotime($customer->date_created) . '_' . $payment->customer_id;
+      $transaction_params['customer']['processor_id'] = strtotime($customer->date_created) . '_' . $payment->customer_id;
     }else{
       // Use the contact_id to identify the contact
-      $invoice_params['contact']['id'] = $contact_id;
-      unset($invoice_params['contact']['first_name']);
-      unset($invoice_params['contact']['last_name']);
+      $transaction_params['customer']['id'] = $contact_id;
+      unset($transaction_params['customer']['first_name']);
+      unset($transaction_params['customer']['last_name']);
     }
   }
 	
 	// Let's create the invoice
-	$invoice = new QuadernoIncome($invoice_params);
+	$transaction = new QuadernoTransaction($transaction_params);
 
-	// Let's create the tag list
+  // Calculate transaction items
 	$tags = array();
-
-	// Add the invoice item
+	$transaction_items = array();
 	foreach ( $payment->cart_details as $cart_item ) {
 		$download = new EDD_Download( $cart_item['id'] );
 		$product_name = $download->post_title;
@@ -172,77 +179,54 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 			$discount_rate = $cart_item['discount'] / $cart_item['subtotal'] * 100;
 		}
 
-		$item = new QuadernoDocumentItem(array(
+		$new_item = array(
 			'product_code' => $download->post_name,
 			'description' => $product_name,
 			'quantity' => $cart_item['quantity'],
+			'amount' => $cart_item['price'],
       'discount_rate' => $discount_rate,
-			'total_amount' => $cart_item['price'],
-			'tax_1_name' => $tax->name,
-			'tax_1_rate' => $tax->rate,
-			'tax_1_country' => $tax->country,
-			'tax_1_region' => $tax->region,
-			'tax_1_transaction_type' => 'eservice'
-		));
+			'tax' => $tax
+		);
 
-		$invoice->addItem( $item );
-
+    array_push( $transaction_items, $new_item );
 		$tags = array_merge( $tags, wp_get_object_terms( $cart_item['id'], 'download_tag', array( 'fields' => 'slugs' ) ) );
-
-		// Create product on Quaderno
-		if ( !get_post_meta( $download->get_ID(), '_quaderno_product_id', true ) ) {
-
-			$product = new QuadernoItem(array(
-				'code' => $download->post_name,
-				'name' => $download->post_title,
-				'product_type' => 'good',
-				'unit_cost' => $download->get_price(),
-				'currency' => $payment->currency,
-				'tax_class' => 'eservice',
-				'kind' => !get_post_meta( $download->get_ID(), 'edd_recurring', true ) ? 'one_off' : 'subscription'
-			));
-
-			if ( $product->save() ) {
-				update_post_meta( $download->get_ID(), '_quaderno_product_id', $product->id );
-			}
-		}
 	}
+
+	// Calculate gateway fees
+	foreach ( $payment->fees as $fee ) {
+		$item = array(
+			'description' => $fee['label'],
+			'quantity' => 1,
+			'amount' => $fee['amount'] * (1 + $tax->rate / 100.0),
+			'tax' => $tax
+		);
+
+    array_push( $transaction_items, $new_item );
+	}	
+
+  // Add items to transaction
+  $transaction->items = $transaction_items;
 
 	// Add download tags to invoice
 	if ( count( $tags ) > 0 ) {
-		$invoice->tag_list = implode( ',', $tags );
+		$transaction->tags = implode( ',', $tags );
 	}
 
-	// Add gateway fees
-	foreach ( $payment->fees as $fee ) {
-		$item = new QuadernoDocumentItem(array(
-			'description' => $fee['label'],
-			'quantity' => 1,
-			'unit_price' => $fee['amount'],
-			'tax_1_name' => $tax->name,
-			'tax_1_rate' => $tax->rate,
-      'tax_1_country' => $tax->country,
-			'tax_1_region' => $tax->region,
-			'tax_1_transaction_type' => 'eservice'
-		));
-		$invoice->addItem( $item );
-	}	
-
-	do_action( 'quaderno_invoice_pre_create', $invoice, $payment );
+	do_action( 'quaderno_invoice_pre_create', $transaction, $payment );
 
 	// Save the invoice and the location evidences
-	if ( $invoice->save() ) {
-		$payment->update_meta( '_quaderno_invoice_id', $invoice->id );
-		$payment->update_meta( '_quaderno_url', $invoice->permalink );
+	if ( $transaction->save() ) {
+		$payment->update_meta( '_quaderno_invoice_id', $transaction->id );
+		$payment->update_meta( '_quaderno_url', $transaction->permalink );
 		$payment->add_note( 'Receipt created on Quaderno' );
 
-    $customer->update_meta( '_quaderno_contact', $invoice->contact->id );
+    $customer->update_meta( '_quaderno_contact', $transaction->contact->id );
 
-		do_action( 'quaderno_invoice_created', $invoice, $payment );
+		do_action( 'quaderno_invoice_created', $transaction, $payment );
 
 		// Send the invoice
 		if ( isset( $edd_options['autosend_receipts'] ) ) {
-			$invoice->deliver();
+			$transaction->deliver();
 		}
 	}
 

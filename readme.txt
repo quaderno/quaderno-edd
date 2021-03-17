@@ -55,7 +55,7 @@ Nope - we take care of everything you. Just install the plugin, add your API tok
 = Does Quaderno work with any themes? =
 Yes, Quaderno works with any theme - whether free, commercial or custom. You just need EDD activated for Quaderno to work.
 
-If you have any questions please get in touch with us at hello@quaderno.io.
+If you have any questions please get in touch with us at support@quaderno.io.
 
 == Screenshots ==
 

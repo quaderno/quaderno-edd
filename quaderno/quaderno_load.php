@@ -6,7 +6,7 @@
 * This is the ONLY file to include from external code
 *
 * @package   Quaderno PHP
-* @author    Quaderno <hello@quaderno.io>
+* @author    Quaderno <support@quaderno.io>
 * @copyright Copyright (c) 2015, Quaderno
 * @license   http://opensource.org/licenses/gpl-2.0.php GNU Public License
 */
@@ -23,7 +23,7 @@ require_once $quaderno_script_path.'quaderno_class.php';
 require_once $quaderno_script_path.'quaderno_model.php';
 require_once $quaderno_script_path.'quaderno_contact.php';
 require_once $quaderno_script_path.'quaderno_document.php';
-require_once $quaderno_script_path.'quaderno_income.php';
+require_once $quaderno_script_path.'quaderno_transaction.php';
 require_once $quaderno_script_path.'quaderno_receipt.php';
 require_once $quaderno_script_path.'quaderno_invoice.php';
 require_once $quaderno_script_path.'quaderno_credit.php';
