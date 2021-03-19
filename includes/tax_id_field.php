@@ -93,7 +93,7 @@ function edd_quaderno_validate_tax_id( $tax_id, $country ) {
   $slug = 'edd_tax_id_' . md5( implode( $params ) );
 
   if ( false === ( $valid_number = get_transient( $slug ) ) ) {
-    $valid_number = QuadernoTax::validate( $params );
+    $valid_number = QuadernoTaxId::validate( $params );
     set_transient( $slug, $valid_number, DAY_IN_SECONDS );
   }
 

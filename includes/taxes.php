@@ -51,16 +51,16 @@ function edd_quaderno_tax($country, $postal_code, $city, $tax_id)
 	global $edd_options;
 
 	$params = array(
-		'country' => $country,
-		'postal_code' => $postal_code,
-		'city' => $city,
+		'to_country' => $country,
+		'to_postal_code' => $postal_code,
+		'to_city' => $city,
 		'tax_id' => $tax_id,
-		'transaction_type' => edd_quaderno_transaction_type()
+		'tax_code' => edd_quaderno_transaction_type()
 	);
 
 	$slug = 'quaderno_tax_' . md5( implode( $params ) );
 	if ( false === ( $tax = get_transient( $slug ) ) ) {
-		$tax = QuadernoTax::calculate( $params );
+		$tax = QuadernoTaxRate::calculate( $params );
 		set_transient( $slug, $tax, WEEK_IN_SECONDS );
 	}
 

@@ -1,10 +1,10 @@
 <?php
 /**
-* Quaderno Tax
+* Quaderno Tax Rate
 *
 * @package   Quaderno PHP
 * @author    Quaderno <support@quaderno.io>
-* @copyright Copyright (c) 2015, Quaderno
+* @copyright Copyright (c) 2021, Quaderno
 * @license   http://opensource.org/licenses/gpl-2.0.php GNU Public License
 */
 
@@ -12,21 +12,13 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }
 
-class QuadernoTax extends QuadernoModel {
+class QuadernoTaxRate extends QuadernoModel {
 
 	public static function calculate($params) {
 		$return = false;
 		$request = new QuadernoRequest();
-		$request->calculate('taxes', $params);
+		$request->calculate('tax_rates', $params);
 		return $request->get_response_body();
-	}
-
-	public static function validate($params) {
-		$return = false;
-		$request = new QuadernoRequest();
-		$request->validate('taxes', $params);
-		$response = $request->get_response_body();
-		return $response->valid;
 	}
 
 }
