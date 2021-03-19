@@ -33,8 +33,8 @@ function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
 	$payment = edd_get_payment($payment_id);
 
 	// Return if a credit has already been issued for this order
-	$credit_id = $payment->get_meta( '_quaderno_credit_id' );
-	if ( !empty( $credit_id ) ) {
+	$transaction_id = $payment->get_meta( '_quaderno_credit_id' );
+	if ( !empty( $transaction_id ) ) {
 		return;
 	}
 
@@ -46,24 +46,28 @@ function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
 	$tax = edd_quaderno_tax( $payment->address['country'], $payment->address['zip'], $payment->address['city'], $tax_id );
 
 	// Add the credit params
-	$credit_params = array(
+	$transaction_params = array(
+		'type' => 'refund',
 		'issue_date' => current_time('Y-m-d'),
 		'currency' => $payment->currency,
 		'po_number' => $payment->number,
 		'interval_count' => $payment->parent_payment == 0 ? '0' : '1',
 		'notes' => apply_filters( 'quaderno_credit_notes', $tax->notes, $payment, $tax ),
 		'processor' => 'edd',
-		'processor_id' => time() . '_' . $payment_id,
-		'payment_method' => get_quaderno_payment_method( $payment->gateway ),
-		'document_id' => $payment->get_meta( '_quaderno_invoice_id' ),
-		'custom_metadata' => array( 'processor_url' => add_query_arg( 'id', $payment_id, admin_url( 'edit.php?post_type=download&page=edd-payment-history&view=view-order-details' ) ) )
+		'processor_id' => $payment->get_meta( '_quaderno_processor_id' ),
+		'payment' => array(
+			'method' => get_quaderno_payment_method( $payment->gateway )
+		),
+		'custom_metadata' => array( 
+			'processor_url' => add_query_arg( 'id', $payment_id, admin_url( 'edit.php?post_type=download&page=edd-payment-history&view=view-order-details' ) ) 
+		)
 	);
 
 	// Add the contact
 	$customer = new EDD_Customer( $payment->customer_id );
 	$contact_id = $customer->get_meta( '_quaderno_contact' );
 	if ( !empty( $contact_id ) ) {
-		$credit_params['contact'] = array(
+		$transaction_params['customer'] = array(
 			'id' => $contact_id
 		);
 
@@ -80,7 +84,7 @@ function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
 			$contact_name = '';
 		}
 
-		$credit_params['contact'] = array(
+		$transaction_params['customer'] = array(
 			'kind' => $kind,
 			'first_name' => $first_name ?: 'EDD Customer',
 			'last_name' => $last_name,
@@ -98,13 +102,12 @@ function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
 		);
 	}
 
-	// Let's create the credit
-  $credit = new QuadernoCredit($credit_params);
+	// Let's create the transaction
+  $transaction = new QuadernoTransaction($transaction_params);
 
-	// Let's create the tag list
+  // Calculate transaction items and tags
 	$tags = array();
-
-	// Add the credit item
+	$transaction_items = array();
 	foreach ( $payment->cart_details as $cart_item ) {
 		$download = new EDD_Download( $cart_item['id'] );
 		$product_name = $download->post_title;
@@ -121,46 +124,39 @@ function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
 			$discount_rate = $cart_item['discount'] / $cart_item['subtotal'] * 100;
 		}
 
-		$item = new QuadernoDocumentItem(array(
+		$new_item = array(
 			'product_code' => $download->post_name,
 			'description' => $product_name,
 			'quantity' => $cart_item['quantity'],
+			'amount' => $cart_item['price'],
       'discount_rate' => $discount_rate,
-			'total_amount' => $cart_item['price'],
-			'tax_1_name' => $tax->name,
-			'tax_1_rate' => $tax->rate,
-			'tax_1_country' => $tax->country,
-			'tax_1_county' => $tax->county,
-			'tax_1_city' => $tax->city,
-			'tax_1_county_code' => $tax->county_tax_code,
-			'tax_1_city_code' => $tax->city_tax_code,
-			'tax_1_transaction_type' => 'eservice'
-		));
+			'tax' => $tax
+		);
 
-		$credit->addItem( $item );
-
+    array_push( $transaction_items, $new_item );
 		$tags = array_merge( $tags, wp_get_object_terms( $cart_item['id'], 'download_tag', array( 'fields' => 'slugs' ) ) );
 	}
 
-	// Add download tags to credit note
+  // Add items to transaction
+  $transaction->items = $transaction_items;
+
+	// Add download tags
 	if ( count( $tags ) > 0 ) {
-		$credit->tag_list = implode( ',', $tags );
+		$transaction->tags = implode( ',', $tags );
 	}
 
-	do_action( 'quaderno_credit_pre_create', $credit, $payment );
+	do_action( 'quaderno_credit_pre_create', $transaction, $payment );
 
 	// Save the credit
-	if ( $credit->save() ) {
-		$payment->update_meta( '_quaderno_credit_id', $credit->id );
-		$payment->update_meta( '_quaderno_url', $credit->permalink );
-		$customer->add_meta( '_quaderno_contact', $credit->contact->id );
+	if ( $transaction->save() ) {
+		$payment->update_meta( '_quaderno_credit_id', $transaction->id );
 		$payment->add_note( 'Credit note created on Quaderno' );
 
-		do_action( 'quaderno_credit_created', $credit, $payment );
+		do_action( 'quaderno_credit_created', $transaction, $payment );
 
 		// Send the credit
 		if ( isset( $edd_options['autosend_receipts'] ) ) {
-			$credit->deliver();
+			$transaction->deliver();
 		}
 	}
 }

@@ -157,10 +157,10 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
     }
   }
 	
-	// Let's create the invoice
+	// Let's create the transaction
 	$transaction = new QuadernoTransaction($transaction_params);
 
-  // Calculate transaction items
+  // Calculate transaction items and tags
 	$tags = array();
 	$transaction_items = array();
 	foreach ( $payment->cart_details as $cart_item ) {
@@ -207,7 +207,7 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
   // Add items to transaction
   $transaction->items = $transaction_items;
 
-	// Add download tags to invoice
+	// Add download tags
 	if ( count( $tags ) > 0 ) {
 		$transaction->tags = implode( ',', $tags );
 	}
@@ -216,7 +216,8 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 
 	// Save the invoice and the location evidences
 	if ( $transaction->save() ) {
-		$payment->update_meta( '_quaderno_invoice_id', $transaction->id );
+    $payment->update_meta( '_quaderno_invoice_id', $transaction->id );
+    $payment->update_meta( '_quaderno_processor_id', $transaction->processor_id );
 		$payment->update_meta( '_quaderno_url', $transaction->permalink );
 		$payment->add_note( 'Receipt created on Quaderno' );
 
