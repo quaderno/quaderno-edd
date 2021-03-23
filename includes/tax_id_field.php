@@ -129,7 +129,20 @@ add_filter('edd_payment_meta', 'edd_quaderno_store_tax_id', 100);
 function edd_quaderno_show_tax_id($payment_id) {
   $payment = new EDD_Payment( $payment_id );
   $payment_meta = $payment->get_meta();
-  $tax_id = empty( $payment_meta['vat_number'] ) ? $payment_meta['tax_id'] : $payment_meta['vat_number'];
+
+  // Get the current tax ID if exists
+  $tax_id = '';
+  if ( !empty( $payment_meta['vat_number'] ) ) {
+    $tax_id = $payment_meta['vat_number'];
+  } elseif ( !empty( $payment_meta['tax_id'] ) ) {
+    $tax_id = $payment_meta['tax_id'];
+  }
+
+  // Get the current business name
+  $business_name = '';
+  if ( !empty( $payment_meta['business_name'] ) ) {
+    $business_name = $payment_meta['business_name']; 
+  }
 
 	?>
   <div class="order-data-address">
@@ -137,7 +150,7 @@ function edd_quaderno_show_tax_id($payment_id) {
       <div class="column">
         <p>
           <strong class="order-data-address-line"><?php _e( 'Company Name', 'edd-quaderno' ); ?></strong><br/>
-          <input name="edd_business_name" type="text" class="large-text" value="<?php echo $payment_meta['business_name'] ?>"/>
+          <input name="edd_business_name" type="text" class="large-text" value="<?php echo $business_name ?>"/>
         </p>
       </div>
       <div class="column">

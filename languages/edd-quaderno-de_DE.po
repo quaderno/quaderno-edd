@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plugins - EDD Quaderno - Stable (latest release)\n"
-"POT-Creation-Date: 2020-04-02 19:29+0100\n"
-"PO-Revision-Date: 2020-04-02 23:00+0100\n"
+"POT-Creation-Date: 2021-03-23 17:23+0000\n"
+"PO-Revision-Date: 2021-03-23 17:27+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -12,31 +12,39 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 2.4.2\n"
 
-#: ../includes/business_name_field.php:24 ../includes/tax_id_field.php:126
+#: ../includes/business_name_field.php:31 ../includes/tax_id_field.php:152
 msgid "Company Name"
 msgstr "Firmenname"
 
-#: ../includes/business_name_field.php:25
+#: ../includes/business_name_field.php:32
 msgid "Only if this is a business purchase"
 msgstr "Nur wenn es sich um einen Geschäftskauf handelt"
 
-#: ../includes/business_name_field.php:43
+#: ../includes/business_name_field.php:50
 msgid "Please enter your company name"
 msgstr "Bitte Firmennamen eingeben"
 
-#: ../includes/order_details.php:27
+#: ../includes/order_details.php:27 ../includes/order_details.php:54
 msgid "Quaderno Invoice"
 msgstr "Quaderno-Rechnung"
 
-#: ../includes/order_details.php:31
+#: ../includes/order_details.php:31 ../includes/order_details.php:73
 msgid "View"
 msgstr "Anzeigen"
 
-#: ../includes/order_details.php:35
+#: ../includes/order_details.php:35 ../includes/order_details.php:76
 msgid "Create"
 msgstr "Erstellen"
+
+#: ../includes/payments.php:59
+msgid "Upgrade"
+msgstr "Abo-Upgrade"
+
+#: ../includes/payments.php:61
+msgid "Renewal"
+msgstr "Abo-Verlängerung"
 
 #: ../includes/purchase_history.php:23
 msgid "Invoices"
@@ -128,19 +136,19 @@ msgstr ""
 msgid "Post review"
 msgstr "Review schreiben"
 
-#: ../includes/tax_id_field.php:25 ../includes/tax_id_field.php:132
+#: ../includes/tax_id_field.php:32 ../includes/tax_id_field.php:158
 msgid "Tax ID"
 msgstr "Steuernummer"
 
-#: ../includes/tax_id_field.php:26
+#: ../includes/tax_id_field.php:33
 msgid "Enter your VAT number including country identifier e.g. GB123456788"
 msgstr "Bitte die USt-IdNr. inkl. Länderkürzel (z. B. DE123456789) eingeben"
 
-#: ../includes/tax_id_field.php:53
+#: ../includes/tax_id_field.php:60
 msgid "Please enter your Tax ID"
 msgstr "Bitte Steuernummer eingeben"
 
-#: ../includes/tax_id_field.php:61
+#: ../includes/tax_id_field.php:68
 msgid ""
 "VIES service is down and we cannot validate your VAT Number. Please contact "
 "us."
@@ -148,7 +156,7 @@ msgstr ""
 "Der VIES ist inaktiv und wir können Ihre USt-IdNr nicht bestätigen. Bitte "
 "kontaktieren Sie uns."
 
-#: ../includes/tax_id_field.php:63
+#: ../includes/tax_id_field.php:70
 msgid "VAT Number is not valid"
 msgstr "Die eingegebene USt-IdNr. ist nicht gültig"
 

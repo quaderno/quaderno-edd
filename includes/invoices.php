@@ -45,7 +45,7 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 
 		$new_meta = array( 
 			'tax_id' => empty( $parent_meta['vat_number'] ) ? $parent_meta['tax_id'] : $parent_meta['vat_number'], 
-			'business_name' => $parent_meta['business_name']
+			'business_name' => isset( $parent_meta['business_name'] ) ? $parent_meta['business_name'] : ''
 		);
 
 		$merged_meta = array_merge( $meta, $new_meta );
@@ -110,7 +110,7 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 		'street_line_2' => $payment->address['line2'] ?: '',
 		'city' => $payment->address['city'],
 		'postal_code' => $payment->address['zip'],
-		'region' => edd_get_state_name($payment->address['country'], $payment->address['state']),
+		'region' => edd_get_state_name( $payment->address['country'], $payment->address['state'] ),
 		'country' => $payment->address['country'],
 		'email' => $payment->email,
 		'tax_id' => $tax_id,
@@ -165,13 +165,6 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 	$transaction_items = array();
 	foreach ( $payment->cart_details as $cart_item ) {
 		$download = new EDD_Download( $cart_item['id'] );
-		$product_name = $download->post_title;
-
-		// Check if the item is a product variant
-		$price_id = edd_get_cart_item_price_id( $cart_item );
-		if ( edd_has_variable_prices( $cart_item['id'] ) && ! is_null( $price_id ) ) {
-			$product_name .= ' - ' . edd_get_price_option_name( $cart_item['id'], $price_id, $payment->transaction_id );
-		}
 
 		// Calculate discount rate (if it exists)
     $discount_rate = 0;
@@ -181,7 +174,7 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 
 		$new_item = array(
 			'product_code' => $download->post_name,
-			'description' => $product_name,
+			'description' => get_quaderno_payment_description( $cart_item, $payment->transaction_id ),
 			'quantity' => $cart_item['quantity'],
 			'amount' => $cart_item['price'],
       'discount_rate' => $discount_rate,
