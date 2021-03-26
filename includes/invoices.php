@@ -205,6 +205,14 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 		$transaction->tags = implode( ',', $tags );
 	}
 
+	/**
+	 * Filters the invoice transaction before the invoice is created.
+	 * 
+	 * @param \QuadernoTransaction $transaction The transaction object.
+	 * @param \EDD_Payment         $payment     The EDD payment object.
+	 */
+	$transaction = apply_filters( 'quaderno_invoice_transaction', $transaction, $payment );
+
 	do_action( 'quaderno_invoice_pre_create', $transaction, $payment );
 
 	// Save the invoice and the location evidences
@@ -249,4 +257,3 @@ function edd_quaderno_resend_invoice( $data ) {
 	exit;
 }
 add_action( 'edd_resend_invoice', 'edd_quaderno_resend_invoice', 999 );
-
