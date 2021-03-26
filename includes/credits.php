@@ -138,6 +138,14 @@ function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
 		$transaction->tags = implode( ',', $tags );
 	}
 
+	/**
+	 * Filters the credit transaction before the credit is created.
+	 * 
+	 * @param \QuadernoTransaction $transaction The transaction object.
+	 * @param \EDD_Payment         $payment     The EDD payment object.
+	 */
+	$transaction = apply_filters( 'quaderno_credit_transaction', $transaction, $payment );
+
 	do_action( 'quaderno_credit_pre_create', $transaction, $payment );
 
 	// Save the credit
