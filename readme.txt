@@ -4,7 +4,7 @@ Contributors: polimorfico
 Tags: tax, taxes, sales tax, vat, gst, vatmoss, vat moss, billing, invoices, receipts, credit notes, edd, easydigitaldownloads, easy digital downloads, quaderno
 Requires at least: 4.6
 Tested up to: 5.7
-Stable tag: 1.27.0
+Stable tag: 1.27.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -65,6 +65,12 @@ If you have any questions please get in touch with us at support@quaderno.io.
 4. Example of a receipt
 
 == Changelog ==
+
+= 1.27.1 – March 26, 2021 =
+* New: Base the transaction item amount on the subtotal minus discount.
+* New: Expose the invoice transaction via filter before the invoice is created.
+* New: Expose the credit transaction via filter before the credit is created.
+* Fix: Wrong variable name in invoice creation.  
 
 = 1.27.0 – March 23, 2021 =
 * New: Use new Quaderno Transactions API
