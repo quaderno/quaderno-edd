@@ -187,15 +187,15 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 
 	// Calculate gateway fees
 	foreach ( $payment->fees as $fee ) {
-		$item = array(
+		$new_item = array(
 			'description' => $fee['label'],
 			'quantity' => 1,
 			'amount' => $fee['amount'] * (1 + $tax->rate / 100.0),
 			'tax' => $tax
 		);
 
-    array_push( $transaction_items, $new_item );
-	}	
+		array_push( $transaction_items, $new_item );
+	}
 
   // Add items to transaction
   $transaction->items = $transaction_items;
