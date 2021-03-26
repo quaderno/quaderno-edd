@@ -167,7 +167,7 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 		$download = new EDD_Download( $cart_item['id'] );
 
 		// Calculate discount rate (if it exists)
-    $discount_rate = 0;
+		$discount_rate = 0;
 		if ( $cart_item['discount'] > 0 ) {
 			$discount_rate = $cart_item['discount'] / $cart_item['subtotal'] * 100;
 		}
@@ -176,8 +176,8 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 			'product_code' => $download->post_name,
 			'description' => get_quaderno_payment_description( $cart_item, $payment->transaction_id ),
 			'quantity' => $cart_item['quantity'],
-			'amount' => $cart_item['price'],
-      'discount_rate' => $discount_rate,
+			'amount' => $cart_item['subtotal'] - $cart_item['discount'],
+			'discount_rate' => $discount_rate,
 			'tax' => $tax
 		);
 
