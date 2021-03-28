@@ -176,7 +176,7 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 			'product_code' => $download->post_name,
 			'description' => get_quaderno_payment_description( $cart_item, $payment->transaction_id ),
 			'quantity' => $cart_item['quantity'],
-			'amount' => $cart_item['subtotal'] - $cart_item['discount'],
+			'amount' => $cart_item['subtotal'] + $cart_item['tax'] - $cart_item['discount'],
 			'discount_rate' => $discount_rate,
 			'tax' => $tax
 		);

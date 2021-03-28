@@ -4,7 +4,7 @@ Contributors: polimorfico
 Tags: tax, taxes, sales tax, vat, gst, vatmoss, vat moss, billing, invoices, receipts, credit notes, edd, easydigitaldownloads, easy digital downloads, quaderno
 Requires at least: 4.6
 Tested up to: 5.7
-Stable tag: 1.27.1
+Stable tag: 1.27.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -65,6 +65,9 @@ If you have any questions please get in touch with us at support@quaderno.io.
 4. Example of a receipt
 
 == Changelog ==
+
+= 1.27.2 – March 28, 2021 =
+* Fix: error in total amounts in invoices
 
 = 1.27.1 – March 26, 2021 =
 * New: Base the transaction item amount on the subtotal minus discount.
