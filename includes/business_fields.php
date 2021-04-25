@@ -1,6 +1,6 @@
 <?php
 /**
-* Checkout
+* Business fields
 *
 * @package    EDD Quaderno
 * @copyright  Copyright (c) 2015, Carlos Hernandez
@@ -17,26 +17,36 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 * @since  1.0
 * @return mixed|void
 */
-function edd_quaderno_add_tax_id() {
+function edd_quaderno_add_business_fields() {
   global $edd_options;
 	ob_start(); 
 
-  $current_customer = edd_quaderno_current_customer();
   $tax_id = '';
+  $business_name = '';
+
+  $current_customer = edd_quaderno_current_customer();
   if ( isset( $current_customer ) ) {
     $tax_id = $current_customer->get_meta( 'tax_id');
+    $business_name = $current_customer->get_meta( 'business_name');
   }
 
 	?>
-	<p id="edd_tax_id_wrap">
-		<label for="edd_tax_id" class="edd-label"><?php esc_html_e( 'Tax ID', 'edd-quaderno' ); ?></label>
-    <span class="edd-description"><?php esc_html_e( 'Enter your VAT number including country identifier e.g. GB123456788', 'edd-quaderno' ); ?></span>
-		<input type="text" name="edd_tax_id" id="edd_tax_id" class="tax-id edd-input" value="<?php echo $tax_id; ?>" />
-	</p>
-	<?php
+  <fieldset id="edd_business_fields">
+    <legend><?php _e( 'Business Info', 'edd-quaderno' ); ?></legend>
+  	<p id="edd_tax_id_wrap">
+	 	 <label for="edd_tax_id" class="edd-label"><?php esc_html_e( 'Tax ID', 'edd-quaderno' ); ?></label>
+     <span class="edd-description"><?php esc_html_e( 'Enter your VAT number including country identifier e.g. GB123456788', 'edd-quaderno' ); ?></span>
+		  <input type="text" name="edd_tax_id" id="edd_tax_id" class="tax-id edd-input" value="<?php echo $tax_id; ?>" />
+  	</p>
+    <p id="edd_business_name_wrap">
+      <label for="edd_business_name" class="edd-label"><?php esc_html_e( 'Business Name', 'edd-quaderno' ); ?></label>
+      <input type="text" name="edd_business_name" id="edd_business_name" class="business-name edd-input" value="<?php echo $business_name; ?>" />
+    </p>
+  </fieldset>
+  <?php
 	echo ob_get_clean();
 }
-add_action('edd_cc_billing_bottom', 'edd_quaderno_add_tax_id', 100);
+add_action('edd_purchase_form_after_cc_form', 'edd_quaderno_add_business_fields', 1000);
 
 /**
 * Validate the Tax ID field
@@ -44,7 +54,7 @@ add_action('edd_cc_billing_bottom', 'edd_quaderno_add_tax_id', 100);
 * @since  1.10
 * @return mixed|void
 */
-function edd_quaderno_validate_tax_id_field( $data ) {
+function edd_quaderno_validate_business_fields( $data ) {
   global $edd_options;
 
   // free downloads
@@ -71,8 +81,13 @@ function edd_quaderno_validate_tax_id_field( $data ) {
     }
   }
 
+  // validate business name
+  if ( ! empty( $_POST['edd_tax_id'] ) && empty( $_POST['edd_business_name'] ) && $selected_country != edd_get_shop_country() ) {
+    edd_set_error( 'invalid_business_name', esc_html__('Please enter your business name', 'edd-quaderno') );
+  }
+
 }
-add_action('edd_checkout_error_checks', 'edd_quaderno_validate_tax_id_field', 100);
+add_action('edd_checkout_error_checks', 'edd_quaderno_validate_business_fields', 100);
 
 /**
  * Validate Tax ID
@@ -106,7 +121,7 @@ function edd_quaderno_validate_tax_id( $tax_id, $country ) {
 * @since  1.4
 * @return mixed|void
 */
-function edd_quaderno_store_tax_id( $payment_meta ) {
+function edd_quaderno_store_business_data( $payment_meta ) {
   if ( isset($_POST['edd_tax_id']) ) {
     $tax_id = filter_var( $_POST['edd_tax_id'], FILTER_SANITIZE_STRING );
     $payment_meta['tax_id'] = $tax_id;
@@ -116,9 +131,20 @@ function edd_quaderno_store_tax_id( $payment_meta ) {
       $current_customer->add_meta( 'tax_id', $tax_id);
     }
   }
+
+  if ( isset($_POST['edd_business_name']) ) {
+    $business_name = filter_var( $_POST['edd_business_name'], FILTER_SANITIZE_STRING );
+    $payment_meta['business_name'] = $business_name;
+
+    $current_customer = edd_quaderno_current_customer();
+    if ( isset( $current_customer ) ) {
+      $current_customer->add_meta( 'business_name', $business_name);
+    }
+  }
+
 	return $payment_meta;
 }
-add_filter('edd_payment_meta', 'edd_quaderno_store_tax_id', 100);
+add_filter('edd_payment_meta', 'edd_quaderno_store_business_data', 100);
 
 /**
 * Show the Tax ID in the "View Order Details" popup
@@ -126,7 +152,7 @@ add_filter('edd_payment_meta', 'edd_quaderno_store_tax_id', 100);
 * @since  1.6
 * @return mixed|void
 */
-function edd_quaderno_show_tax_id($payment_id) {
+function edd_quaderno_show_business_data($payment_id) {
   $payment = new EDD_Payment( $payment_id );
   $payment_meta = $payment->get_meta();
 
@@ -163,6 +189,6 @@ function edd_quaderno_show_tax_id($payment_id) {
   </div>
 	<?php
 }
-add_action('edd_payment_billing_details', 'edd_quaderno_show_tax_id', 10);
+add_action('edd_payment_billing_details', 'edd_quaderno_show_business_data', 10);
 
 ?>

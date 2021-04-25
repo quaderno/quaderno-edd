@@ -3,26 +3,26 @@ jQuery(document).ready(function($) {
   var countries = ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'ES', 'FI', 'FR', 'DE', 'GB', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'SE'];
 
   // Show Tax ID
-  function toggle_tax_id_fields() {
+  function toggle_business_fields() {
     var country = $('#billing_country').val();
 
     if ( $.inArray(country, countries) >= 0 ) {
-      $('#edd_tax_id_wrap').show();
+      $('#edd_business_fields').show();
     }
     else {
-      $('#edd_tax_id_wrap').hide();
+      $('#edd_business_fields').hide();
       $('#edd_tax_id').val('');
     }
 
     return true;
   }
 
-  $form.on('change', '#billing_country', toggle_tax_id_fields);
+  $form.on('change', '#billing_country', toggle_business_fields);
 
-  toggle_tax_id_fields();
+  toggle_business_fields();
 
   $('body').on("edd_gateway_loaded", function(){
-    toggle_tax_id_fields();
+    toggle_business_fields();
     recalculate_taxes();
   });
 
