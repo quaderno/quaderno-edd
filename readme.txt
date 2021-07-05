@@ -1,10 +1,10 @@
 === EDD Quaderno ===
 Author URI: https://quaderno.io?utm_source=wordpress&utm_campaign=edd
 Contributors: polimorfico
-Tags: tax, taxes, sales tax, vat, gst, vatmoss, vat moss, billing, invoices, receipts, credit notes, edd, easydigitaldownloads, easy digital downloads, quaderno
+Tags: tax, taxes, sales tax, vat, gst, vatmoss, vat moss, oss, ioss, billing, invoices, receipts, credit notes, edd, easydigitaldownloads, easy digital downloads, quaderno
 Requires at least: 4.6
 Tested up to: 5.7
-Stable tag: 1.27.3
+Stable tag: 1.28.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -18,10 +18,10 @@ https://www.youtube.com/watch?v=mGs6SVOr7fU
 
 = What you get =
 
-* **Comply with local tax laws** in countries around the world, including the EU VAT rules for digital goods & services.
-* **Get notified any time you surpass a tax threshold**, or when a tax rate changes anywhere you sell your products or services. 
+* **Comply with local tax laws** in countries around the world, including the EU VAT MOSS for digital products.
+* **Get notified any time you surpass a tax threshold**, or when a tax rate changes anywhere you sell your products.
 * **Get all the information you need for your tax returns**, at a glance, in mere seconds.
-* **Automatic receipts, invoices, and credit notes** with every order in your store, in **multiple languages and currencies**.
+* **Automatic receipts, invoices, and credit notes** with every order and refund in your store, in **multiple languages and currencies**.
 * **Manage all your revenue sources** in one easy-to-use dashboard.
 
 **Setup in less than 5 minutes**. Fast and easy!
@@ -65,6 +65,9 @@ If you have any questions please get in touch with us at support@quaderno.io.
 4. Example of a receipt
 
 == Changelog ==
+
+= 1.28.0 – July 5, 2021 =
+* New: introducing new tax codes for SaaS and standard-rated products
 
 = 1.27.3 – April 25, 2021 =
 * New: move business fields to a new section in checkout form

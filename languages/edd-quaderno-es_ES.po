@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plugins - EDD Quaderno - Stable (latest release)\n"
-"POT-Creation-Date: 2021-04-25 22:24+0100\n"
-"PO-Revision-Date: 2021-04-25 22:26+0100\n"
+"POT-Creation-Date: 2021-07-05 19:19+0100\n"
+"PO-Revision-Date: 2021-07-05 19:20+0100\n"
 "Last-Translator: support@quaderno.io\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -136,14 +136,13 @@ msgid "Create a Quaderno account"
 msgstr "Crear una cuenta Quaderno"
 
 #: ../includes/settings.php:117
+#, php-format
 msgid ""
-"Don't you have a Quaderno account? Create a new one <a href=\"https://"
-"quadernoapp.com/signup?utm_source=wordpress&utm_campaign=edd\" target="
+"Don't you have a Quaderno account? Create a new one <a href=\"%s\" target="
 "\"_blank\">on this page</a>."
 msgstr ""
-"¿No tienes una cuenta Quaderno? Crea una nueva cuenta <a href=\"https://"
-"quadernoapp.com/signup?utm_source=wordpress&utm_campaign=edd” target=\"_blank"
-"\">en esta página</a>."
+"¿No tienes una cuenta Quaderno? Crea una nueva cuenta <a href=“%s” target="
+"\"_blank\">en esta página</a>."
 
 #: ../includes/settings.php:140
 msgid ""
@@ -164,6 +163,35 @@ msgstr ""
 #: ../includes/settings.php:144
 msgid "Post review"
 msgstr "Publicar un comentario"
+
+#: ../includes/tax_code_field.php:22
+msgid "e-Service"
+msgstr "E-Service"
+
+#: ../includes/tax_code_field.php:23
+msgid "e-Book"
+msgstr "e-Book"
+
+#: ../includes/tax_code_field.php:24
+msgid "SaaS"
+msgstr "SaaS"
+
+#: ../includes/tax_code_field.php:25
+msgid "Standard rate"
+msgstr "Tipo estándar"
+
+#: ../includes/tax_code_field.php:26
+msgid "Reduced rate"
+msgstr "Tipo reducido"
+
+#: ../includes/tax_code_field.php:27
+msgid "Tax-exempt"
+msgstr "Exento"
+
+#: ../includes/tax_code_field.php:40
+#, php-format
+msgid "Select a <a href=\"%s\" target=\"_blank\">tax code</a>"
+msgstr "Selecciona un <a href=“%s” target=“_blank”>tipo de impuesto</a>"
 
 #: ../quaderno/quaderno_request.php:79
 msgid "There was a problem connecting to the API."

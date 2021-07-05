@@ -114,7 +114,7 @@ function edd_quaderno_admin_messages() {
 	if (!get_option('edd_quaderno_notice_shown') && is_plugin_active('edd-quaderno/edd-quaderno.php'))
 	{
 		$html = '<div class="updated"><p>';
-		$html .= esc_html__( 'Don\'t you have a Quaderno account? Create a new one <a href="https://quadernoapp.com/signup?utm_source=wordpress&utm_campaign=edd" target="_blank">on this page</a>.', 'edd-quaderno' );
+		$html .= sprintf(esc_html__( 'Don\'t you have a Quaderno account? Create a new one <a href="%s" target="_blank">on this page</a>.', 'edd-quaderno' ), 'https://support.quaderno.io/setting-up-taxes#74e683bb26cf4d4d8bc01ad7706528ae');
 		$html .= '</p></div>';
 	  echo $html;
 		

@@ -12,33 +12,29 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
-* Calculate transaction type
+* Calculate tax code
 *
-* @since  1.2
+* @since  2.0
 * @return void
 */
-function edd_quaderno_transaction_type() 
+function edd_quaderno_tax_code()
 {
 	$cart_items = edd_get_cart_contents();
 
 	if ( ! $cart_items ) {
-		$type = 'eservice';
+		$tax_code = 'eservice';
 	}
 	else {
-		$type = 'ebook';
 		foreach ( $cart_items as $item ) {
-			if ( false === edd_quaderno_is_ebook( $item['id'] )) {
-  			$type = 'eservice';
-  			break;
-  		}
+			$tax_code = edd_quaderno_read_tax_code_field( $item['id'] );
   	}
 	}
 
-	return $type;
+	return $tax_code;
 }
 
 /**
-* Calculate tax 
+* Calculate tax
 *
 * @since  1.0
 * @param  string $country
@@ -46,7 +42,7 @@ function edd_quaderno_transaction_type()
 * @param  string $tax_id
 * @return float
 */
-function edd_quaderno_tax($country, $postal_code, $city, $tax_id)
+function edd_quaderno_tax( $country, $postal_code, $city, $tax_id )
 {
 	global $edd_options;
 
@@ -55,7 +51,7 @@ function edd_quaderno_tax($country, $postal_code, $city, $tax_id)
 		'to_postal_code' => $postal_code,
 		'to_city' => $city,
 		'tax_id' => $tax_id,
-		'tax_code' => edd_quaderno_transaction_type()
+		'tax_code' => edd_quaderno_tax_code()
 	);
 
 	$slug = 'quaderno_tax_' . md5( implode( $params ) );
@@ -76,7 +72,7 @@ function edd_quaderno_tax($country, $postal_code, $city, $tax_id)
 * @param  string $customer_state
 * @return mixed|void
 */
-function edd_quaderno_tax_rate($rate, $customer_country, $customer_state)
+function edd_quaderno_tax_rate( $rate, $customer_country, $customer_state )
 {
 	global $edd_options;
 
