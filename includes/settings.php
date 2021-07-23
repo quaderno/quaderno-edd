@@ -73,7 +73,7 @@ add_filter('edd_registered_settings', 'edd_quaderno_settings');
 /**
  * Clear transients
 *
-* @since  1.28
+* @since  1.29
 * @return void
  */
 function clear_transients( $option, $old_value, $new_value ) {

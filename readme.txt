@@ -4,7 +4,7 @@ Contributors: polimorfico
 Tags: tax, taxes, sales tax, vat, gst, vatmoss, vat moss, oss, ioss, billing, invoices, receipts, credit notes, edd, easydigitaldownloads, easy digital downloads, quaderno
 Requires at least: 4.6
 Tested up to: 5.7
-Stable tag: 1.28.1
+Stable tag: 1.29.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -65,6 +65,12 @@ If you have any questions please get in touch with us at support@quaderno.io.
 4. Example of a receipt
 
 == Changelog ==
+
+= 1.29.0 – July 23, 2021 =
+* New: validate tax IDs in Switzerland, Quebec, Australia, and New Zealand
+* New: always show the field business name
+* New: allow users to clear the tax cache
+* New: support for WordPress 5.8
 
 = 1.28.0 – July 5, 2021 =
 * New: introducing new tax codes for SaaS and standard-rated products
