@@ -35,7 +35,7 @@ function edd_quaderno_add_business_fields() {
     <legend><?php _e( 'Business Info', 'edd-quaderno' ); ?></legend>
   	<p id="edd_tax_id_wrap">
 	 	 <label for="edd_tax_id" class="edd-label"><?php esc_html_e( 'Tax ID', 'edd-quaderno' ); ?></label>
-     <span class="edd-description"><?php esc_html_e( 'Enter your VAT number including country identifier e.g. GB123456788', 'edd-quaderno' ); ?></span>
+     <span class="edd-description"><?php esc_html_e( 'Enter your VAT/GST number', 'edd-quaderno' ); ?></span>
 		  <input type="text" name="edd_tax_id" id="edd_tax_id" class="tax-id edd-input" value="<?php echo $tax_id; ?>" />
   	</p>
     <p id="edd_business_name_wrap">
@@ -175,7 +175,7 @@ function edd_quaderno_show_business_data($payment_id) {
     <div class="data column-container">
       <div class="column">
         <p>
-          <strong class="order-data-address-line"><?php _e( 'Company Name', 'edd-quaderno' ); ?></strong><br/>
+          <strong class="order-data-address-line"><?php esc_html_e( 'Business Name', 'edd-quaderno' ); ?></strong><br/>
           <input name="edd_business_name" type="text" class="large-text" value="<?php echo $business_name ?>"/>
         </p>
       </div>

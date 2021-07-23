@@ -1,16 +1,17 @@
 jQuery(document).ready(function($) {
   var $form = $('#edd_purchase_form');
-  var countries = ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'ES', 'FI', 'FR', 'DE', 'GB', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'SE'];
+  var countries = ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'ES', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'SE', 'GB', 'CH', 'AU', 'NZ'];
 
   // Show Tax ID
   function toggle_business_fields() {
     var country = $('#billing_country').val();
+    var region = $('#card_state').val();
 
-    if ( $.inArray(country, countries) >= 0 ) {
-      $('#edd_business_fields').show();
+    if ( $.inArray(country, countries) >= 0 || region == 'QC' ) {
+      $('#edd_tax_id_wrap').show();
     }
     else {
-      $('#edd_business_fields').hide();
+      $('#edd_tax_id_wrap').hide();
       $('#edd_tax_id').val('');
     }
 
@@ -18,6 +19,7 @@ jQuery(document).ready(function($) {
   }
 
   $form.on('change', '#billing_country', toggle_business_fields);
+  $form.on('change', '#card_state', toggle_business_fields);
 
   toggle_business_fields();
 
