@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: EDD Quaderno\n"
-"POT-Creation-Date: 2021-07-23 17:42+0100\n"
+"POT-Creation-Date: 2021-07-23 18:25+0100\n"
 "PO-Revision-Date: 2019-01-22 12:59-0000\n"
 "Last-Translator: support@quaderno.io\n"
 "Language-Team: Quaderno <support@quaderno.io>\n"
@@ -119,34 +119,42 @@ msgstr ""
 msgid "Check this if you want Quaderno to automatically email your receipts."
 msgstr ""
 
-#: ../includes/settings.php:90
+#: ../includes/settings.php:61
+msgid "Clear tax cache"
+msgstr ""
+
+#: ../includes/settings.php:62
+msgid "Check this if you have updated your tax settings in Quaderno."
+msgstr ""
+
+#: ../includes/settings.php:116
 msgid "Settings"
 msgstr ""
 
-#: ../includes/settings.php:99
+#: ../includes/settings.php:125
 msgid "Create a Quaderno account"
 msgstr ""
 
-#: ../includes/settings.php:117
+#: ../includes/settings.php:143
 #, php-format
 msgid ""
 "Don't you have a Quaderno account? Create a new one <a href=\"%s\" target="
 "\"_blank\">on this page</a>."
 msgstr ""
 
-#: ../includes/settings.php:140
+#: ../includes/settings.php:166
 msgid ""
 "Hi there! You've been using Quaderno for a while and we hope it has been a "
 "big help for you."
 msgstr ""
 
-#: ../includes/settings.php:142
+#: ../includes/settings.php:168
 msgid ""
 "If you could take a few moments to rate it on WordPress.org, we would "
 "really appreciate your help making the plugin better. Thanks!"
 msgstr ""
 
-#: ../includes/settings.php:144
+#: ../includes/settings.php:170
 msgid "Post review"
 msgstr ""
 

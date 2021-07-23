@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plugins - EDD Quaderno - Stable (latest release)\n"
-"POT-Creation-Date: 2021-07-23 17:42+0100\n"
-"PO-Revision-Date: 2021-07-23 17:43+0100\n"
+"POT-Creation-Date: 2021-07-23 18:25+0100\n"
+"PO-Revision-Date: 2021-07-23 18:26+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -121,15 +121,25 @@ msgstr "Dokumente automatisch versenden"
 msgid "Check this if you want Quaderno to automatically email your receipts."
 msgstr "Bitte anklicken, um Rechnungen automatisch zu versenden."
 
-#: ../includes/settings.php:90
+#: ../includes/settings.php:61
+msgid "Clear tax cache"
+msgstr "Steuer-Cache löschen"
+
+#: ../includes/settings.php:62
+msgid "Check this if you have updated your tax settings in Quaderno."
+msgstr ""
+"Bitte anklicken, wenn Sie Ihre Steuereinstellungen in Quaderno aktualisiert "
+"haben."
+
+#: ../includes/settings.php:116
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: ../includes/settings.php:99
+#: ../includes/settings.php:125
 msgid "Create a Quaderno account"
 msgstr "Quaderno-Konto erstellen"
 
-#: ../includes/settings.php:117
+#: ../includes/settings.php:143
 #, php-format
 msgid ""
 "Don't you have a Quaderno account? Create a new one <a href=\"%s\" target="
@@ -138,7 +148,7 @@ msgstr ""
 "Du hast noch kein Quaderno-Konto? Erstelle jetzt ein Konto <a href=“%s” "
 "target=\"_blank\">hier</a>."
 
-#: ../includes/settings.php:140
+#: ../includes/settings.php:166
 msgid ""
 "Hi there! You've been using Quaderno for a while and we hope it has been a "
 "big help for you."
@@ -146,7 +156,7 @@ msgstr ""
 "Hallo! Du benutzt Quaderno nun schon eine Zeit lang und wir hoffen, es ist "
 "dir eine große Hilfe."
 
-#: ../includes/settings.php:142
+#: ../includes/settings.php:168
 msgid ""
 "If you could take a few moments to rate it on WordPress.org, we would really "
 "appreciate your help making the plugin better. Thanks!"
@@ -155,7 +165,7 @@ msgstr ""
 "WordPress.org eine Bewertung über uns schreiben könntest. Das würde uns "
 "helfen, um das Plugin weiter zu verbessern. Danke schön!"
 
-#: ../includes/settings.php:144
+#: ../includes/settings.php:170
 msgid "Post review"
 msgstr "Review schreiben"
 

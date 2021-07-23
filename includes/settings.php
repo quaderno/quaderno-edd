@@ -55,6 +55,12 @@ function edd_quaderno_settings( $settings ) {
 				'name' => esc_html__( 'Autosend documents', 'edd-quaderno' ),
 				'desc' => esc_html__( 'Check this if you want Quaderno to automatically email your receipts.', 'edd-quaderno' ),
 				'type' => 'checkbox'
+			),
+			'clear_trasients' => array(
+				'id'   => 'clear_trasients',
+				'name' => esc_html__( 'Clear tax cache', 'edd-quaderno' ),
+				'desc' => esc_html__( 'Check this if you have updated your tax settings in Quaderno.', 'edd-quaderno' ),
+				'type' => 'checkbox'
 			)
 		)
 	);
@@ -62,6 +68,26 @@ function edd_quaderno_settings( $settings ) {
 	return array_merge($settings, $quaderno_settings);
 }
 add_filter('edd_registered_settings', 'edd_quaderno_settings');
+
+
+/**
+ * Clear transients
+*
+* @since  1.28
+* @return void
+ */
+function clear_transients( $option, $old_value, $new_value ) {
+	global $wpdb;
+
+ 	// delete all transients
+ 	if ( '1' === $_POST['edd_settings']['clear_trasients'] ) {
+	  $sql = 'DELETE FROM ' . $wpdb->options . ' WHERE option_name LIKE "_transient_quaderno_tax_%" OR option_name LIKE "_transient_timeout_quaderno_tax_%"';
+	  $wpdb->query($sql);
+	  edd_update_option('clear_trasients', '-1');
+ 	}
+}
+add_filter( 'updated_option', 'clear_transients', 10, 3 );
+
 
 /**
 * Retrieve the absolute path to the file upload directory without the trailing slash
