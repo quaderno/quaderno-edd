@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plugins - EDD Quaderno - Stable (latest release)\n"
-"POT-Creation-Date: 2021-07-05 19:19+0100\n"
-"PO-Revision-Date: 2021-07-05 19:20+0100\n"
+"POT-Creation-Date: 2021-07-23 17:42+0100\n"
+"PO-Revision-Date: 2021-07-23 17:42+0100\n"
 "Last-Translator: support@quaderno.io\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -23,10 +23,10 @@ msgid "Tax ID"
 msgstr "NIF o NIF-IVA"
 
 #: ../includes/business_fields.php:38
-msgid "Enter your VAT number including country identifier e.g. GB123456788"
-msgstr "Introduce tu número de operador intracomunitario (p.e. ES12345678)"
+msgid "Enter your VAT/GST number"
+msgstr "Introduce tu número de NIF o NIF-IVA"
 
-#: ../includes/business_fields.php:42
+#: ../includes/business_fields.php:42 ../includes/business_fields.php:178
 msgid "Business Name"
 msgstr "Nombre del negocio"
 
@@ -49,10 +49,6 @@ msgstr "El número de operador intracomunitario no es válido"
 #: ../includes/business_fields.php:86
 msgid "Please enter your business name"
 msgstr "Por favor, introduce el nombre de tu negocio"
-
-#: ../includes/business_fields.php:178
-msgid "Company Name"
-msgstr "Nombre empresa"
 
 #: ../includes/order_details.php:27 ../includes/order_details.php:54
 msgid "Quaderno Invoice"
@@ -196,6 +192,12 @@ msgstr "Selecciona un <a href=“%s” target=“_blank”>tipo de impuesto</a>"
 #: ../quaderno/quaderno_request.php:79
 msgid "There was a problem connecting to the API."
 msgstr "Hubo un problema en la conexión con la API."
+
+#~ msgid "Enter your VAT number including country identifier e.g. GB123456788"
+#~ msgstr "Introduce tu número de operador intracomunitario (p.e. ES12345678)"
+
+#~ msgid "Company Name"
+#~ msgstr "Nombre empresa"
 
 #~ msgid "Only if this is a business purchase"
 #~ msgstr "Solo si es una compra para tu negocio"

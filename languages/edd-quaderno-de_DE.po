@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plugins - EDD Quaderno - Stable (latest release)\n"
-"POT-Creation-Date: 2021-07-05 19:19+0100\n"
-"PO-Revision-Date: 2021-07-05 19:23+0100\n"
+"POT-Creation-Date: 2021-07-23 17:42+0100\n"
+"PO-Revision-Date: 2021-07-23 17:43+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -23,10 +23,10 @@ msgid "Tax ID"
 msgstr "Steuernummer"
 
 #: ../includes/business_fields.php:38
-msgid "Enter your VAT number including country identifier e.g. GB123456788"
-msgstr "Bitte die USt-IdNr. inkl. Länderkürzel (z. B. DE123456789) eingeben"
+msgid "Enter your VAT/GST number"
+msgstr "Bitte die USt-IdNr. eingeben"
 
-#: ../includes/business_fields.php:42
+#: ../includes/business_fields.php:42 ../includes/business_fields.php:178
 msgid "Business Name"
 msgstr "Firmenname"
 
@@ -49,10 +49,6 @@ msgstr "Die eingegebene USt-IdNr. ist nicht gültig"
 #: ../includes/business_fields.php:86
 msgid "Please enter your business name"
 msgstr "Bitte Firmennamen eingeben"
-
-#: ../includes/business_fields.php:178
-msgid "Company Name"
-msgstr "Firmenname"
 
 #: ../includes/order_details.php:27 ../includes/order_details.php:54
 msgid "Quaderno Invoice"
@@ -195,6 +191,12 @@ msgstr "Wählen Sie einen <a href=“%s” target=“_blank”>Steuercode</a>"
 #: ../quaderno/quaderno_request.php:79
 msgid "There was a problem connecting to the API."
 msgstr "Bei der Verbindung mit der API ist ein Problem aufgetreten."
+
+#~ msgid "Enter your VAT number including country identifier e.g. GB123456788"
+#~ msgstr "Bitte die USt-IdNr. inkl. Länderkürzel (z. B. DE123456789) eingeben"
+
+#~ msgid "Company Name"
+#~ msgstr "Firmenname"
 
 #~ msgid "Only if this is a business purchase"
 #~ msgstr "Nur wenn es sich um einen Geschäftskauf handelt"

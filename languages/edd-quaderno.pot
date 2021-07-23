@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: EDD Quaderno\n"
-"POT-Creation-Date: 2021-07-05 19:19+0100\n"
+"POT-Creation-Date: 2021-07-23 17:42+0100\n"
 "PO-Revision-Date: 2019-01-22 12:59-0000\n"
 "Last-Translator: support@quaderno.io\n"
 "Language-Team: Quaderno <support@quaderno.io>\n"
@@ -25,10 +25,10 @@ msgid "Tax ID"
 msgstr ""
 
 #: ../includes/business_fields.php:38
-msgid "Enter your VAT number including country identifier e.g. GB123456788"
+msgid "Enter your VAT/GST number"
 msgstr ""
 
-#: ../includes/business_fields.php:42
+#: ../includes/business_fields.php:42 ../includes/business_fields.php:178
 msgid "Business Name"
 msgstr ""
 
@@ -48,10 +48,6 @@ msgstr ""
 
 #: ../includes/business_fields.php:86
 msgid "Please enter your business name"
-msgstr ""
-
-#: ../includes/business_fields.php:178
-msgid "Company Name"
 msgstr ""
 
 #: ../includes/order_details.php:27 ../includes/order_details.php:54
