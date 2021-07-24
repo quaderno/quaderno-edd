@@ -80,7 +80,7 @@ function clear_transients( $option, $old_value, $new_value ) {
 	global $wpdb;
 
  	// delete all transients
- 	if ( '1' === $_POST['edd_settings']['clear_trasients'] ) {
+ 	if ( isset( $_POST['edd_settings'] ) && '1' === $_POST['edd_settings']['clear_trasients'] ) {
 	  $sql = 'DELETE FROM ' . $wpdb->options . ' WHERE option_name LIKE "_transient_quaderno_tax_%" OR option_name LIKE "_transient_timeout_quaderno_tax_%"';
 	  $wpdb->query($sql);
 	  edd_update_option('clear_trasients', '-1');
