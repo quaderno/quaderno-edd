@@ -74,7 +74,7 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 		'interval_count' => $payment->parent_payment == 0 ? '0' : '1',
 		'notes' => apply_filters( 'quaderno_invoice_notes', $tax->notes, $payment, $tax ),
 		'processor' => 'edd',
-		'processor_id' => time() . '_' . $payment_id,
+		'processor_id' => get_current_blog_id() . '_' . current_time('timestamp') . '_' . $payment_id,
 		'payment' => array(
 			'method' => get_quaderno_payment_method( $payment->gateway )
 		),
