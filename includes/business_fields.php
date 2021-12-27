@@ -123,7 +123,7 @@ function edd_quaderno_validate_tax_id( $tax_id, $country ) {
 */
 function edd_quaderno_store_business_data( $payment_meta ) {
   if ( isset($_POST['edd_tax_id']) ) {
-    $tax_id = filter_var( $_POST['edd_tax_id'], FILTER_SANITIZE_STRING );
+    $tax_id = htmlspecialchars( $_POST['edd_tax_id'], ENT_QUOTES);
     $payment_meta['tax_id'] = $tax_id;
 
     $current_customer = edd_quaderno_current_customer();
@@ -133,7 +133,7 @@ function edd_quaderno_store_business_data( $payment_meta ) {
   }
 
   if ( isset($_POST['edd_business_name']) ) {
-    $business_name = filter_var( $_POST['edd_business_name'], FILTER_SANITIZE_STRING );
+    $business_name = htmlspecialchars( $_POST['edd_business_name'], ENT_COMPAT );
     $payment_meta['business_name'] = $business_name;
 
     $current_customer = edd_quaderno_current_customer();
