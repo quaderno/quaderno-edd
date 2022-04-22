@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plugins - EDD Quaderno - Stable (latest release)\n"
-"POT-Creation-Date: 2021-07-23 18:25+0100\n"
-"PO-Revision-Date: 2021-07-23 18:26+0100\n"
+"POT-Creation-Date: 2022-04-22 12:00+0100\n"
+"PO-Revision-Date: 2022-04-22 12:01+0100\n"
 "Last-Translator: support@quaderno.io\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -12,13 +12,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 3.0.1\n"
 
 #: ../includes/business_fields.php:35
 msgid "Business Info"
 msgstr "Información del negocio"
 
-#: ../includes/business_fields.php:37 ../includes/business_fields.php:184
+#: ../includes/business_fields.php:37 ../includes/business_fields.php:195
 msgid "Tax ID"
 msgstr "NIF o NIF-IVA"
 
@@ -26,7 +26,7 @@ msgstr "NIF o NIF-IVA"
 msgid "Enter your VAT/GST number"
 msgstr "Introduce tu número de NIF o NIF-IVA"
 
-#: ../includes/business_fields.php:42 ../includes/business_fields.php:178
+#: ../includes/business_fields.php:42 ../includes/business_fields.php:189
 msgid "Business Name"
 msgstr "Nombre del negocio"
 
@@ -35,18 +35,10 @@ msgid "Please enter your Tax ID"
 msgstr "Introduce tu NIF"
 
 #: ../includes/business_fields.php:78
-msgid ""
-"VIES service is down and we cannot validate your VAT Number. Please contact "
-"us."
-msgstr ""
-"El servicio VIES está caído y no podemos validar tu número de operador "
-"intracomunitario. Por favor, contacta con nosotros."
+msgid "Your Tax ID cannot be validated"
+msgstr "Tu NIF no pudo ser validado"
 
-#: ../includes/business_fields.php:80
-msgid "VAT Number is not valid"
-msgstr "El número de operador intracomunitario no es válido"
-
-#: ../includes/business_fields.php:86
+#: ../includes/business_fields.php:84
 msgid "Please enter your business name"
 msgstr "Por favor, introduce el nombre de tu negocio"
 
@@ -172,7 +164,7 @@ msgstr "Publicar un comentario"
 
 #: ../includes/tax_code_field.php:22
 msgid "e-Service"
-msgstr "E-Service"
+msgstr "e-Service"
 
 #: ../includes/tax_code_field.php:23
 msgid "e-Book"
@@ -202,6 +194,16 @@ msgstr "Selecciona un <a href=“%s” target=“_blank”>tipo de impuesto</a>"
 #: ../quaderno/quaderno_request.php:79
 msgid "There was a problem connecting to the API."
 msgstr "Hubo un problema en la conexión con la API."
+
+#~ msgid ""
+#~ "VIES service is down and we cannot validate your VAT Number. Please "
+#~ "contact us."
+#~ msgstr ""
+#~ "El servicio VIES está caído y no podemos validar tu número de operador "
+#~ "intracomunitario. Por favor, contacta con nosotros."
+
+#~ msgid "VAT Number is not valid"
+#~ msgstr "El número de operador intracomunitario no es válido"
 
 #~ msgid "Enter your VAT number including country identifier e.g. GB123456788"
 #~ msgstr "Introduce tu número de operador intracomunitario (p.e. ES12345678)"

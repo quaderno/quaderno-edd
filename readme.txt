@@ -4,7 +4,7 @@ Contributors: polimorfico
 Tags: tax, taxes, sales tax, vat, gst, vatmoss, vat moss, oss, ioss, billing, invoices, receipts, credit notes, edd, easydigitaldownloads, easy digital downloads, quaderno
 Requires at least: 4.6
 Tested up to: 5.9
-Stable tag: 1.29.5
+Stable tag: 1.29.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -66,7 +66,10 @@ If you have any questions please get in touch with us at support@quaderno.io.
 
 == Changelog ==
 
-= 1.29.5 – January 27, 2021 =
+= 1.29.6 – April 22, 2022 =
+* Fix: tax ID validation issues when validation service is down
+
+= 1.29.5 – January 27, 2022 =
 * New: support for WordPress 5.9
 
 = 1.29.4 – December 27, 2021 =
