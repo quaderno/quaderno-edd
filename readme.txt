@@ -3,7 +3,7 @@ Author URI: https://quaderno.io?utm_source=wordpress&utm_campaign=edd
 Contributors: polimorfico
 Tags: tax, taxes, sales tax, vat, gst, vatmoss, vat moss, oss, ioss, billing, invoices, receipts, credit notes, edd, easydigitaldownloads, easy digital downloads, quaderno
 Requires at least: 4.6
-Tested up to: 5.9
+Tested up to: 6.0
 Stable tag: 1.29.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
