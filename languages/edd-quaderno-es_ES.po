@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Plugins - EDD Quaderno - Stable (latest release)\n"
 "POT-Creation-Date: 2022-04-22 12:00+0100\n"
-"PO-Revision-Date: 2022-04-22 12:01+0100\n"
+"PO-Revision-Date: 2022-09-21 10:06+0100\n"
 "Last-Translator: support@quaderno.io\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #: ../includes/business_fields.php:35
 msgid "Business Info"
@@ -36,7 +36,9 @@ msgstr "Introduce tu NIF"
 
 #: ../includes/business_fields.php:78
 msgid "Your Tax ID cannot be validated"
-msgstr "Tu NIF no pudo ser validado"
+msgstr ""
+"Tu NIF-IVA no pudo ser validado. Si estás en la UE, comprueba que estás "
+"registrado en el registro de operadores intracomunitarios de tu país."
 
 #: ../includes/business_fields.php:84
 msgid "Please enter your business name"
