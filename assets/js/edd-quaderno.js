@@ -23,11 +23,6 @@ jQuery(document).ready(function($) {
 
   toggle_business_fields();
 
-  $('body').on("edd_gateway_loaded", function(){
-    toggle_business_fields();
-    recalculate_taxes();
-  });
-
   // Update taxes on checkout page
   $(document.body).off('change', '#edd_cc_address input[name=card_zip]');
   $form.on('change', '#edd_tax_id, #billing_country, #card_state, #card_zip, #card_city', function(e) {

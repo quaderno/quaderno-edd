@@ -38,7 +38,7 @@ function edd_quaderno_add_business_fields() {
      <span class="edd-description"><?php esc_html_e( 'Enter your VAT/GST number', 'edd-quaderno' ); ?></span>
 		  <input type="text" name="edd_tax_id" id="edd_tax_id" class="tax-id edd-input" value="<?php echo $tax_id; ?>" />
   	</p>
-    <p id="edd_business_name_wrap">
+    <p id="edd_business_name_wrap" class="edd-has-js">
       <label for="edd_business_name" class="edd-label"><?php esc_html_e( 'Business Name', 'edd-quaderno' ); ?></label>
       <input type="text" name="edd_business_name" id="edd_business_name" class="business-name edd-input" value="<?php echo $business_name; ?>" />
     </p>
