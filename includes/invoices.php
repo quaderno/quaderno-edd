@@ -76,7 +76,9 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 		'processor' => 'edd',
 		'processor_id' => get_current_blog_id() . '_' . current_time('timestamp') . '_' . $payment_id,
 		'payment' => array(
-			'method' => get_quaderno_payment_method( $payment->gateway )
+			'method' => get_quaderno_payment_method( $payment->gateway ),
+      'processor' => $payment->gateway,
+      'processor_id' => $payment->transaction_id
 		),
 		'evidence' => array( 
 			'billing_country' => $payment->address['country'], 
