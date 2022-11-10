@@ -59,7 +59,12 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 
 	// Get metadata
 	$metadata = $payment->get_meta();
-	$tax_id = empty( $metadata['vat_number'] ) ? $metadata['tax_id'] : $metadata['vat_number'];
+	$tax_id = '';
+	if ( isset( $metadata['vat_number'] ) ) {
+		$tax_id = $metadata['vat_number'];
+	} elseif ( isset( $metadata['tax_id'] ) ) {
+		$tax_id = $metadata['tax_id'];
+	}
 	$business_name = isset( $metadata['business_name'] ) ? $metadata['business_name'] : '';
 	
 	// Get the taxes
