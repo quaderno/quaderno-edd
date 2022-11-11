@@ -80,6 +80,12 @@ function edd_quaderno_tax_rate( $rate, $customer_country, $customer_state )
 	$city = isset($_POST['card_city']) ? $_POST['card_city'] : '';
 	$tax_id = isset($_POST['edd_tax_id']) ? $_POST['edd_tax_id'] : '';
 
+	// No tax id is set when loading the checkout
+	if ( ! $tax_id && is_user_logged_in() ) {
+		$customer = edd_get_customer_by( 'user_id', get_current_user_id() );
+		$tax_id = $customer->get_meta('tax_id');
+	}
+
 	$tax = edd_quaderno_tax($customer_country, $postal_code, $city, $tax_id);
 
 	if ( empty( $tax->name ) && empty( $tax->notes ) ) {
