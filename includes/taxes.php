@@ -81,7 +81,7 @@ function edd_quaderno_tax_rate( $rate, $customer_country, $customer_state )
 	$tax_id = isset($_POST['edd_tax_id']) ? $_POST['edd_tax_id'] : '';
 
 	// No tax id is set when loading the checkout
-	if ( ! $tax_id && is_user_logged_in() ) {
+	if ( ! $tax_id && is_user_logged_in() && function_exists('edd_get_customer_by') ) {
 		$customer = edd_get_customer_by( 'user_id', get_current_user_id() );
 		if ( $customer ) {
 			$tax_id = $customer->get_meta('tax_id');
