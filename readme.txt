@@ -4,7 +4,7 @@ Contributors: polimorfico
 Tags: tax, taxes, sales tax, vat, gst, vatmoss, vat moss, oss, ioss, billing, invoices, receipts, credit notes, edd, easydigitaldownloads, easy digital downloads, quaderno
 Requires at least: 4.6
 Tested up to: 6.1
-Stable tag: 1.30.3
+Stable tag: 1.31.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -65,6 +65,11 @@ If you have any questions please get in touch with us at support@quaderno.io.
 4. Example of a receipt
 
 == Changelog ==
+
+= 1.31.0 – December 21, 2022 =
+* IMPORTANT: This release needs EDD 3.x or higher, and should be tested in your staging environments prior to running on your live site.
+* Fix: business name and tax ID is not set successfully
+* New: refactoring the code to process recurring orders
 
 = 1.30.3 – November 19, 2022 =
 * Fix: fallback if function edd_get_customer_by does not exist

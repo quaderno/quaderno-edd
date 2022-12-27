@@ -127,17 +127,18 @@ function edd_quaderno_validate_tax_id( $tax_id, $country ) {
 }
 
 /**
-* Store the Tax ID in the payment meta
+* Store the Business Name & Tax ID in the order
 *
-* @since  1.4
+* @since  1.31
 * @return mixed|void
 */
-function edd_quaderno_store_business_data( $payment_meta ) {
+function edd_quaderno_store_business_data( $order_id ) {
+  $current_customer = edd_quaderno_current_customer();
+
   if ( isset($_POST['edd_tax_id']) ) {
     $tax_id = htmlspecialchars( $_POST['edd_tax_id'], ENT_QUOTES);
-    $payment_meta['tax_id'] = $tax_id;
+    edd_add_order_meta( $order_id, 'tax_id', $tax_id );
 
-    $current_customer = edd_quaderno_current_customer();
     if ( isset( $current_customer ) ) {
       $current_customer->add_meta( 'tax_id', $tax_id);
     }
@@ -145,41 +146,31 @@ function edd_quaderno_store_business_data( $payment_meta ) {
 
   if ( isset($_POST['edd_business_name']) ) {
     $business_name = htmlspecialchars( $_POST['edd_business_name'], ENT_COMPAT );
-    $payment_meta['business_name'] = $business_name;
+    edd_add_order_meta( $order_id, 'business_name', $business_name );
 
-    $current_customer = edd_quaderno_current_customer();
     if ( isset( $current_customer ) ) {
       $current_customer->add_meta( 'business_name', $business_name);
     }
   }
-
-	return $payment_meta;
 }
-add_filter('edd_payment_meta', 'edd_quaderno_store_business_data', 100);
+add_action('edd_built_order', 'edd_quaderno_store_business_data', 100);
 
 /**
-* Show the Tax ID in the "View Order Details" popup
+* Show the Business Name & Tax ID fields in the "View Order Details" page
 *
 * @since  1.6
 * @return mixed|void
 */
-function edd_quaderno_show_business_data($payment_id) {
-  $payment = new EDD_Payment( $payment_id );
-  $payment_meta = $payment->get_meta();
+function edd_quaderno_show_business_data( $order_id ) {
+  $order = edd_get_order( $order_id );
 
-  // Get the current tax ID if exists
-  $tax_id = '';
-  if ( !empty( $payment_meta['vat_number'] ) ) {
-    $tax_id = $payment_meta['vat_number'];
-  } elseif ( !empty( $payment_meta['tax_id'] ) ) {
-    $tax_id = $payment_meta['tax_id'];
+  $tax_id = edd_get_order_meta( $order_id, 'vat_number', true );
+  if( empty( $tax_id ) ) {
+    $tax_id = edd_get_order_meta( $order_id, 'tax_id', true );
   }
 
   // Get the current business name
-  $business_name = '';
-  if ( !empty( $payment_meta['business_name'] ) ) {
-    $business_name = $payment_meta['business_name']; 
-  }
+  $business_name = edd_get_order_meta( $order_id, 'business_name', true );
 
 	?>
   <div class="order-data-address">
@@ -201,5 +192,25 @@ function edd_quaderno_show_business_data($payment_id) {
 	<?php
 }
 add_action('edd_payment_billing_details', 'edd_quaderno_show_business_data', 10);
+
+/**
+* Process the Business Name & Tax ID fields changes from "View Order Details" page
+*
+* @since  1.31
+* @return mixed|void
+*/
+function edd_quaderno_update_order_address( $order_id ) {
+  if ( isset($_POST['edd_tax_id']) ) {
+    $tax_id = htmlspecialchars( $_POST['edd_tax_id'], ENT_QUOTES);
+    edd_update_order_meta( $order_id, 'tax_id', $tax_id );
+  }
+
+  if ( isset($_POST['edd_business_name']) ) {
+    $business_name = htmlspecialchars( $_POST['edd_business_name'], ENT_COMPAT );
+    edd_update_order_meta( $order_id, 'business_name', $business_name );
+  }
+
+}
+add_action('edd_updated_edited_purchase', 'edd_quaderno_update_order_address', 10);
 
 ?>

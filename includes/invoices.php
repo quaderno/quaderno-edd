@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 * @param  int $payment_id
 * @return mixed|void
 */
-function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
+function edd_quaderno_create_invoice( $payment_id ) {
 	global $edd_options;
 
 	// Get the payment
@@ -36,36 +36,9 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 		return;
 	}
 
-	if ( $parent_id != 0 ) {
-		// if this is a recurring payment, we use metadata from the original payment
-		$parent = new EDD_Payment( $parent_id );
-		$parent_meta = $parent->get_meta();
-		
-		$meta = $payment->get_meta();
-
-		$new_meta = array( 
-			'tax_id' => empty( $parent_meta['vat_number'] ) ? $parent_meta['tax_id'] : $parent_meta['vat_number'], 
-			'business_name' => isset( $parent_meta['business_name'] ) ? $parent_meta['business_name'] : ''
-		);
-
-		$merged_meta = array_merge( $meta, $new_meta );
-		$payment->update_meta( '_edd_payment_meta', $merged_meta );
-		$payment->save();
-
-		$ip_address = $parent->ip;
-	} else {
-		$ip_address = $payment->ip;		
-	}
-
-	// Get metadata
-	$metadata = $payment->get_meta();
-	$tax_id = '';
-	if ( isset( $metadata['vat_number'] ) ) {
-		$tax_id = $metadata['vat_number'];
-	} elseif ( isset( $metadata['tax_id'] ) ) {
-		$tax_id = $metadata['tax_id'];
-	}
-	$business_name = isset( $metadata['business_name'] ) ? $metadata['business_name'] : '';
+	// Get tax ID & business name
+	$tax_id = edd_get_order_meta( $payment_id, 'tax_id', true );
+	$business_name = edd_get_order_meta( $payment_id, 'business_name', true );
 	
 	// Get the taxes
 	$tax = edd_quaderno_tax( $payment->address['country'], $payment->address['zip'], $payment->address['city'], $tax_id );
@@ -87,7 +60,7 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 		),
 		'evidence' => array( 
 			'billing_country' => $payment->address['country'], 
-			'ip_address' => $ip_address 
+			'ip_address' => $payment->ip
 		),
 		'custom_metadata' => array( 
 			'processor_url' => add_query_arg( 'id', $payment_id, admin_url( 'edit.php?post_type=download&page=edd-payment-history&view=view-order-details' ) ) 
@@ -230,6 +203,8 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 		$payment->add_note( 'Receipt created on Quaderno' );
 
     $customer->update_meta( '_quaderno_contact', $transaction->contact->id );
+    $customer->update_meta( 'tax_id', $tax_id );
+    $customer->update_meta( 'business_name', $business_name );
 
 		do_action( 'quaderno_invoice_created', $transaction, $payment );
 
@@ -241,7 +216,35 @@ function edd_quaderno_create_invoice($payment_id, $parent_id = 0) {
 
 }
 add_action( 'edd_complete_purchase', 'edd_quaderno_create_invoice', 999 );
-add_action( 'edd_recurring_record_payment', 'edd_quaderno_create_invoice', 999, 2 );
+
+/**
+* Process recurring payment
+*
+* @since  1.31
+* @param  int $order_id
+* @param  int $parent_id
+* @return void
+*/
+function edd_quaderno_process_recurring_payment( $order_id, $parent_id ) {
+	// we copy the tax ID from the original order
+	$tax_id = edd_get_order_meta( $parent_id, 'vat_number', true );
+	if ( empty ( $tax_id ) ) {
+		$tax_id = edd_get_order_meta( $parent_id, 'tax_id', true );
+	}
+	edd_add_order_meta( $order_id, 'tax_id', $tax_id );
+
+	// we copy the business name from the original order
+	$business_name = edd_get_order_meta( $parent_id, 'business_name', true );
+	edd_add_order_meta( $order_id, 'business_name', $business_name );
+
+	// copy the IP address from the original order
+	$parent_order = edd_get_order( $parent_id );
+	edd_update_order( $order_id, array( 'ip' => $parent_order->ip ) );
+
+	// generate the invoice
+	edd_quaderno_create_invoice( $order_id );
+}
+add_action( 'edd_recurring_record_payment', 'edd_quaderno_process_recurring_payment', 999, 2 );
 
 /**
 * Resend invoice
@@ -258,7 +261,7 @@ function edd_quaderno_resend_invoice( $data ) {
 	}
 
 	$payment = new EDD_Payment($payment_id);
-	edd_quaderno_create_invoice( $payment_id, $payment->parent_payment );
+	edd_quaderno_process_recurring_payment( $payment_id, $payment->parent_payment );
 
 	wp_redirect( add_query_arg( array( 'edd-message' => 'email_sent', 'edd-action' => false, 'purchase_id' => false ) ) );
 	exit;
