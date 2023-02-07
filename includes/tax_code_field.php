@@ -3,7 +3,7 @@
 * Tax Code Field
 *
 * @package    EDD Quaderno
-* @copyright  Copyright (c) 2021, Carlos Hernandez
+* @copyright  Copyright (c) 2021-2023, Carlos Hernandez
 * @license    http://opensource.org/licenses/gpl-2.0.php GNU Public License
 * @since      1.28
 */

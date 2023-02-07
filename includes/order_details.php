@@ -3,7 +3,7 @@
 * Order details
 *
 * @package    EDD Quaderno
-* @copyright  Copyright (c) 2018, Carlos Hernandez
+* @copyright  Copyright (c) 2018-2023, Carlos Hernandez
 * @license    http://opensource.org/licenses/gpl-2.0.php GNU Public License
 * @since      1.16.4
 */
