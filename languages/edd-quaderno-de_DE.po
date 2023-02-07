@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plugins - EDD Quaderno - Stable (latest release)\n"
-"POT-Creation-Date: 2022-04-22 12:00+0100\n"
-"PO-Revision-Date: 2022-04-22 12:02+0100\n"
+"POT-Creation-Date: 2023-02-07 13:43+0000\n"
+"PO-Revision-Date: 2023-02-07 13:44+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -12,13 +12,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: ../includes/business_fields.php:35
 msgid "Business Info"
 msgstr "Firmen-Informationen"
 
-#: ../includes/business_fields.php:37 ../includes/business_fields.php:195
+#: ../includes/business_fields.php:37 ../includes/business_fields.php:189
 msgid "Tax ID"
 msgstr "Steuernummer"
 
@@ -26,7 +26,7 @@ msgstr "Steuernummer"
 msgid "Enter your VAT/GST number"
 msgstr "Bitte die USt-IdNr. eingeben"
 
-#: ../includes/business_fields.php:42 ../includes/business_fields.php:189
+#: ../includes/business_fields.php:42 ../includes/business_fields.php:183
 msgid "Business Name"
 msgstr "Firmenname"
 
@@ -34,11 +34,11 @@ msgstr "Firmenname"
 msgid "Please enter your Tax ID"
 msgstr "Bitte Steuernummer eingeben"
 
-#: ../includes/business_fields.php:78
+#: ../includes/business_fields.php:81
 msgid "Your Tax ID cannot be validated"
 msgstr "Ihre Steuernummer kann nicht validiert werden"
 
-#: ../includes/business_fields.php:84
+#: ../includes/business_fields.php:87
 msgid "Please enter your business name"
 msgstr "Bitte Firmennamen eingeben"
 
@@ -131,16 +131,7 @@ msgstr "Einstellungen"
 msgid "Create a Quaderno account"
 msgstr "Quaderno-Konto erstellen"
 
-#: ../includes/settings.php:143
-#, php-format
-msgid ""
-"Don't you have a Quaderno account? Create a new one <a href=\"%s\" target="
-"\"_blank\">on this page</a>."
-msgstr ""
-"Du hast noch kein Quaderno-Konto? Erstelle jetzt ein Konto <a href=“%s” "
-"target=\"_blank\">hier</a>."
-
-#: ../includes/settings.php:166
+#: ../includes/settings.php:148
 msgid ""
 "Hi there! You've been using Quaderno for a while and we hope it has been a "
 "big help for you."
@@ -148,7 +139,7 @@ msgstr ""
 "Hallo! Du benutzt Quaderno nun schon eine Zeit lang und wir hoffen, es ist "
 "dir eine große Hilfe."
 
-#: ../includes/settings.php:168
+#: ../includes/settings.php:150
 msgid ""
 "If you could take a few moments to rate it on WordPress.org, we would really "
 "appreciate your help making the plugin better. Thanks!"
@@ -157,7 +148,7 @@ msgstr ""
 "WordPress.org eine Bewertung über uns schreiben könntest. Das würde uns "
 "helfen, um das Plugin weiter zu verbessern. Danke schön!"
 
-#: ../includes/settings.php:170
+#: ../includes/settings.php:152
 msgid "Post review"
 msgstr "Review schreiben"
 
@@ -193,6 +184,14 @@ msgstr "Wählen Sie einen <a href=“%s” target=“_blank”>Steuercode</a>"
 #: ../quaderno/quaderno_request.php:79
 msgid "There was a problem connecting to the API."
 msgstr "Bei der Verbindung mit der API ist ein Problem aufgetreten."
+
+#, php-format
+#~ msgid ""
+#~ "Don't you have a Quaderno account? Create a new one <a href=\"%s\" "
+#~ "target=\"_blank\">on this page</a>."
+#~ msgstr ""
+#~ "Du hast noch kein Quaderno-Konto? Erstelle jetzt ein Konto <a href=“%s” "
+#~ "target=\"_blank\">hier</a>."
 
 #~ msgid ""
 #~ "VIES service is down and we cannot validate your VAT Number. Please "

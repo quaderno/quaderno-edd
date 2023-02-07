@@ -1,10 +1,10 @@
 === EDD Quaderno ===
-Author URI: https://quaderno.io?utm_source=wordpress&utm_campaign=edd
+Author URI: https://www.quaderno.io/integrations/easy-digital-downloads?utm_source=wordpress&utm_campaign=edd
 Contributors: polimorfico
 Tags: tax, taxes, sales tax, vat, gst, vatmoss, vat moss, oss, ioss, billing, invoices, receipts, credit notes, edd, easydigitaldownloads, easy digital downloads, quaderno
 Requires at least: 4.6
 Tested up to: 6.1
-Stable tag: 1.31.0
+Stable tag: 1.32.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -65,6 +65,9 @@ If you have any questions please get in touch with us at support@quaderno.io.
 4. Example of a receipt
 
 == Changelog ==
+
+= 1.32.0 – February 7, 2023 =
+* New: users from any country can enter their tax ID
 
 = 1.31.0 – December 21, 2022 =
 * IMPORTANT: This release needs EDD 3.x or higher, and should be tested in your staging environments prior to running on your live site.

@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: EDD Quaderno\n"
-"POT-Creation-Date: 2022-04-22 12:00+0100\n"
+"POT-Creation-Date: 2023-02-07 13:43+0000\n"
 "PO-Revision-Date: 2019-01-22 12:59-0000\n"
 "Last-Translator: support@quaderno.io\n"
 "Language-Team: Quaderno <support@quaderno.io>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Poedit 3.2.2\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-KeywordsList: __;_e;esc_html__;esc_html_e\n"
 "X-Poedit-SearchPath-0: ..\n"
@@ -20,7 +20,7 @@ msgstr ""
 msgid "Business Info"
 msgstr ""
 
-#: ../includes/business_fields.php:37 ../includes/business_fields.php:195
+#: ../includes/business_fields.php:37 ../includes/business_fields.php:189
 msgid "Tax ID"
 msgstr ""
 
@@ -28,7 +28,7 @@ msgstr ""
 msgid "Enter your VAT/GST number"
 msgstr ""
 
-#: ../includes/business_fields.php:42 ../includes/business_fields.php:189
+#: ../includes/business_fields.php:42 ../includes/business_fields.php:183
 msgid "Business Name"
 msgstr ""
 
@@ -36,11 +36,11 @@ msgstr ""
 msgid "Please enter your Tax ID"
 msgstr ""
 
-#: ../includes/business_fields.php:78
+#: ../includes/business_fields.php:81
 msgid "Your Tax ID cannot be validated"
 msgstr ""
 
-#: ../includes/business_fields.php:84
+#: ../includes/business_fields.php:87
 msgid "Please enter your business name"
 msgstr ""
 
@@ -129,26 +129,19 @@ msgstr ""
 msgid "Create a Quaderno account"
 msgstr ""
 
-#: ../includes/settings.php:143
-#, php-format
-msgid ""
-"Don't you have a Quaderno account? Create a new one <a href=\"%s\" target="
-"\"_blank\">on this page</a>."
-msgstr ""
-
-#: ../includes/settings.php:166
+#: ../includes/settings.php:148
 msgid ""
 "Hi there! You've been using Quaderno for a while and we hope it has been a "
 "big help for you."
 msgstr ""
 
-#: ../includes/settings.php:168
+#: ../includes/settings.php:150
 msgid ""
 "If you could take a few moments to rate it on WordPress.org, we would "
 "really appreciate your help making the plugin better. Thanks!"
 msgstr ""
 
-#: ../includes/settings.php:170
+#: ../includes/settings.php:152
 msgid "Post review"
 msgstr ""
 

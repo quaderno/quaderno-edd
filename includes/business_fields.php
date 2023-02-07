@@ -70,20 +70,23 @@ function edd_quaderno_validate_business_fields( $data ) {
 		edd_set_error( 'invalid_tax_id', esc_html__('Please enter your Tax ID', 'edd-quaderno') );
 	} 
 
-  // validate tax ID
-  if ( ! empty( $_POST['edd_tax_id'] ) && $selected_country != edd_get_shop_country() ) {
+  // countries where Quaderno can validate tax IDs
+  $countries = array('AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'ES', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'SE', 'GB', 'CH', 'AU', 'NZ');
+
+  // validation of the tax ID
+  if ( ! empty( $_POST['edd_tax_id'] ) && in_array( $selected_country, $countries ) && $selected_country != edd_get_shop_country() ) {
     $valid_number = edd_quaderno_validate_tax_id( $_POST['edd_tax_id'], $data['cc_info']['card_country'] );
 
     if ( !$valid_number ) {
       edd_set_error( 'invalid_vat_number', esc_html__('Your Tax ID cannot be validated', 'edd-quaderno') );
     }
-  }
 
-  // validate business name
-  if ( ! empty( $_POST['edd_tax_id'] ) && empty( $_POST['edd_business_name'] ) && $selected_country != edd_get_shop_country() ) {
-    edd_set_error( 'invalid_business_name', esc_html__('Please enter your business name', 'edd-quaderno') );
+    // the business name must exist if a tax ID is entered
+    if ( empty( $_POST['edd_business_name'] ) )
+    {
+      edd_set_error( 'invalid_business_name', esc_html__('Please enter your business name', 'edd-quaderno') );
+    }
   }
-
 }
 add_action('edd_checkout_error_checks', 'edd_quaderno_validate_business_fields', 100);
 

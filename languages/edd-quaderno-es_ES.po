@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plugins - EDD Quaderno - Stable (latest release)\n"
-"POT-Creation-Date: 2022-04-22 12:00+0100\n"
-"PO-Revision-Date: 2022-09-21 10:06+0100\n"
+"POT-Creation-Date: 2023-02-07 13:43+0000\n"
+"PO-Revision-Date: 2023-02-07 13:44+0000\n"
 "Last-Translator: support@quaderno.io\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -12,13 +12,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: ../includes/business_fields.php:35
 msgid "Business Info"
 msgstr "Información del negocio"
 
-#: ../includes/business_fields.php:37 ../includes/business_fields.php:195
+#: ../includes/business_fields.php:37 ../includes/business_fields.php:189
 msgid "Tax ID"
 msgstr "NIF o NIF-IVA"
 
@@ -26,7 +26,7 @@ msgstr "NIF o NIF-IVA"
 msgid "Enter your VAT/GST number"
 msgstr "Introduce tu número de NIF o NIF-IVA"
 
-#: ../includes/business_fields.php:42 ../includes/business_fields.php:189
+#: ../includes/business_fields.php:42 ../includes/business_fields.php:183
 msgid "Business Name"
 msgstr "Nombre del negocio"
 
@@ -34,13 +34,13 @@ msgstr "Nombre del negocio"
 msgid "Please enter your Tax ID"
 msgstr "Introduce tu NIF"
 
-#: ../includes/business_fields.php:78
+#: ../includes/business_fields.php:81
 msgid "Your Tax ID cannot be validated"
 msgstr ""
 "Tu NIF-IVA no pudo ser validado. Si estás en la UE, comprueba que estás "
 "registrado en el registro de operadores intracomunitarios de tu país."
 
-#: ../includes/business_fields.php:84
+#: ../includes/business_fields.php:87
 msgid "Please enter your business name"
 msgstr "Por favor, introduce el nombre de tu negocio"
 
@@ -135,16 +135,7 @@ msgstr "Ajustes"
 msgid "Create a Quaderno account"
 msgstr "Crear una cuenta Quaderno"
 
-#: ../includes/settings.php:143
-#, php-format
-msgid ""
-"Don't you have a Quaderno account? Create a new one <a href=\"%s\" target="
-"\"_blank\">on this page</a>."
-msgstr ""
-"¿No tienes una cuenta Quaderno? Crea una nueva cuenta <a href=“%s” target="
-"\"_blank\">en esta página</a>."
-
-#: ../includes/settings.php:166
+#: ../includes/settings.php:148
 msgid ""
 "Hi there! You've been using Quaderno for a while and we hope it has been a "
 "big help for you."
@@ -152,7 +143,7 @@ msgstr ""
 "¡Hola! Ha estado usando Quaderno durante un tiempo y esperamos que te haya "
 "servido de gran ayuda."
 
-#: ../includes/settings.php:168
+#: ../includes/settings.php:150
 msgid ""
 "If you could take a few moments to rate it on WordPress.org, we would really "
 "appreciate your help making the plugin better. Thanks!"
@@ -160,7 +151,7 @@ msgstr ""
 "Si pudieras dedicar un par de minutos a dejar tu opinión en WordPress.org, "
 "te lo agradeceríamos enormemente. ¡Muchas gracias!"
 
-#: ../includes/settings.php:170
+#: ../includes/settings.php:152
 msgid "Post review"
 msgstr "Publicar un comentario"
 
@@ -196,6 +187,14 @@ msgstr "Selecciona un <a href=“%s” target=“_blank”>tipo de impuesto</a>"
 #: ../quaderno/quaderno_request.php:79
 msgid "There was a problem connecting to the API."
 msgstr "Hubo un problema en la conexión con la API."
+
+#, php-format
+#~ msgid ""
+#~ "Don't you have a Quaderno account? Create a new one <a href=\"%s\" "
+#~ "target=\"_blank\">on this page</a>."
+#~ msgstr ""
+#~ "¿No tienes una cuenta Quaderno? Crea una nueva cuenta <a href=“%s” "
+#~ "target=\"_blank\">en esta página</a>."
 
 #~ msgid ""
 #~ "VIES service is down and we cannot validate your VAT Number. Please "
