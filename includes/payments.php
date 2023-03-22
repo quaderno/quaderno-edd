@@ -29,6 +29,7 @@ function get_quaderno_payment_method( $gateway ) {
       $method = 'credit_card';
       break;
     case 'paypal':
+    case 'paypal_commerce':
       $method = 'paypal';
       break;
     default:
