@@ -4,7 +4,7 @@ Contributors: polimorfico
 Tags: tax, taxes, sales tax, vat, gst, vatmoss, vat moss, oss, ioss, billing, invoices, receipts, credit notes, edd, easydigitaldownloads, easy digital downloads, quaderno
 Requires at least: 4.6
 Tested up to: 6.1
-Stable tag: 1.32.0
+Stable tag: 1.32.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -65,6 +65,9 @@ If you have any questions please get in touch with us at support@quaderno.io.
 4. Example of a receipt
 
 == Changelog ==
+
+= 1.32.1 – March 22, 2023 =
+* New: Added support for paypal_commerce gateway
 
 = 1.32.0 – February 7, 2023 =
 * New: users from any country can enter their tax ID
