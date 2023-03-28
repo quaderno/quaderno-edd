@@ -143,7 +143,7 @@ function edd_quaderno_store_business_data( $order_id ) {
     edd_add_order_meta( $order_id, 'tax_id', $tax_id );
 
     if ( isset( $current_customer ) ) {
-      $current_customer->add_meta( 'tax_id', $tax_id);
+      $current_customer->update_meta( 'tax_id', $tax_id );
     }
   }
 
@@ -152,7 +152,7 @@ function edd_quaderno_store_business_data( $order_id ) {
     edd_add_order_meta( $order_id, 'business_name', $business_name );
 
     if ( isset( $current_customer ) ) {
-      $current_customer->add_meta( 'business_name', $business_name);
+      $current_customer->update_meta( 'business_name', $business_name );
     }
   }
 }
