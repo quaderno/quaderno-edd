@@ -134,25 +134,22 @@ add_filter( 'plugin_row_meta', 'edd_quaderno_meta_links', 10, 4 );
  * Ask users to leave a review for the plugin on wp.org.
  */
 function edd_quaderno_review() {
-	global $wpdb;
+  global $wpdb;
 
-	$post_count = $wpdb->get_var( "SELECT count(*) FROM " . $wpdb->prefix . "postmeta WHERE meta_key = '_quaderno_invoice_id'" );
-	$user_id = get_current_user_id();
+  $post_count = $wpdb->get_var( "SELECT count(*) FROM " . $wpdb->prefix . "edd_ordermeta WHERE meta_key = '_quaderno_invoice_id'" );
 
-	if ( $post_count < 5 ) {
-		return;
-	}
-	?>
-	<div id="quaderno-review" class="notice notice-info is-dismissible">
-  	<p>
-  		<?php _e( "Hi there! You've been using Quaderno for a while and we hope it has been a big help for you.", 'edd-quaderno' ); ?>
-    	<br>
-  		<?php _e( "If you could take a few moments to rate it on WordPress.org, we would really appreciate your help making the plugin better. Thanks!", 'edd-quaderno' ); ?>
-    	<br><br>
-    	<a href="https://wordpress.org/support/plugin/edd-quaderno/reviews/?filter=5#new-post" target="_blank" class="button-secondary"><?php _e( 'Post review', 'edd-quaderno' ); ?></a>
-    </p>
-  </div>
-<?php
+  if ( $post_count > 5 ) {
+    $notices = new EDD_Notices();
+    $notices->add_notice( array(
+      'id' => 'quaderno-review',
+      'is_dismissible' => true,
+      'class' => 'quaderno-review',
+      'message' => sprintf(
+        __( '🙌 Thanks for choosing Quaderno for your sales on Easy Digital Downloads! Please consider <a href="%s" target="_blank">writing a quick review</a>, so we can reach more business owners like you.', 'edd-quaderno' ),
+        esc_url( 'https://wordpress.org/support/plugin/edd-quaderno/reviews/?filter=5#new-post' )
+      )
+    ));
+  }
 }
 
 /**
@@ -161,7 +158,7 @@ function edd_quaderno_review() {
 function edd_quaderno_review_script() {
 	echo
 		"<script>\n" .
-		"jQuery(document).on('click', '#quaderno-review .notice-dismiss', function() {\n" .
+		"jQuery(document).on('click', 'div.quaderno-review .notice-dismiss', function() {\n" .
 		"\tvar quaderno_review_data = {\n" .
 		"\t\taction: 'quaderno_review',\n" .
 		"\t};\n" .

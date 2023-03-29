@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plugins - EDD Quaderno - Stable (latest release)\n"
-"POT-Creation-Date: 2023-02-07 13:43+0000\n"
-"PO-Revision-Date: 2023-02-07 13:44+0000\n"
+"POT-Creation-Date: 2023-03-30 00:52+0100\n"
+"PO-Revision-Date: 2023-03-30 00:56+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -54,11 +54,11 @@ msgstr "Anzeigen"
 msgid "Create"
 msgstr "Erstellen"
 
-#: ../includes/payments.php:59
+#: ../includes/payments.php:60
 msgid "Upgrade"
 msgstr "Abo-Upgrade"
 
-#: ../includes/payments.php:61
+#: ../includes/payments.php:62
 msgid "Renewal"
 msgstr "Abo-Verlängerung"
 
@@ -132,25 +132,16 @@ msgid "Create a Quaderno account"
 msgstr "Quaderno-Konto erstellen"
 
 #: ../includes/settings.php:148
+#, php-format
 msgid ""
-"Hi there! You've been using Quaderno for a while and we hope it has been a "
-"big help for you."
+"🙌 Thanks for choosing Quaderno for your sales on Easy Digital Downloads! "
+"Please consider <a href=\"%s\" target=\"_blank\">writing a quick review</a>, "
+"so we can reach more business owners like you."
 msgstr ""
-"Hallo! Du benutzt Quaderno nun schon eine Zeit lang und wir hoffen, es ist "
-"dir eine große Hilfe."
-
-#: ../includes/settings.php:150
-msgid ""
-"If you could take a few moments to rate it on WordPress.org, we would really "
-"appreciate your help making the plugin better. Thanks!"
-msgstr ""
-"Wenn du einen Moment Zeit hättest, wären wir dir sehr dankbar, wenn du auf "
-"WordPress.org eine Bewertung über uns schreiben könntest. Das würde uns "
-"helfen, um das Plugin weiter zu verbessern. Danke schön!"
-
-#: ../includes/settings.php:152
-msgid "Post review"
-msgstr "Review schreiben"
+"🙌 Vielen Dank, dass Sie Quaderno für Ihre Verkäufe über Easy Digital "
+"Downloads gewählt haben! Bitte denken Sie daran, <a href=“%s” "
+"target=“_blank”>eine kurze Bewertung zu schreiben</a>, damit wir mehr "
+"Geschäftsinhaber wie Sie erreichen können."
 
 #: ../includes/tax_code_field.php:22
 msgid "e-Service"
@@ -184,6 +175,24 @@ msgstr "Wählen Sie einen <a href=“%s” target=“_blank”>Steuercode</a>"
 #: ../quaderno/quaderno_request.php:79
 msgid "There was a problem connecting to the API."
 msgstr "Bei der Verbindung mit der API ist ein Problem aufgetreten."
+
+#~ msgid ""
+#~ "Hi there! You've been using Quaderno for a while and we hope it has been "
+#~ "a big help for you."
+#~ msgstr ""
+#~ "Hallo! Du benutzt Quaderno nun schon eine Zeit lang und wir hoffen, es "
+#~ "ist dir eine große Hilfe."
+
+#~ msgid ""
+#~ "If you could take a few moments to rate it on WordPress.org, we would "
+#~ "really appreciate your help making the plugin better. Thanks!"
+#~ msgstr ""
+#~ "Wenn du einen Moment Zeit hättest, wären wir dir sehr dankbar, wenn du "
+#~ "auf WordPress.org eine Bewertung über uns schreiben könntest. Das würde "
+#~ "uns helfen, um das Plugin weiter zu verbessern. Danke schön!"
+
+#~ msgid "Post review"
+#~ msgstr "Review schreiben"
 
 #, php-format
 #~ msgid ""

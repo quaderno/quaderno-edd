@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plugins - EDD Quaderno - Stable (latest release)\n"
-"POT-Creation-Date: 2023-02-07 13:43+0000\n"
-"PO-Revision-Date: 2023-02-07 13:44+0000\n"
+"POT-Creation-Date: 2023-03-30 00:52+0100\n"
+"PO-Revision-Date: 2023-03-30 00:53+0100\n"
 "Last-Translator: support@quaderno.io\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -56,11 +56,11 @@ msgstr "Ver"
 msgid "Create"
 msgstr "Crear"
 
-#: ../includes/payments.php:59
+#: ../includes/payments.php:60
 msgid "Upgrade"
 msgstr "Mejora"
 
-#: ../includes/payments.php:61
+#: ../includes/payments.php:62
 msgid "Renewal"
 msgstr "Renovación"
 
@@ -136,24 +136,16 @@ msgid "Create a Quaderno account"
 msgstr "Crear una cuenta Quaderno"
 
 #: ../includes/settings.php:148
+#, php-format
 msgid ""
-"Hi there! You've been using Quaderno for a while and we hope it has been a "
-"big help for you."
+"🙌 Thanks for choosing Quaderno for your sales on Easy Digital Downloads! "
+"Please consider <a href=\"%s\" target=\"_blank\">writing a quick review</a>, "
+"so we can reach more business owners like you."
 msgstr ""
-"¡Hola! Ha estado usando Quaderno durante un tiempo y esperamos que te haya "
-"servido de gran ayuda."
-
-#: ../includes/settings.php:150
-msgid ""
-"If you could take a few moments to rate it on WordPress.org, we would really "
-"appreciate your help making the plugin better. Thanks!"
-msgstr ""
-"Si pudieras dedicar un par de minutos a dejar tu opinión en WordPress.org, "
-"te lo agradeceríamos enormemente. ¡Muchas gracias!"
-
-#: ../includes/settings.php:152
-msgid "Post review"
-msgstr "Publicar un comentario"
+"🙌 Muchas gracias por elegir Quaderno para gestionar tus impuestos en Easy "
+"Digital Downloads. Te agradeceríamos que <a href=«%s» "
+"target=«_blank»>escribieras une breve reseña</a>, para que podamos llegar a "
+"más negocios como el tuyo."
 
 #: ../includes/tax_code_field.php:22
 msgid "e-Service"
@@ -187,6 +179,23 @@ msgstr "Selecciona un <a href=“%s” target=“_blank”>tipo de impuesto</a>"
 #: ../quaderno/quaderno_request.php:79
 msgid "There was a problem connecting to the API."
 msgstr "Hubo un problema en la conexión con la API."
+
+#~ msgid ""
+#~ "Hi there! You've been using Quaderno for a while and we hope it has been "
+#~ "a big help for you."
+#~ msgstr ""
+#~ "¡Hola! Ha estado usando Quaderno durante un tiempo y esperamos que te "
+#~ "haya servido de gran ayuda."
+
+#~ msgid ""
+#~ "If you could take a few moments to rate it on WordPress.org, we would "
+#~ "really appreciate your help making the plugin better. Thanks!"
+#~ msgstr ""
+#~ "Si pudieras dedicar un par de minutos a dejar tu opinión en WordPress."
+#~ "org, te lo agradeceríamos enormemente. ¡Muchas gracias!"
+
+#~ msgid "Post review"
+#~ msgstr "Publicar un comentario"
 
 #, php-format
 #~ msgid ""
