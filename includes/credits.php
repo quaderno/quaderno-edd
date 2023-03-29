@@ -125,7 +125,6 @@ function edd_quaderno_create_credit( $order_id, $refund_id, $all_refunded ) {
 		}
 	}
 }
-// add_action( 'edd_update_payment_status', 'edd_quaderno_create_credit', 999, 3 );
 add_action( 'edd_refund_order', 'edd_quaderno_create_credit', 999, 3 );
 
 ?>
