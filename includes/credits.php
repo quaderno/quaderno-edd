@@ -18,118 +18,78 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 * @param $data Arguments passed
 * @return mixed|void
 */
-function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
+//function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
+function edd_quaderno_create_credit( $order_id, $refund_id, $all_refunded ) {
 	global $edd_options;
 
-	if( 'publish' != $old_status && 'revoked' != $old_status && 'inherit' != $old_status && 'edd_subscription' != $old_status ) {
+	// Get the order and the refund
+	$order = edd_get_order( $order_id );
+	$refund = edd_get_order( $refund_id );
+
+	// Return if the original order hasn't generate an invoice on Quaderno
+	if ( empty( edd_get_order_meta( $order_id, '_quaderno_invoice_id', true ) ) ) {
 		return;
 	}
-
-	if( 'refunded' != $new_status ) {
-		return;
-	}
-
-	// Get the payment
-	$payment = edd_get_payment($payment_id);
 
 	// Return if a credit has already been issued for this order
-	$transaction_id = $payment->get_meta( '_quaderno_credit_id' );
-	if ( !empty( $transaction_id ) ) {
+	if ( !empty( edd_get_order_meta( $refund_id, '_quaderno_credit_id', true ) ) ) {
 		return;
-	}
-
-	// Get metdata
-	$metadata = $payment->get_meta();
-	$tax_id = empty( $metadata['vat_number'] ) ? $metadata['tax_id'] : $metadata['vat_number'];
-
-	// Get the taxes
-	$tax = edd_quaderno_tax( $payment->address['country'], $payment->address['zip'], $payment->address['city'], $tax_id );
-
-	// Add the credit params
-	$transaction_params = array(
-		'type' => 'refund',
-		'issue_date' => current_time('Y-m-d'),
-		'currency' => $payment->currency,
-		'po_number' => $payment->number,
-		'interval_count' => $payment->parent_payment == 0 ? '0' : '1',
-		'notes' => apply_filters( 'quaderno_credit_notes', $tax->notes, $payment, $tax ),
-		'processor' => 'edd',
-		'processor_id' => $payment->get_meta( '_quaderno_processor_id' ),
-		'payment' => array(
-			'method' => get_quaderno_payment_method( $payment->gateway ),
-      'processor' => $payment->gateway,
-      'processor_id' => $payment->transaction_id
-		),
-		'custom_metadata' => array( 
-			'processor_url' => add_query_arg( 'id', $payment_id, admin_url( 'edit.php?post_type=download&page=edd-payment-history&view=view-order-details' ) ) 
-		)
-	);
-
-	// Add the contact
-	$customer = new EDD_Customer( $payment->customer_id );
-	$contact_id = $customer->get_meta( '_quaderno_contact' );
-	if ( !empty( $contact_id ) ) {
-		$transaction_params['customer'] = array(
-			'id' => $contact_id
-		);
-
-	} else {
-		if ( !empty( $metadata['business_name'] ) ) {
-			$kind = 'company';
-			$first_name = $metadata['business_name'];
-			$last_name = '';
-			$contact_name = implode( ' ', array($payment->first_name, $payment->last_name) );
-		} else {
-			$kind = 'person';
-			$first_name = $payment->first_name;
-			$last_name = $payment->last_name;
-			$contact_name = '';
-		}
-
-		$transaction_params['customer'] = array(
-			'kind' => $kind,
-			'first_name' => $first_name ?: 'EDD Customer',
-			'last_name' => $last_name,
-			'contact_name' => $contact_name,
-			'street_line_1' => $payment->address['line1'] ?: '',
-			'street_line_2' => $payment->address['line2'] ?: '',
-			'city' => $payment->address['city'],
-			'postal_code' => $payment->address['zip'],
-			'region' => edd_get_state_name( $payment->address['country'], $payment->address['state'] ),
-			'country' => $payment->address['country'],
-			'email' => $payment->email,
-			'tax_id' => $tax_id,
-			'processor' => 'edd',
-			'processor_id' => strtotime($customer->date_created) . '_' . $payment->customer_id
-		);
 	}
 
 	// Let's create the transaction
-  $transaction = new QuadernoTransaction($transaction_params);
+  $transaction = new QuadernoTransaction(array(
+		'type' => 'refund',
+		'issue_date' => current_time('Y-m-d'),
+		'customer' => array(
+			'id' => edd_get_customer_meta( $order->customer_id, '_quaderno_contact', true )
+		),
+		'currency' => $order->currency,
+		'po_number' => $order->number,
+		'interval_count' => $order->parent_payment == 0 ? '0' : '1',
+		'notes' => apply_filters( 'quaderno_credit_notes', $tax->notes, $order, $tax ),
+		'processor' => 'edd',
+		'processor_id' => edd_get_order_meta( $order_id, '_quaderno_processor_id', true ),
+		'payment' => array(
+			'method' => get_quaderno_payment_method( $order->gateway ),
+      'processor' => $order->gateway,
+      'processor_id' => $order->get_transaction_id()
+		),
+		'custom_metadata' => array(
+			'processor_url' => add_query_arg( 'id', $order_id, admin_url( 'edit.php?post_type=download&page=edd-payment-history&view=view-order-details' ) )
+		)
+	));
+
+  // Get the taxes
+	$tax = edd_quaderno_tax( $order->address->country,
+													 $order->address->postal_code,
+													 $order->address->city,
+													 edd_get_order_meta( $order_id, 'tax_id', true ) );
 
   // Calculate transaction items and tags
-	$tags = array();
 	$transaction_items = array();
-	foreach ( $payment->cart_details as $cart_item ) {
-		$download = new EDD_Download( $cart_item['id'] );
+	$tags = array();
+
+	foreach ( $refund->items as $item ) {
+		$download = new EDD_Download( $item->product_id );
+		$sku = $download->get_sku();
 
 		// Calculate discount rate (if it exists)
     $discount_rate = 0;
-		if ( $cart_item['discount'] > 0 ) {
-			$discount_rate = $cart_item['discount'] / $cart_item['subtotal'] * 100;
+		if ( !empty( $item->discount )) {
+			$discount_rate = $item->discount / $item->subtotal * 100;
 		}
 
 		$new_item = array(
-			'product_code' => $download->post_name,
-			'description' => get_quaderno_payment_description( $cart_item, $payment->transaction_id ),
-			'quantity' => $cart_item['quantity'],
-			'amount' => $cart_item['price'],
-      'discount_rate' => $discount_rate,
+			'product_code' => $sku != '-' ? $sku : '',
+			'description' => $item->product_name,
+			'quantity' => -$item->quantity,
+			'amount' => -$item->total,
+      'discount_rate' => -$discount_rate,
 			'tax' => $tax
 		);
 
     array_push( $transaction_items, $new_item );
-		$tags = array_merge( $tags, wp_get_object_terms( $cart_item['id'], 'download_tag', array( 'fields' => 'slugs' ) ) );
+		$tags = array_merge( $tags, wp_get_object_terms( $item->id, 'download_tag', array( 'fields' => 'slugs' ) ) );
 	}
 
   // Add items to transaction
@@ -144,18 +104,20 @@ function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
 	 * Filters the credit transaction before the credit is created.
 	 * 
 	 * @param \QuadernoTransaction $transaction The transaction object.
-	 * @param \EDD_Payment         $payment     The EDD payment object.
+	 * @param \EDD_Order           $refund      The EDD refund object.
 	 */
-	$transaction = apply_filters( 'quaderno_credit_transaction', $transaction, $payment );
+	$transaction = apply_filters( 'quaderno_credit_transaction', $transaction, $refund );
 
-	do_action( 'quaderno_credit_pre_create', $transaction, $payment );
+	do_action( 'quaderno_credit_pre_create', $transaction, $refund );
 
 	// Save the credit
 	if ( $transaction->save() ) {
-		$payment->update_meta( '_quaderno_credit_id', $transaction->id );
+		edd_update_order_meta( $refund, '_quaderno_credit_id', $transaction->id );
+
+		$payment = edd_get_payment( $order_id );
 		$payment->add_note( 'Credit note created on Quaderno' );
 
-		do_action( 'quaderno_credit_created', $transaction, $payment );
+		do_action( 'quaderno_credit_created', $transaction, $refund );
 
 		// Send the credit
 		if ( isset( $edd_options['autosend_receipts'] ) ) {
@@ -163,6 +125,7 @@ function edd_quaderno_create_credit( $payment_id, $new_status, $old_status ) {
 		}
 	}
 }
-add_action( 'edd_update_payment_status', 'edd_quaderno_create_credit', 999, 3 );
+// add_action( 'edd_update_payment_status', 'edd_quaderno_create_credit', 999, 3 );
+add_action( 'edd_refund_order', 'edd_quaderno_create_credit', 999, 3 );
 
 ?>
