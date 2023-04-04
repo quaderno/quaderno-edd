@@ -145,7 +145,7 @@ function edd_quaderno_review() {
       'is_dismissible' => true,
       'class' => 'quaderno-review',
       'message' => sprintf(
-        __( '🙌 Thanks for choosing Quaderno for your sales on Easy Digital Downloads! Please consider <a href="%s" target="_blank">writing a quick review</a>, so we can reach more business owners like you.', 'edd-quaderno' ),
+        __( '🙌 Thanks for choosing Quaderno to manage your taxes in Easy Digital Downloads! Please consider <a href="%s" target="_blank">writing a quick review</a>, so we can reach more business owners like you.', 'edd-quaderno' ),
         esc_url( 'https://wordpress.org/support/plugin/edd-quaderno/reviews/?filter=5#new-post' )
       )
     ));

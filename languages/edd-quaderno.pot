@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: EDD Quaderno\n"
-"POT-Creation-Date: 2023-03-30 00:52+0100\n"
+"POT-Creation-Date: 2023-04-04 18:17+0100\n"
 "PO-Revision-Date: 2019-01-22 12:59-0000\n"
 "Last-Translator: support@quaderno.io\n"
 "Language-Team: Quaderno <support@quaderno.io>\n"
@@ -132,9 +132,9 @@ msgstr ""
 #: ../includes/settings.php:148
 #, php-format
 msgid ""
-"🙌 Thanks for choosing Quaderno for your sales on Easy Digital Downloads! "
-"Please consider <a href=\"%s\" target=\"_blank\">writing a quick review</"
-"a>, so we can reach more business owners like you."
+"🙌 Thanks for choosing Quaderno to manage your taxes in Easy Digital "
+"Downloads! Please consider <a href=\"%s\" target=\"_blank\">writing a "
+"quick review</a>, so we can reach more business owners like you."
 msgstr ""
 
 #: ../includes/tax_code_field.php:22
