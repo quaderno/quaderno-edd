@@ -1,7 +1,7 @@
 === EDD Quaderno ===
 Author URI: https://www.quaderno.io/integrations/easy-digital-downloads?utm_source=wordpress&utm_campaign=edd
 Contributors: polimorfico
-Tags: tax, taxes, sales tax, vat, gst, vatmoss, vat moss, oss, ioss, billing, invoices, receipts, credit notes, edd, easydigitaldownloads, easy digital downloads, quaderno
+Tags: tax, taxes, sales tax, vat, gst, vatmoss, vat moss, vat oss, oss, ioss, billing, invoices, receipts, credit notes, edd, easydigitaldownloads, easy digital downloads, quaderno
 Requires at least: 4.6
 Tested up to: 6.2
 Stable tag: 1.33.0
@@ -18,7 +18,7 @@ https://www.youtube.com/watch?v=mGs6SVOr7fU
 
 = What you get =
 
-* **Comply with local tax laws** in countries around the world, including the EU VAT MOSS for digital products.
+* **Comply with local tax laws** in countries around the world, including the EU VAT OSS for digital products.
 * **Get notified any time you surpass a tax threshold**, or when a tax rate changes anywhere you sell your products.
 * **Get all the information you need for your tax returns**, at a glance, in mere seconds.
 * **Automatic receipts, invoices, and credit notes** with every order and refund in your store, in **multiple languages and currencies**.
