@@ -37,8 +37,8 @@ function edd_quaderno_create_invoice( $payment_id ) {
 	}
 
 	// Get tax ID & business name
-	$tax_id = edd_get_order_meta( $payment_id, 'tax_id', true );
-	$business_name = edd_get_order_meta( $payment_id, 'business_name', true );
+	$tax_id = edd_quaderno_get_order_meta( $payment_id, 'tax_id', true );
+	$business_name = edd_quaderno_get_order_meta( $payment_id, 'business_name', true );
 	
 	// Get the taxes
 	$tax = edd_quaderno_tax( $payment->address['country'], $payment->address['zip'], $payment->address['city'], $tax_id );
@@ -227,18 +227,18 @@ add_action( 'edd_complete_purchase', 'edd_quaderno_create_invoice', 999 );
 */
 function edd_quaderno_process_recurring_payment( $order_id, $parent_id ) {
 	// we copy the tax ID from the original order
-	$tax_id = edd_get_order_meta( $parent_id, 'vat_number', true );
+	$tax_id = edd_quaderno_get_order_meta( $parent_id, 'vat_number', true );
 	if ( empty ( $tax_id ) ) {
-		$tax_id = edd_get_order_meta( $parent_id, 'tax_id', true );
+		$tax_id = edd_quaderno_get_order_meta( $parent_id, 'tax_id', true );
 	}
 	edd_add_order_meta( $order_id, 'tax_id', $tax_id );
 
 	// we copy the business name from the original order
-	$business_name = edd_get_order_meta( $parent_id, 'business_name', true );
+	$business_name = edd_quaderno_get_order_meta( $parent_id, 'business_name', true );
 	edd_add_order_meta( $order_id, 'business_name', $business_name );
 
 	// copy the IP address from the original order
-	$parent_order = edd_get_order( $parent_id );
+	$parent_order = edd_quaderno_get_order_meta( $parent_id );
 	edd_update_order( $order_id, array( 'ip' => $parent_order->ip ) );
 
 	// generate the invoice

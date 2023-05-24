@@ -167,13 +167,13 @@ add_action('edd_built_order', 'edd_quaderno_store_business_data', 100);
 function edd_quaderno_show_business_data( $order_id ) {
   $order = edd_get_order( $order_id );
 
-  $tax_id = edd_get_order_meta( $order_id, 'vat_number', true );
+  $tax_id = edd_quaderno_get_order_meta( $order_id, 'vat_number', true );
   if( empty( $tax_id ) ) {
-    $tax_id = edd_get_order_meta( $order_id, 'tax_id', true );
+    $tax_id = edd_quaderno_get_order_meta( $order_id, 'tax_id', true );
   }
 
   // Get the current business name
-  $business_name = edd_get_order_meta( $order_id, 'business_name', true );
+  $business_name = edd_quaderno_get_order_meta( $order_id, 'business_name', true );
 
 	?>
   <div class="order-data-address">

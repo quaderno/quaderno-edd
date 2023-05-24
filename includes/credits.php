@@ -27,12 +27,12 @@ function edd_quaderno_create_credit( $order_id, $refund_id, $all_refunded ) {
 	$refund = edd_get_order( $refund_id );
 
 	// Return if the original order hasn't generate an invoice on Quaderno
-	if ( empty( edd_get_order_meta( $order_id, '_quaderno_invoice_id', true ) ) ) {
+	if ( empty( edd_quaderno_get_order_meta( $order_id, '_quaderno_invoice_id', true ) ) ) {
 		return;
 	}
 
 	// Return if a credit has already been issued for this order
-	if ( !empty( edd_get_order_meta( $refund_id, '_quaderno_credit_id', true ) ) ) {
+	if ( !empty( edd_quaderno_get_order_meta( $refund_id, '_quaderno_credit_id', true ) ) ) {
 		return;
 	}
 
@@ -48,7 +48,7 @@ function edd_quaderno_create_credit( $order_id, $refund_id, $all_refunded ) {
 		'interval_count' => $order->parent_payment == 0 ? '0' : '1',
 		'notes' => apply_filters( 'quaderno_credit_notes', $tax->notes, $order, $tax ),
 		'processor' => 'edd',
-		'processor_id' => edd_get_order_meta( $order_id, '_quaderno_processor_id', true ),
+		'processor_id' => edd_quaderno_get_order_meta( $order_id, '_quaderno_processor_id', true ),
 		'payment' => array(
 			'method' => get_quaderno_payment_method( $order->gateway ),
       'processor' => $order->gateway,
@@ -63,7 +63,7 @@ function edd_quaderno_create_credit( $order_id, $refund_id, $all_refunded ) {
 	$tax = edd_quaderno_tax( $order->address->country,
 													 $order->address->postal_code,
 													 $order->address->city,
-													 edd_get_order_meta( $order_id, 'tax_id', true ) );
+													 edd_quaderno_get_order_meta( $order_id, 'tax_id', true ) );
 
   // Calculate transaction items and tags
 	$transaction_items = array();
