@@ -44,6 +44,24 @@ function edd_quaderno_add_payment_meta($payment_id) {
 add_action('edd_view_order_details_payment_meta_before', 'edd_quaderno_add_payment_meta', 100);
 
 /**
+* Call edd_get_order_meta with fallback to the payment meta
+*
+* @since  1.26.0
+* @param  mixed $order_id
+* @param  string $key
+* @return @return mixed|void
+*/
+function edd_quaderno_get_order_meta($order_id, $key) {
+  $value = edd_get_order_meta( $order_id, $key, true );
+  if ( empty ( $value ) ) {
+    $payment = new EDD_Payment( $order_id );
+    $value = $payment->get_meta( $key );
+  }
+
+  return $value;
+}
+
+/**
 * Add link to Quaderno invoice in payment details page
 *
 * @since  1.26.0

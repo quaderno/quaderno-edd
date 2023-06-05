@@ -4,7 +4,7 @@ Contributors: polimorfico
 Tags: tax, taxes, sales tax, vat, gst, vatmoss, vat moss, vat oss, oss, ioss, billing, invoices, receipts, credit notes, edd, easydigitaldownloads, easy digital downloads, quaderno
 Requires at least: 4.6
 Tested up to: 6.2
-Stable tag: 1.33.1
+Stable tag: 1.33.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -65,6 +65,9 @@ If you have any questions please get in touch with us at support@quaderno.io.
 4. Example of a receipt
 
 == Changelog ==
+
+= 1.33.2 – May 26, 2023 =
+* Fix: fallback to payment metadata searching in order metadata
 
 = 1.33.1 – May 1, 2023 =
 * Fix: warning message "Undefined index: clear_trasients"
