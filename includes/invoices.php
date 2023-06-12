@@ -238,7 +238,7 @@ function edd_quaderno_process_recurring_payment( $order_id, $parent_id ) {
 	edd_add_order_meta( $order_id, 'business_name', $business_name );
 
 	// copy the IP address from the original order
-	$parent_order = edd_quaderno_get_order_meta( $parent_id );
+	$parent_order = edd_get_order( $parent_id );
 	edd_update_order( $order_id, array( 'ip' => $parent_order->ip ) );
 
 	// generate the invoice
