@@ -112,7 +112,8 @@ function edd_quaderno_create_credit( $order_id, $refund_id, $all_refunded ) {
 
 	// Save the credit
 	if ( $transaction->save() ) {
-		edd_update_order_meta( $refund, '_quaderno_credit_id', $transaction->id );
+		edd_update_order_meta( $refund->id, '_quaderno_credit_id', $transaction->id );
+		edd_update_order_meta( $refund->id, '_quaderno_url', $transaction->permalink );
 
 		$payment = edd_get_payment( $order_id );
 		$payment->add_note( 'Credit note created on Quaderno' );

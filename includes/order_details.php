@@ -20,25 +20,42 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 */
 function edd_quaderno_add_payment_meta($payment_id) {
 	$payment = new EDD_Payment($payment_id);	
+	$refunds = edd_get_order_refunds( $payment_id );
+
 	ob_start(); 
 	?>
-	<div class="edd-receipt-url edd-admin-box-inside">
-		<p>
-			<span class="label"><?php esc_html_e( 'Quaderno Invoice', 'edd-quaderno' ); ?>:</span>&nbsp;
-			<span>
-			<?php if( $payment->get_meta( '_quaderno_invoice_id' ) ) { ?>
-				<a href="<?php echo $payment->get_meta( '_quaderno_url' ); ?>" target="_blank">
-					<?php esc_html_e( 'View', 'edd-quaderno' ); ?>
-				</a>
-			<?php } else { ?>	
-				<a href="<?php echo esc_url( add_query_arg( array( 'edd-action' => 'resend_invoice', 'purchase_id' => $payment_id ) ) ); ?>">
-					<?php esc_html_e( 'Create', 'edd-quaderno' ); ?>
-				</a>
-			<?php } ?>	
-			</span>
-		</p>
+	<div class="edd-order-gateway edd-admin-box-inside edd-admin-box-inside--row">
+		<span class="label"><?php esc_html_e( 'Invoice', 'edd-quaderno' ); ?>:</span>
+		<span class="value">
+		<?php if( edd_get_order_meta($payment_id, '_quaderno_invoice_id', true ) ) { ?>
+			<a href="<?php echo edd_get_order_meta($payment_id, '_quaderno_url', true ); ?>" target="_blank">
+				<?php esc_html_e( 'View', 'edd-quaderno' ); ?>
+			</a>
+		<?php } else { ?>
+			<a href="<?php echo esc_url( add_query_arg( array( 'edd-action' => 'resend_invoice', 'purchase_id' => $payment_id ) ) ); ?>">
+				<?php esc_html_e( 'Create', 'edd-quaderno' ); ?>
+			</a>
+		<?php } ?>
+		</span>
 	</div>
 	<?php
+	foreach ( $refunds as $refund ) {
+		$credit_id = edd_get_order_meta( $refund->id, '_quaderno_credit_id', true );
+		$credit_url = edd_get_order_meta( $refund->id, '_quaderno_url', true );
+
+		if( !empty($credit_id) && !empty($credit_url) ) {
+	?>
+	<div class="edd-order-gateway edd-admin-box-inside edd-admin-box-inside--row">
+		<span class="label"><?php echo sprintf(esc_html__( 'Credit note for refund %s', 'edd-quaderno' ), $refund->order_number) ?>:</span>
+		<span class="value">
+			<a href="<?php echo $credit_url ?>" target="_blank">
+				<?php esc_html_e( 'View', 'edd-quaderno' ); ?>
+			</a>
+		</span>
+	</div>
+	<?php
+		}
+	}
 	echo ob_get_clean();
 }
 add_action('edd_view_order_details_payment_meta_before', 'edd_quaderno_add_payment_meta', 100);
