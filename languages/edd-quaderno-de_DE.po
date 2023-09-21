@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plugins - EDD Quaderno - Stable (latest release)\n"
-"POT-Creation-Date: 2023-04-04 18:17+0100\n"
-"PO-Revision-Date: 2023-04-04 18:19+0100\n"
+"POT-Creation-Date: 2023-09-21 13:37+0100\n"
+"PO-Revision-Date: 2023-09-21 13:40+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #: ../includes/business_fields.php:35
 msgid "Business Info"
@@ -42,17 +42,27 @@ msgstr "Ihre Steuernummer kann nicht validiert werden"
 msgid "Please enter your business name"
 msgstr "Bitte Firmennamen eingeben"
 
-#: ../includes/order_details.php:27 ../includes/order_details.php:54
-msgid "Quaderno Invoice"
-msgstr "Quaderno-Rechnung"
+#: ../includes/order_details.php:28
+msgid "Invoice"
+msgstr "Rechnung"
 
-#: ../includes/order_details.php:31 ../includes/order_details.php:73
+#: ../includes/order_details.php:32 ../includes/order_details.php:52
+#: ../includes/order_details.php:108
 msgid "View"
 msgstr "Anzeigen"
 
-#: ../includes/order_details.php:35 ../includes/order_details.php:76
+#: ../includes/order_details.php:36 ../includes/order_details.php:111
 msgid "Create"
 msgstr "Erstellen"
+
+#: ../includes/order_details.php:49
+#, php-format
+msgid "Credit note for refund %s"
+msgstr "Gutschrift für Erstattung %s"
+
+#: ../includes/order_details.php:89
+msgid "Quaderno Invoice"
+msgstr "Quaderno-Rechnung"
 
 #: ../includes/payments.php:60
 msgid "Upgrade"
@@ -123,15 +133,15 @@ msgstr ""
 "Bitte anklicken, wenn Sie Ihre Steuereinstellungen in Quaderno aktualisiert "
 "haben."
 
-#: ../includes/settings.php:116
+#: ../includes/settings.php:121
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: ../includes/settings.php:125
+#: ../includes/settings.php:130
 msgid "Create a Quaderno account"
 msgstr "Quaderno-Konto erstellen"
 
-#: ../includes/settings.php:148
+#: ../includes/settings.php:153
 #, php-format
 msgid ""
 "🙌 Thanks for choosing Quaderno to manage your taxes in Easy Digital "

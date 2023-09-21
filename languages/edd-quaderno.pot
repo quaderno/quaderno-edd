@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: EDD Quaderno\n"
-"POT-Creation-Date: 2023-04-04 18:17+0100\n"
+"POT-Creation-Date: 2023-09-21 13:37+0100\n"
 "PO-Revision-Date: 2019-01-22 12:59-0000\n"
 "Last-Translator: support@quaderno.io\n"
 "Language-Team: Quaderno <support@quaderno.io>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.2\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-KeywordsList: __;_e;esc_html__;esc_html_e\n"
 "X-Poedit-SearchPath-0: ..\n"
@@ -44,16 +44,26 @@ msgstr ""
 msgid "Please enter your business name"
 msgstr ""
 
-#: ../includes/order_details.php:27 ../includes/order_details.php:54
-msgid "Quaderno Invoice"
+#: ../includes/order_details.php:28
+msgid "Invoice"
 msgstr ""
 
-#: ../includes/order_details.php:31 ../includes/order_details.php:73
+#: ../includes/order_details.php:32 ../includes/order_details.php:52
+#: ../includes/order_details.php:108
 msgid "View"
 msgstr ""
 
-#: ../includes/order_details.php:35 ../includes/order_details.php:76
+#: ../includes/order_details.php:36 ../includes/order_details.php:111
 msgid "Create"
+msgstr ""
+
+#: ../includes/order_details.php:49
+#, php-format
+msgid "Credit note for refund %s"
+msgstr ""
+
+#: ../includes/order_details.php:89
+msgid "Quaderno Invoice"
 msgstr ""
 
 #: ../includes/payments.php:60
@@ -121,15 +131,15 @@ msgstr ""
 msgid "Check this if you have updated your tax settings in Quaderno."
 msgstr ""
 
-#: ../includes/settings.php:116
+#: ../includes/settings.php:121
 msgid "Settings"
 msgstr ""
 
-#: ../includes/settings.php:125
+#: ../includes/settings.php:130
 msgid "Create a Quaderno account"
 msgstr ""
 
-#: ../includes/settings.php:148
+#: ../includes/settings.php:153
 #, php-format
 msgid ""
 "🙌 Thanks for choosing Quaderno to manage your taxes in Easy Digital "
