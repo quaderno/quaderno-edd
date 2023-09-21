@@ -104,13 +104,12 @@ function edd_quaderno_create_invoice( $payment_id ) {
   // - This is the first purchase ever for the user and the contact does not exist in Quaderno
   // - This is not the first purchase of the user but she does not have a contact_id saved yet in EDD metadata (until v1.24.3)
 
-  $payments = $customer->get_payments();
+  $payments = $customer->get_orders();
   end($payments);
   $last_payment = prev($payments);  
 
   if(!empty($last_payment)){
-    $last_payment_metadata = $last_payment->get_meta();
-    $last_payment_business_name = isset( $last_payment_metadata['business_name'] ) ? $last_payment_metadata['business_name'] : '';
+    $last_payment_business_name = edd_get_order_meta($last_payment->id, 'business_name');
   }
   
   // If this is the customer's first purchase or their billing info has changed, then a new contact must be created
