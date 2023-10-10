@@ -33,6 +33,7 @@ function edd_quaderno_add_business_fields() {
 	?>
   <fieldset id="edd_business_fields">
     <legend><?php _e( 'Business Info', 'edd-quaderno' ); ?></legend>
+	<?php do_action( 'edd_quaderno_purchase_form_business_fields_before' ); ?>
   	<p id="edd_tax_id_wrap">
 	 	 <label for="edd_tax_id" class="edd-label"><?php esc_html_e( 'Tax ID', 'edd-quaderno' ); ?></label>
      <span class="edd-description"><?php esc_html_e( 'Enter your VAT/GST number', 'edd-quaderno' ); ?></span>
@@ -42,6 +43,7 @@ function edd_quaderno_add_business_fields() {
       <label for="edd_business_name" class="edd-label"><?php esc_html_e( 'Business Name', 'edd-quaderno' ); ?></label>
       <input type="text" name="edd_business_name" id="edd_business_name" class="business-name edd-input" value="<?php echo $business_name; ?>" />
     </p>
+    <?php do_action( 'edd_quaderno_purchase_form_business_fields_after' ); ?>
   </fieldset>
   <?php
 	echo ob_get_clean();
