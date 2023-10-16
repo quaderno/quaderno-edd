@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: EDD Quaderno\n"
-"POT-Creation-Date: 2023-09-21 13:37+0100\n"
+"POT-Creation-Date: 2023-10-16 12:22+0100\n"
 "PO-Revision-Date: 2019-01-22 12:59-0000\n"
 "Last-Translator: support@quaderno.io\n"
 "Language-Team: Quaderno <support@quaderno.io>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-KeywordsList: __;_e;esc_html__;esc_html_e\n"
 "X-Poedit-SearchPath-0: ..\n"
@@ -20,28 +20,36 @@ msgstr ""
 msgid "Business Info"
 msgstr ""
 
-#: ../includes/business_fields.php:37 ../includes/business_fields.php:189
+#: ../includes/business_fields.php:38 ../includes/business_fields.php:191
 msgid "Tax ID"
 msgstr ""
 
-#: ../includes/business_fields.php:38
+#: ../includes/business_fields.php:39
 msgid "Enter your VAT/GST number"
 msgstr ""
 
-#: ../includes/business_fields.php:42 ../includes/business_fields.php:183
+#: ../includes/business_fields.php:43 ../includes/business_fields.php:185
 msgid "Business Name"
 msgstr ""
 
-#: ../includes/business_fields.php:70
+#: ../includes/business_fields.php:72
 msgid "Please enter your Tax ID"
 msgstr ""
 
-#: ../includes/business_fields.php:81
+#: ../includes/business_fields.php:83
 msgid "Your Tax ID cannot be validated"
 msgstr ""
 
-#: ../includes/business_fields.php:87
+#: ../includes/business_fields.php:89
 msgid "Please enter your business name"
+msgstr ""
+
+#: ../includes/emails.php:23
+msgid "Adds a link so users can view and download their invoice."
+msgstr ""
+
+#: ../includes/emails.php:25
+msgid "Quaderno invoice"
 msgstr ""
 
 #: ../includes/order_details.php:28

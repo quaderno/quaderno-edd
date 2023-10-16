@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Plugins - EDD Quaderno - Stable (latest release)\n"
-"POT-Creation-Date: 2023-09-21 13:37+0100\n"
-"PO-Revision-Date: 2023-09-21 13:40+0100\n"
+"POT-Creation-Date: 2023-10-16 12:22+0100\n"
+"PO-Revision-Date: 2023-10-16 12:22+0100\n"
 "Last-Translator: support@quaderno.io\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -12,37 +12,46 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 3.3.2\n"
+"X-Generator: Poedit 3.4\n"
 
 #: ../includes/business_fields.php:35
 msgid "Business Info"
 msgstr "Información del negocio"
 
-#: ../includes/business_fields.php:37 ../includes/business_fields.php:189
+#: ../includes/business_fields.php:38 ../includes/business_fields.php:191
 msgid "Tax ID"
 msgstr "NIF o NIF-IVA"
 
-#: ../includes/business_fields.php:38
+#: ../includes/business_fields.php:39
 msgid "Enter your VAT/GST number"
 msgstr "Introduce tu número de NIF o NIF-IVA"
 
-#: ../includes/business_fields.php:42 ../includes/business_fields.php:183
+#: ../includes/business_fields.php:43 ../includes/business_fields.php:185
 msgid "Business Name"
 msgstr "Nombre del negocio"
 
-#: ../includes/business_fields.php:70
+#: ../includes/business_fields.php:72
 msgid "Please enter your Tax ID"
 msgstr "Introduce tu NIF"
 
-#: ../includes/business_fields.php:81
+#: ../includes/business_fields.php:83
 msgid "Your Tax ID cannot be validated"
 msgstr ""
-"Tu NIF-IVA no pudo ser validado. Si estás en la UE, comprueba que estás "
-"registrado en el registro de operadores intracomunitarios de tu país."
+"Tu NIF-IVA no pudo ser validado (si estás en la UE, comprueba que estás "
+"registrado en el registro de operadores intracomunitarios de tu país)"
 
-#: ../includes/business_fields.php:87
+#: ../includes/business_fields.php:89
 msgid "Please enter your business name"
 msgstr "Por favor, introduce el nombre de tu negocio"
+
+#: ../includes/emails.php:23
+msgid "Adds a link so users can view and download their invoice."
+msgstr ""
+"Añade un enlace para que los usuarios puedan ver y descargar su factura."
+
+#: ../includes/emails.php:25
+msgid "Quaderno invoice"
+msgstr "Factura Quaderno"
 
 #: ../includes/order_details.php:28
 msgid "Invoice"
