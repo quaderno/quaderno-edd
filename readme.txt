@@ -4,7 +4,7 @@ Contributors: polimorfico
 Tags: tax, taxes, sales tax, vat, gst, vatmoss, vat moss, vat oss, oss, ioss, billing, invoices, receipts, credit notes, edd, easydigitaldownloads, easy digital downloads, quaderno
 Requires at least: 4.6
 Tested up to: 6.3
-Stable tag: 1.35.0
+Stable tag: 1.35.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,7 +12,7 @@ Automatically calculate tax rates & create instant tax reports for your Easy Dig
 
 == Description ==
 
-Quaderno for EDD takes taxes off your plate by automatically calculating tax on every sale and following up with beautiful receipts, no matter where your customer is located. Transactions and receipts processed through Quaderno always comply with ever-changing local tax rules, including in the US, Canada, Australia, New Zealand, India, and the European Union.
+Quaderno for EDD takes taxes off your plate by automatically calculating tax on every sale and following up with beautiful invoices, no matter where your customer is located. Transactions and invoices processed through Quaderno always comply with ever-changing local tax rules, including in the US, Canada, Australia, New Zealand, India, United Kingdom, and the European Union.
 
 https://www.youtube.com/watch?v=mGs6SVOr7fU
 
@@ -21,7 +21,7 @@ https://www.youtube.com/watch?v=mGs6SVOr7fU
 * **Comply with local tax laws** in countries around the world, including the EU VAT OSS for digital products.
 * **Get notified any time you surpass a tax threshold**, or when a tax rate changes anywhere you sell your products.
 * **Get all the information you need for your tax returns**, at a glance, in mere seconds.
-* **Automatic receipts, invoices, and credit notes** with every order and refund in your store, in **multiple languages and currencies**.
+* **Automatic invoices, and credit notes** with every order and refund in your store, in **multiple languages and currencies**.
 * **Manage all your revenue sources** in one easy-to-use dashboard.
 
 **Setup in less than 5 minutes**. Fast and easy!
@@ -45,7 +45,7 @@ Following are the steps to install the EDD Quaderno
 
 OR you can just install it with WordPress by going to Plugins > Add New > and type this plugin's name
 
-That's it! You can now customize your EDD receipts and be EU VAT compliant.
+That's it! You can now customize your EDD invoices and be tax compliant wordlwide.
 
 == Frequently Asked Questions ==
 
@@ -62,9 +62,12 @@ If you have any questions please get in touch with us at support@quaderno.io.
 1. Copy your API token and API URL from your Quaderno account
 2. Paste it on the Quaderno settings page
 3. Checkout screen
-4. Example of a receipt
+4. Example of an invoice
 
 == Changelog ==
+
+= 1.35.1 – October 18, 2023 =
+* Fix: the email tag must return the URL instead of an HTML link
 
 = 1.35.0 – October 16, 2023 =
 * New: add a email tag to show a link to the final invoice
@@ -322,7 +325,7 @@ If you have any questions please get in touch with us at support@quaderno.io.
 * New: Discounts are showed on invoices and credits
 * Fix: Company name disappears when you change an order status
 * Fix: Some payment processor repeat their transaction ID
-* New: Store receipts URL on payment meta
+* New: Store invoices URL on payment meta
 * New: Show Quaderno URL on payment details
 * Fix: Refactoring evidence collection
 
@@ -339,7 +342,7 @@ If you have any questions please get in touch with us at support@quaderno.io.
 * New: Billing address is required
 * New: Compatibility with EDD 2.8
 * New: Update Quaderno API version
-* Fix: Error at delivering receipts
+* Fix: Error at delivering invoices
 * Fix: Error in free purchases
 
 = 1.12 =
@@ -360,7 +363,7 @@ If you have any questions please get in touch with us at support@quaderno.io.
 = 1.10 =
 * New: Users can enter their business name during checkout
 * Update copys
-* Fix: Receipts are not being sent if VAT number is empty
+* Fix: Invoices are not being sent if VAT number is empty
 * Fix: Credit customers are wrong
 
 = 1.9 =
@@ -369,11 +372,11 @@ If you have any questions please get in touch with us at support@quaderno.io.
 * Fix: Use last name for people with a valid VAT number
 
 = 1.8 =
-* New: Send receipts (simplified invoices)
+* New: Send invoices (simplified invoices)
 * New: Add just one item to the invoice
 * New: Do not invoice if total amount is zero
 * Fix: error with customers on multisites
-* Fix: negative payments always generate receipts
+* Fix: negative payments always generate invoices
 * Fix: sometimes transaction id does not exist
 * Fix: sanitize vat numbers and translations
 

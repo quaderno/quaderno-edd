@@ -40,7 +40,7 @@ function edd_quaderno_invoice_link_tag( $payment_id ) {
   $link = '';
 
   if( $payment->get_meta( '_quaderno_invoice_id' ) ) {
-    $link = '<a href="' . $payment->get_meta( '_quaderno_url' ) . '" target="_blank">' . $payment->get_meta( '_quaderno_url' ) . '</a>';
+    $link = $payment->get_meta( '_quaderno_url' );
   }
 
   return $link;
