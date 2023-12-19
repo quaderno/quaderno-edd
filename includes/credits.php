@@ -36,6 +36,12 @@ function edd_quaderno_create_credit( $order_id, $refund_id, $all_refunded ) {
 		return;
 	}
 
+	// Get the taxes
+	$tax = edd_quaderno_tax( $order->address->country,
+													 $order->address->postal_code,
+													 $order->address->city,
+													 edd_quaderno_get_order_meta( $order_id, 'tax_id', true ) );
+
 	// Let's create the transaction
   $transaction = new QuadernoTransaction(array(
 		'type' => 'refund',
@@ -58,12 +64,6 @@ function edd_quaderno_create_credit( $order_id, $refund_id, $all_refunded ) {
 			'processor_url' => add_query_arg( 'id', $order_id, admin_url( 'edit.php?post_type=download&page=edd-payment-history&view=view-order-details' ) )
 		)
 	));
-
-  // Get the taxes
-	$tax = edd_quaderno_tax( $order->address->country,
-													 $order->address->postal_code,
-													 $order->address->city,
-													 edd_quaderno_get_order_meta( $order_id, 'tax_id', true ) );
 
   // Calculate transaction items and tags
 	$transaction_items = array();
