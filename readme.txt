@@ -4,7 +4,7 @@ Contributors: polimorfico
 Tags: tax, taxes, sales tax, vat, gst, vatmoss, vat moss, vat oss, oss, ioss, billing, invoices, receipts, credit notes, edd, easydigitaldownloads, easy digital downloads, quaderno
 Requires at least: 4.6
 Tested up to: 6.3
-Stable tag: 1.35.1
+Stable tag: 1.36.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -65,6 +65,11 @@ If you have any questions please get in touch with us at support@quaderno.io.
 4. Example of an invoice
 
 == Changelog ==
+
+= 1.36.0 – December 19, 2023 =
+* New: use the customer's current data to invoice renewed payments
+* Fix: some credit notes are not being issued
+* Fix: remove warning when accesing nonexistent IP addresses
 
 = 1.35.1 – October 18, 2023 =
 * Fix: the email tag must return the URL instead of an HTML link
