@@ -68,7 +68,7 @@ add_action('edd_view_order_details_payment_meta_before', 'edd_quaderno_add_payme
 * @param  string $key
 * @return @return mixed|void
 */
-function edd_quaderno_get_order_meta( $order_id, $key ) {
+function edd_quaderno_get_payment_meta( $order_id, $key ) {
   $value = edd_get_order_meta( $order_id, $key, true );
   if ( empty ( $value ) ) {
     $payment = new EDD_Payment( $order_id );

@@ -35,8 +35,7 @@ function edd_quaderno_add_business_fields() {
     <legend><?php _e( 'Business Info', 'edd-quaderno' ); ?></legend>
 	<?php do_action( 'edd_quaderno_purchase_form_business_fields_before' ); ?>
   	<p id="edd_tax_id_wrap">
-	 	 <label for="edd_tax_id" class="edd-label"><?php esc_html_e( 'Tax ID', 'edd-quaderno' ); ?></label>
-     <span class="edd-description"><?php esc_html_e( 'Enter your VAT/GST number', 'edd-quaderno' ); ?></span>
+      <label for="edd_tax_id" class="edd-label"><?php esc_html_e( 'Tax ID', 'edd-quaderno' ); ?></label>
 		  <input type="text" name="edd_tax_id" id="edd_tax_id" class="tax-id edd-input" value="<?php echo $tax_id; ?>" />
   	</p>
     <p id="edd_business_name_wrap" class="edd-has-js">
@@ -49,6 +48,7 @@ function edd_quaderno_add_business_fields() {
 	echo ob_get_clean();
 }
 add_action('edd_purchase_form_after_cc_form', 'edd_quaderno_add_business_fields', 1000);
+add_action('edd_profile_editor_after_address_fields', 'edd_quaderno_add_business_fields', 1000);
 
 /**
 * Validate the Tax ID field
@@ -158,7 +158,8 @@ function edd_quaderno_store_business_data( $order_id ) {
     }
   }
 }
-add_action('edd_built_order', 'edd_quaderno_store_business_data', 100);
+add_action( 'edd_built_order', 'edd_quaderno_store_business_data', 100 );
+add_action( 'edd_user_profile_updated', 'edd_quaderno_store_business_data', 100 );
 
 /**
 * Show the Business Name & Tax ID fields in the "View Order Details" page
@@ -169,13 +170,13 @@ add_action('edd_built_order', 'edd_quaderno_store_business_data', 100);
 function edd_quaderno_show_business_data( $order_id ) {
   $order = edd_get_order( $order_id );
 
-  $tax_id = edd_quaderno_get_order_meta( $order_id, 'vat_number', true );
+  $tax_id = edd_quaderno_get_payment_meta( $order_id, 'vat_number', true );
   if( empty( $tax_id ) ) {
-    $tax_id = edd_quaderno_get_order_meta( $order_id, 'tax_id', true );
+    $tax_id = edd_quaderno_get_payment_meta( $order_id, 'tax_id', true );
   }
 
   // Get the current business name
-  $business_name = edd_quaderno_get_order_meta( $order_id, 'business_name', true );
+  $business_name = edd_quaderno_get_payment_meta( $order_id, 'business_name', true );
 
 	?>
   <div class="order-data-address">
