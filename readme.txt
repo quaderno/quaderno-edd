@@ -4,7 +4,7 @@ Contributors: polimorfico
 Tags: tax, taxes, sales tax, vat, gst, vatmoss, vat moss, vat oss, oss, ioss, billing, invoices, receipts, credit notes, edd, easydigitaldownloads, easy digital downloads, quaderno
 Requires at least: 4.6
 Tested up to: 6.3
-Stable tag: 1.37.0
+Stable tag: 1.37.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -65,6 +65,9 @@ If you have any questions please get in touch with us at support@quaderno.io.
 4. Example of an invoice
 
 == Changelog ==
+
+= 1.37.1 – February 28, 2023 =
+* Fix: recurring invoices don't show the customer's name
 
 = 1.37.0 – February 20, 2023 =
 * New: use orders data to generate invoices

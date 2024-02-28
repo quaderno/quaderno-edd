@@ -72,10 +72,10 @@ function edd_quaderno_create_invoice( $order_id ) {
 	if ( !empty( $business_name ) ) {
 		$kind = 'company';
 		$first_name = $business_name;
-		$contact_name = $address->name;
+		$contact_name = $customer->name ?: $address->name;
 	} else {
 		$kind = 'person';
-		$first_name = $address->name;
+		$first_name = $customer->name ?: $address->name;
 		$contact_name = '';
 	}
 
