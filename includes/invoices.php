@@ -232,8 +232,10 @@ function edd_quaderno_process_recurring_payment( $order_id, $parent_id ) {
 	$customer = edd_get_customer( $order->customer_id );
 
 	// get the tax ID and the business name from the customer's current data
-	edd_add_order_meta( $order_id, 'tax_id', $customer->get_meta( 'tax_id' ) );
-	edd_add_order_meta( $order_id, 'business_name', $customer->get_meta( 'business_name' ) );
+	if( !empty($customer) ) {
+		edd_add_order_meta( $order_id, 'tax_id', $customer->get_meta( 'tax_id' ) );
+		edd_add_order_meta( $order_id, 'business_name', $customer->get_meta( 'business_name' ) );
+	}
 
 	// copy the IP address from the original order
 	$parent_order = edd_get_order( $parent_id );
