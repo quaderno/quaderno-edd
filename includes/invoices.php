@@ -153,7 +153,7 @@ function edd_quaderno_create_invoice( $order_id ) {
 			'product_code' => $sku != '-' ? $sku : '',
 			'description' => get_quaderno_item_description( $item ),
 			'quantity' => $item->quantity,
-			'amount' => $item->total,
+			'amount' => round($item->total, 2),
       'discount_rate' => $discount_rate,
 			'tax' => $tax
 		);
@@ -168,7 +168,7 @@ function edd_quaderno_create_invoice( $order_id ) {
 		$new_item = array(
 			'description' => $fee->description,
 			'quantity' => 1,
-			'amount' => $fee->subtotal * ( 1 + $tax->rate / 100.0 ),
+			'amount' => round($fee->subtotal * ( 1 + $tax->rate / 100.0 ), 2),
 			'tax' => $tax
 		);
 
@@ -267,14 +267,14 @@ add_action( 'edd_recurring_record_payment', 'edd_quaderno_process_recurring_paym
 * @return void
 */
 function edd_quaderno_resend_invoice( $data ) {
-	$payment_id = absint( $data['purchase_id'] );
+	$order_id = absint( $data['purchase_id'] );
 
-	if( empty( $payment_id ) ) {
+	if( empty( $order_id ) ) {
 		return;
 	}
 
-	$payment = new EDD_Payment($payment_id);
-	edd_quaderno_process_recurring_payment( $payment_id, $order->parent_payment );
+	$order = edd_get_order($order_id);
+	edd_quaderno_process_recurring_payment( $order_id, $order->parent );
 
 	wp_redirect( add_query_arg( array( 'edd-message' => 'email_sent', 'edd-action' => false, 'purchase_id' => false ) ) );
 	exit;

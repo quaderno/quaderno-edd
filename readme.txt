@@ -4,7 +4,7 @@ Contributors: polimorfico
 Tags: tax, taxes, sales tax, vat, gst, vatmoss, vat moss, vat oss, oss, ioss, billing, invoices, receipts, credit notes, edd, easydigitaldownloads, easy digital downloads, quaderno
 Requires at least: 4.6
 Tested up to: 6.6
-Stable tag: 1.37.4
+Stable tag: 1.37.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -65,6 +65,9 @@ If you have any questions please get in touch with us at support@quaderno.io.
 4. Example of an invoice
 
 == Changelog ==
+
+= 1.37.5 – July 18, 2024 =
+* Fix: round total amounts on line items
 
 = 1.37.4 – July 17, 2024 =
 * New: support for WordPress 6.6

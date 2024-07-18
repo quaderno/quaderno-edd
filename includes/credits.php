@@ -83,7 +83,7 @@ function edd_quaderno_create_credit( $order_id, $refund_id, $all_refunded ) {
 			'product_code' => $sku != '-' ? $sku : '',
 			'description' => $item->product_name,
 			'quantity' => -$item->quantity,
-			'amount' => -$item->total,
+			'amount' => -round($item->total, 2),
       'discount_rate' => -$discount_rate,
 			'tax' => $tax
 		);
