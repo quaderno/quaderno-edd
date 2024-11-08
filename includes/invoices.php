@@ -239,11 +239,13 @@ function edd_quaderno_process_recurring_payment( $order_id, $parent_id ) {
 
 	// copy the IP address from the original order
 	$parent_order = edd_get_order( $parent_id );
+
 	if ( !empty($parent_order) ) {
 		edd_update_order( $order_id, array( 'ip' => $parent_order->ip ) );
-		$result = edd_update_order_address(
-			$order->get_address()->id,
+		edd_add_order_address(
 			array(
+        'order_id'    => $order_id,
+        'name'        => $parent_order->address->name,
 				'address'     => $parent_order->address->address,
 				'address2'    => $parent_order->address->address2,
 				'city'        => $parent_order->address->city,
