@@ -3,8 +3,8 @@ Author URI: https://www.quaderno.io/integrations/easy-digital-downloads?utm_sour
 Contributors: polimorfico
 Tags: tax, taxes, sales tax, vat, gst, vatmoss, vat moss, vat oss, oss, ioss, billing, invoices, receipts, credit notes, edd, easydigitaldownloads, easy digital downloads, quaderno
 Requires at least: 4.6
-Tested up to: 6.6
-Stable tag: 1.37.6
+Tested up to: 6.7
+Stable tag: 1.37.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -65,6 +65,9 @@ If you have any questions please get in touch with us at support@quaderno.io.
 4. Example of an invoice
 
 == Changelog ==
+
+= 1.37.7 – November 14, 2024 =
+* New: Support for WordPress 6.7
 
 = 1.37.6 – November 8, 2024 =
 * Fix: address is not copying in recurring invoices
