@@ -1,61 +1,64 @@
-=== EDD Quaderno ===
-Author URI: https://www.quaderno.io/integrations/easy-digital-downloads?utm_source=wordpress&utm_campaign=edd
+=== Quaderno for EDD ===
 Contributors: polimorfico
-Tags: tax, taxes, sales tax, vat, gst, vatmoss, vat moss, vat oss, oss, ioss, billing, invoices, receipts, credit notes, edd, easydigitaldownloads, easy digital downloads, quaderno
-Requires at least: 4.6
-Tested up to: 6.7
-Stable tag: 1.37.7
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: sales tax, vat, gst, verifactu, ticketbai
+Tested up to: 6.8
+Requires PHP: 7.4
+Stable tag: 2.7.2
+License: GPLv3
 
-Automatically calculate tax rates & create instant tax reports for your Easy Digital Downloads store. Setup in less than 5 minutes.
+Automate global tax calculations and compliant invoicing for Easy Digital Downloads. Handle sales tax, VAT, GST worldwide with instant reports.
 
 == Description ==
 
-Quaderno for EDD takes taxes off your plate by automatically calculating tax on every sale and following up with beautiful invoices, no matter where your customer is located. Transactions and invoices processed through Quaderno always comply with ever-changing local tax rules, including in the US, Canada, Australia, New Zealand, India, United Kingdom, and the European Union.
+Transform tax complexity into seamless growth with automated global tax compliance. The Quaderno plugin eliminates manual tax calculations and invoice generation, ensuring your Easy Digital Download store stays compliant across all markets while you focus on scaling your business.
+
+Selling globally shouldn't mean drowning in tax paperwork. Quaderno handles the intricate web of international sales tax, VAT, and GST regulations automatically, so you can concentrate on what matters most: growing your business.
 
 https://www.youtube.com/watch?v=mGs6SVOr7fU
 
-= What you get =
+= How it works =
 
-* **Comply with local tax laws** in countries around the world, including the EU VAT OSS for digital products.
-* **Get notified any time you surpass a tax threshold**, or when a tax rate changes anywhere you sell your products.
-* **Get all the information you need for your tax returns**, at a glance, in mere seconds.
-* **Automatic invoices, and credit notes** with every order and refund in your store, in **multiple languages and currencies**.
-* **Manage all your revenue sources** in one easy-to-use dashboard.
+Quaderno works behind the scenes to automatically calculate precise taxes for every sale and generate compliant invoices and credit notes, regardless of your customer's location. Our intelligent system continuously updates with the latest tax regulations, seamlessly handling complex requirements including US sales tax, EU VAT, Canadian GST, and mandatory e-invoicing systems like Verifactu and TicketBAI.
 
-**Setup in less than 5 minutes**. Fast and easy!
+= Key Benefits & Features = 
 
-1. Download & activate this plugin
-2. [Sign up](https://quaderno.io/integrations/easy-digital-downloads/?utm_source=wordpress&utm_campaign=edd) for a Quaderno account
-3. Paste your API key in your EDD site
-4. That's all!
-
-**Please Note:** this plugin requires a [Quaderno](https://quaderno.io/integrations/easy-digital-downloads/?utm_source=wordpress&utm_campaign=edd) account.
-
-== Installation ==
-
-Following are the steps to install the EDD Quaderno
-
-1. Unpack the entire contents of this plugin zip file into your wp-content/plugins/ folder locally.
-2. Upload to your site.
-3. Navigate to wp-admin/plugins.php on your site (your WP Admin plugin page).
-4. Activate this plugin.
-5. Configure the options from Downloads > Settings > Quaderno.
-
-OR you can just install it with WordPress by going to Plugins > Add New > and type this plugin's name
-
-That's it! You can now customize your EDD invoices and be tax compliant wordlwide.
+* **Effortless Global Tax Compliance**: Effortlessly comply with ever-changing local tax laws in countries around the world. Rest easy knowing your business is always in line with regulations.
+* **Proactive Tax Notifications**: Get instant alerts when you become liable for taxes by surpassing a tax registration threshold worldwide. We'll also notify you when a tax rate changes in any region where you sell.
+* **Real-Time, Accurate Tax Calculation**: Our intelligent database instantly identifies the precise tax rate and amount based on your product and your customer's exact location, ensuring accuracy every time.
+* **Instant, Comprehensive Tax Reports**: Generate all the vital information you need for your tax returns at a glance. Quaderno's intuitive dashboard provides immediate, actionable insights into your tax obligations.
+* **Automated E-invoicing & Credit Notes**: Ditch the manual work. Professionally crafted invoices and credit notes are automatically generated and sent for every order, available in multiple languages and currencies. We also provide support for legally compliant e-invoicing and e-reporting systems, including Verifactu/VERI*FACTU and TicketBAI.
+* **Worldwide Registration & Filing Service**: Simplify your tax obligations from end to end. We offer a comprehensive service to handle your tax registration and filing, wherever you do business.
+* **Customer Self-Service**: Empower your customers to download their invoices and credit notes directly from their Easy Digital Download orders page, reducing customer service inquiries and improving their experience.
 
 == Frequently Asked Questions ==
 
-= Do I need to modify any code? =
-Nope - we take care of everything you. Just install the plugin, add your API token and you’ll be good to go!
+= How does Quaderno automatically handle taxes for my Easy Digital Download sales? =
+After [connecting to your Easy Digital Download store](https://support.quaderno.io/article/608-connecting-easy-digital-downloads/?utm_source=wordpress&utm_campaign=edd), Quaderno runs automatically in the background. It instantly identifies the correct tax rate for each transaction based on your products and customer location, seamlessly integrating into your checkout process. It's truly set-and-forget tax automation.
 
-= Does Quaderno work with any themes? =
-Yes, Quaderno works with any theme - whether free, commercial or custom. You just need EDD activated for Quaderno to work.
+= Does Quaderno support e-invoicing and e-reporting formats? =
+Absolutely. Quaderno ensures compliance with global e-invoicing regulations, automatically supporting legally mandated systems including Spain's **Verifactu/VERI*FACTU** and **TicketBAI**. Your invoices are automatically formatted and submitted to tax authorities in the required format, eliminating manual compliance work while keeping your business fully compliant.
 
-If you have any questions please get in touch with us at support@quaderno.io.
+= Can I use Quaderno with other e-commerce platforms besides Easy Digital Download? =
+Yes! Quaderno centralizes tax and invoicing across multiple sales channels. Beyond Easy Digital Download, you can integrate with platforms like WooCommerce and Shopify, managing all your sales data, tax calculations, and compliance reporting from a single unified dashboard.
+
+= What are the pricing options for Quaderno? =
+Quaderno offers transparent, transaction-based pricing that scales with your business. Plans start at just $29 per month with no hidden fees. View all available [pricing plans here](https://www.quaderno.io/pricing/?utm_source=wordpress&utm_campaign=edd).
+
+== Installation ==
+
+= Minimum Requirements =
+* PHP 7.4 or greater is required (PHP 8.0 or greater is recommended)
+* Easy Digital Download 3.2 or greater
+* A [Quaderno account](https://quadernoapp.com/signup/?utm_source=wordpress&utm_campaign=edd).
+
+= Automatic installation =
+Automatic installation is the easiest option -- WordPress will handle the file transfer, and you won’t need to leave your web browser. To do an automatic install of Easy Digital Download Quaderno, log in to your WordPress dashboard, navigate to the Plugins menu, and click “Add New.”
+
+In the search field type “Quaderno,” then click “Search Plugins.” Once you’ve found us, you can view details about it such as the point release, rating, and description. Most importantly of course, you can install it by! Click “Install Now,” and WordPress will take it from there.
+
+= Manual installation =
+Manual installation method requires downloading the Easy Digital Download Quaderno plugin and uploading it to your web server via your favorite FTP application. The WordPress codex contains [instructions on how to do this here](https://wordpress.org/support/article/managing-plugins/#manual-plugin-installation).
+
 
 == Screenshots ==
 
