@@ -3,7 +3,7 @@ Contributors: polimorfico
 Tags: sales tax, vat, gst, verifactu, ticketbai
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 2.7.2
+Stable tag: 1.38.0
 License: GPLv3
 
 Automate global tax calculations and compliant invoicing for Easy Digital Downloads. Handle sales tax, VAT, GST worldwide with instant reports.
@@ -69,8 +69,12 @@ Manual installation method requires downloading the Easy Digital Download Quader
 
 == Changelog ==
 
+= 1.38.0 – September 19, 2025 =
+* New: autosend invoices if the autosend preference is active in Quaderno
+* New: support for WordPress 6.8
+
 = 1.37.7 – November 14, 2024 =
-* New: Support for WordPress 6.7
+* New: support for WordPress 6.7
 
 = 1.37.6 – November 8, 2024 =
 * Fix: address is not copying in recurring invoices

@@ -119,11 +119,6 @@ function edd_quaderno_create_credit( $order_id, $refund_id, $all_refunded ) {
 		$payment->add_note( 'Credit note created on Quaderno' );
 
 		do_action( 'quaderno_credit_created', $transaction, $refund );
-
-		// Send the credit
-		if ( isset( $edd_options['autosend_receipts'] ) ) {
-			$transaction->deliver();
-		}
 	}
 }
 add_action( 'edd_refund_order', 'edd_quaderno_create_credit', 999, 3 );

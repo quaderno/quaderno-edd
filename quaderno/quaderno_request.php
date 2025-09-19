@@ -20,7 +20,7 @@ class QuadernoRequest {
 	private $password = 'foo';
 	private $content_type = 'application/json';
 	private $api_url = 'https://quadernoapp.com/api/v1/';
-	private $api_version = '20170628';
+	private $api_version = '20241028';
 	private $request_methods = null;
 	private $request_endpoint = null;
 	private $request_body = null;

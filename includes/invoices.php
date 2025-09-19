@@ -72,16 +72,19 @@ function edd_quaderno_create_invoice( $order_id ) {
 	if ( !empty( $business_name ) ) {
 		$kind = 'company';
 		$first_name = $business_name;
+		$last_name = '';
 		$contact_name = $customer->name ?: $address->name;
 	} else {
 		$kind = 'person';
-		$first_name = $customer->name ?: $address->name;
+		$first_name = $customer->first_name ?: $address->name;
+		$last_name = $customer->last_name;
 		$contact_name = '';
 	}
 
 	$transaction_params['customer'] = array(
 		'kind' => $kind,
 		'first_name' => $first_name ?: 'EDD Customer',
+		'last_name' => $last_name,
 		'contact_person' => $contact_name,
 		'street_line_1' => $address->address ?: '',
 		'street_line_2' => $address->address2 ?: '',
@@ -207,11 +210,6 @@ function edd_quaderno_create_invoice( $order_id ) {
     $customer->update_meta( 'business_name', $business_name );
 
 		do_action( 'quaderno_invoice_created', $transaction, $payment );
-
-		// Send the invoice
-		if ( isset( $edd_options['autosend_receipts'] ) ) {
-			$transaction->deliver();
-		}
 	}
 
 }

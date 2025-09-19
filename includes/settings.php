@@ -50,12 +50,6 @@ function edd_quaderno_settings( $settings ) {
 				'desc' => sprintf(esc_html__( 'Check this if tax ID must be required for all sales in %s.', 'edd-quaderno' ), edd_get_country_name(edd_get_shop_country())),
 				'type' => 'checkbox'
 			),
-			'autosend_receipts' => array(
-				'id'   => 'autosend_receipts',
-				'name' => esc_html__( 'Autosend documents', 'edd-quaderno' ),
-				'desc' => esc_html__( 'Check this if you want Quaderno to automatically email your receipts.', 'edd-quaderno' ),
-				'type' => 'checkbox'
-			),
 			'clear_trasients' => array(
 				'id'   => 'clear_trasients',
 				'name' => esc_html__( 'Clear tax cache', 'edd-quaderno' ),
