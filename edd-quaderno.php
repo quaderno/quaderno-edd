@@ -4,13 +4,12 @@
  * Plugin Name: Quaderno for EDD
  * Plugin URI: https://wordpress.org/plugins/edd-quaderno/
  * Description:  Automatically calculate tax rates & generate automatic invoices for your Easy Digital Downloads store.
- * Version: 1.38.0
+ * Version: 1.38.1
  * Author: Quaderno
  * Author URI: https://quaderno.io/integrations/easy-digital-downloads/?utm_source=wordpress&utm_campaign=edd
  * License: GPL v3
  * Text Domain: edd-quaderno
  * Domain Path: /languages/
- * Requires Plugins: easy-digital-downloads
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
